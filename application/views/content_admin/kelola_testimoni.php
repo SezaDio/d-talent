@@ -2,11 +2,10 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Kelola Ngerti Rak?
+                       Kelola Testimoni
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Ngerti Rak?</li>
-                        <li class="active">Kelola Ngerti Rak?</li>
+                        <li class="active"><i class="fa fa-dashboard"></i>Kelola Testimoni</li>
                     </ol>
                 </section>
 
@@ -28,8 +27,8 @@
                                                 <?php echo $this->session->flashdata('msg_berhasil');?> 
                                             </div>
                                         <?php }?>
-										<a href="<?php echo site_url('KelolaWow/tambah_wow_check/');?>">
-                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Tambah Ngerti Rak?</button>
+										<a href="<?php echo site_url('KelolaTestimoni/tambah_testimoni_check/');?>">
+                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Tambah Testimoni</button>
                                         </a>
 									</div>
                                     <div class="form-group">
@@ -37,27 +36,27 @@
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Judul Ngerti Rak?</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Kategori</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Nama</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Job</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Tanggal Publish</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>           
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
-                                                    foreach($listWow as $item)
+                                                    foreach($listTestimoni as $item)
                                                     { ?>
                                                         <tr>
-                                                            <td style="text-align: center;"><?php echo $item['id_wow'] ?></td>
-                                                            <td><?php echo $item['judul_wow'] ?></td>
-                                                            <td><?php echo $item['kategori_wow'] ?></td>
+                                                            <td style="text-align: center;"><?php echo $item['id_testimoni'] ?></td>
+                                                            <td><?php echo $item['nama_testimoni'] ?></td>
+                                                            <td><?php echo $item['job'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
                                                             <td align="center">
-                                                                <!-- Tombol lihat detail -->
-                                                                <a href="<?php echo site_url('KelolaWow/edit_wow/'.$item['id_wow']);?>"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit </button></a>
+                                                                <!-- Tombol edit testimoni -->
+                                                                <a href="<?php echo site_url('KelolaTestimoni/edit_testimoni/'.$item['id_testimoni']);?>"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit </button></a>
 
                                                                 <!-- Tombol Hapus -->
-                                                                <button onclick="delete_wow_ajax(<?php echo $item['id_wow']; ?>)" id="delete-button-wow" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                <button onclick="delete_testimoni_ajax(<?php echo $item['id_testimoni']; ?>)" id="delete-button-testimoni" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -73,4 +72,28 @@
             </aside><!-- /.right-side -->
 
 
+            <script type="text/javascript">
+                function delete_testimoni_ajax(id_testimoni)
+                {
+                    if (confirm("Anda yakin ingin menghapus testimoni ini ?"))
+                    {
+                        $.ajax({
+                            url: 'KelolaTestimoni/delete_testimoni',
+                            type: 'POST',
+                            data: {id_testimoni:id_testimoni},
+                            success: function(){
+                                        alert('Delete Testimoni berhasil');
+                                        location.reload();
+                                    },
+                            error: function(){
+                                        alert('Delete Testimoni gagal');
+                                    }
+                        });
+                    }
+                    else
+                    {
+                        alert(id_testimoni + "Gagal dihapus");
+                    }
+                }
+            </script>
             

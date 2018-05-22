@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah Ngerti Rak?
+                       Tambah Testimoni
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Ngerti Rak?</a></li>
-                        <li class="active">Tambah Ngerti Rak?</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Testimoni</a></li>
+                        <li class="active">Tambah Testimoni</li>
                     </ol>
                 </section>
 
@@ -32,7 +32,7 @@
                                         }); 
                                     });
                                 </script>
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaWow/tambah_wow_check/');?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaTestimoni/tambah_testimoni_check/');?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>
@@ -43,46 +43,38 @@
                                                 </div>
                                             <?php }?>
                                         </div>
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori   :</label><br>
-                                            <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori Ngerti Rak?--</option>
-                                                <?php
-                                                    foreach ($kategori_wow as $key=>$kategori) 
-                                                    {
-                                                        if ($key==$dataWow['kategori_wow']){
-                                                            echo '<option value="'.$key.'" selected>'.$kategori.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$kategori.'</option>';   
-                                                        }
-                                                    }
-                                                ?>
-                                            </select></br>
-                                        </div>
-
+										
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Ngerti Rak?   :</label>
-                                            <input type="text" required name="judul_wow" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataWow['judul_wow']))
+                                            <label for="exampleInputEmail1">Nama :</label>
+                                            <input type="text" required name="nama_testimoni" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                    if (isset($dataTestimoni['nama_testimoni']))
                                                     {
-                                                        echo htmlspecialchars($dataWow['judul_wow']);
+                                                        echo htmlspecialchars($dataTestimoni['nama_testimoni']);
                                                     }
                                             ?>">
                                             
                                         </div>
+
+                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Job :</label>
+                                            <input type="text" required name="job" class="form-control" value="<?php 
+                                                    if (isset($dataTestimoni['job']))
+                                                    {
+                                                        echo htmlspecialchars($dataTestimoni['job']);
+                                                    }
+                                            ?>">
+                                        </div>
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Ngerti Rak? :</label>
+												 <label>Deskripsi Testimoni:</label>
 											</div>
 											<div class='box-body pad'>
-                                                <b><p style="color:red;">* Panjang maksimal untuk isi ngerti rak maksimal 200 karakter</p></b>
-												<textarea required id="karakter" name="deskripsi_wow" rows="10" cols="80"><?php 
-                                                        if (isset($dataWow['deskripsi']))
+                                                <b><p style="color:red;">* Panjang maksimal untuk isi deskripsi testimoni maksimal 200 karakter</p></b>
+												<textarea required id="karakter" name="deskripsi" rows="10" cols="150"><?php 
+                                                        if (isset($dataTestimoni['deskripsi']))
                                                         {
-                                                            echo htmlspecialchars($dataWow['deskripsi']);
+                                                            echo htmlspecialchars($dataTestimoni['deskripsi']);
                                                         }
                                                     ?></textarea>
                                                 <br>
@@ -91,7 +83,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Unggah File Gambar :</label>
+                                            <label for="exampleInputFile">Unggah File Foto :</label>
                                             <div class="input-group">
                                                 <input class="form" type="file" name="filefoto" required >
                                             </div>

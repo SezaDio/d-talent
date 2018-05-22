@@ -1,17 +1,17 @@
 <?php
 
-	class WowModels extends CI_Model
+	class TestimoniModels extends CI_Model
 	{
 		function construct()
 		{
 			parent::_construct();
 		}
 
-		//Mengambil data produk wow
-		function get_data_wow()
+		//Mengambil data testimoni
+		function get_data_testimoni()
 		{
 			
-			$query = $this->db->order_by('tanggal_posting','DESC')->select('*')->get('wow');
+			$query = $this->db->order_by('tanggal_posting','DESC')->select('*')->get('testimoni');
 		
 			$indeks = 0;
 			$result = array();
@@ -30,19 +30,19 @@
 			$this->db->insert('wow', $data_wow);
 		}
 		
-		//Menghapus data  wow
-		function delete_wow($id_wow)
+		//Menghapus data testimoni
+		function delete_testimoni($id_testimoni)
 		{
-			$this->db->where('id_wow',$id_wow);
-			$this->db->delete('wow');
+			$this->db->where('id_testimoni',$id_testimoni);
+			$this->db->delete('testimoni');
 		}
 
-		//Select data WOW by id wow
-		function select_by_id_wow($id_wow)
+		//Select data Testimoni by id testimoni
+		function select_by_id_testimoni($id_testimoni)
 		{
 			$this->db->select('*');
-			$this->db->from('wow');
-			$this->db->where('id_wow',$id_wow);
+			$this->db->from('testimoni');
+			$this->db->where('id_testimoni',$id_testimoni);
 
 			return $this->db->get();
 		}

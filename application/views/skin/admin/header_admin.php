@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>boloku.id | Dashboard</title>
+        <title>D-Talent | Dashboard</title>
         
         <!-- load bootsrap -->
         <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />

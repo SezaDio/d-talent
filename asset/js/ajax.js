@@ -67,26 +67,26 @@ function setuju_produk_ajax(id_produk)
 	}
 }
 
-function delete_wow_ajax(id_wow)
+function delete_testimoni_ajax(id_testimoni)
 {
-	if (confirm("Anda yakin ingin menghapus posting ngerti rak ini ?"))
+	if (confirm("Anda yakin ingin menghapus testimoni ini ?"))
 	{
 		$.ajax({
-			url: 'KelolaWow/delete_wow',
+			url: 'KelolaTestimoni/delete_testimoni',
 			type: 'POST',
-			data: {id_wow:id_wow},
+			data: {id_testimoni:id_testimoni},
 			success: function(){
-						alert('Delete posting Wow berhasil');
+						alert('Delete Testimoni berhasil');
 						location.reload();
 					},
 			error: function(){
-						alert('Delete posting Wow gagal');
+						alert('Delete Testimoni gagal');
 					}
 		});
 	}
 	else
 	{
-		alert(id_wow + "Gagal dihapus");
+		alert(id_testimoni + "Gagal dihapus");
 	}
 }
 
