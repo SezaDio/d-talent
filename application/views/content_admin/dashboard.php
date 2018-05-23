@@ -79,8 +79,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        <?php //echo $jum_pending_pepak;?>
-                                        1000
+                                        <?php echo $jum_pesan; ?>
                                     </h3>
                                     <p>
                                         Message
@@ -89,7 +88,7 @@
                                 <div class="icon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </div>
-                                <a href="<?php echo site_url('KelolaPepak/validasi_pepak'); ?>" class="small-box-footer">
+                                <a href="<?php echo site_url('KelolaPesan/index'); ?>" class="small-box-footer">
                                     More info <i class="glyphicon glyphicon-circle-arrow-right"></i>
                                 </a>
                             </div>

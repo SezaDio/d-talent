@@ -213,8 +213,6 @@ class KelolaTestimoni extends CI_Controller {
 		$id_testimoni = $_POST['id_testimoni'];
 		$this->load->model('testimoni_models/TestimoniModels');
 		$this->TestimoniModels->delete_testimoni($id_testimoni);
-
-		redirect('KelolaTestimoni');
 	}
 	
 	function by_kategori($ngerti){

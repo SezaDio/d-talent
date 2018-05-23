@@ -67,29 +67,6 @@ function setuju_produk_ajax(id_produk)
 	}
 }
 
-function delete_testimoni_ajax(id_testimoni)
-{
-	if (confirm("Anda yakin ingin menghapus testimoni ini ?"))
-	{
-		$.ajax({
-			url: 'KelolaTestimoni/delete_testimoni',
-			type: 'POST',
-			data: {id_testimoni:id_testimoni},
-			success: function(){
-						alert('Delete Testimoni berhasil');
-						location.reload();
-					},
-			error: function(){
-						alert('Delete Testimoni gagal');
-					}
-		});
-	}
-	else
-	{
-		alert(id_testimoni + "Gagal dihapus");
-	}
-}
-
 function delete_coming_ajax(id_coming)
 {
 	if (confirm("Anda yakin ingin menghapus Event ini beserta data didalamnya ?"))
@@ -189,7 +166,7 @@ function delete_testimoni_ajax(id_testimoni)
 	if (confirm("Anda yakin ingin menghapus Testimoni ini ?"))
 	{
 		$.ajax({
-			url: '../delete_testimoni',
+			url: 'KelolaTestimoni/delete_testimoni',
 			type: 'POST',
 			data: {id_testimoni:id_testimoni},
 			success: function(){
@@ -197,7 +174,7 @@ function delete_testimoni_ajax(id_testimoni)
 						location.reload();
 					},
 			error: function(){
-						alert('Delete Testimoni News gagal');
+						alert('Delete Testimoni gagal');
 					}
 		});
 	}

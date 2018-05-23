@@ -16,6 +16,12 @@
                         </li>
 
                         <li>
+                            <a href="<?php echo site_url('KelolaPesan/index'); ?>">
+                                <i class="glyphicon glyphicon-envelope"></i> <span> Kelola Pesan </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="<?php echo site_url('KelolaTestimoni/index'); ?>">
                                 <i class="glyphicon glyphicon-star"></i> <span> Kelola Testimoni </span>
                             </a>

@@ -22,10 +22,10 @@ class AdminDashboard extends CI_Controller {
 		//$data['jum_approve_event'] = $this->DashboardModels->get_jumlah_approved_event();
 		//$data['jum_pending_event'] = $this->DashboardModels->get_jumlah_pending_event();
 		//$data['jum_pending_pepak'] = $this->DashboardModels->get_jumlah_pending_pepak();
-		//$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
+		$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
 		//$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
 
-		$this->load->view('skin/admin/welcome'/*, $data*/);
+		$this->load->view('skin/admin/welcome', $data);
 		} else {
 			redirect(site_url('Account'));
 		}

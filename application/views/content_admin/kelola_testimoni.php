@@ -56,7 +56,7 @@
                                                                 <a href="<?php echo site_url('KelolaTestimoni/edit_testimoni/'.$item['id_testimoni']);?>"><button class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit </button></a>
 
                                                                 <!-- Tombol Hapus -->
-                                                                <button onclick="delete_testimoni_ajax(<?php echo $item['id_testimoni']; ?>)" id="delete-button-testimoni" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                <button onclick="delete_testimoni_ajax(<?php echo $item['id_testimoni']; ?>)" id="delete-button-wow" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -70,30 +70,28 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
-
-
+            
             <script type="text/javascript">
                 function delete_testimoni_ajax(id_testimoni)
                 {
                     if (confirm("Anda yakin ingin menghapus testimoni ini ?"))
-                    {
+                    {;
                         $.ajax({
-                            url: 'KelolaTestimoni/delete_testimoni',
+                            url: '../KelolaTestimoni/delete_testimoni',
                             type: 'POST',
                             data: {id_testimoni:id_testimoni},
                             success: function(){
-                                        alert('Delete Testimoni berhasil');
+                                        alert('Delete testimoni berhasil');
                                         location.reload();
                                     },
                             error: function(){
-                                        alert('Delete Testimoni gagal');
+                                        alert('Delete opo gagal');
                                     }
                         });
                     }
                     else
                     {
-                        alert(id_testimoni + "Gagal dihapus");
+                        alert(id_produk + "Gagal dihapus");
                     }
                 }
             </script>
-            

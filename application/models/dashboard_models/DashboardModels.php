@@ -25,8 +25,7 @@
 			$result = $query->num_rows();
 			
 			return $result;
-		}
-
+		} */
 		//Mengambil data jumlah pesan
 		function get_jumlah_pesan()
 		{
@@ -37,6 +36,7 @@
 			return $result;
 		}
 
+		/*
 		//Mengambil data jumlah pending event
 		function get_jumlah_pending_pepak()
 		{
