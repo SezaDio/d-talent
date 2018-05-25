@@ -4,13 +4,13 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="<?php //echo site_url('AdminDashboard/index');?>">
+                            <a href="<?php echo site_url('AdminDashboard/index');?>">
                                  <i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
 
 						<li>
-                            <a href="<?php //echo site_url('KelolaHeader/index'); ?>">
+                            <a href="<?php echo site_url('KelolaSlider/index'); ?>">
                                 <i class="glyphicon glyphicon-picture"></i> <span> Kelola Slider </span>
                             </a>
                         </li>

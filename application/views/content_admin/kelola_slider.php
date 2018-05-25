@@ -2,12 +2,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Kelola Header
+                       Kelola Slider
                     </h1>
 					
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Header</li>
-                        <li class="active">Kelola Header</li>
+                        <li class="active"><i class="fa fa-dashboard"></i>Slider</li>
                     </ol>
                 </section>
 
@@ -30,90 +29,39 @@
                                             </div>
                                         <?php }?>
 										
-										<!--Tambah Header-->
-										<a href="<?php echo site_url('KelolaHeader/tambah_header_check/');?>">
-                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Header</button>
+										<!--Tambah Slider-->
+										<a href="<?php echo site_url('KelolaSlider/tambah_slider_check/');?>">
+                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Slider</button>
                                         </a>
-
-										<!--Form Cari-->
-										<div class="col-md-3 input-group margin" style="margin-top: -34px; margin-left: 800px;">
-	                                        <input placeholder="Cari Header" type="text" id="kata_kunci" name="search" type="text" class="form-control">
-	                                        <span class="input-group-btn">
-	                                            <button onclick="cariHeader()" class="btn btn-info btn-flat" type="button"><i class="glyphicon glyphicon-search"></i></button>
-
-	                                    		<button onclick="lihatSemua()" class="btn btn-primary" type="button"><i class="glyphicon glyphicon-eye"></i> All</button><br/><br/>
-	                                        </span>
-	                                    </div><!-- /input-group -->
-										
-										
-										<div class="form-group"  id="headers">
-                                        <div class="nav-tabs-custom">
-                                            <ul class="nav nav-tabs">
-                                                <li class="active"><a href="#headerevent" data-toggle="tab">Header Event</a></li>
-                                                <li><a href="#headernonevent" data-toggle="tab">Header Non-Event</a></li>
-                                            </ul>
-											<div class="tab-content">
-                                                
-                                                <!--Tab header event-->
-                                                <div class="tab-pane active" id="headerevent">
-													<div class="row">
-														<?php foreach($listHeaderEvent as $item){ ?>
-															<div class="col-md-4" style="text-align: center">
-																<div class="well" style="padding:10px">
+                                    </div>
+                                    <br>
+									<div class="form-group"  id="headers">
+                                        <!--Tab header event-->
+										<div class="row">
+											<?php foreach($listSlider as $item){ ?>
+												<div class="col-md-4" style="text-align: center">
+													<div class="well" style="padding:10px">
+											
+														<input onclick="publish(<?php echo $item['id_slider']?>)" type="checkbox" name="slider" id="slider<?php echo $item['id_slider']?>" value="<?php echo $item['id_slider']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>
+														<br>  
+														<img style="border: black solid 2px;" height="250px" width="100%" alt="" src="<?php echo base_url('asset/img/upload_img_slider/'.$item['path_gambar']); ?>"/>
 														
-																	<input onclick="publish(<?php echo $item['id_header']?>)" type="checkbox" name="header" id="header<?php echo $item['id_header']?>" value="<?php echo $item['id_header']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
-																	<img style="border: black solid 2px;" height="250px" width="100%" alt="" src="<?php echo base_url('asset/upload_img_header/'.$item['path_gambar']); ?>"/>
-																	
-																	<br><br>
-																	<?php echo $item['nama_header']; ?>
-																	<br><br>
+														<br><br>
+														<?php echo $item['judul_slider']; ?>
+														<br><br>
 
-																	<!-- Tombol lihat detail -->
-																	<a href="<?php echo site_url('KelolaHeader/edit_header/'.$item['id_header']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-																	
-																	<!-- Tombol Hapus -->
-																	<a href="<?php echo site_url('KelolaHeader/delete_header/'.$item['id_header']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
-																</div>
-															</div>
-														<?php } ?>
+														<!-- Tombol lihat detail -->
+														<a href="<?php echo site_url('KelolaSlider/edit_slider/'.$item['id_slider']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+														
+														<!-- Tombol Hapus -->
+														<a href="<?php echo site_url('KelolaSlider/delete_slider/'.$item['id_slider']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
 													</div>
 												</div>
-												<div class="tab-pane" id="headernonevent">
-													<div class="row">
-														<?php foreach($listHeaderNonEvent as $item){ ?>
-															<div class="col-md-4" style="text-align: center">
-																<div class="well" style="padding:10px">
-														
-																	<input onclick="publish(<?php echo $item['id_header']?>)" type="checkbox" name="header" id="header<?php echo $item['id_header']?>" value="<?php echo $item['id_header']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
-																	<img style="border: black solid 2px;" height="250px" width="100%" alt="" src="<?php echo base_url('asset/upload_img_header/'.$item['path_gambar']); ?>"/>
-																	
-																	<br><br>
-																	<?php echo $item['nama_header']; ?>
-																	<br><br>
-
-																	<!-- Tombol lihat detail -->
-																	<a href="<?php echo site_url('KelolaHeader/edit_header/'.$item['id_header']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-																	
-																	<!-- Tombol Hapus -->
-																	<a href="<?php echo site_url('KelolaHeader/delete_header/'.$item['id_header']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
-																</div>
-															</div>
-														<?php } ?>
-													</div>
-												</div>
-											</div>
-                                </div><!-- /.box-body -->
-
-                            </div><!-- /.box -->
-										
-										
-										<div class="row" id="hasil_search" style="display:none">
-										tes
+											<?php } ?>
 										</div>
-										
 									</div>
+									
                                 </div><!-- /.box-body -->
-
                             </div><!-- /.box -->
                         </div><!--/.col (left) -->
                     </div>   <!-- /.row -->
@@ -124,64 +72,67 @@
             
 			<script type="text/javascript">
 
-				function publish(idHeader){
-					var check = document.getElementById("header"+idHeader).checked;
-						if(check){
+				function publish(idSlider){
+					var check = document.getElementById("slider"+idSlider).checked;
+						if(check)
+						{
 							$.ajax({
-							url: 'publish_header',
+							url: 'publish_slider',
 							type: 'POST',
-							data: {idHeader:idHeader},
+							data: {idSlider:idSlider},
 							success: function(){
-										alert('Header berhasil di publish');
+										alert('Slider berhasil di publish');
 										location.reload();
 									},
 							error: function(){
-										alert('Header gagal di publish');
+										alert('Slider gagal di publish');
 									}
 							});
-						} else{
+						} 
+						else
+						{
 							$.ajax({
-							url: 'unpublish_header',
+							url: 'unpublish_slider',
 							type: 'POST',
-							data: {idHeader:idHeader},
+							data: {idSlider:idSlider},
 							success: function(){
-										alert('Header berhasil di unpublish');
+										alert('Slider berhasil di unpublish');
 										location.reload();
 									},
 							error: function(){
-										alert('Header gagal di unpublish');
+										alert('Slider gagal di unpublish');
 									}
 							});
 							
 						}
 				}
 			
-				function publish2(idHeader){
-					var check = document.getElementById("header"+idHeader).checked;
+				function publish2(idSlider){
+					var check = document.getElementById("slider"+idSlider).checked;
 						if(check){
 							$.ajax({
-							url: 'unpublish_header',
+							url: 'unpublish_slider',
 							type: 'POST',
-							data: {idHeader:idHeader},
+							data: {idSlider:idSlider},
 							success: function(){
-										alert('Header berhasil di unpublish');
+										alert('Slider berhasil di unpublish');
 										location.reload();
 									},
 							error: function(){
-										alert('Header gagal di unpublish');
+										alert('Slider gagal di unpublish');
 									}
 							});
 						} else{
 							$.ajax({
-							url: 'publish_header',
+							url: 'publish_slider',
 							type: 'POST',
-							data: {idHeader:idHeader},
+							data: {idSlider:idSlider},
 							success: function(){
-										alert('Header berhasil di publish');
+										alert('Slider berhasil di publish');
 										location.reload();
 									},
 							error: function(){
-										alert('Header gagal di publish');
+										alert('Slider gagal di publish');
 									}
 							});
 							

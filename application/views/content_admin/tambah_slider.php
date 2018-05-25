@@ -3,12 +3,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah Header
+                       Tambah Slider
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Header</a></li>
-                        <li class="active">Tambah Header</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Slider</a></li>
+                        <li class="active">Tambah Slider</li>
                     </ol>
                 </section>
 
@@ -16,13 +16,13 @@
                 <section class="content">
                     <div class="row">
                         <!-- left column -->
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <!-- general form elements -->
                             <div class="box box-primary">
                                 
                                 <!-- form start -->
 								
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaHeader/tambah_header_check/');?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaSlider/tambah_slider_check/');?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>
@@ -33,50 +33,35 @@
                                                 </div>
                                             <?php }?>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Nama Header  :</label>
-                                            <input type="text" required name="nama_header" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataHeader['nama_header']))
+                                            <label for="exampleInputEmail1">Judul Slider  :</label>
+                                            <input type="text" required name="judul_slider" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                    if (isset($dataSlider['judul_slider']))
                                                     {
-                                                        echo htmlspecialchars($dataHeader['nama_header']);
+                                                        echo htmlspecialchars($dataSlider['judul_slider']);
                                                     }
                                             ?>">
-                                            
-                                        </div>
-										
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Jenis Header  :</label>
-                                            <div class="radio">
-                                                <label>
-                                                    <input style="opacity: 1;" type="radio" name="jenis_header" value=1 required id="event" onclick="pilihEvent()">
-                                                     Event
-                                                </label>
-                                                <label>
-                                                    <input style="opacity: 1;" type="radio" name="jenis_header" value=0 required id="nonevent" onclick="pilihNonevent()">
-                                                     Non-Event
-                                                </label>
-                                            </div>
-                                        </div>
-										
-										<div class="form-group" id="divevent" style="display:none">
-                                            <label for="exampleInputEmail1">Pilih Event  :</label>
-                                            
-											<select name="event">
-												<option value="10|10|3">--Event--</option>
-												<?php foreach($event as $item){ ?>
-													<option value="<?php echo $item['id_coming']?>"><?php echo $item['nama_coming']?></option>
-												<?php } ?>
-											</select>
-                                            
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Unggah File Gambar :</label>
+                                            <label for="exampleInputEmail1">Deskripsi Slider  :</label>
+                                            <input type="text" required name="deskripsi" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                    if (isset($dataSlider['deskripsi']))
+                                                    {
+                                                        echo htmlspecialchars($dataSlider['deskripsi']);
+                                                    }
+                                            ?>">
+                                        </div>
+										
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Unggah File Gambar Slider :</label>
                                             <div class="input-group">
                                                 <input class="form" type="file" name="filefoto" required >
                                             </div>
 											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
                                         </div>
+
                                     </div><!-- /.box-body -->
 
                                     <div class="box-footer">
@@ -90,12 +75,3 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
-			<script>
-				function pilihEvent(){
-					document.getElementById("divevent").style.display = "block";
-				}
-				
-				function pilihNonevent(){
-					document.getElementById("divevent").style.display = "none";
-				}
-			</script>

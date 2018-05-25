@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KelolaHeader extends CI_Controller {
+class KelolaSlider extends CI_Controller {
 
 	public function _construct()
 	{
@@ -16,13 +16,12 @@ class KelolaHeader extends CI_Controller {
 
 	public function index()
 	{	if($this->session->userdata('admin_logged_in')){
-		$this->load->model('header_models/HeaderModels');
-		$data['listHeaderEvent'] = $this->HeaderModels->get_header_event();
-		$data['listHeaderNonEvent'] = $this->HeaderModels->get_header_nonevent();
+		$this->load->model('slider_models/SliderModels');
+		$data['listSlider'] = $this->SliderModels->get_slider();
 			
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/kelola_header', $data);
+		$this->load->view('content_admin/kelola_slider', $data);
 		$this->load->view('skin/admin/footer_admin');
 		} else {
 			redirect(site_url('Account'));
@@ -30,33 +29,34 @@ class KelolaHeader extends CI_Controller {
 	}
 
 	//Delete Data
-	public function delete_header($id_header)//$id_produk
+	public function delete_slider($id_slider)
 	{
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->delete_header($id_header);
-
+		$this->load->model('slider_models/SliderModels');
+		$this->SliderModels->delete_slider($id_slider);
 
 		$this->index();
 	}
 	
 	//Publish
-	public function publish_header()//$id_produk
+	public function publish_slider()
 	{
-		$id_header = $_POST['idHeader'];
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->publish_header($id_header);
-
+		$id_slider = $_POST['idSlider'];
+		$this->load->model('slider_models/SliderModels');
+		$this->SliderModels->publish_slider($id_slider);
 
 		$this->index();
 	}
 	
 	//Unpublish
-	public function unpublish_header()//$id_produk
+	public function unpublish_slider()
 	{
-		$id_header = $_POST['idHeader'];
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->unpublish_header($id_header);
-
+		$id_slider = $_POST['idSlider'];
+		//$this->load->model('slider_models/SliderModels');
+		//$this->SliderModels->unpublish_slider($id_slider);
+		$data_slider=array(
+								'status'=>2
+								);
+		$this->db->update('slider', $data_slider, array('id_slider'=>$id_slider));
 
 		$this->index();
 	}
@@ -75,91 +75,6 @@ class KelolaHeader extends CI_Controller {
 		$this->index();
 	}
 
-	//Delete Data detail produk
-	public function delete_detail_header($id_header)//
-	{
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->delete_header($id_header);
-
-
-		$this->index();
-	}
-	
-	//Lihat detail produk
-	public function lihat_detail_header($id_header)
-	{	if($this->session->userdata('admin_logged_in')){
-		$this->load->model('header_models/HeaderModels');
-
-		//Ambil id_agenda yang akan diedit
-		$data['id_header'] = $this->HeaderModels->select_by_id_header($id_header)->row();
-
-		$this->load->view('skin/admin/header_admin');
-		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/detail_header', $data);
-		$this->load->view('skin/admin/footer_admin');
-		} else {
-			redirect(site_url('Account'));
-		}
-	}
-
-	//Validasi header
-	public function validasi_header()
-	{
-		$this->load->model('header_models/HeaderModels');
-		$data['listHeader'] = $this->HeaderModels->get_data_header_pend();
-			
-		$this->load->view('skin/admin/header_admin');
-		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/validasi_header', $data);
-		$this->load->view('skin/admin/footer_admin');
-	}
-	
-	//Setujui header
-	public function setuju_header()
-	{
-		$id_header = $_POST['id_header'];
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->setuju_header($id_header);
-		$sub_setuju = "Youth header";
-		$msg_setuju = "Posting yang anda masukan di Youth header telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
-		$this->validasi_header();
-	}
-	
-	//Setujui header
-	public function setuju_detail_header($id_header)
-	{
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->setuju_header($id_header);
-		$sub_setuju = "Youth header";
-		$msg_setuju = "Posting yang anda masukan di Youth header Soon telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
-		$this->validasi_header();
-	}
-	
-	//Tolak Data
-	public function tolak_header()
-	{
-		$id_header = $_POST['id_header'];
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->delete_header($id_header);
-		$sub_tolak = "Youth header";
-		$msg_tolak = "Posting yang anda masukan di Youth header Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
-		$this->validasi_header();
-	}
-	
-	//Tolak Data
-	public function tolak_detail_header($id_header)
-	{
-		$this->load->model('header_models/HeaderModels');
-		$this->HeaderModels->delete_header($id_header);
-		$sub_tolak = "Youth header";
-		$msg_tolak = "Posting yang anda masukan di Youth header Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
-		$this->validasi_header();
-	}
-	
 	//kirim email
 	function kirim_email($sub,$msg) {
 		$config['protocol'] = 'smtp';
@@ -183,96 +98,78 @@ class KelolaHeader extends CI_Controller {
 			show_error($this->email->print_debugger());
     }
 	
-	//tambah header soon
-	public function tambah_header()
-	{	if($this->session->userdata('admin_logged_in')){
-		$this->load->model('header_models/HeaderModels');
-		
-		$q_pt=$this->db->get('coming');        
-        $data['event']=$q_pt->result();
-		$this->load->view('skin/admin/header_admin');
-		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/tambah_header');
-		$this->load->view('skin/admin/footer_admin');
-		} else {
-			redirect(site_url('Account'));
-		}
-	}
-	
-	function tambah_header_check() {
-		if($this->session->userdata('admin_logged_in')){
-        $this->load->model('header_models/HeaderModels');
-		$this->load->library('form_validation');
-		$tambah = $this->input->post('submit');
-		$data['event'] = $this->HeaderModels->get_event();
-		
-		if ($tambah == 1) 
+	//Function to add slider image
+	function tambah_slider_check() 
+	{
+		if ($this->session->userdata('admin_logged_in'))
 		{
-			$this->form_validation->set_rules('nama_header', 'Nama Header', 'required');
-			$this->form_validation->set_rules('jenis_header', 'Nama Header', 'required');
+	        $this->load->model('slider_models/SliderModels');
+			$this->load->library('form_validation');
+			$tambah = $this->input->post('submit');
+			$data['slider'] = $this->SliderModels->get_slider();
 			
-			$jenis_header = $this->input->post('jenis_header');
-			
-			if($jenis_header == 1){
-				$id_event = $this->input->post('event');
-			} else {
-				$id_event = 0;
-			}
-			
-			//Mengambil filename gambar untuk disimpan
-			$nmfile = "file_".time();
-			$config['upload_path'] = './asset/upload_img_header/';
-			$config['allowed_types'] = 'jpg|png|jpeg';
-			$config['max_size'] = '4000'; //kb
-			$config['file_name'] = $nmfile;
-
-			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
-			if (($this->form_validation->run() == TRUE) AND (!empty($_FILES['filefoto']['name'])))
+			if ($tambah == 1) 
 			{
-				$gbr = NULL;
+				$this->form_validation->set_rules('judul_slider', 'Judul Slider', 'required');
+				$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
-					$data_header=array(
-						'nama_header'=>$this->input->post('nama_header'),
-						'jenis_header'=>$jenis_header,
-						'id_event'=>$id_event,
+				$deskripsi = $this->input->post('deskripsi');
+
+				//Mengambil filename gambar untuk disimpan
+				$nmfile = "file_".time();
+				$config['upload_path'] = './asset/img/upload_img_slider/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size'] = '4000'; //kb
+				$config['file_name'] = $nmfile;
+
+				//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+				if (($this->form_validation->run() == TRUE) AND (!empty($_FILES['filefoto']['name'])))
+				{
+					$gbr = NULL;
+
+					$data_slider = array(
+						'judul_slider'=>$this->input->post('judul_slider'),
+						'deskripsi'=>$deskripsi,
 						'status'=>1,
 						'path_gambar'=> NULL
 					);
-					$data['dataHeader'] = $data_header;
-				$this->load->library('upload', $config);
-				if($this->upload->do_upload('filefoto'))
-				{
-					//echo "Masuk";
-					$gbr = $this->upload->data();
-					$data_header['path_gambar'] = $gbr['file_name'];
-					$this->db->insert('header', $data_header);
-					$this->session->set_flashdata('msg_berhasil', $data_header['path_gambar']);
-					redirect('KelolaHeader');
+					$data['dataSlider'] = $data_slider;
+
+					$this->load->library('upload', $config);
+					if($this->upload->do_upload('filefoto'))
+					{
+						$gbr = $this->upload->data();
+						$data_slider['path_gambar'] = $gbr['file_name'];
+						$this->db->insert('slider', $data_slider);
+						$this->session->set_flashdata('msg_berhasil', $data_slider['path_gambar']);
+						redirect('KelolaSlider');
+					}
+					else
+					{
+						$this->session->set_flashdata('msg_gagal', 'Data Slider gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+						
+						$this->load->view('skin/admin/header_admin');
+						$this->load->view('skin/admin/nav_kiri');
+						$this->load->view('content_admin/tambah_slider', $data);
+						$this->load->view('skin/admin/footer_admin');
+					}
 				}
 				else
 				{
-					$this->session->set_flashdata('msg_gagal', 'Data Youth header Soon gagal ditambahkan, cek type file dan ukuran file yang anda upload');
-					
-					$this->load->view('skin/admin/header_admin');
-					$this->load->view('skin/admin/nav_kiri');
-					$this->load->view('content_admin/tambah_header', $data);
-					$this->load->view('skin/admin/footer_admin');
+					$this->session->set_flashdata('msg_gagal', 'Data Slider gagal ditambahkan');
+					$this->tambah_slider_check();
 				}
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth header Soon gagal ditambahkan');
-				$this->tambah_header_check();
-			}
-		}
-		else
+				$this->load->view('skin/admin/header_admin');
+				$this->load->view('skin/admin/nav_kiri');
+				$this->load->view('content_admin/tambah_slider',$data);
+				$this->load->view('skin/admin/footer_admin');
+			}     
+		} 
+		else 
 		{
-			$this->load->view('skin/admin/header_admin');
-			$this->load->view('skin/admin/nav_kiri');
-			$this->load->view('content_admin/tambah_header',$data);
-			$this->load->view('skin/admin/footer_admin');
-		}     
-		} else {
 			redirect(site_url('Account'));
 		}
 	}
