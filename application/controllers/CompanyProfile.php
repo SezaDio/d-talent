@@ -20,7 +20,9 @@ class CompanyProfile extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->model('companyprof_models/CompanyProfModels');
 		$data['listTestimoni'] = $this->CompanyProfModels->get_testimoni();
-		$this->load->view('skin/front_end/index');
+		$this->load->view('skin/front_end/header_company');
+		$this->load->view('skin/front_end/konten',$data);
+		$this->load->view('skin/front_end/footer_company');
 		
 	}
 	
