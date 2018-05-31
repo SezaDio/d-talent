@@ -63,6 +63,7 @@
     <script src="<?php echo base_url('asset/Template Company Profile/js/form-validator.min.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/js/contact-form-script.js')?>"></script>   
     <script src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
+    <script src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
   </body>
 </html>

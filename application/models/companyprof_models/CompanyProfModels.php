@@ -21,4 +21,18 @@
 			return $result;
 		}
 		
+		function get_slider(){
+			$query = $this->db->order_by('id_slider','DESC')->select('*')->get('slider');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
 	}

@@ -13,14 +13,15 @@
     <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>">    
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css')?>">    
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
+	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css')?>">
 
   </head>
   <body>

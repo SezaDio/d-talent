@@ -1,16 +1,39 @@
 	<!-- Navbar End -->   
 	  <!--DIV SLIDER-->
-      <div class="container">      
-        <div class="row justify-content-md-center">
-          <div class="col-md-10">
-            <div class="contents text-center">
-              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Mate - Free Parallax Website Template</h1>
-              <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Download</a>
-            </div>
-          </div>
-        </div> 
-      </div>        
+      <div>      
+        <div class="row">
+          <div class="col-md-12">
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+				  <?php $i=0;
+				  foreach($listSlider as $slider){ ?>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
+				  <?php $i++; } ?>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+				  <!-- Slide One - Set the background image for this slide in the line below -->
+				  <?php foreach($listSlider as $slider){ ?>
+				  <div class="carousel-item <?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
+					<div class="carousel-caption d-none d-md-block">
+					  <h3><?php echo $slider['judul_slider'];?></h3>
+					  <p><?php echo $slider['deskripsi'];?></p>
+					</div>
+				  </div>
+				  <?php } ?>
+				  
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				  <span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				  <span class="sr-only">Next</span>
+				</a>
+			</div>
+		  </div>
+		</div> 
+	  </div>        
 	  <!--END DIV SLIDER-->
     </header>
 
@@ -234,40 +257,23 @@
     <div id="pricing" class="section pricing-section">
       <div class="container">
         <div class="section-header">          
-          <h2 class="section-title">Pricing Table</h2>
+          <h2 class="section-title">Membership for Jobseeker</h2>
           <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
+          <p class="section-subtitle">FREE MEMBER</p>
+		  <p class="section-subtitle">Free sign in, Free upload CV with template form, Free online test (passion and interest), List of Vacancy</p>
         </div>
 
         <div class="row pricing-tables">
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <h2>Free</h2>
-                <span>$00</span>
-                <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
-                </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Get Plan</a>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="pricing-table">
               <div class="pricing-details">
-                <h2>Popular</h2>
+                <h2>Bronze</h2>
                 <span>$3.99</span>
                 <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
+                  <li>Online English Test</li>
+                  <li>Online Academic Test</li>
+                  <li>Apply online</li>
                 </ul>
               </div>
               <div class="plan-button">
@@ -276,16 +282,49 @@
             </div>
           </div>
 
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="pricing-table">
               <div class="pricing-details">
-                <h2>Premium</h2>
+                <h2>Silver</h2>
                 <span>$9.50</span>
                 <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
+                  <li>Online Character Test</li>
+                  <li>Online Intelligence Test</li>
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href="#" class="btn btn-common">Buy Now</a>
+              </div>
+            </div>
+          </div>
+		  
+		  
+		  <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="pricing-table">
+              <div class="pricing-details">
+                <h2>Gold</h2>
+                <span>$9.50</span>
+                <ul>
+                  <li>Online Soft Skill Test</li>
+                  <li>Online Management Style Test</li>
+                  <li>Online Work Attitude</li>
+                </ul>
+              </div>
+              <div class="plan-button">
+                <a href="#" class="btn btn-common">Buy Now</a>
+              </div>
+            </div>
+          </div>
+		  
+		  <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="pricing-table">
+              <div class="pricing-details">
+                <h2>Platinum</h2>
+                <span>$9.50</span>
+                <ul>
+                  <li>Free Upload CV with PDF and Video</li>
+                  <li>Online Behavioral Test <br> (Past and Future Performance)</li>
+                  <li>Talent Solution <br> (basic and customized skill trainings)</li>
                 </ul>
               </div>
               <div class="plan-button">
