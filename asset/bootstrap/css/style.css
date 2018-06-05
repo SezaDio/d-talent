@@ -55,10 +55,10 @@
     color: red;
 }
 
-	
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
 		margin-top:10px;
  	}		
 }
+

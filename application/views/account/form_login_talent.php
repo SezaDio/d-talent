@@ -49,19 +49,19 @@
 						<div class="row omb_loginOr">
 							<div class="col-md-12">
 								<hr class="omb_hrOr">
-								<span class="omb_spanOr">Login</span>
+								<span class="omb_spanOr"><b>Login</b></span>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-md-12">	
-							    <form class="omb_loginForm" action="<?php echo site_url('Account/login'); ?>" autocomplete="on" method="POST">
+							    <form class="omb_loginForm" action="<?php echo site_url('AccountTalent/login_talent_member'); ?>" autocomplete="on" method="POST">
 							    	<?php 
 										$this->load->library('form_validation');
 										echo validation_errors(); 
 									?>
 
-									<p style="color:red; font-family: Comic Sans Ms;"><?php echo $this->session->flashdata('notification'); ?></p>
+									<p style="color:red;"><?php echo $this->session->flashdata('notification'); ?></p>
 									
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -79,10 +79,10 @@
 									</div>
 				                    
 									<br><br>
-									<button class="button button5" name="login"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
+									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center; font-family: monospace">Belum Jadi Member? <a href="#">Sign Up</a></p>
+									<p style="text-align: center; font-family: monospace">Belum Jadi Member? <a href="<?php echo site_url('AccountTalent/view_signup'); ?>">Sign Up</a></p>
 									<br>
 								</form>
 							</div>
