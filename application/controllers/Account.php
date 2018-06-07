@@ -89,6 +89,7 @@ class Account extends CI_Controller
 		redirect(site_url('account'));
 	}
 	
+	//Fungsi login 
 	public function login_member()
 	{
 		$this->load->library('form_validation');
