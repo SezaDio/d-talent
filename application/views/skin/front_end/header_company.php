@@ -21,8 +21,26 @@
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css')?>">
+	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+	
+	<style>
+		/* Extra small devices (phones, 600px and down) */
+			@media only screen and (max-width: 600px) {
+				.big-slider {display: none;}
+				.small-slider {display: block;}
+			}
+		/* Medium devices (landscape tablets, 768px and up) */
+			@media only screen and (min-width: 768px) {
+				.small-slider {display: none;}
+			} 
+		
+		/* Large devices (laptops/desktops, 992px and up) */
+			@media only screen and (min-width: 992px) {
+				.small-slider {display: none;}
+			} 
 
+	</style>
+	
   </head>
   <body>
 
