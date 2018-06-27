@@ -3,6 +3,21 @@ body{
 	font-size: 14px;
 	color: #555;
 }
+header{
+	height: 70px;
+	background-color: #ccc;
+}
+footer{
+	height: 70px;
+	background-color: #000;
+}
+.container{
+	width: 80%;
+}
+.talent-page{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 .image-bg{
     background-size: cover;
     background-position: center;
