@@ -67,7 +67,7 @@
 	  </div>        
 	  <!--END DIV SLIDER-->
     </header>
-	<div class="section-header">
+	<!--<div class="section-header">
 	<hr class="lines wow zoomIn" data-wow-delay="0.3s" style="width:70%">
 	<div class="row" style="text-align:center">
 	   
@@ -83,42 +83,39 @@
 		<div class="col-md-3 col-sm-2" style="padding:5px"></div>
 	</div>
 	<hr class="lines wow zoomIn" data-wow-delay="0.3s" style="width:70%">
-	</div>
+	</div>-->
 
     <!-- Services Section Start -->
-    <section id="services" class="section">
+    <section id="services" class="section" style="padding: 35px 0;">
       <div class="container">
-        <div class="section-header">          
-          <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Our Services</h2>
+		 <div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="section-header" style="margin-top:30px">          
+          <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Join With Us</h2>
           <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-          <p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
+          <!--<p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"><b>Benefit</b> is what exactly company want and expect. <br> <b>D-Talent.id</b> is offering:</p>-->
         </div>
-        <div class="row">
-          <div class="col-md-4 col-sm-6">
+       </div>
+          <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
-              <div class="icon">
-                <i class="lnr lnr-pencil"></i>
-              </div>
-              <h4>Content Writing</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+				<a href="#"> 
+					<div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+						<i class="fas fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
+					</div>
+				</a>
+				<h4>Jobseeker</h4>
+				<!--<p>on recruitment, company only pay assessment cost</p>-->
             </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
+          </div> 
+          <div class="col-md-4 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
-              <div class="icon">
-                <i class="lnr lnr-code"></i>
-              </div>
-              <h4>Web Development</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="1.2s">
-              <div class="icon">
-                <i class="lnr lnr-mustache"></i>
-              </div>
-              <h4>Business Consultancy</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+				<a href="#">
+					<div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+						<i class="fas fa-briefcase" style="font-size: 30px;line-height: 80px;"></i>
+					</div>
+				</a>
+				<h4>Company</h4>
+				<!--<p>due to data base availability</p>-->
             </div>
           </div>
         </div>
@@ -130,56 +127,42 @@
     <section id="features" class="section" data-stellar-background-ratio="0.2">
       <div class="container">
         <div class="section-header">          
-          <h2 class="section-title">Some Features</h2>
+          <h2 class="section-title">Benefit</h2>
           <hr class="lines">
           <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-md-12 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-xs-12">
             <div class="container">
               <div class="row">
-                 <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
+                 <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                      <i class="lnr lnr-rocket"></i>
+                     <i class="fas fa-money-bill-wave"></i>
                     </span>
-                    <div class="text">
-                      <h4>Bootstrap 4 Based</h4>
+                    <div class="text" style="padding-left:70px;">
+                      <h4>Cost Efficiency</h4>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     </div>
                   </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
+                  <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                      <i class="lnr lnr-laptop-phone"></i>
+                      <i class="far fa-clock"></i>
                     </span>
-                    <div class="text">
-                      <h4>Fully Responsive</h4>
+                    <div class="text" style="padding-left:70px;">
+                      <h4>Time Efficiency</h4>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     </div>
                   </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
+                  <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                      <i class="lnr lnr-layers"></i>
+                      <i class="fas fa-pencil-alt"></i>
                     </span>
-                    <div class="text">
-                      <h4>Parallax Background</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
-                    <span class="icon">
-                      <i class="lnr lnr-cog"></i>
-                    </span>
-                    <div class="text">
-                      <h4>Easy to Customize</h4>
+                    <div class="text" style="padding-left:70px;">
+                      <h4>Ready-to-work Talent</h4>
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                     </div>
                   </div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-xs-12">
-            <div class="show-box">
-              <img class="img-fulid" src="img/features/feature.png" alt="">
             </div>
           </div>
         </div>
@@ -188,8 +171,7 @@
     <!-- Features Section End -->    
 
     <!-- Portfolio Section -->
-    <section id="portfolios" class="section">
-      <!-- Container Starts -->
+    <!--<section id="portfolios" class="section">
       <div class="container">
         <div class="section-header">          
           <h2 class="section-title">Our Portfolio</h2>
@@ -198,7 +180,6 @@
         </div>
         <div class="row">          
           <div class="col-md-12">
-            <!-- Portfolio Controller/Buttons -->
             <div class="controls text-center">
               <a class="filter active btn btn-common" data-filter="all">
                 All 
@@ -213,10 +194,8 @@
                 Print 
               </a>
             </div>
-            <!-- Portfolio Controller/Buttons Ends-->
           </div>
 
-          <!-- Portfolio Recent Projects -->
           <div id="portfolio" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development print">
               <div class="portfolio-item">
@@ -281,8 +260,7 @@
           </div>
         </div>
       </div>
-      <!-- Container Ends -->
-    </section>
+    </section>->
     <!-- Portfolio Section Ends --> 
 
     <!-- Start Video promo Section -->
@@ -408,7 +386,7 @@
               </div>            
               <div class="fact-count">
                 <h3><span class="counter">699</span></h3>
-                <h4>Completed Projects</h4>
+                <h4>Company</h4>
               </div>
             </div>
           </div>
@@ -419,7 +397,7 @@
               </div>              
               <div class="fact-count">
                 <h3><span class="counter">203</span></h3>
-                <h4>No. of Clients</h4>
+                <h4>Jobseeker</h4>
               </div>
             </div>
           </div>
@@ -430,7 +408,7 @@
               </div>              
               <div class="fact-count">
                 <h3><span class="counter">1689</span></h3>
-                <h4>Peoples Love</h4>
+                <h4>Vacancy</h4>
               </div>
             </div>
           </div>
@@ -440,7 +418,7 @@
     <!-- Counter Section End -->
 
     <!-- Team section Start -->
-    <section id="team" class="section">
+    <!--<section id="team" class="section">
       <div class="container">
         <div class="section-header">          
           <h2 class="section-title">Our Team</h2>
@@ -518,11 +496,11 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
     <!-- Team section End -->
 
     <!-- testimonial Section Start -->
-    <div id="testimonial" class="section" data-stellar-background-ratio="0.1">
+    <div id="testimonial" class="section" data-stellar-background-ratio="2">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
