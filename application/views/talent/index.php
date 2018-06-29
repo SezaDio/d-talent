@@ -59,28 +59,43 @@
 			<br>
 			<br>
 
+			<?php
+				$this->load->helper('custom');
+			?>
+
 			<div class="cv">
+				<?php
+					if($cv_works != null) {
+				?>
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				    <h3 class="panel-title">Pengalaman Kerja</h3>
 				  </div>
 				  <div class="panel-body">
 				    <table class="table">
-				    	<tr>
-				    		<td class="periode">2012 - 2014</td>
-				    		<td>Freelancer</td>
-				    	</tr>
-				    	<tr>
-				    		<td class="periode">2015 - 2017</td>
-				    		<td>Web Developer di Bukalapak.com</td>
-				    	</tr>
-				    	<tr>
-				    		<td class="periode">2018 - Sekarang</td>
-				    		<td>Web Developer di D-Talent.com</td>
-				    	</tr>
+				    	<?php foreach ($cv_works as $cv_work):?>
+					    	<tr>
+					    		<td class="periode">
+					    			<?php echo displayCVWorkDate($cv_work->work_start, $cv_work->work_end); ?>
+					    		</td>
+					    		<td>
+					    			<?php echo $cv_work->position; ?>
+					    			di
+					    			<?php echo $cv_work->company; ?>
+					    		</td>
+					    		<td class="action">
+					    			<a href="<?php echo site_url('talent/cv-work-experience/edit/') . $cv_work->id_talent_cv_work;?>" class="text-primary"><i class="fa fa-edit"></i></a>
+					    			<a href="" class="text-danger"><i class="fa fa-trash"></i></a>
+					    		</td>
+					    	</tr>
+				    	<?php endforeach;?>
+
 				    </table>
 				  </div>
 				</div>
+				<?php
+					} 	//./if
+				?>
 			</div>
 		</div>
 	</div>

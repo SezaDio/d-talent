@@ -26,12 +26,12 @@ class TalentCVWork extends CI_Controller {
 
 	public function store()
 	{
-		$id_talent = $this->session->userdata('id_talent');
-
 		$this->load->model('talent_models/TalentCVWorkModel');
-		// $this->load->library('input');
 		$this->load->library('form_validation');
 
+		$id_talent = $this->session->userdata('id_talent');
+
+		// used for if form not valid
 		$data['page_title'] = "Tambah Pengalaman Kerja";
 
 		$this->form_validation->set_rules('position', 'Jabatan', 'required');
@@ -54,4 +54,53 @@ class TalentCVWork extends CI_Controller {
 			// redirect('talent');
 		}
 	}
+
+	public function edit($id_talent_cv_work)
+	{
+		$this->load->model('talent_models/TalentCVWorkModel');
+
+		$data['page_title'] = "Edit Pengalaman Kerja";
+		$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/form_edit_cv_work');
+		$this->load->view('skin/talent/footer');
+	}
+
+	public function update($id_talent_cv_work)
+	{
+		$this->load->model('talent_models/TalentCVWorkModel');
+		$this->load->library('form_validation');
+
+		// used for if form not valid
+		$data['page_title'] = "Edit Pengalaman Kerja";
+
+		$this->form_validation->set_rules('position', 'Jabatan', 'required');
+		$this->form_validation->set_rules('company', 'Perusahaan', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// get edit data
+			$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
+			
+			$this->load->view('skin/talent/header', $data);
+			$this->load->view('talent/form_edit_cv_work');
+			$this->load->view('skin/talent/footer');
+		}
+		else {
+			// update data to db
+			$affected = $this->TalentCVWorkModel->update_talent_cv_work($id_talent_cv_work);
+			
+			if ($affected) {
+				// add message to session
+				$this->session->set_flashdata('msg_success', 'Edit pengalaman kerja berhasil');
+			}
+			else {
+				// add message to session
+				$this->session->set_flashdata('msg_error', 'Edit pengalaman kerja gagal');
+			}
+			// redirect to page ...
+			redirect('talent/cv-work-experience/edit/' . $id_talent_cv_work);
+		}
+	}
+
 }

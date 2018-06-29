@@ -70,6 +70,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['talent/cv-work-experience/create'] = 'TalentCVWork';
+$route['talent/cv-work-experience/edit/(:num)'] = 'TalentCVWork/edit/$1';
 $route['talent/cv-work-experience/store'] = 'TalentCVWork/store';
 $route['talent/cv-work-experience/update/(:num)'] = 'TalentCVWork/update/$1';
 $route['talent/cv-work-experience/delete/(:num)'] = 'TalentCVWork/delete/$1';

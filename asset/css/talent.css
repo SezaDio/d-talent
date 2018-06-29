@@ -37,6 +37,14 @@ footer{
 .bg-talent .image-bg{
 	height: 100%;
 }
+.btn-talent{
+	border-radius: 0px;
+	border: 1px solid #000;
+	background-color: #fff;
+	color: #000;
+	padding-left: 30px;
+	padding-right: 30px;
+}
 .profile{
 	position: relative;
 	padding-top: 60px;
@@ -68,6 +76,19 @@ footer{
 	border: none;
 }
 .table .periode{
-	width: 150px;
+	width: 250px;
 	color: #0080ff;
+}
+.table .action{
+	width: 70px;
+}
+.table .action a:first-child{
+	margin-right: 10px;
+	position: relative;
+	top: 1px;
+}
+
+p.text-danger{
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
