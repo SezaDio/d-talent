@@ -7,7 +7,7 @@
     <meta name="keywords" content="Bootstrap, Parallax, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Grayrids">
-    <title>Mate - Parallax Website Template</title>
+    <title>D-Talent Beta</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
@@ -21,7 +21,8 @@
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
 	
 	<style>
 		/* Extra small devices (phones, 600px and down) */
@@ -62,19 +63,16 @@
                 <a class="nav-link page-scroll" href="#hero-area">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">Services</a>
+                <a class="nav-link page-scroll" href="#features">Benefit</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features">Features</a>
-              </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link page-scroll" href="#portfolios">Works</a>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="#pricing">Pricing</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#team">Team</a>
+                <a class="nav-link page-scroll" href="#testimonial">Testimonial</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="#blog">Blog</a>
