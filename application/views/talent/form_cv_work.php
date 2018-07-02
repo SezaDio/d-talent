@@ -69,24 +69,14 @@
 					<textarea name="description" rows="5" class="form-control"><?php echo set_value('description'); ?></textarea>
 				</div>
 
-				<div class="form-group">
-					<label>Gambar</label>
-					<input type="file" name="image">
-				</div>
-
-
+				<br>
 				<div class="form-group text-center">
-					<input type="submit" value="Simpan" class="btn btn-talent">
+					<a href="<?php echo site_url('talent'); ?>" class="btn btn-talent">Kembali</a>
+					<input type="submit" value="Simpan" class="btn btn-talent" style="margin-left: 15px;">
 				</div>
 
 			</form>
 
-			<br>
-			<br>
-
-			<div>
-				<a href="<?php echo site_url('talent'); ?>" class="btn btn-talent">Kembali</a>
-			</div>
 		</div>
 	</div>
 

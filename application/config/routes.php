@@ -80,3 +80,9 @@ $route['talent/cv-education/edit/(:num)'] = 'TalentCVEducation/edit/$1';
 $route['talent/cv-education/store'] = 'TalentCVEducation/store';
 $route['talent/cv-education/update/(:num)'] = 'TalentCVEducation/update/$1';
 $route['talent/cv-education/delete/(:num)'] = 'TalentCVEducation/delete/$1';
+
+$route['talent/cv-achievement/create'] = 'TalentCVAchievement';
+$route['talent/cv-achievement/edit/(:num)'] = 'TalentCVAchievement/edit/$1';
+$route['talent/cv-achievement/store'] = 'TalentCVAchievement/store';
+$route['talent/cv-achievement/update/(:num)'] = 'TalentCVAchievement/update/$1';
+$route['talent/cv-achievement/delete/(:num)'] = 'TalentCVAchievement/delete/$1';

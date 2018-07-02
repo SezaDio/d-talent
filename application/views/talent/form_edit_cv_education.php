@@ -63,27 +63,17 @@
 				
 				<div class="form-group">
 					<label>Deskripsi</label>
-					<textarea name="description" class="form-control"><?php echo $cv_education->description; ?></textarea>
+					<textarea name="description" rows="5" class="form-control"><?php echo $cv_education->description; ?></textarea>
 				</div>
 
-				<div class="form-group">
-					<label>Gambar</label>
-					<input type="file" name="image">
-				</div>
-
-
+				<br>
 				<div class="form-group text-center">
-					<input type="submit" value="Simpan" class="btn btn-talent">
+					<a href="<?php echo site_url('talent'); ?>" class="btn btn-talent">Kembali</a>
+					<input type="submit" value="Simpan" class="btn btn-talent" style="margin-left: 15px;">
 				</div>
 
 			</form>
-
-			<br>
-			<br>
-
-			<div>
-				<a href="<?php echo site_url('talent'); ?>" class="btn btn-talent">Kembali</a>
-			</div>
+			
 		</div>
 	</div>
 

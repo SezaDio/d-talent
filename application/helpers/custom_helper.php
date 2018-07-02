@@ -20,6 +20,26 @@ function displayMonthYear($date)
     }
 }
 
+function displayMonth($date)
+{
+    if ($date != null && $date != '' && $date != '0000-00-00') {
+        return date('m', strtotime($date));
+    }
+    else{
+        return "";
+    }
+}
+
+function displayMonthName($date)
+{
+    if ($date != null && $date != '' && $date != '0000-00-00') {
+        return date('M', strtotime($date));
+    }
+    else{
+        return "";
+    }
+}
+
 function displayYear($date)
 {
     if ($date != null && $date != '' && $date != '0000-00-00') {

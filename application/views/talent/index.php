@@ -50,7 +50,7 @@
 					    <li><a href="#!">Ringkasan</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
-					    <li><a href="#!">Prestasi</a></li>
+					    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>">Prestasi</a></li>
 					    <li><a href="#!">Pelatihan</a></li>
 					  </ul>
 					</div>
@@ -113,13 +113,55 @@
 					    			<?php echo displayCVEducationDate($cv_education->from_year, $cv_education->to_year); ?>
 					    		</td>
 					    		<td>
-					    			<?php echo $cv_education->school; ?>
-					    			<br>
-					    			<?php echo $cv_education->field_of_study; ?>
+					    			<?php
+					    				echo $cv_education->school;
+					    				if ($cv_education->field_of_study != "") {
+					    					echo "<br>";
+					    				}
+					    				echo $cv_education->field_of_study;
+					    			?>
 					    		</td>
 					    		<td class="action">
 					    			<a href="<?php echo site_url('talent/cv-education/edit/') . $cv_education->id_talent_cv_education;?>" class="text-primary"><i class="fa fa-edit"></i></a>
 					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_education->id_talent_cv_education;?>" data-cv="education"><i class="fa fa-trash"></i></a>
+					    		</td>
+					    	</tr>
+				    	<?php endforeach;?>
+
+				    </table>
+				  </div>
+				</div>
+				<?php
+					} 	//./if
+				?>
+
+				<?php
+					if($cv_achievements != null) {
+				?>
+				<br>
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Pengalaman Kerja</h3>
+				  </div>
+				  <div class="panel-body">
+				    <table class="table">
+				    	<?php foreach ($cv_achievements as $cv_achievement):?>
+					    	<tr>
+					    		<td class="periode">
+					    			<?php echo displayMonthName($cv_achievement->month) ." ". displayYear($cv_achievement->year); ?>
+					    		</td>
+					    		<td>
+					    			<?php
+					    				echo $cv_achievement->title;
+					    				if ($cv_achievement->issuer != "") {
+					    					echo " <b>.</b> ";
+					    				}
+					    				echo $cv_achievement->issuer;
+					    			?>
+					    		</td>
+					    		<td class="action">
+					    			<a href="<?php echo site_url('talent/cv-achievement/edit/') . $cv_achievement->id_talent_cv_achievement;?>" class="text-primary"><i class="fa fa-edit"></i></a>
+					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_achievement->id_talent_cv_achievement;?>" data-cv="achievement"><i class="fa fa-trash"></i></a>
 					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
@@ -169,8 +211,8 @@
 		    case "education":
 		        route = "<?php echo site_url('talent/cv-education/delete/');?>";
 		        break;
-		    case "Apple":
-		        route = "<?php echo site_url('talent/cv-work-experience/delete/');?>";
+		    case "achievement":
+		        route = "<?php echo site_url('talent/cv-achievement/delete/');?>";
 		        break;
 		}
 		route = route + delete_target;

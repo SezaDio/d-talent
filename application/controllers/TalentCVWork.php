@@ -34,8 +34,8 @@ class TalentCVWork extends CI_Controller {
 		// used for if form not valid
 		$data['page_title'] = "Tambah Pengalaman Kerja";
 
-		$this->form_validation->set_rules('position', 'Jabatan', 'required');
-		$this->form_validation->set_rules('company', 'Perusahaan', 'required');
+		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
+		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->load->view('skin/talent/header', $data);
@@ -75,8 +75,8 @@ class TalentCVWork extends CI_Controller {
 		// used for if form not valid
 		$data['page_title'] = "Edit Pengalaman Kerja";
 
-		$this->form_validation->set_rules('position', 'Jabatan', 'required');
-		$this->form_validation->set_rules('company', 'Perusahaan', 'required');
+		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
+		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get edit data
