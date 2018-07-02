@@ -60,25 +60,25 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#hero-area">Home</a>
+                <a class="nav-link page-scroll" href="#hero-area"><i class="fa fa-home"></i> <b>Home</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features">Benefit</a>
+                <a class="nav-link page-scroll" href="#features"><i class="fa fa-bullseye"></i> <b>Mission</b></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="#blog"><i class="fa fa-check"></i> Benefit</a>
               </li>
               <!--<li class="nav-item">
                 <a class="nav-link page-scroll" href="#portfolios">Works</a>
               </li>-->
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+                <a class="nav-link page-scroll" href="#pricing"><i class="fa fa-users"></i> <b>Membership</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#testimonial">Testimonial</a>
+                <a class="nav-link page-scroll" href="#testimonial"><i class="fa fa-star"></i> <b>Testimonial</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#blog">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">Contact</a>
+                <a class="nav-link page-scroll" href="#contact"><i class="fa fa-envelope"></i> <b>Contact</b></a>
               </li>
             </ul>
           </div>
