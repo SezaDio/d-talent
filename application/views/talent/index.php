@@ -47,11 +47,10 @@
 					    <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu" aria-labelledby="cv">
-					    <li><a href="#!">Ringkasan</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>">Prestasi</a></li>
-					    <li><a href="#!">Pelatihan</a></li>
+					    <li><a href="<?php echo site_url('talent/cv-course/create');?>">Pelatihan</a></li>
 					  </ul>
 					</div>
 				</div>
@@ -172,6 +171,40 @@
 				<?php
 					} 	//./if
 				?>
+
+				<?php
+					if($cv_courses != null) {
+				?>
+				<br>
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Pelatihan</h3>
+				  </div>
+				  <div class="panel-body">
+				    <table class="table">
+				    	<?php foreach ($cv_courses as $cv_course):?>
+					    	<tr>
+					    		<td class="">
+					    			<?php echo $cv_course->title; ?>
+					    		</td>
+					    		<td>
+					    			<?php
+					    				echo "";
+					    			?>
+					    		</td>
+					    		<td class="action">
+					    			<a href="<?php echo site_url('talent/cv-course/edit/') . $cv_course->id_talent_cv_course;?>" class="text-primary"><i class="fa fa-edit"></i></a>
+					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_course->id_talent_cv_course;?>" data-cv="course"><i class="fa fa-trash"></i></a>
+					    		</td>
+					    	</tr>
+				    	<?php endforeach;?>
+
+				    </table>
+				  </div>
+				</div>
+				<?php
+					} 	//./if
+				?>
 			</div>
 		</div>
 	</div>
@@ -213,6 +246,9 @@
 		        break;
 		    case "achievement":
 		        route = "<?php echo site_url('talent/cv-achievement/delete/');?>";
+		        break;
+		    case "course":
+		        route = "<?php echo site_url('talent/cv-course/delete/');?>";
 		        break;
 		}
 		route = route + delete_target;

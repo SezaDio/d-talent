@@ -1,0 +1,139 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class TalentCVCourse extends CI_Controller {
+
+	public function _construct()
+	{
+		parent::_construct();
+	}
+
+	public function index()
+	{
+		$data['page_title'] = "Tambah Pelatihan";
+		
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
+		
+		// get data for select
+		$id_talent = $this->session->userdata('id_talent');
+		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/form_cv_course');
+		$this->load->view('skin/talent/footer');
+	}
+
+	public function store()
+	{
+		$this->load->model('talent_models/TalentCVCourseModel');
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
+		$this->load->library('form_validation');
+
+		$id_talent = $this->session->userdata('id_talent');
+
+		// used for if form not valid
+		$data['page_title'] = "Tambah Pelatihan";
+
+		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// get data for select
+			$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+			$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+
+			$this->load->view('skin/talent/header', $data);
+			$this->load->view('talent/form_cv_course');
+			$this->load->view('skin/talent/footer');
+		}
+		else {
+			// save data to db
+			$this->TalentCVCourseModel->create($id_talent);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Tambah pelatihan berhasil');
+
+			// redirect to page ...
+			redirect('talent/cv-course/create');
+		}
+	}
+
+	public function edit($id_talent_cv_course)
+	{
+		$this->load->model('talent_models/TalentCVCourseModel');
+
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
+		
+		$data['page_title'] = "Edit Pelatihan";
+		$data['cv_course'] = $this->TalentCVCourseModel->edit($id_talent_cv_course);
+
+		// get data for select
+		$id_talent = $this->session->userdata('id_talent');
+		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/form_edit_cv_course');
+		$this->load->view('skin/talent/footer');
+	}
+
+	public function update($id_talent_cv_course)
+	{
+		$this->load->model('talent_models/TalentCVCourseModel');
+		$this->load->library('form_validation');
+
+		// used for if form not valid
+		$data['page_title'] = "Edit Pelatihan";
+
+		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// get edit data
+			$data['cv_course'] 	= $this->TalentCVCourseModel->edit($id_talent_cv_course);
+			
+			// get data for select
+			$id_talent = $this->session->userdata('id_talent');
+			$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+			$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+
+			$this->load->view('skin/talent/header', $data);
+			$this->load->view('talent/form_edit_cv_course');
+			$this->load->view('skin/talent/footer');
+		}
+		else {
+			// update data to db
+			$affected = $this->TalentCVCourseModel->update($id_talent_cv_course);
+			
+			if ($affected) {
+				// add message to session
+				$this->session->set_flashdata('msg_success', 'Edit pelatihan berhasil');
+			}
+			else {
+				// add message to session
+				$this->session->set_flashdata('msg_error', 'Edit pelatihan gagal');
+			}
+			// redirect to page ...
+			redirect('talent/cv-course/edit/' . $id_talent_cv_course);
+		}
+	}
+
+	public function delete($id_talent_cv_course)
+	{
+		$this->load->model('talent_models/TalentCVCourseModel');
+		$query = $this->TalentCVCourseModel->delete($id_talent_cv_course);
+
+		if ($query) {
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Hapus pelatihan berhasil');
+		}
+		else {
+			// add message to session
+			$this->session->set_flashdata('msg_error', 'Hapus pelatihan gagal');
+		}
+		// redirect to page ...
+		redirect('talent');
+	}
+
+}

@@ -2,7 +2,7 @@
 
 	<div class="cv col-md-6 col-md-offset-3" style="min-height: 62vh;">
 		<div class="card">
-			<form action="<?php echo site_url('talent/cv-course/store'); ?>" method="post">
+			<form action="<?php echo site_url('talent/cv-course/update/' .  $cv_course->id_talent_cv_course); ?>" method="post">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';
@@ -14,7 +14,7 @@
 
 				<div class="form-group">
 					<label>Nama Pelatihan *</label>
-					<input type="text" name="title" class="form-control" required>
+					<input type="text" name="title" class="form-control" required value="<?php echo $cv_course->title; ?>">
 				</div>
 
 				<div class="form-group">
@@ -24,9 +24,11 @@
 						<option value="">-</option>
 						<!-- cv_educations -->
 						<?php
+							$associated_education = $cv_course->associated_education;
 							foreach ($cv_educations as $key => $cv_education) {
+								$id_talent_cv_education = $cv_education->id_talent_cv_education;
 						?>
-								<option value="<?php echo $cv_education->id_talent_cv_education; ?>" data-cv="education">
+								<option value="<?php echo $id_talent_cv_education; ?>" data-cv="education" <?php echo $id_talent_cv_education==$associated_education ? "selected" : "";?> >
 									<?php
 										echo $cv_education->school;
 										if ($cv_education->field_of_study != "") {
@@ -41,9 +43,11 @@
 
 						<!-- cv_works -->
 						<?php
+							$associated_work = $cv_course->associated_work;
 							foreach ($cv_works as $key => $cv_work) {
+								$id_talent_cv_work = $cv_work->id_talent_cv_work;
 						?>
-								<option value="<?php echo $cv_work->id_talent_cv_work; ?>" data-cv="work">
+								<option value="<?php echo $id_talent_cv_work; ?>" data-cv="work" <?php echo $id_talent_cv_work==$associated_work ? "selected" : "";?> >
 									<?php echo $cv_work->position; ?>
 					    			di
 					    			<?php echo $cv_work->company; ?>
@@ -52,8 +56,8 @@
 							}
 						?>
 					</select>
-					<input type="hidden" name="associated_education" id="associated_education">
-					<input type="hidden" name="associated_work" id="associated_work">
+					<input type="hidden" name="associated_education" id="associated_education" value="<?php echo $cv_course->associated_education; ?>">
+					<input type="hidden" name="associated_work" id="associated_work" value="<?php echo $cv_course->associated_work; ?>">
 				</div>
 
 				<br>

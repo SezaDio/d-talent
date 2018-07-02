@@ -10,11 +10,13 @@ class Talent extends CI_Controller {
 		$this->load->model('talent_models/TalentCVWorkModel');
 		$this->load->model('talent_models/TalentCVEducationModel');
 		$this->load->model('talent_models/TalentCVAchievementModel');
+		$this->load->model('talent_models/TalentCVCourseModel');
 
 		$data['page_title'] = "Talent";
 		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
 		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
 		$data['cv_achievements'] = $this->TalentCVAchievementModel->get_all($id_talent);
+		$data['cv_courses'] = $this->TalentCVCourseModel->get_all($id_talent);
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/index');
