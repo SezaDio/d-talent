@@ -55,7 +55,7 @@
     <script src="<?php echo base_url('asset/Template Company Profile/js/jquery.magnific-popup.min.js')?>"></script>    
     <script src="<?php echo base_url('asset/Template Company Profile/js/waypoints.min.js')?>"></script>    
     <script src="<?php echo base_url('asset/Template Company Profile/js/form-validator.min.js')?>"></script>
-    <script src="<?php echo base_url('asset/Template Company Profile/js/contact-form-script.js')?>"></script>   
+    <script src="<?php echo base_url('asset/Template Company Profile/js/contact-form-script.js?v='.rand().'')?>"></script>   
     <script src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 

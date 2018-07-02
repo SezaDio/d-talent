@@ -163,8 +163,8 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 }
 
 .btn-common {
-  border: 1px solid #61D2B4;
-  background: #61D2B4;
+  border: 1px solid black; /*#61D2B4*/
+  background: black; /*#61D2B4*/
   position: relative;
   color: #fff;
   z-index: 1;
@@ -172,9 +172,9 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 }
 
 .btn-common:hover {
-  color: #fff;
-  background: #33b391;
-  border-color: #33b391;
+  color: black; /*#fff*/
+  background: white; /*#33b391*/
+  border-color: black; /*#33b391*/
   transition: all .50s ease-in-out;
   -moz-transition: all .50s ease-in-out;
   -webkit-transition: all .50s ease-in-out;
@@ -527,7 +527,7 @@ button:focus {
 
 .navbar .nav-link.active {
   color: #fff !important;
-  background: #61D2B4;
+  background: black; /*#61D2B4 - hijau*/
 }
 
 .dropdown-toggle::after {
@@ -609,7 +609,7 @@ button:focus {
   width: 60px;
   height: 60px;
   text-align: center;
-  border: 1px solid #f1f1f1;
+  border: 2px solid black;  /*#f1f1f1*/
   display: inline-block;
   border-radius: 30px;
   margin-bottom: 30px;
@@ -621,7 +621,7 @@ button:focus {
 .item-boxes .icon i {
   font-size: 26px;
   line-height: 60px;
-  color: #61D2B4;
+  color: black; /*#61D2B4*/
 }
 
 .item-boxes h4 {
@@ -631,7 +631,7 @@ button:focus {
 }
 
 .item-boxes:hover .icon {
-  background: #61D2B4;
+  background: black; /*#61D2B4*/
 }
 
 .item-boxes:hover .icon i {
@@ -672,7 +672,7 @@ button:focus {
 }
 
 #features .box-item .icon {
-  border: 1px solid #61D2B4;
+  border: 2px solid white; /*#61D2B4*/
   text-align: center;
   float: left;
   -webkit-transition: all 0.2s linear;
@@ -682,7 +682,7 @@ button:focus {
 }
 
 #features .box-item .icon i {
-  color: #61D2B4;
+  color: white; /*#61D2B4*/
   font-size: 24px;
   line-height: 60px;
   -webkit-transition: all 0.2s linear;
@@ -709,11 +709,11 @@ button:focus {
 }
 
 #features .box-item:hover .icon {
-  background: #61D2B4;
+  background: white; /*#61D2B4*/
 }
 
 #features .box-item:hover .icon i {
-  color: #ffffff;
+  color: black; /*white*/
 }
 
 #features .show-box img {
@@ -725,7 +725,7 @@ button:focus {
   7. Video promo Style
    ========================================================================== */
 .video-promo {
-  background: #61D2B4;
+  background: black; /*#61D2B4*/
   color: #fff;
   overflow: hidden;
   position: relative;
@@ -889,23 +889,23 @@ button:focus {
   border: transparent;
   text-align: center;
   background-color: #FFFFFF;
-  border: 1px solid #f1f1f1;
+  border: 1px solid darkgray; /*#f1f1f1*/
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .pricing-table:hover {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
 }
 
 .pricing-table .pricing-details h2 {
   font-size: 26px;
   font-weight: 700;
-  color: #333;
+  color: white; /*#333*/
   margin-bottom: 20px;
   text-transform: uppercase;
-  background: #f1f1f1;
+  background: black; /*#f1f1f1*/
   padding: 30px 0;
 }
 
@@ -1267,4 +1267,38 @@ footer {
 
 .copyright p a:hover {
   color: #61D2B4;
+}
+
+/*-------------------*/
+/*-----Tambahan------*/
+/*-------------------*/
+.btn-contact {
+  font-size: 14px;
+  padding: 11px 40px;
+  border-radius: 0px;
+  font-weight: 400;
+  color: black;
+  text-transform: uppercase;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  display: inline-block;
+}
+.btn-contact-common {
+  border: 2px solid white; /*#61D2B4*/
+  background: darkgray; /*#61D2B4*/
+  position: relative;
+  color: white;
+  z-index: 1;
+  border-radius: 30px;
+}
+
+.btn-contact-common:hover {
+  color: black; /*#fff*/
+  background: white; /*#33b391*/
+  border-color: white; /*#33b391*/
+  transition: all .50s ease-in-out;
+  -moz-transition: all .50s ease-in-out;
+  -webkit-transition: all .50s ease-in-out;
 }

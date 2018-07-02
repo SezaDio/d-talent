@@ -88,37 +88,46 @@
     <!-- Services Section Start -->
     <section id="services" class="section" style="padding: 35px 0;">
       <div class="container">
-		 <div class="row">
-		  <div class="col-md-4 col-sm-12 col-xs-12">
-        <div class="section-header" style="margin-top:30px">          
-          <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Join With Us</h2>
-          <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-          <!--<p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"><b>Benefit</b> is what exactly company want and expect. <br> <b>D-Talent.id</b> is offering:</p>-->
-        </div>
-       </div>
-          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
-				<a href="#"> 
-					<div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
-						<i class="fas fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
-					</div>
-				</a>
-				<h4>Jobseeker</h4>
-				<!--<p>on recruitment, company only pay assessment cost</p>-->
-            </div>
-          </div> 
-          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
-				<a href="#">
-					<div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
-						<i class="fas fa-briefcase" style="font-size: 30px;line-height: 80px;"></i>
-					</div>
-				</a>
-				<h4>Company</h4>
-				<!--<p>due to data base availability</p>-->
+
+    		<div class="row">
+    		  <div class="col-md-12" style="text-align: center;">
+            <div class="section-header" style="margin-top:30px">          
+              <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Join With Us</h2>
+              <hr class="lines wow zoomIn" data-wow-delay="0.3s">
+              <!--<p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"><b>Benefit</b> is what exactly company want and expect. <br> <b>D-Talent.id</b> is offering:</p>-->
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-1"></div>
+
+          <div class="col-md-5 col-sm-6 col-xs-6">
+            <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
+              <a href="#"> 
+                <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+                  <i class="fa fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
+                </div>
+              </a>
+              <h4>Jobseeker</h4>
+              <!--<p>on recruitment, company only pay assessment cost</p>-->
+              </div>
+          </div> 
+          <div class="col-md-5 col-sm-6 col-xs-6">
+            <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
+              <a href="#">
+                <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+                  <i class="fa fa-building" style="font-size: 30px;line-height: 80px;"></i>
+                </div>
+              </a>
+              <h4>Company</h4>
+              <!--<p>due to data base availability</p>-->
+            </div>
+          </div>
+
+          <div class="col-md-1"></div>
+        </div>
+
       </div>
     </section>
     <!-- Services Section End -->
@@ -127,9 +136,8 @@
     <section id="features" class="section" data-stellar-background-ratio="0.2">
       <div class="container">
         <div class="section-header">          
-          <h2 class="section-title">Benefit</h2>
+          <h2 class="section-title">MISSION</h2>
           <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
         </div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-xs-12">
@@ -137,29 +145,26 @@
               <div class="row">
                  <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                     <i class="fas fa-money-bill-wave"></i>
+                     <i class="fa fa-money-bill-wave"></i>
                     </span>
-                    <div class="text" style="padding-left:70px;">
-                      <h4>Cost Efficiency</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="text" style="margin-top: 20px;">
+                      <h4 style="color: white;"><b>Cost Efficiency</b></h4><p></p>
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                      <i class="far fa-clock"></i>
+                      <i class="fa fa-user-tie"></i>
                     </span>
-                    <div class="text" style="padding-left:70px;">
-                      <h4>Time Efficiency</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="text" style="margin-top: 20px;">
+                      <h4 style="color: white;"><b>Ready-to-work Talent</b></h4>
                     </div>
                   </div>
                   <div class="col-lg-4 col-sm-4 col-xs-12 box-item">
                     <span class="icon">
-                      <i class="fas fa-pencil-alt"></i>
+                      <i class="fa fa-sync-alt"></i>
                     </span>
-                    <div class="text" style="padding-left:70px;">
-                      <h4>Ready-to-work Talent</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                    <div class="text" style="margin-top: 6px;">
+                      <h4 style="color: white;"><b>Integrated Assessment and Training</b></h4>
                     </div>
                   </div>
               </div>
@@ -169,6 +174,95 @@
       </div>
     </section>
     <!-- Features Section End -->    
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+      <!-- Container Starts -->
+      <div class="container">
+        <div class="section-header">          
+          <h2 class="section-title">Benefit</h2>
+          <hr class="lines">
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
+            <!-- Blog Item Starts -->
+            <div class="blog-item-wrapper">
+              <div class="blog-item-img">
+                <a href="single-post.html">
+                  <img src="img/blog/img1.jpg" alt="">
+                </a>                
+              </div>
+              <div class="blog-item-text"> 
+                <div class="meta-tags">
+                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
+                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
+                </div>
+                <h3>
+                  <a href="single-post.html">How often should you tweet?</a>
+                </h3>
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
+                </p>
+                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
+              </div>
+            </div>
+            <!-- Blog Item Wrapper Ends-->
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
+            <!-- Blog Item Starts -->
+            <div class="blog-item-wrapper">
+              <div class="blog-item-img">
+                <a href="single-post.html">
+                  <img src="img/blog/img2.jpg" alt="">
+                </a>                
+              </div>
+              <div class="blog-item-text"> 
+                <div class="meta-tags">
+                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
+                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
+                </div>
+                <h3>
+                  <a href="single-post.html">Content is still king</a>
+                </h3>
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
+                </p>
+                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
+              </div>
+            </div>
+            <!-- Blog Item Wrapper Ends-->
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
+            <!-- Blog Item Starts -->
+            <div class="blog-item-wrapper">
+              <div class="blog-item-img">
+                <a href="single-post.html">
+                  <img src="img/blog/img3.jpg" alt="">
+                </a>                
+              </div>
+              <div class="blog-item-text"> 
+                <div class="meta-tags">
+                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
+                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
+                </div> 
+                <h3>
+                  <a href="single-post.html">Social media at work</a>
+                </h3>
+                <p>
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
+                </p>
+                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
+              </div>
+            </div>
+            <!-- Blog Item Wrapper Ends-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- blog Section End -->
 
     <!-- Portfolio Section -->
     <!--<section id="portfolios" class="section">
@@ -500,7 +594,7 @@
     <!-- Team section End -->
 
     <!-- testimonial Section Start -->
-    <div id="testimonial" class="section" data-stellar-background-ratio="2">
+    <div id="testimonial" class="section" data-stellar-background-ratio="1">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
@@ -509,7 +603,24 @@
               <div class="testimonial-item">
                 <img src="<?php echo base_url('asset/img/upload_img_testimoni/'.$testimoni['path_gambar'])?>" alt="Client Testimonoal" />
                 <div class="testimonial-text">
-                  <p><?php echo $testimoni['deskripsi'];?></p>
+                  <p>
+                      <?php //echo $testimoni['deskripsi'];?>
+                      
+                      <?php
+                          $panjang = strlen($testimoni['deskripsi']);
+                          if ($panjang >= 100)
+                          {
+                              $isi=strip_tags($testimoni['deskripsi']);
+                              $isi=substr($isi,0,200);
+                              echo $isi." ..."; ?>
+
+                              <a href="<?php //$url = strtolower(str_replace(" ","-",$event['nama_coming'])); echo base_url('/'.$event['id_coming'].'?ev='.$url); ?>" class="readmore"><strong>Read More</strong></a>
+                    <?php } 
+                          else
+                          {
+                              echo $testimoni['deskripsi'];
+                          }?>     
+                  </p>
                   <h3><?php echo $testimoni['nama_testimoni'];?></h3>
                   <span><?php echo $testimoni['job'];?></span>
                 </div>
@@ -523,95 +634,6 @@
     </div>
     <!-- testimonial Section Start -->
 
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-      <!-- Container Starts -->
-      <div class="container">
-        <div class="section-header">          
-          <h2 class="section-title">Recent Blog</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img1.jpg" alt="">
-                </a>                
-              </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="single-post.html">How often should you tweet?</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img2.jpg" alt="">
-                </a>                
-              </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="single-post.html">Content is still king</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img3.jpg" alt="">
-                </a>                
-              </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div> 
-                <h3>
-                  <a href="single-post.html">Social media at work</a>
-                </h3>
-                <p>
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- blog Section End -->
-
     <!-- Contact Section Start -->
     <section id="contact" class="section" data-stellar-background-ratio="-0.2">      
       <div class="contact-form">
@@ -622,8 +644,8 @@
                 <h3>Contact With us</h3>
                 <div class="contact-address">
                   <p>Centerville Road, DE 19808, US </p>
-                  <p class="phone">Phone: <span>(+94 123 456 789)</span></p>
-                  <p class="email">E-mail: <span>(contact@mate.com)</span></p>
+                  <p class="phone">Phone: <span>(0812-3921-2006)</span></p>
+                  <p class="email">E-mail: <span>(company.service@d-talent.id)</span></p>
                 </div>
                 <div class="social-icons">
                   <ul>
@@ -638,33 +660,47 @@
             </div>     
             <div class="col-lg-6 col-sm-6 col-xs-12">
               <div class="contact-block">
-                <form id="contactForm">
+
+                <form method="post" action="<?php echo site_url('CompanyProfile/kirim_pesan_hubungi_kami/');?>">
                   <div class="row">
-                    <div class="col-md-12">
+
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
+                        <input type="text" class="form-control" id="name" name="nama_lengkap" placeholder="Your Name" required data-error="Please enter your name">
                         <div class="help-block with-errors"></div>
                       </div>                                 
                     </div>
-                    <div class="col-md-12">
+
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
+                        <input type="text" placeholder="Your Email" id="email" class="form-control" name="email" required data-error="Please enter your email">
                         <div class="help-block with-errors"></div>
                       </div> 
                     </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="text" placeholder="Subject" id="message_subject" class="form-control" name="subject" required data-error="Please enter your email">
+                        <div class="help-block with-errors"></div>
+                      </div> 
+                    </div>
+
                     <div class="col-md-12">
                       <div class="form-group"> 
-                        <textarea class="form-control" id="message" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
+                        <textarea class="form-control" id="message" name="pesan" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
                         <div class="help-block with-errors"></div>
                       </div>
+
                       <div class="submit-button text-center">
-                        <button class="btn btn-common" id="submit" type="submit">Send Message</button>
+                        <button name="submit" value="1" class="btn-contact btn-contact-common" id="submit" type="submit"><i class="fa fa-send"></i> <b>Send Message</b></button>
                         <div id="msgSubmit" class="h3 text-center hidden"></div> 
                         <div class="clearfix"></div> 
                       </div>
                     </div>
+
                   </div>            
                 </form>
+
               </div>
             </div>
           </div>
