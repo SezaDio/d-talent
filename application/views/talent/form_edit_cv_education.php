@@ -1,8 +1,11 @@
+<?php
+	$this->load->helper('custom');
+?>
 <div class="container">
 
 	<div class="cv col-md-6 col-md-offset-3">
 		<div class="card">
-			<form action="<?php echo site_url('talent/cv-education/store'); ?>" method="post" enctype="multipart/form-data">
+			<form action="<?php echo site_url('talent/cv-education/update/' .  $cv_education->id_talent_cv_education); ?>" method="post" enctype="multipart/form-data">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';
@@ -14,28 +17,28 @@
 
 				<div class="form-group">
 					<label>Sekolah *</label>
-					<input type="text" name="school" class="form-control" required>
+					<input type="text" name="school" class="form-control" required value="<?php echo $cv_education->school; ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Gelar/ derajat</label>
 					<p class="text-muted">Contoh: SD, SMP</p>
-					<input type="text" name="degree" class="form-control">
+					<input type="text" name="degree" class="form-control" value="<?php echo $cv_education->degree; ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Bidang studi</label>
-					<input type="text" name="field_of_study" class="form-control">
+					<input type="text" name="field_of_study" class="form-control" value="<?php echo $cv_education->field_of_study; ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Kelas/ tingkat</label>
-					<input type="text" name="grade" class="form-control">
+					<input type="text" name="grade" class="form-control" value="<?php echo $cv_education->grade; ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Aktivitas dan sosial</label>
-					<textarea name="activity" class="form-control"></textarea>
+					<textarea name="activity" class="form-control"><?php echo $cv_education->activity; ?></textarea>
 				</div>
 
 				<div class="row form-group">
@@ -43,14 +46,14 @@
 							<label>Dari</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>">
+								<input type="text" class="form-control datepicker" name="from_year" value="<?php echo displayYear($cv_education->from_year); ?>">
 							</div>
 					</div>
 					<div class="col-md-6">
 							<label>Hingga</label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>">
+								<input type="text" class="form-control datepicker" name="to_year" value="<?php echo displayYear($cv_education->to_year); ?>">
 							</div>
 					</div>
 					<div class="col-md-12">
@@ -60,7 +63,7 @@
 				
 				<div class="form-group">
 					<label>Deskripsi</label>
-					<textarea name="description" class="form-control"></textarea>
+					<textarea name="description" class="form-control"><?php echo $cv_education->description; ?></textarea>
 				</div>
 
 				<div class="form-group">

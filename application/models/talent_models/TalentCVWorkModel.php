@@ -9,7 +9,7 @@
 
 		public function get_talent_cv_work($id_talent)
 		{
-			$query = $this->db->get_where('talent_cv_work', array('id_talent' => $id_talent));
+			$query = $this->db->order_by('work_end', 'DESC')->get_where('talent_cv_work', array('id_talent' => $id_talent));
 			return $query->result();
 		}
 
@@ -40,7 +40,6 @@
 		public function update_talent_cv_work($id_talent_cv_work)
 		{
 			$data = array(
-				// 'id_talent' => $id_talent,
 				'position' => $this->input->post('position'),
 				'company' => $this->input->post('company'),
 				'location' => $this->input->post('location'),
@@ -54,5 +53,11 @@
 			$this->db->where('id_talent_cv_work', $id_talent_cv_work);
 			return $this->db->update('talent_cv_work', $data);
 			// return $this->db->affected_rows;
+		}
+
+		public function delete($id_talent_cv_work)
+		{
+			$this->db->where('id_talent_cv_work', $id_talent_cv_work);
+			return $this->db->delete('talent_cv_work');
 		}
 	}

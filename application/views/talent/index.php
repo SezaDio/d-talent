@@ -49,7 +49,7 @@
 					  <ul class="dropdown-menu" aria-labelledby="cv">
 					    <li><a href="#!">Ringkasan</a></li>
 					    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
-					    <li><a href="#!">Pendidikan</a></li>
+					    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
 					    <li><a href="#!">Prestasi</a></li>
 					    <li><a href="#!">Pelatihan</a></li>
 					  </ul>
@@ -85,7 +85,41 @@
 					    		</td>
 					    		<td class="action">
 					    			<a href="<?php echo site_url('talent/cv-work-experience/edit/') . $cv_work->id_talent_cv_work;?>" class="text-primary"><i class="fa fa-edit"></i></a>
-					    			<a href="" class="text-danger"><i class="fa fa-trash"></i></a>
+					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_work->id_talent_cv_work;?>" data-cv="work"><i class="fa fa-trash"></i></a>
+					    		</td>
+					    	</tr>
+				    	<?php endforeach;?>
+
+				    </table>
+				  </div>
+				</div>
+				<?php
+					} 	//./if
+				?>
+
+				<?php
+					if($cv_educations != null) {
+				?>
+				<br>
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Pengalaman Kerja</h3>
+				  </div>
+				  <div class="panel-body">
+				    <table class="table">
+				    	<?php foreach ($cv_educations as $cv_education):?>
+					    	<tr>
+					    		<td class="periode">
+					    			<?php echo displayCVEducationDate($cv_education->from_year, $cv_education->to_year); ?>
+					    		</td>
+					    		<td>
+					    			<?php echo $cv_education->school; ?>
+					    			<br>
+					    			<?php echo $cv_education->field_of_study; ?>
+					    		</td>
+					    		<td class="action">
+					    			<a href="<?php echo site_url('talent/cv-education/edit/') . $cv_education->id_talent_cv_education;?>" class="text-primary"><i class="fa fa-edit"></i></a>
+					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_education->id_talent_cv_education;?>" data-cv="education"><i class="fa fa-trash"></i></a>
 					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
@@ -101,6 +135,48 @@
 	</div>
 
 </div>
+
+<!-- modal delete -->
+<div class="modal fade modal-delete" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Hapus</h4>
+			</div>
+			<div class="modal-body">
+				<p>Apakah Anda yakin?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-talent" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-outline-danger">Delete</a>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+	// delete cv work
+	$('.modal-delete').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget);
+        var delete_target = button.data('id');
+        var cv_type = button.data('cv');
+        var route;
+        switch(cv_type) {
+		    case "work":
+		        route = "<?php echo site_url('talent/cv-work-experience/delete/');?>";
+		        break;
+		    case "education":
+		        route = "<?php echo site_url('talent/cv-education/delete/');?>";
+		        break;
+		    case "Apple":
+		        route = "<?php echo site_url('talent/cv-work-experience/delete/');?>";
+		        break;
+		}
+		route = route + delete_target;
+        $(this).find('a').attr('href', route);
+    });
+</script>
 
 <div class="container">
 	<br>

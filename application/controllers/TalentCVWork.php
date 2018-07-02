@@ -103,4 +103,21 @@ class TalentCVWork extends CI_Controller {
 		}
 	}
 
+	public function delete($id_talent_cv_work)
+	{
+		$this->load->model('talent_models/TalentCVWorkModel');
+		$query = $this->TalentCVWorkModel->delete($id_talent_cv_work);
+
+		if ($query) {
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Hapus pengalaman kerja berhasil');
+		}
+		else {
+			// add message to session
+			$this->session->set_flashdata('msg_error', 'Hapus pengalaman kerja gagal');
+		}
+		// redirect to page ...
+		redirect('talent');
+	}
+
 }

@@ -3,37 +3,41 @@
 
 	<footer></footer>
 
-    <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js?ver=b3.0'); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b2.0'); ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
-
     <script type="text/javascript">
     	$(function () {
-    		/* cv work */
-            $('.datepicker').datepicker({
-            	format: 'yyyy-mm',
-            	minViewMode: 'months',
-            	maxViewMode: 'decades',
-            });
-            // validate cv work start & end date
-            $('form').on('submit', function(e) {
-            	var work_start  = $('input[name="work_start"]').val();
-            	var work_end 	= $('input[name="work_end"]').val();
-            	
-            	// console.log(work_start);
-            	// console.log(work_end);
+    		/* toast */
+		    // display notification if message not null
+		    if ($('.toast').children().length > 0) {
+		        $('.toast').animate({
+		            'opacity': 1,
+		            'right': "30px"
+		        }, 300).animate({ 'right': "15px" }, 400);
 
-            	$('#date-error').text('');	// delete message
-            	if (work_end != '' && work_end < work_start) {
-            		e.preventDefault();
-            		$('#date-error').text('Tanggal akhir tidak boleh lebih kecil dari tanggal awal');
-            		// scroll
-					$('html, body').animate({
-				        scrollTop: $("input[name=work_end]").offset().top - 35
-				    }, 200);
-            	}
-            });
-    		/* ./cv work */
+		        // close notification by time
+		        setTimeout(close_pop_up, 7000);
+		    }
+		    // close notification function
+		    function close_pop_up(){
+		        var width = $('.toast').width();
+		        $('.toast').animate({
+		            'opacity': 0,
+		            'right': -width
+		        }, 300, function(){
+		            $('.toast').remove();
+		        });
+		    }
+
+		    // close notification
+		    $('.toast .close').click(close_pop_up);
+
+		    // remove notification when clicked out of target
+		    $(document).click(function(e) {
+		        var pop_up = $('.toast');
+		        if (!pop_up.is(e.target)) {
+		            close_pop_up();
+		        }
+		    });
+    		/* ./toast */
         });
     </script>
 </body>

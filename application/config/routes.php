@@ -74,3 +74,9 @@ $route['talent/cv-work-experience/edit/(:num)'] = 'TalentCVWork/edit/$1';
 $route['talent/cv-work-experience/store'] = 'TalentCVWork/store';
 $route['talent/cv-work-experience/update/(:num)'] = 'TalentCVWork/update/$1';
 $route['talent/cv-work-experience/delete/(:num)'] = 'TalentCVWork/delete/$1';
+
+$route['talent/cv-education/create'] = 'TalentCVEducation';
+$route['talent/cv-education/edit/(:num)'] = 'TalentCVEducation/edit/$1';
+$route['talent/cv-education/store'] = 'TalentCVEducation/store';
+$route['talent/cv-education/update/(:num)'] = 'TalentCVEducation/update/$1';
+$route['talent/cv-education/delete/(:num)'] = 'TalentCVEducation/delete/$1';
