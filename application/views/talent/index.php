@@ -12,6 +12,9 @@
 		<div class="card">
 			<div class="text-center">
 				Ahmad | 23 tahun | Semarang
+				<div class="col-md-2 col-md-offset-2"><?php echo $talent->nama; ?></div>
+				<div class="col-md-2"><?php echo $talent->tanggal_lahir; ?></div>
+				<div class="col-md-2"><?php echo $talent->id_kota; ?></div>
 			</div>
 			<br>
 			<div>
