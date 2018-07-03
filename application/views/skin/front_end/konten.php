@@ -67,23 +67,6 @@
 	  </div>        
 	  <!--END DIV SLIDER-->
     </header>
-	<!--<div class="section-header">
-	<hr class="lines wow zoomIn" data-wow-delay="0.3s" style="width:70%">
-	<div class="row" style="text-align:center">
-	   
-		<div class="col-md-3 col-sm-2" style="padding:5px"></div>
-		<div class="col-md-3 col-sm-4" style="text-align:center;padding:5px">
-			
-			<a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Join Talent</a>
-		</div>
-		<div class="col-md-3 col-sm-4" style="text-align:center;padding:5px">
-			
-			<a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Join Company</a>
-		</div>
-		<div class="col-md-3 col-sm-2" style="padding:5px"></div>
-	</div>
-	<hr class="lines wow zoomIn" data-wow-delay="0.3s" style="width:70%">
-	</div>-->
 
     <!-- Services Section Start -->
     <section id="services" class="section" style="padding: 35px 0;">
@@ -94,7 +77,6 @@
             <div class="section-header" style="margin-top:30px">          
               <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Join With Us</h2>
               <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-              <!--<p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s"><b>Benefit</b> is what exactly company want and expect. <br> <b>D-Talent.id</b> is offering:</p>-->
             </div>
           </div>
         </div>
@@ -175,7 +157,7 @@
     </section>
     <!-- Features Section End -->    
 
-    <!-- Blog Section -->
+    <!-- Benefit Section -->
     <section id="blog" class="section">
       <!-- Container Starts -->
       <div class="container">
@@ -185,177 +167,62 @@
         </div>
         
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img1.jpg" alt="">
-                </a>                
+
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-3" style="border: solid 1px black;">
+                <p>Gambar Company</p>
               </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="single-post.html">How often should you tweet?</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
+              <div class="col-md-9">
+                <ul style="list-style-type: square;">
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>Cost Eficiency </strong>on recruitment, company only pay assessment cost</p>
+                    <hr class="lines">
+                  </li>
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>Time Eficiency </strong>, due to data base availability</p>
+                    <hr class="lines">
+                  </li>
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>Ready-to-work talent </strong>, with basic and customized</p>
+                  </li>
+                </ul>
               </div>
             </div>
-            <!-- Blog Item Wrapper Ends-->
           </div>
 
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img2.jpg" alt="">
-                </a>                
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-3" style="border: solid 1px black;">
+                <p>Gambar Jobseeker</p>
               </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="single-post.html">Content is still king</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
+              <div class="col-md-9">
+                <ul>
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>One-Stop-Point </strong>of job seeking</p>
+                    <hr class="lines">
+                  </li>
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>Consultancy & Trainings</strong></p>
+                    <hr class="lines">
+                  </li>
+                  <li>
+                    <p style="font-size: 1.2em;"><strong>Time Eficiency </strong>with IT base recruitment</p>
+                    <hr class="lines">
+                  </li>
+                  <li>
+                    <p style="font-size: 1.2em;">Their <strong>database</strong> is <strong>open</strong> for companies</p>
+                  </li>
+                </ul>
               </div>
             </div>
-            <!-- Blog Item Wrapper Ends-->
           </div>
 
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="img/blog/img3.jpg" alt="">
-                </a>                
-              </div>
-              <div class="blog-item-text"> 
-                <div class="meta-tags">
-                  <span class="date"><i class="lnr  lnr-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lnr lnr-bubble"></i> 24 Comments</a></span>
-                </div> 
-                <h3>
-                  <a href="single-post.html">Social media at work</a>
-                </h3>
-                <p>
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... 
-                </p>
-                <a href="single-post.html" class="btn-rm">Read More <i class="lnr lnr-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
+          
         </div>
       </div>
     </section>
     <!-- blog Section End -->
-
-    <!-- Portfolio Section -->
-    <!--<section id="portfolios" class="section">
-      <div class="container">
-        <div class="section-header">          
-          <h2 class="section-title">Our Portfolio</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-        <div class="row">          
-          <div class="col-md-12">
-            <div class="controls text-center">
-              <a class="filter active btn btn-common" data-filter="all">
-                All 
-              </a>
-              <a class="filter btn btn-common" data-filter=".design">
-                Design 
-              </a>
-              <a class="filter btn btn-common" data-filter=".development">
-                Development
-              </a>
-              <a class="filter btn btn-common" data-filter=".print">
-                Print 
-              </a>
-            </div>
-          </div>
-
-          <div id="portfolio" class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development print">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img1.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img1.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix design print">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img2.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img2.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img3.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img3.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img4.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img4.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img5.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img5.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix print design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img6.jpg" alt="" />  
-                  <a class="overlay lightbox" href="img/portfolio/img6.jpg">
-                    <i class="lnr lnr-eye item-icon"></i>
-                  </a>
-                </div>               
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>->
-    <!-- Portfolio Section Ends --> 
 
     <!-- Start Video promo Section -->
     <section class="video-promo section">
@@ -377,82 +244,172 @@
     <div id="pricing" class="section pricing-section">
       <div class="container">
         <div class="section-header">          
-          <h2 class="section-title">Membership for Jobseeker</h2>
-          <hr class="lines">
-          <p class="section-subtitle">FREE MEMBER</p>
-		  <p class="section-subtitle">Free sign in, Free upload CV with template form, Free online test (passion and interest), List of Vacancy</p>
+          <h2 class="section-title">Membership</h2>
+          <hr class="lines"><br><br>
+          <div class="row">
+            <div class="col-md-12">
+              <a id="company-button" href="javascript:void(0)" class="btn btn-common">COMPANY</a>
+              <a id="jobseeker-button" href="javascript:void(0)" class="btn btn-common">JOBSEEKER</a>
+            </div>
+          </div>
         </div>
 
-        <div class="row pricing-tables">
-
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="pricing-table">
+        <!--Harga membership company-->
+        <div class="row pricing-tables" id="company-membership-content">
+          <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 10px;">
+            <div class="pricing-table" style="height: 100%;">
               <div class="pricing-details">
-                <h2>Bronze</h2>
-                <span>$3.99</span>
+                <h2>Free</h2>
+                <span><p style="visibility: hidden;">$3.99</p></span>
                 <ul>
-                  <li>Online English Test</li>
-                  <li>Online Academic Test</li>
-                  <li>Apply online</li>
+                  <li>Free upload Company Data</li>
+                  <li>Preview The Summary of Jobseeker' s database</li>
                 </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
               </div>
             </div>
           </div>
-
-          <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <h2>Silver</h2>
-                <span>$9.50</span>
-                <ul>
-                  <li>Online Character Test</li>
-                  <li>Online Intelligence Test</li>
-                </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
-              </div>
-            </div>
-          </div>
-		  
-		  
-		  <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="pricing-table">
+          <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 10px;">
+            <div class="pricing-table" style="height: 100%;">
               <div class="pricing-details">
                 <h2>Gold</h2>
-                <span>$9.50</span>
+                <span>$3.99</span>
                 <ul>
-                  <li>Online Soft Skill Test</li>
-                  <li>Online Management Style Test</li>
-                  <li>Online Work Attitude</li>
+                  <li>Free upload the Vacancy</li>
+                  <li>Free Online Recruitment</li>
                 </ul>
               </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
+              <div class="col-md-12">
+                <div class="plan-button">
+                  <a href="#" class="btn btn-common">Buy Now</a>
+                </div>
               </div>
             </div>
           </div>
-		  
-		  <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="pricing-table">
+          <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 10px;">
+            <div class="pricing-table" style="height: 100%;">
               <div class="pricing-details">
                 <h2>Platinum</h2>
-                <span>$9.50</span>
+                <span>$3.99</span>
                 <ul>
-                  <li>Free Upload CV with PDF and Video</li>
-                  <li>Online Behavioral Test <br> (Past and Future Performance)</li>
-                  <li>Talent Solution <br> (basic and customized skill trainings)</li>
+                  <li>Ready-to-work talent</li>
                 </ul>
               </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
+              <div class="col-md-12">
+                <div class="plan-button">
+                  <a href="#" class="btn btn-common">Buy Now</a>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
+        <!--Harga membership jobseeker-->
+        <div id="jobseeker-membership-content">
+          <div class="row pricing-tables">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="pricing-table" style="padding-bottom: 0px;">
+                <div class="pricing-details">
+                  <h2>Free Membership</h2>
+                  <div class="row">
+                    <div class="col-md-6" style="height: 100px;">
+                      <ul style="text-align: left; padding-left: 10px;">
+                        <li><i class="fa fa-check" style="color: limegreen;"></i> Free sign in</li>
+                        <li><i class="fa fa-check" style="color: limegreen;"></i> Free upload CV with template form</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul style="text-align: left; padding-left: 10px;">
+                        <li><i class="fa fa-check" style="color: limegreen;"></i> Free online test (passion and interest)</li>
+                        <li><i class="fa fa-check" style="color: limegreen;"></i> List of Vacancy</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+
+          <div class="row pricing-tables">
+            <div class="col-md-3 col-sm-6 col-xs-12" style="padding-top: 10px;">
+              <div class="pricing-table" style="height: 100%;">
+                <div class="pricing-details">
+                  <h2>Bronze</h2>
+                  <span>$3.99</span>
+            
+                    <ul>
+                      <li>Online English Test</li>
+                      <li>Online Academic Test</li>
+                      <li>Apply online</li>
+                    </ul>
+                  
+                </div>
+                <div class="col-md-12">
+                  <div class="plan-button">
+                    <a href="#" class="btn btn-common">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12" style="padding-top: 10px;">
+              <div class="pricing-table" style="height: 100%;">
+                <div class="pricing-details">
+                  <h2>Silver</h2>
+                  <span>$9.50</span>
+                  
+                    <ul>
+                      <li>Online Character Test</li>
+                      <li>Online Intelligence Test</li>
+                      <li><br></li>
+                    </ul>
+                  
+                </div>
+                <div class="plan-button">
+                  <a href="#" class="btn btn-common">Buy Now</a>
+                </div>
+              </div>
+            </div>
+  		  
+  		      <div class="col-md-3 col-sm-6 col-xs-12" style="padding-top: 10px;">
+              <div class="pricing-table" style="height: 100%;">
+                <div class="pricing-details">
+                  <h2>Gold</h2>
+                  <span>$9.50</span>
+                  
+                    <ul>
+                      <li>Online Soft Skill Test</li>
+                      <li>Online Management Style Test</li>
+                      <li>Online Work Attitude</li>
+                    </ul>
+                  
+                </div>
+                <div class="plan-button">
+                  <a href="#" class="btn btn-common">Buy Now</a>
+                </div>
+              </div>
+            </div>
+  		  
+  		      <div class="col-md-3 col-sm-6 col-xs-12" style="padding-top: 10px;">
+              <div class="pricing-table" style="height: 100%;">
+                <div class="pricing-details">
+                  <h2>Platinum</h2>
+                  <span>$9.50</span>
+                 
+                    <ul>
+                      <li>Upload CV with PDF and Video</li>
+                      <li>Online Behavioral Test</li>
+                      <li>Talent Solution</li>
+                    </ul>
+                  </div>
+                
+                <div class="plan-button">
+                  <a href="#" class="btn btn-common">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -468,7 +425,7 @@
                 <i class="lnr lnr-clock"></i>
               </div>             
               <div class="fact-count">
-                <h3><span class="counter">1589</span></h3>
+                <h3><span class="counter">24</span></h3>
                 <h4>Working Hours</h4>
               </div>
             </div>
@@ -510,88 +467,6 @@
       </div>
     </div>
     <!-- Counter Section End -->
-
-    <!-- Team section Start -->
-    <!--<section id="team" class="section">
-      <div class="container">
-        <div class="section-header">          
-          <h2 class="section-title">Our Team</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team1.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Jhon Doe</h4>
-                  <p>Chief Technical Officer</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team2.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Paul Kowalsy</h4>
-                  <p>CEO & Co-Founder</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team3.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">                  
-                  <h4 class="team-title">Emilly Williams</h4>
-                  <p>Business Manager</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img class="img-fulid" src="img/team/team4.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Patricia Green</h4>
-                  <p>Graphic Designer</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>-->
-    <!-- Team section End -->
 
     <!-- testimonial Section Start -->
     <div id="testimonial" class="section" data-stellar-background-ratio="1">
