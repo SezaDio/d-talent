@@ -65,5 +65,33 @@
     <script src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
+    <script type="text/javascript">
+
+          $("#jobseeker-membership-content").hide();
+
+          $("#company-button").click(function(){
+            $("#jobseeker-membership-content").hide();
+            $("#company-membership-content").show();
+          });
+
+          $("#jobseeker-button").click(function(){
+            $("#jobseeker-membership-content").show();
+            $("#company-membership-content").hide();
+          });
+
+          $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+              items : 3,
+              loop : true,
+              autoplay : true,
+              lazyLoad : true,
+              autoplayTimeout:3000,
+              navigation : true,
+              navigationText :  false,
+              pagination : false,
+            });
+          });
+    </script>  
+
   </body>
 </html>

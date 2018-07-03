@@ -42,7 +42,7 @@
     <script src="<?php echo base_url('asset/Template Company Profile/js/bootstrap.min.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/js/jquery.mixitup.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/js/nivo-lightbox.js')?>"></script>
-    <script src="<?php echo base_url('asset/Template Company Profile/js/owl.carousel.js')?>"></script>    
+    <script src="<?php echo base_url('asset/Template Company Profile/js/owl.carousel.js')?>"></script>  
     <script src="<?php echo base_url('asset/Template Company Profile/js/jquery.stellar.min.js')?>"></script>    
     <script src="<?php echo base_url('asset/Template Company Profile/js/jquery.nav.js')?>"></script>    
     <script src="<?php echo base_url('asset/Template Company Profile/js/scrolling-nav.js')?>"></script>    
@@ -58,6 +58,5 @@
     <script src="<?php echo base_url('asset/Template Company Profile/js/contact-form-script.js?v='.rand().'')?>"></script>   
     <script src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
     <script src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
-
   </body>
 </html>
