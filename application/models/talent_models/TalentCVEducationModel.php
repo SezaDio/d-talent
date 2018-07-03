@@ -26,7 +26,6 @@
 				'from_year'   => $this->input->post('from_year') . '-01-01',
 				'to_year' 	  => $this->input->post('to_year') . '-01-01',
 				'description' => $this->input->post('description'),
-				// 'image' => $this->input->post('image'),
 			);
 			
 			return $this->db->insert('talent_cv_education', $data);
@@ -51,7 +50,6 @@
 				'from_year'   => $this->input->post('from_year') . '-01-01',
 				'to_year' 	  => $this->input->post('to_year') . '-01-01',
 				'description' => $this->input->post('description'),
-				// 'image' => $this->input->post('image'),
 			);
 			
 			$this->db->where('id_talent_cv_education', $id_talent_cv_education);

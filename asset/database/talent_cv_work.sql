@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2018 at 09:45 AM
+-- Generation Time: Jul 03, 2018 at 08:44 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -33,11 +33,10 @@ CREATE TABLE `talent_cv_work` (
   `id_talent` int(11) NOT NULL,
   `position` varchar(200) NOT NULL,
   `company` varchar(200) NOT NULL,
-  `location` varchar(100) DEFAULT NULL COMMENT 'city of company',
+  `id_location` varchar(100) DEFAULT NULL COMMENT 'lokasi_ID',
   `work_start` date DEFAULT NULL,
   `work_end` date DEFAULT NULL,
-  `description` text,
-  `image` varchar(200) DEFAULT NULL
+  `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

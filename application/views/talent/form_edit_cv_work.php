@@ -40,7 +40,16 @@
 
 				<div class="form-group">
 					<label>Lokasi</label>
-					<input type="text" name="location" class="form-control" value="<?php echo $cv_work->location; ?>">
+					<select name="id_location" class="form-control selectpicker" data-live-search="true" required="required" data-size="7">
+						<option value="">-</option>
+						<?php
+							foreach ($locations as $location) {
+								echo '<option value="'.$location->lokasi_ID.'" '.($location->lokasi_ID == $cv_work->id_location ? "selected" : "").'>'.$location->lokasi_nama.'</option>';
+						?>
+						<?php
+							}
+						?>
+					</select>
 				</div>
 
 				<div class="row form-group">
@@ -71,9 +80,13 @@
 				</div>
 
 				<br>
-				<div class="form-group text-center">
-					<a href="<?php echo site_url('talent'); ?>" class="btn btn-talent">Kembali</a>
-					<input type="submit" value="Simpan" class="btn btn-talent" style="margin-left: 15px;">
+				<div class="form-group">
+					<div class="col-md-4 col-md-offset-2">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+					</div>
+					<div class="col-md-4">
+						<input type="submit" value="Simpan" class="button button1" style="margin-left: 15px;">
+					</div>
 				</div>
 
 			</form>

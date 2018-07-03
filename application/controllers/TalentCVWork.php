@@ -6,18 +6,20 @@ class TalentCVWork extends CI_Controller {
 	public function _construct()
 	{
 		parent::_construct();
-		// $this->load->model('talent_models/TalentCVWorkModel');
-		// // $this->load->helper('url');
-		// // $this->load->helper('form');
-		// $this->load->library('input');
-		// $this->load->library('form_validation');
-		// $this->load->library('session');
-
 	}
 
 	public function index()
 	{
 		$data['page_title'] = "Tambah Pengalaman Kerja";
+
+		// get location's name
+		$this->db->select('lokasi_ID, lokasi_nama');
+		$this->db->from('inf_lokasi');
+		$this->db->where('lokasi_kabupatenkota >', 0);
+		$this->db->where('lokasi_kecamatan', 0);
+		$this->db->where('lokasi_kelurahan', 0);
+
+		$data['locations'] = $this->db->get()->result();
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_cv_work');
@@ -30,7 +32,6 @@ class TalentCVWork extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$id_talent = $this->session->userdata('id_talent');
-
 		// used for if form not valid
 		$data['page_title'] = "Tambah Pengalaman Kerja";
 
@@ -38,6 +39,15 @@ class TalentCVWork extends CI_Controller {
 		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
+			// get location's name
+			$this->db->select('lokasi_ID, lokasi_nama');
+			$this->db->from('inf_lokasi');
+			$this->db->where('lokasi_kabupatenkota >', 0);
+			$this->db->where('lokasi_kecamatan', 0);
+			$this->db->where('lokasi_kelurahan', 0);
+
+			$data['locations'] = $this->db->get()->result();
+
 			$this->load->view('skin/talent/header', $data);
 			$this->load->view('talent/form_cv_work');
 			$this->load->view('skin/talent/footer');
@@ -62,6 +72,15 @@ class TalentCVWork extends CI_Controller {
 		$data['page_title'] = "Edit Pengalaman Kerja";
 		$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
 
+		// get location's name
+		$this->db->select('lokasi_ID, lokasi_nama');
+		$this->db->from('inf_lokasi');
+		$this->db->where('lokasi_kabupatenkota >', 0);
+		$this->db->where('lokasi_kecamatan', 0);
+		$this->db->where('lokasi_kelurahan', 0);
+
+		$data['locations'] = $this->db->get()->result();
+
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_edit_cv_work');
 		$this->load->view('skin/talent/footer');
@@ -82,6 +101,15 @@ class TalentCVWork extends CI_Controller {
 			// get edit data
 			$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
 			
+			// get location's name
+			$this->db->select('lokasi_ID, lokasi_nama');
+			$this->db->from('inf_lokasi');
+			$this->db->where('lokasi_kabupatenkota >', 0);
+			$this->db->where('lokasi_kecamatan', 0);
+			$this->db->where('lokasi_kelurahan', 0);
+
+			$data['locations'] = $this->db->get()->result();
+
 			$this->load->view('skin/talent/header', $data);
 			$this->load->view('talent/form_edit_cv_work');
 			$this->load->view('skin/talent/footer');

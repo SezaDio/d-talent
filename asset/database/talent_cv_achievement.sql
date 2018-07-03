@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2018 at 10:07 AM
+-- Generation Time: Jul 02, 2018 at 12:08 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -32,8 +32,8 @@ CREATE TABLE `talent_cv_achievement` (
   `id_talent_cv_achievement` int(11) NOT NULL,
   `id_talent` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `associated_education` int(11) DEFAULT NULL,
-  `associated_work` int(11) DEFAULT NULL,
+  `associated_education` int(11) DEFAULT NULL COMMENT 'talent_cv_education_id',
+  `associated_work` int(11) DEFAULT NULL COMMENT 'talent_cv_achievement_id',
   `issuer` varchar(100) DEFAULT NULL,
   `month` date DEFAULT NULL,
   `year` date DEFAULT NULL,
