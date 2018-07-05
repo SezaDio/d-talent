@@ -69,6 +69,11 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['talent/account/edit'] = 'Talent/editAccount';
+$route['talent/account/update'] = 'Talent/updateAccount';
+$route['talent/profile/edit'] = 'Talent/editProfile';
+$route['talent/profile/update'] = 'Talent/updateProfile';
+
 $route['talent/cv-work-experience/create'] = 'TalentCVWork';
 $route['talent/cv-work-experience/edit/(:num)'] = 'TalentCVWork/edit/$1';
 $route['talent/cv-work-experience/store'] = 'TalentCVWork/store';

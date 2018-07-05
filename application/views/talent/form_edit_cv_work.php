@@ -6,7 +6,7 @@
 
 	<div class="cv col-md-6 col-md-offset-3">
 		<div class="card">
-			<form action="<?php echo site_url('talent/cv-work-experience/update/' .  $cv_work->id_talent_cv_work); ?>" method="post" enctype="multipart/form-data">
+			<form action="<?php echo site_url('talent/cv-work-experience/update/' .  $cv_work->id_talent_cv_work); ?>" method="post">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';

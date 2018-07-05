@@ -1,45 +1,48 @@
+<?php
+	$this->load->helper('custom');
+?>
+
 <div class="container">
 
 	<div class="bg-talent">
-		<figure class="image-bg"></figure>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+		<div class="profile-edit">
+			<a href="<?php echo site_url('talent/profile/edit/');?>">
+				<i class="fa fa-pencil"></i>
+			</a>
+		</div>
 	</div>
 
 	<div class="profile">
 		<div class="img-talent">
-			<figure class="image-bg"></figure>
+			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
 		</div>
 
 		<div class="card">
-			<div class="text-center">
-				Ahmad | 23 tahun | Semarang
-				<div class="col-md-2 col-md-offset-2"><?php echo $talent->nama; ?></div>
-				<div class="col-md-2"><?php echo $talent->tanggal_lahir; ?></div>
-				<div class="col-md-2"><?php echo $talent->id_kota; ?></div>
+			<div class="text-center profile-attribute">
+				<!-- Ahmad | 23 tahun | Semarang -->
+				<span><?php echo $talent->nama; ?></span> |
+				<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
+				<span><?php echo capitalizeEachWord($talent_location_city); ?></span>
 			</div>
 			<br>
-			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<div style="text-align: justify;">
+				<?php echo $talent->tentang_saya; ?>
 			</div>
-			<div class="text-center job-interest">
-				<span class="label label-success">Web Developer</span>
-				<span class="label label-success">Design UI/UX</span>
+			<div class="text-center job-interest label-colors">
+				<?php echo displaySkills($talent->kemampuan)?>
 			</div>
 		</div>
 
 		<!-- kontak -->
-		<div class="card contact-talent">
+		<div class="contact-talent">
 			<div class="text-center">
-				<i class="fa fa-envelope"> ahmad@gmail.com</i>
-				<i class="fa fa-phone"> 081533222000</i>
-				<i class="fa fa-home"> Semarang</i>
+				<i class="fa fa-envelope"> <?php echo $talent->email; ?></i>
+				<i class="fa fa-phone"> <?php echo $talent->nomor_ponsel; ?></i>
+				<i class="fa fa-home"> <?php echo capitalizeEachWord($talent_location_city); ?></i>
 			</div>
 		</div>
-
+		<br>
 		<!-- konten -->
 		<div class="content">
 			<div class="cv-selection">
@@ -60,10 +63,6 @@
 			</div>
 			<br>
 			<br>
-
-			<?php
-				$this->load->helper('custom');
-			?>
 
 			<div class="cv">
 				<?php

@@ -75,3 +75,25 @@ function displayCVEducationDate($start_date, $end_date)
         return "-";
     }
 }
+
+function capitalizeEachWord($string)
+{
+    $string = strtolower($string);
+    $string = ucwords($string);
+    return $string;
+}
+
+function countAge($birthday)
+{
+    $from = new DateTime($birthday);
+    $to   = new DateTime('today');
+    return $from->diff($to)->y;
+}
+
+function displaySkills($string)
+{
+    $array = explode(',', $string);
+    foreach ($array as $key => $value) {
+        echo '<span class="label">'. $value .'</span> ';
+    }
+}

@@ -24,42 +24,6 @@ footer{
 	padding: 15px;
 }
 
-.container{
-	width: 80%;
-}
-.talent-page{
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-.image-bg{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.fit-content{
-	width: -moz-fit-content;
-	width: -webkit-fit-content;
-	width: fit-content;
-}
-
-.bg-talent{
-	width: 100%;
-	height: 150px;
-	background-color: #ccc;
-}
-.bg-talent .image-bg{
-	height: 100%;
-}
-.btn-talent{
-	border-radius: 0px;
-	border: 1px solid #333;
-	background-color: #fff;
-	color: #333;
-}
-.btn-talent:hover{
-	border-color: #000;
-	color: #000;
-}
 .btn-outline-danger{
 	border-radius: 0px;
 	border: 1px solid #d9534f;
@@ -94,25 +58,90 @@ footer{
 	border-color: #d9534f;
 }
 
+
+.container{
+	width: 80%;
+}
+.talent-page{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.image-bg{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.fit-content{
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+	width: fit-content;
+}
+
+/* Talent Home */
 .profile{
 	position: relative;
 	padding-top: 60px;
 	padding-bottom: 20px;
 }
+.bg-talent{
+	width: 100%;
+	height: 200px;
+	background-color: #ccc;
+	position: relative;
+}
+.bg-talent .image-bg,
+.img-talent .image-bg{
+	height: 100%;
+}
+
+.profile-edit{
+	position: absolute;
+	top: 7px;
+	right: 0px;
+}
+.profile-edit a{
+	padding: 10px 12px;
+	background-color: #ffffffe6;
+}
+.profile-attribute span{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.label-colors .label{
+	padding: 3px 8px;
+	border-radius: 3px;
+}
+/* select every 5 elements start with 1st element */
+.label-colors .label:nth-child(5n+1){
+	background-color: #4CE414;	/*green*/
+}
+.label-colors .label:nth-child(5n+2){
+	background-color: #039BE5;	/*blue*/
+}
+.label-colors .label:nth-child(5n+3){
+	background-color: #D81B60;	/*pink*/
+}
+.label-colors .label:nth-child(5n+4){
+	background-color: #FBC02D;	/*yellow*/
+}
+.label-colors .label:nth-child(5n+5){
+	background-color: #5E35B1;	/*purple*/
+}
+
 .img-talent{
 	width: 100px;
 	height: 100px;
-	border: 1px solid #333;
-	border-radius: 50px;
+	/*border: 1px solid #fff;*/
+	border-radius: 55px;
 	background-color: #ccc;
 	position: absolute;
 	top: -50px;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 10;
+	overflow: hidden;
 }
 .job-interest,
-.contact-talent,
 .content{
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -141,6 +170,13 @@ p.text-danger{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+
+
+
+
+
+
+
 
 /* company profile */
 .button {
