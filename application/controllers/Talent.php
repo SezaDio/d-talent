@@ -140,6 +140,6 @@ class Talent extends CI_Controller {
 		}
 
 		// redirect to page ...
-		redirect('talent/profile/edit');
+		redirect('talent');
 	}
 }
