@@ -1,6 +1,7 @@
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3" style="min-height: 62vh;">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/profile/update'); ?>" method="post" enctype="multipart/form-data">
 				<?php

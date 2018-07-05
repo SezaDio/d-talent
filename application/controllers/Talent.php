@@ -22,6 +22,7 @@ class Talent extends CI_Controller {
 		$this->load->model('talent_models/TalentCVAchievementModel');
 		$this->load->model('talent_models/TalentCVCourseModel');
 
+		// $data['page_title'] = "Talent";
 		$data['page_title'] = "Talent";
 		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
 		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
@@ -43,6 +44,20 @@ class Talent extends CI_Controller {
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/index');
+		$this->load->view('skin/talent/footer');
+	}
+
+	public function editAccount()
+	{
+		$this->load->model('talent_models/TalentModel');
+
+		$id_talent = $this->session->userdata('id_talent');
+
+		$data['page_title'] = "Edit Account";
+		$data['talent'] 	= $this->TalentModel->find($id_talent);
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/form_edit_account');
 		$this->load->view('skin/talent/footer');
 	}
 
@@ -72,8 +87,6 @@ class Talent extends CI_Controller {
 		$this->load->library('upload');
 
 		$id_talent = $this->session->userdata('id_talent');
-
-		// $foto_sampul_filename = "file_".time();
 
 		// default name: use old file name
 		$foto_sampul_filename = $this->input->post('old_foto_sampul');

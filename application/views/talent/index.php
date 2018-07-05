@@ -8,7 +8,7 @@
 		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
 		<div class="profile-edit">
 			<a href="<?php echo site_url('talent/profile/edit/');?>">
-				<i class="fa fa-pencil"></i>
+				<i class="fa fa-pen"></i>
 			</a>
 		</div>
 	</div>
@@ -18,7 +18,7 @@
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
 		</div>
 
-		<div class="card">
+		<div style="padding: 15px;">
 			<div class="text-center profile-attribute">
 				<!-- Ahmad | 23 tahun | Semarang -->
 				<span><?php echo $talent->nama; ?></span> |
@@ -37,9 +37,9 @@
 		<!-- kontak -->
 		<div class="contact-talent">
 			<div class="text-center">
-				<i class="fa fa-envelope"> <?php echo $talent->email; ?></i>
-				<i class="fa fa-phone"> <?php echo $talent->nomor_ponsel; ?></i>
-				<i class="fa fa-home"> <?php echo capitalizeEachWord($talent_location_city); ?></i>
+				<i class="fa fa-envelope"></i> <?php echo $talent->email; ?>
+				<i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?>
+				<i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?>
 			</div>
 		</div>
 		<br>
@@ -64,7 +64,7 @@
 			<br>
 			<br>
 
-			<div class="cv">
+			<div class="cv center-block">
 				<?php
 					if($cv_works != null) {
 				?>
@@ -208,6 +208,7 @@
 					} 	//./if
 				?>
 			</div>
+
 		</div>
 	</div>
 

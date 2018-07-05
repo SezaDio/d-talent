@@ -1,27 +1,32 @@
 body{
-	font-family: "Raleway";
 	font-size: 14px;
+}
+/* Overwrite */
+header{
+	height: 92px;
+}
+.navbar{
+	background-color: #fff;
+	box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.06);
+}
+.navbar-nav .nav-item .nav-link{
 	color: #333;
 }
-header{
-	height: 70px;
-	background-color: #ccc;
+.navbar-nav .nav-item .nav-link:hover{
+	color: #FDD835 !important;	/*yellow*/
 }
-footer{
-	height: 70px;
-	background-color: #000;
+.top-nav-collapse .navbar-nav .nav-item .nav-link:hover{
+	color: #FDD835 !important;	/*yellow*/
 }
+
 /* toast message */
 .toast{
 	min-width: 250px;
 	min-height: 60px;
 	position: fixed;
-	top: 65px;
+	top: 120px;
 	right: -250px;
-	z-index: 100;
-}
-.card{
-	padding: 15px;
+	z-index: 1000;
 }
 
 .btn-outline-danger{
@@ -34,37 +39,14 @@ footer{
 	border-color: #ce2924;
 	color: #ce2924;
 }
-.modal{
-	top: 15%;
-}
-.modal-content{
-	border-radius: 0px;
-	/*border: 1px solid #000;*/
-}/*
-.modal-header{
-    border-bottom-color: #000;
-}
-.modal-footer{
-    border-top-color: #000;
-}*/
-.alert{
-	border-radius: 0px;
-	background-color: #fff;
-}
-.alert-success{
-	border-color: #5cb85c;
-}
-.alert-danger{
-	border-color: #d9534f;
-}
 
-
-.container{
-	width: 80%;
-}
 .talent-page{
 	padding-top: 50px;
 	padding-bottom: 50px;
+}
+.page-title{
+	font-size: 28px;
+	margin-bottom: 35px;
 }
 .image-bg{
     background-size: cover;
@@ -131,7 +113,7 @@ footer{
 .img-talent{
 	width: 100px;
 	height: 100px;
-	/*border: 1px solid #fff;*/
+	border: 1px solid #ccc;
 	border-radius: 55px;
 	background-color: #ccc;
 	position: absolute;
@@ -149,13 +131,16 @@ footer{
 .contact-talent .fa:nth-child(n+2){
 	margin-left: 15px;
 }
-
+.cv{
+	width: 800px;
+}
 .panel .table td{
 	border: none;
 }
 .table .periode{
 	width: 250px;
-	color: #0080ff;
+	color: #000;
+	/*font-weight: bold;*/
 }
 .table .action{
 	width: 70px;
@@ -185,9 +170,6 @@ p.text-danger{
 	height: 100px;
 	border-radius: 55px;
 }
-
-
-
 
 
 /* company profile */
@@ -243,4 +225,86 @@ p.text-danger{
 	@media only screen and (min-width: 992px) {
 		.small-slider {display: none;}
 	} 
+}
+
+
+/* Overwrite */
+.dropdown-menu{
+	font-size: 14px;
+}
+
+.modal{
+	top: 15%;
+}
+.modal-content{
+	border-radius: 0px;
+	/*border: 1px solid #333;*/
+}/*
+.modal-header{
+    border-bottom-color: #333;
+}
+.modal-footer{
+    border-top-color: #333;
+}*/
+.alert{
+	border-radius: 0px;
+	background-color: #fff;
+	padding: 15px;
+}
+.alert-success{
+	border-color: #5cb85c;
+}
+.alert-danger{
+	border-color: #d9534f;
+}
+.alert h4{
+	font-size: 24px;
+}
+form{
+	padding: 15px;
+}
+.form-control{
+	color: #333;
+	border-color: #ddd;
+}
+.form-control:focus{
+	color: #333;
+	border-color: #333;
+}
+select.form-control{
+	height: auto !important;
+	padding: 5.5px 10px !important;
+}
+.bootstrap-select.form-control{
+	margin-bottom: 5px !important;
+}
+.bootstrap-select > .dropdown-toggle{
+	border: 1px solid #ddd;
+	color: #333;
+	padding: 10px 15px;
+}
+.input-group-addon{
+	width: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.dropdown button{
+	background-color: #fefefe;
+	border: 1px solid #ddd;
+	padding: 7px 20px;
+	border-radius: 4px;
+}
+.dropdown button:hover{
+	border-color: #333;
+}
+.dropdown-menu > li > a{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.panel-default,
+.panel-default > .panel-heading{
+	/*border-color: #333;*/
+}
+figure{
+	margin-bottom: 0px;
 }

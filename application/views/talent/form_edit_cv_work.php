@@ -3,8 +3,9 @@
 	// $this->load->library('form_validation');	==> loaded on talent header
 ?>
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-work-experience/update/' .  $cv_work->id_talent_cv_work); ?>" method="post">
 				<?php
@@ -40,16 +41,18 @@
 
 				<div class="form-group">
 					<label>Lokasi</label>
-					<select name="id_location" class="form-control selectpicker" data-live-search="true" required="required" data-size="7">
-						<option value="">-</option>
-						<?php
-							foreach ($locations as $location) {
-								echo '<option value="'.$location->lokasi_ID.'" '.($location->lokasi_ID == $cv_work->id_location ? "selected" : "").'>'.$location->lokasi_nama.'</option>';
-						?>
-						<?php
-							}
-						?>
-					</select>
+					<div class="clearfix">
+						<select name="id_location" class="form-control selectpicker" data-live-search="true" required="required" data-size="7">
+							<option value="">-</option>
+							<?php
+								foreach ($locations as $location) {
+									echo '<option value="'.$location->lokasi_ID.'" '.($location->lokasi_ID == $cv_work->id_location ? "selected" : "").'>'.$location->lokasi_nama.'</option>';
+							?>
+							<?php
+								}
+							?>
+						</select>
+					</div>
 				</div>
 
 				<div class="row form-group">
