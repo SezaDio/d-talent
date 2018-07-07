@@ -29,6 +29,12 @@ header{
 	z-index: 1000;
 }
 
+h3{
+	font-size: 28px;
+}
+h4{
+	font-size: 24px;
+}
 .btn-outline-danger{
 	color: #d9534f;
 }
@@ -273,6 +279,7 @@ p.text-danger{
 .alert h4{
 	font-size: 24px;
 }
+.job-vacancy,
 form{
 	padding: 15px;
 }
@@ -354,4 +361,14 @@ a:focus{
 .open .dropdown-toggle.datepicker table tr td.active.disabled,
 .open .dropdown-toggle.datepicker table tr td.active.disabled:hover{
 	background: #3276b1;
+}
+.back-to-top i{
+	background-color: #FDD835;
+	color: #333;
+}
+
+/* Vacancy Detail */
+.company-name{
+	margin-top: 15px;
+	margin-bottom: 25px;
 }

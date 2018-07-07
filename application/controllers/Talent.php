@@ -22,7 +22,6 @@ class Talent extends CI_Controller {
 		$this->load->model('talent_models/TalentCVAchievementModel');
 		$this->load->model('talent_models/TalentCVCourseModel');
 
-		// $data['page_title'] = "Talent";
 		$data['page_title'] = "Talent";
 		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
 		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
@@ -31,16 +30,12 @@ class Talent extends CI_Controller {
 
 		// get user data
 		$data['talent'] 	= $this->TalentModel->find($id_talent);
-		// $data['talent'] = $this->session->userdata();
 
 		// get location name
 		$this->db->select('lokasi_nama');
 		$this->db->from('inf_lokasi');
 		$this->db->where(array('lokasi_kode' => $data['talent']->id_kota));
 		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
-
-		// var_dump($data['talent']);
-		// die();
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/index');
@@ -58,8 +53,6 @@ class Talent extends CI_Controller {
 		$data['talent'] 		= $this->TalentModel->find($id_talent);
 		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
 		$data['lokasiKabupatenKota'] = $this->UserModel->lokasi_kabupaten_kota($data['talent']->id_provinsi);
-
-		// var_dump($data['lokasiProvinsi']);die();
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_edit_account');
@@ -174,7 +167,6 @@ class Talent extends CI_Controller {
 				'file_name' => $foto_sampul_filename_new
 			);
 
-			// $this->load->library('upload', $config_foto_sampul);
 			$this->upload->initialize($config_foto_sampul);
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_sampul')) {
@@ -198,7 +190,6 @@ class Talent extends CI_Controller {
 				'file_name' => $foto_profil_filename_new
 			);
 
-			// $this->load->library('upload', $config_foto_profil);
 			$this->upload->initialize($config_foto_profil);
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_profil')) {
@@ -223,5 +214,14 @@ class Talent extends CI_Controller {
 
 		// redirect to page ...
 		redirect('talent');
+	}
+
+	public function vacancyDetail()
+	{
+		$data['page_title'] = "Detail Lowongan";
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/vacancy-detail');
+		$this->load->view('skin/talent/footer');
 	}
 }

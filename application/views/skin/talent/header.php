@@ -62,10 +62,10 @@
                 <a class="nav-link page-scroll" href="#hero-area"><i class="fa fa-home"></i> <b>Home</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features"><i class="fa fa-bullseye"></i> <b>Job List</b></a>
+                <a class="nav-link page-scroll" href="#features"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-check"></i> My CV</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> My CV</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
@@ -83,10 +83,10 @@
               <a class="page-scroll" href="#services">Job List</a>
             </li>
             <li>
-              <a class="page-scroll" href="#features">My CV</a>
+              <a class="page-scroll" href="<?php echo site_url('talent');?>">My CV</a>
             </li>
             <li>
-              <a class="page-scroll" href="#portfolios">My Account</a>
+              <a class="page-scroll" href="<?php echo site_url('talent/account/edit');?>">My Account</a>
             </li>
         </ul>
         <!-- Mobile Menu End -->
