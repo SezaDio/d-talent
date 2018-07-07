@@ -30,14 +30,32 @@ header{
 }
 
 .btn-outline-danger{
-	border-radius: 0px;
-	border: 1px solid #d9534f;
-	background-color: #fff;
 	color: #d9534f;
 }
 .btn-outline-danger:hover{
-	border-color: #ce2924;
-	color: #ce2924;
+	color: #fff;
+}
+.btn-outline-default{
+	background-color: #fff;
+	border-color: #999;
+	color: #999;
+}
+.btn-outline-default:hover{
+	background-color: #999;
+	color: #fff;
+}
+.btn-outline-black{
+	background-color: #fff;
+	border-color: #333;
+	color: #333;
+}
+.btn-outline-black:hover{
+	background-color: #333;
+	color: #fff;
+}
+.space{
+	margin-left: 7px;
+	margin-right: 7px;
 }
 
 .talent-page{
@@ -140,7 +158,6 @@ header{
 .table .periode{
 	width: 250px;
 	color: #000;
-	/*font-weight: bold;*/
 }
 .table .action{
 	width: 70px;
@@ -238,14 +255,10 @@ p.text-danger{
 }
 .modal-content{
 	border-radius: 0px;
-	/*border: 1px solid #333;*/
-}/*
-.modal-header{
-    border-bottom-color: #333;
 }
-.modal-footer{
-    border-top-color: #333;
-}*/
+.modal-header{
+	display: block;
+}
 .alert{
 	border-radius: 0px;
 	background-color: #fff;
@@ -307,4 +320,38 @@ select.form-control{
 }
 figure{
 	margin-bottom: 0px;
+}
+
+/* Edit Account */
+.text-link{
+	color: #333;
+}
+.text-link:hover{
+	color: #333;
+	cursor: pointer !important;
+}
+a:focus{
+	color: #333;
+}
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active:focus,
+.datepicker table tr td.active:hover:focus,
+.datepicker table tr td.active.disabled:focus,
+.datepicker table tr td.active.disabled:hover:focus,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td.active,
+.open .dropdown-toggle.datepicker table tr td.active:hover,
+.open .dropdown-toggle.datepicker table tr td.active.disabled,
+.open .dropdown-toggle.datepicker table tr td.active.disabled:hover{
+	background: #3276b1;
 }

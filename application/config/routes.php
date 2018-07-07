@@ -73,6 +73,7 @@ $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';
 $route['talent/profile/update'] = 'Talent/updateProfile';
+$route['talent/password/update'] = 'Talent/updatePassword';
 
 $route['talent/cv-work-experience/create'] = 'TalentCVWork';
 $route['talent/cv-work-experience/edit/(:num)'] = 'TalentCVWork/edit/$1';

@@ -189,6 +189,8 @@
 								var cTotal = respData.kota.length;
 								var ctr;
 
+								// clear options
+								$('#lokasi_kota').html('<option value="All">--Pilih Lokasi Kota--</option>');
 								for ( ctr = 0; ctr < cTotal; ctr++) 
 								{
 									$('#lokasi_kota').append('<option value="'+respData.kota[ctr].id+'">'+respData.kota[ctr].name+'</option>');

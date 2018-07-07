@@ -1,4 +1,5 @@
 <?php
+	$this->load->helper('text');
 	$this->load->helper('custom');
 ?>
 
@@ -80,9 +81,12 @@
 					    			<?php echo displayCVWorkDate($cv_work->work_start, $cv_work->work_end); ?>
 					    		</td>
 					    		<td>
-					    			<?php echo $cv_work->position; ?>
-					    			di
-					    			<?php echo $cv_work->company; ?>
+					    			<?php
+					    				echo $cv_work->position ." di ". $cv_work->company;
+					    				if ($cv_work->description != "") {
+					    					echo "<br>" . character_limiter($cv_work->description, 60);
+					    				}
+					    			?>
 					    		</td>
 					    		<td class="action">
 					    			<a href="<?php echo site_url('talent/cv-work-experience/edit/') . $cv_work->id_talent_cv_work;?>" class="text-primary"><i class="fa fa-edit"></i></a>
@@ -104,7 +108,7 @@
 				<br>
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Pengalaman Kerja</h3>
+				    <h3 class="panel-title">Pendidikan</h3>
 				  </div>
 				  <div class="panel-body">
 				    <table class="table">
@@ -117,9 +121,12 @@
 					    			<?php
 					    				echo $cv_education->school;
 					    				if ($cv_education->field_of_study != "") {
-					    					echo "<br>";
+					    					echo '<span class="space">|</span>' . $cv_education->field_of_study;
 					    				}
-					    				echo $cv_education->field_of_study;
+
+					    				if ($cv_education->description != "") {
+					    					echo "<br>" . character_limiter($cv_work->description, 60);
+					    				}
 					    			?>
 					    		</td>
 					    		<td class="action">
@@ -142,7 +149,7 @@
 				<br>
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Pengalaman Kerja</h3>
+				    <h3 class="panel-title">Prestasi</h3>
 				  </div>
 				  <div class="panel-body">
 				    <table class="table">
@@ -155,9 +162,8 @@
 					    			<?php
 					    				echo $cv_achievement->title;
 					    				if ($cv_achievement->issuer != "") {
-					    					echo " <b>.</b> ";
+					    					echo '<span class="space">|</span>' . $cv_achievement->issuer;
 					    				}
-					    				echo $cv_achievement->issuer;
 					    			?>
 					    		</td>
 					    		<td class="action">
@@ -191,7 +197,7 @@
 					    		</td>
 					    		<td>
 					    			<?php
-					    				echo "";
+					    				// echo "";
 					    			?>
 					    		</td>
 					    		<td class="action">
@@ -226,7 +232,7 @@
 				<p>Apakah Anda yakin?</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-talent" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-outline-default" data-dismiss="modal">Cancel</button>
 				<a class="btn btn-outline-danger">Delete</a>
 			</div>
 		</div><!-- /.modal-content -->
@@ -258,9 +264,9 @@
         $(this).find('a').attr('href', route);
     });
 </script>
-
+<!-- 
 <div class="container">
 	<br>
 	<br>
 	<a href="http://preview.uideck.com/items/mate/" target="_blank">http://preview.uideck.com/items/mate/</a>
-</div>
+</div> -->

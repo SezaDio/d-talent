@@ -50,11 +50,16 @@ class Talent extends CI_Controller {
 	public function editAccount()
 	{
 		$this->load->model('talent_models/TalentModel');
+		$this->load->model('account/UserModel');
 
 		$id_talent = $this->session->userdata('id_talent');
 
-		$data['page_title'] = "Edit Account";
-		$data['talent'] 	= $this->TalentModel->find($id_talent);
+		$data['page_title'] 	= "Edit Account";
+		$data['talent'] 		= $this->TalentModel->find($id_talent);
+		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		$data['lokasiKabupatenKota'] = $this->UserModel->lokasi_kabupaten_kota($data['talent']->id_provinsi);
+
+		// var_dump($data['lokasiProvinsi']);die();
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_edit_account');
@@ -63,8 +68,72 @@ class Talent extends CI_Controller {
 
 	public function updateAccount()
 	{
+		$this->load->model('talent_models/TalentModel');
+		$this->load->library('form_validation');
+		
 		$id_talent = $this->session->userdata('id_talent');
-		# code...
+
+		$this->form_validation->set_rules('nama', '"Nama"', 'required');
+		$this->form_validation->set_rules('email', '"Email"', 'required');
+		$this->form_validation->set_rules('nomor_ponsel', '"Telepon"', 'required');
+		$this->form_validation->set_rules('tanggal_lahir', '"Tanggal Lahir"', 'required');
+		$this->form_validation->set_rules('id_kota', '"Lokasi Kota"', 'required');
+		$this->form_validation->set_rules('id_provinsi', '"Lokasi Provinsi"', 'required');
+
+		if($this->form_validation->run() != FALSE) {
+			// update db
+			$update = $this->TalentModel->updateAccount($id_talent);
+			if ($update) {
+				// message
+				$this->session->set_flashdata('msg_success', 'Edit akun berhasil');
+			}
+			else{
+				// message
+				$this->session->set_flashdata('msg_error', 'Edit akun gagal');
+			}
+		}
+
+		// redirect to page ...
+		redirect('talent/account/edit');
+	}
+
+	public function updatePassword()
+	{
+		$this->load->model('talent_models/TalentModel');
+		$this->load->library('form_validation');
+		
+		$id_talent = $this->session->userdata('id_talent');
+
+		$this->form_validation->set_rules('old_password', '"Password Lama"', 'required');
+		$this->form_validation->set_rules('new_password', '"Password Baru"', 'required');
+
+		if($this->form_validation->run() != FALSE) {
+
+			$old_password = $this->input->post('old_password', 'true');
+			$new_password = $this->input->post('new_password','true');
+			// check old password
+			$temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+
+			if ($temp_account != "") {
+				// update db
+				$update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				if ($update) {
+					// message
+					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');
+				}
+				else{
+					// message
+					$this->session->set_flashdata('msg_error', 'Ubah password gagal');
+				}
+			}
+			else{
+				// message
+				$this->session->set_flashdata('msg_error', 'Password lama tidak valid');
+			}
+		}
+
+		// redirect to page ...
+		redirect('talent/account/edit');
 	}
 
 	public function editProfile()

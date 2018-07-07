@@ -12,22 +12,33 @@
     <!-- D-Talent -->
     <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>" rel="stylesheet"/>
-    <!-- <link href="<?php echo base_url('asset/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" /> -->
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>">    
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
+    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
+	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">
 
     <!-- D-Talent -->
     <link href="<?php echo base_url('asset/css/talent.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('asset/css/bootstrap-select.min.css'); ?>" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
     
+    <!-- Template JS. -->
+    <script src="<?php echo base_url('asset/Template Company Profile/js/jquery-min.js')?>"></script>
+    <script src="<?php echo base_url('asset/Template Company Profile/js/bootstrap.min.js')?>"></script>
+    
     <!-- JS -->
-    <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js?ver=b3.0'); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b2.0'); ?>"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-3.2.0.min.js'); ?>"></script> -->
+    <!-- <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b2.0'); ?>"></script> -->
 	<script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('asset/js/bootstrap-select.min.js'); ?>"></script>
 
@@ -54,10 +65,10 @@
                 <a class="nav-link page-scroll" href="#features"><i class="fa fa-bullseye"></i> <b>Job List</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#blog"><i class="fa fa-check"></i> My CV</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-check"></i> My CV</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#pricing"><i class="fa fa-user"></i> <b>My Account</b></a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
               </li>
             </ul>
           </div>
