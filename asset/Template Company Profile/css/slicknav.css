@@ -49,9 +49,9 @@
     clear: both; }
 
 .slicknav_nav {
-  clear: both; }
+  clear: both;}
   .slicknav_nav ul {
-    display: block; }
+    display: block;}
   .slicknav_nav li {
     display: block; 
     line-height: 30px;
@@ -85,6 +85,7 @@
 }
 .slicknav_menu ul{
   background: #fff;
+  margin-top: 93px;
 }
   .slicknav_menu * {
     box-sizing: border-box; }

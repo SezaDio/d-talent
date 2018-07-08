@@ -10,18 +10,21 @@
     <title>D-Talent | Company Page</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+    <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/jquery-min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css"> href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
 	
 	<style>
     .button {
@@ -61,6 +64,36 @@
       .button2:hover {
           background-color: black;
           color: white;
+      }
+
+      .button3 {
+          background-color: #f44a56;
+          color: white;
+          border: 2px solid #f44a56;
+      }
+
+      .button3:hover {
+          background-color: white;
+          color: black;
+      }
+
+      .navbar-expand-lg .navbar-nav .nav-link {
+        color: black;
+        padding: 0 22px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        line-height: 40px;
+        border-radius: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .hover-show-div {
+          position: absolute;
+          top: 20px;
+          right: 40px;
+      }
 
 		/* Extra small devices (phones, 600px and down) */
 			@media only screen and (max-width: 600px) {
@@ -100,7 +133,8 @@
           
         </div>
       </div>
+    
+      <br><br>
     </header>
-    <br><br><br>
 
     <!-- Header Section End --> 
