@@ -69,6 +69,9 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['talent/login'] = 'AccountTalent/view_signup';
+$route['talent/logout'] = 'AccountTalent/logout_member';
+
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';

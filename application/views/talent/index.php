@@ -18,62 +18,67 @@
 		<div class="img-talent">
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
 		</div>
+		
+		<br>
 
-		<div style="padding: 15px;">
-			<div class="text-center profile-attribute">
-				<!-- Ahmad | 23 tahun | Semarang -->
-				<span><?php echo $talent->nama; ?></span> |
-				<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
-				<span><?php echo capitalizeEachWord($talent_location_city); ?></span>
-			</div>
-			<br>
-			<div style="text-align: justify;">
-				<?php echo $talent->tentang_saya; ?>
-			</div>
-			<div class="text-center job-interest label-colors">
-				<?php echo displaySkills($talent->kemampuan)?>
-			</div>
-		</div>
+		<div class="card">
+			<div class="card-body">
+				<div style="padding: 10px;">
+					<div class="text-center profile-attribute">
+						<!-- Name | Age | City -->
+						<span><?php echo $talent->nama; ?></span> |
+						<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
+						<span><?php echo capitalizeEachWord($talent_location_city); ?></span>
+					</div>
+					<br>
+					<div class="text-justify">
+						<?php echo $talent->tentang_saya; ?>
+					</div>
+					<div class="text-center job-interest label-colors">
+						<?php echo displaySkills($talent->kemampuan)?>
+					</div>
 
-		<!-- kontak -->
-		<div class="contact-talent">
-			<div class="text-center">
-				<i class="fa fa-envelope"></i> <?php echo $talent->email; ?>
-				<i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?>
-				<i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?>
+					<!-- contact -->
+					<div class="contact-talent">
+						<div class="text-center">
+							<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
+							<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
+							<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
+						</div>
+					</div>
+					<br>
+
+					<div class="center-block fit-content">
+						<div class="dropdown">
+						  <button id="cv" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    CV Section
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="cv">
+						    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
+						    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
+						    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>">Prestasi</a></li>
+						    <li><a href="<?php echo site_url('talent/cv-course/create');?>">Pelatihan</a></li>
+						  </ul>
+						</div>
+					</div>
+					
+				</div>
 			</div>
 		</div>
 		<br>
+		<br>
 		<!-- konten -->
 		<div class="content">
-			<div class="cv-selection">
-				<div class="center-block fit-content">
-					<div class="dropdown">
-					  <button id="cv" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    CV Section
-					    <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu" aria-labelledby="cv">
-					    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
-					    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
-					    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>">Prestasi</a></li>
-					    <li><a href="<?php echo site_url('talent/cv-course/create');?>">Pelatihan</a></li>
-					  </ul>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-
 			<div class="cv center-block">
 				<?php
 					if($cv_works != null) {
 				?>
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Pengalaman Kerja</h3>
+				<div class="card">
+				  <div class="card-header">
+				    <h3>Pengalaman Kerja</h3>
 				  </div>
-				  <div class="panel-body">
+				  <div class="card-body">
 				    <table class="table">
 				    	<?php foreach ($cv_works as $cv_work):?>
 					    	<tr>
@@ -106,11 +111,12 @@
 					if($cv_educations != null) {
 				?>
 				<br>
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Pendidikan</h3>
+				<br>
+				<div class="card">
+				  <div class="card-header">
+				    <h3>Pendidikan</h3>
 				  </div>
-				  <div class="panel-body">
+				  <div class="card-body">
 				    <table class="table">
 				    	<?php foreach ($cv_educations as $cv_education):?>
 					    	<tr>
@@ -147,11 +153,12 @@
 					if($cv_achievements != null) {
 				?>
 				<br>
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Prestasi</h3>
+				<br>
+				<div class="card">
+				  <div class="card-header">
+				    <h3>Prestasi</h3>
 				  </div>
-				  <div class="panel-body">
+				  <div class="card-body">
 				    <table class="table">
 				    	<?php foreach ($cv_achievements as $cv_achievement):?>
 					    	<tr>
@@ -184,11 +191,12 @@
 					if($cv_courses != null) {
 				?>
 				<br>
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				    <h3 class="panel-title">Pelatihan</h3>
+				<br>
+				<div class="card">
+				  <div class="card-header">
+				    <h3>Pelatihan</h3>
 				  </div>
-				  <div class="panel-body">
+				  <div class="card-body">
 				    <table class="table">
 				    	<?php foreach ($cv_courses as $cv_course):?>
 					    	<tr>

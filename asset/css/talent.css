@@ -19,6 +19,12 @@ header{
 .top-nav-collapse .navbar-nav .nav-item .nav-link:hover{
 	color: #FDD835 !important;	/*yellow*/
 }
+.slicknav_btn{
+	border-color: #333;
+}
+.slicknav_menu .slicknav_icon-bar {
+    background: #333;
+}
 
 /* toast message */
 .toast{
@@ -115,8 +121,10 @@ h4{
 	padding-right: 5px;
 }
 .label-colors .label{
-	padding: 3px 8px;
+	margin-right: 3px;
+	padding: 4px 8px;
 	border-radius: 3px;
+	display: inline-block;
 }
 /* select every 5 elements start with 1st element */
 .label-colors .label:nth-child(5n+1){
@@ -148,12 +156,14 @@ h4{
 	z-index: 10;
 	overflow: hidden;
 }
-.job-interest,
-.content{
+.job-interest{
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-.contact-talent .fa:nth-child(n+2){
+.contact-talent span{
+	display: inline-block;
+}
+.contact-talent span:nth-child(n+2){
 	margin-left: 15px;
 }
 .cv{
@@ -392,7 +402,7 @@ a:hover{
 }
 .card-header h4{
 	margin-top: 5px;
-}/*
-.card-body{
-	background-color: #fff;
-}*/
+}
+.card-body .table > tbody > tr:first-child > td{
+	border-top: none;
+}

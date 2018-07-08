@@ -51,10 +51,10 @@
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<input type="submit" value="Simpan" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<input type="submit" value="Simpan" class="button button1">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
 					</div>
 				</div>
 
