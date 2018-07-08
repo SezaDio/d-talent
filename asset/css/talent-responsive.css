@@ -75,9 +75,36 @@
 		margin-bottom: 15px;
 	}
 
+	/*** talent - vacancy detail ***/
+	.company-profile .fit-content{
+		margin-right: 0px;
+		display: inline-block;
+	}
+	.vacancy-attribute{
+		margin-top: 15px;
+	}
+	.vacancy-attribute span{
+		display: block;
+		margin-bottom: 7px;
+	}
+	.vacancy-attribute span:nth-child(n+2){
+		margin-left: 0px;
+	}
+
 	@media screen and (max-width: 500px) {
+		/*** talent - my cv ***/
 		.bg-talent{
 			height: 150px;
 		}
+
+		/*** talent - vacancy detail ***/
+		.company-profile .image-bg{
+			width: 70px;
+			height: 70px;
+		}
+		.vacancy-attribute{
+			margin-top: 5px;
+		}
+
 	}
 }

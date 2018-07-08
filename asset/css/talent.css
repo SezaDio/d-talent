@@ -121,10 +121,12 @@ h4{
 	padding-right: 5px;
 }
 .label-colors .label{
-	margin-right: 3px;
 	padding: 4px 8px;
 	border-radius: 3px;
 	display: inline-block;
+}
+.label-colors .label:nth-child(n+2){
+	margin-left: 3px;
 }
 /* select every 5 elements start with 1st element */
 .label-colors .label:nth-child(5n+1){
@@ -378,9 +380,17 @@ a, a:focus{
 	margin-top: 13px;
 	margin-bottom: 7px;
 }
+.company-profile .image-bg{
+	width: 120px;
+	height: 120px;
+	background-color: #ccc;
+}
 .company-profile .fit-content{
 	margin-right: 30px;
 	float: left;
+}
+.vacancy-attribute span:nth-child(n+2){
+	margin-left: 15px;
 }
 a:hover{
 	color: #FDD835;

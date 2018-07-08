@@ -13,19 +13,25 @@
 	<div class="content">
 		<div class="company-profile card">
 			<div class="card-body">
-				<div class="fit-content">
-					<figure class="image-bg" style="width: 120px; height: 120px; background-color: #ccc;"></figure>
+				<div class="fit-content col-xs-4">
+					<figure class="image-bg"></figure>
 				</div>
-				<div class="fit-content">
+				<div class="fit-content col-xs-8">
 					<h3 class="vacancy-title">Judul Lowongan</h3>
 					<p><a href="#">Nama Perusahaan</a></p>
-					<div>
+					<div class="vacancy-attribute hidden-xs">
 						<span><i class="fa fa-map-marker-alt"></i> Jakarta</span>
-						<span class="space"></span>
 						<span><i class="fa fa-tag"></i> IT - Perangkat Lunak</span>
-						<span class="space"></span>
 						<span><i class="fa fa-calendar-alt"></i> 5 Juli 2018 - 10 Agustus 2018</span>
 					</div>
+				</div>
+
+				<div class="clearfix visible-xs"></div>
+
+				<div class="vacancy-attribute visible-xs col-xs-12">
+					<span><i class="fa fa-map-marker-alt"></i> Jakarta</span>
+					<span><i class="fa fa-tag"></i> IT - Perangkat Lunak</span>
+					<span><i class="fa fa-calendar-alt"></i> 5 Juli 2018 - 10 Agustus 2018</span>
 				</div>
 			</div>
 		</div>
