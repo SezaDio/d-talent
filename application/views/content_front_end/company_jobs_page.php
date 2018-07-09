@@ -5,19 +5,6 @@
 		<br>
 		<div class="col-md-12" style="background-color: whitesmoke;">
 			<div class="row">
-				<!--Company picture-->
-				<div class="col-md-3" style="padding-top: 15px;">
-					<img style="width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
-				</div>
-
-				<!--Nama, Bidang, dan tombol manage dan see jobs -->
-				<div class="col-md-6" style="padding: 20px;">
-					<p style="font-size: 1.8em; font-family: sans-serif;"><strong>PT Dash Indo Persada</strong></p>
-					<p style="font-size: 1.4em; font-family: sans-serif;">Human Resource Development</p>
-				</div>
-			</div>
-			<hr style="border: solid 1px lightgray;">
-			<div class="row">
 				<!--Jobs Caategory section-->
 				<div class="col-md-12" style="padding-top: 13px;">
 					<div class="row">
@@ -37,7 +24,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-7"></div>
+						<div class="col-md-2" style="text-align: center; padding: 5px;">
+							<a href="<?php echo site_url('CompanyMember/add_jobs_page'); ?>">
+								<button class="button button2" type="button">
+									<i class="fa fa-plus"></i> Add Job
+								</button>
+							</a>
+						</div>
+						<div class="col-md-5"></div>
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<div class="input-group">
 								<span class="input-group-addon" style="background-color: black; color: white;"><i class="fa fa-search"></i></span>
@@ -80,37 +74,10 @@
 									<span class="badge badge-dark">1000</span>
 								</div>
 							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;">
-								<strong style="padding-top: 5px; font-size: 1.3em;">People Partner Analyst</strong>
-							</div>
-							<div class="row">
-								<div class="col-md-8">
-									<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
-									<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
-								</div>
-								<div class="col-md-4" style="height: 65px;">
-									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
-										<small style="font-size: 1em;"><b>Batas Pendaftaran</b></small>
-										<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
-										<small style="font-size: 1em;">06 Juli - 14 Juli 2018</small>
-									</div>
-								</div>
-							</div>
-							<hr style="border: solid 1px lightgray; margin-top: 0px;">
-							<div class="row" style="padding-bottom: 10px;">
-								<div class="col-md-6">
-									<small style="font-size: 1em;">Category : </small>
-									<span class="badge badge-dark">Information Technology</span>
-								</div>
-								<div class="col-md-6">
-									<small style="font-size: 1em;">Total Applicant : </small>
-									<span class="badge badge-dark">1000</span>
-								</div>
+							<div class="hover-show-div" style="right: 15px; top: 12px;">
+								<a href="">
+									<span class="badge badge-primary"><strong><i class="fa fa-pencil"></i> Edit</strong></span>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -143,6 +110,48 @@
 									<small style="font-size: 1em;">Total Applicant : </small>
 									<span class="badge badge-dark">1000</span>
 								</div>
+							</div>
+							<div class="hover-show-div" style="right: 15px; top: 12px;">
+								<a href="">
+									<span class="badge badge-primary"><strong><i class="fa fa-pencil"></i> Edit</strong></span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
+						<div class="col-md-12" style="background-color: white;">
+							<div style="padding-top: 10px;  padding-bottom: 10px;">
+								<strong style="padding-top: 5px; font-size: 1.3em;">People Partner Analyst</strong>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
+									<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
+								</div>
+								<div class="col-md-4" style="height: 65px;">
+									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
+										<small style="font-size: 1em;"><b>Batas Pendaftaran</b></small>
+										<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
+										<small style="font-size: 1em;">06 Juli - 14 Juli 2018</small>
+									</div>
+								</div>
+							</div>
+							<hr style="border: solid 1px lightgray; margin-top: 0px;">
+							<div class="row" style="padding-bottom: 10px;">
+								<div class="col-md-6">
+									<small style="font-size: 1em;">Category : </small>
+									<span class="badge badge-dark">Information Technology</span>
+								</div>
+								<div class="col-md-6">
+									<small style="font-size: 1em;">Total Applicant : </small>
+									<span class="badge badge-dark">1000</span>
+								</div>
+							</div>
+							<div class="hover-show-div" style="right: 15px; top: 12px;">
+								<a href="">
+									<span class="badge badge-primary"><strong><i class="fa fa-pencil"></i> Edit</strong></span>
+								</a>
 							</div>
 						</div>
 					</div>

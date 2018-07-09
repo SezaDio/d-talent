@@ -292,6 +292,7 @@
                 <span>$3.99</span>
                 <ul>
                   <li>Ready-to-work talent</li>
+                  <li><br></li>
                 </ul>
               </div>
               <div class="col-md-12">

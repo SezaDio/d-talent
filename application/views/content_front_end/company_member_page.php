@@ -21,10 +21,12 @@
 					<br>
 					<div class="row">
 						<div class="col-md-5">
-							<button class="button button1"><i class="fa fa-edit"></i> Manage Page</button>
+							<a href="<?php echo site_url('CompanyMember/updates_page'); ?>" class="button button1"><i class="fa fa-edit"></i> Manage Page</a>
 						</div>
 						<div class="col-md-5">
-							<button type="button" class="button button2"><i class="fa fa-suitcase"></i> See Jobs</button>
+							<a href="<?php echo site_url('CompanyMember/jobs_page'); ?>">
+								<button type="button" class="button button2"><i class="fa fa-suitcase"></i> See Jobs</button>
+							</a>
 						</div>
 					</div>
 				</div>
