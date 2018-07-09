@@ -88,7 +88,7 @@ class TalentCVEducation extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Edit pendidikan gagal');
 			}
 			// redirect to page ...
-			redirect('talent' . $id_talent_cv_education);
+			redirect('talent');
 		}
 	}
 

@@ -115,7 +115,7 @@ class TalentCVAchievement extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Edit prestasi gagal');
 			}
 			// redirect to page ...
-			redirect('talent' . $id_talent_cv_achievement);
+			redirect('talent');
 		}
 	}
 

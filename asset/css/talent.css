@@ -316,6 +316,9 @@ select.form-control{
 	color: #333;
 	padding: 10px 15px;
 }
+.bootstrap-select .dropdown-menu.show{
+	min-height: 260px;
+}
 .input-group-addon{
 	width: auto;
 	padding-left: 15px;
