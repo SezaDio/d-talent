@@ -13,11 +13,13 @@ header{
 .navbar-nav .nav-item .nav-link{
 	color: #333;
 }
-a:hover,
 .navbar-nav .nav-item .nav-link:hover,
 .slicknav_nav a:hover,
 .top-nav-collapse .navbar-nav .nav-item .nav-link:hover{
 	color: #FDD835 !important;	/*yellow*/
+}
+a:hover{
+	color: #FDD835;
 }
 .slicknav_btn{
 	border-color: #333;
@@ -243,24 +245,23 @@ p.text-danger{
   border: 2px solid black;
 }
 
-.button2:hover {
+.button2:hover{
   background-color: black;
   color: white;
-
+}
 /* Extra small devices (phones, 600px and down) */
-	@media only screen and (max-width: 600px) {
-		.big-slider {display: none;}
-		.small-slider {display: block;}
-	}
+@media only screen and (max-width: 600px) {
+	.big-slider {display: none;}
+	.small-slider {display: block;}
+}
 /* Medium devices (landscape tablets, 768px and up) */
-	@media only screen and (min-width: 768px) {
-		.small-slider {display: none;}
-	} 
+@media only screen and (min-width: 768px) {
+	.small-slider {display: none;}
+} 
 
 /* Large devices (laptops/desktops, 992px and up) */
-	@media only screen and (min-width: 992px) {
-		.small-slider {display: none;}
-	} 
+@media only screen and (min-width: 992px) {
+	.small-slider {display: none;}
 }
 
 
