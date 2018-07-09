@@ -55,7 +55,9 @@
 				'nomor_ponsel' 	=> $this->input->post('nomor_ponsel'),
 				'tanggal_lahir' => $this->input->post('tanggal_lahir'),
 				'id_kota' 		=> $this->input->post('id_kota'),
-				'id_provinsi' 	=> $this->input->post('id_provinsi')
+				'id_provinsi' 	=> $this->input->post('id_provinsi'),
+				'jenis_kelamin' 	=> $this->input->post('jenis_kelamin'),
+				'status_pernikahan' => $this->input->post('status_pernikahan')
 			);
 			
 			$this->db->where('id_talent', $id_talent);

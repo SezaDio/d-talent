@@ -29,6 +29,14 @@
 				</div>
 
 				<div class="form-group">
+					<label>Jenis Kelamin *</label>
+					<select class="form-control" name="jenis_kelamin" required>
+						<option value="1" <?php echo $talent->jenis_kelamin==1 ? 'selected' : ''; ?> >Laki-laki</option>
+						<option value="0" <?php echo $talent->jenis_kelamin==0 ? 'selected' : ''; ?> >Perempuan</option>
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label>Tanggal Lahir *</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -38,38 +46,40 @@
 
 				<div class="form-group">
 					<label>Lokasi Provinsi *</label>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-						<select name="id_provinsi" onchange="ajax_post();" placeholder="Provinsi" class="form-control" id="lokasi_provinsi" required>
-                            <option value="All">--Pilih Lokasi Provinsi--</option>
-                            <?php
-                                foreach ($lokasiProvinsi as $key=>$provinsi) 
-                                {
-                            ?>
-                                	<option value="<?php echo $key; ?>" <?php echo $talent->id_provinsi==$key ? 'selected' : ''; ?> >
-                                		<?php echo $provinsi['lokasi_nama']; ?>
-                                	</option>
-                            <?php
-                                }
-                            ?>
-                        </select>
-					</div>
+					<select name="id_provinsi" onchange="ajax_post();" placeholder="Provinsi" class="form-control" id="lokasi_provinsi" required>
+                        <option value="All">--Pilih Lokasi Provinsi--</option>
+                        <?php
+                            foreach ($lokasiProvinsi as $key=>$provinsi) 
+                            {
+                        ?>
+                            	<option value="<?php echo $key; ?>" <?php echo $talent->id_provinsi==$key ? 'selected' : ''; ?> >
+                            		<?php echo $provinsi['lokasi_nama']; ?>
+                            	</option>
+                        <?php
+                            }
+                        ?>
+                    </select>
 				</div>
 
 				<div class="form-group">
 					<label>Lokasi Kota *</label>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
-						<select name="id_kota" placeholder="Kota" required class="form-control" id="lokasi_kota" required>
-                            <option value="All">--Pilih Lokasi Kota--</option>
-                            <?php
-                                foreach ($lokasiKabupatenKota as $key=>$kota) 
-                                {
-                                    echo '<option value="'.$key.'"'. ($talent->id_kota==$key ? 'selected' : '') .'>'.$kota['lokasi_nama'].'</option>';   
-                                }
-                            ?>
-                        </select>
-					</div>
+					<select name="id_kota" placeholder="Kota" required class="form-control" id="lokasi_kota" required>
+                        <option value="All">--Pilih Lokasi Kota--</option>
+                        <?php
+                            foreach ($lokasiKabupatenKota as $key=>$kota) 
+                            {
+                                echo '<option value="'.$key.'"'. ($talent->id_kota==$key ? 'selected' : '') .'>'.$kota['lokasi_nama'].'</option>';   
+                            }
+                        ?>
+                    </select>
+				</div>
+
+				<div class="form-group">
+					<label>Status Pernikahan *</label>
+					<select class="form-control" name="status_pernikahan" required>
+						<option value="0" <?php echo $talent->status_pernikahan==0 ? 'selected' : ''; ?> >Belum menikah</option>
+						<option value="1" <?php echo $talent->status_pernikahan==1 ? 'selected' : ''; ?> >Sudah menikah</option>
+					</select>
 				</div>
 
 				<br>

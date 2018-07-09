@@ -26,15 +26,23 @@
 						<!-- Name | Age | City -->
 						<span><?php echo $talent->nama; ?></span> |
 						<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
-						<span><?php echo capitalizeEachWord($talent_location_city); ?></span>
+						<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
+						<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
+						<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
 					</div>
 					<br>
 					<div class="text-justify">
 						<?php echo $talent->tentang_saya; ?>
 					</div>
-					<div class="text-center job-interest label-colors">
-						<?php echo displaySkills($talent->kemampuan)?>
-					</div>
+					<?php
+						if (!empty($talent->kemampuan)) {
+					?>
+						<div class="text-center job-interest label-colors">
+							<?php echo displaySkills($talent->kemampuan)?>
+						</div>
+					<?php
+						}
+					?>
 
 					<!-- contact -->
 					<div class="contact-talent">

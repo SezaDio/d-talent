@@ -72,6 +72,8 @@ class Talent extends CI_Controller {
 		$this->form_validation->set_rules('tanggal_lahir', '"Tanggal Lahir"', 'required');
 		$this->form_validation->set_rules('id_kota', '"Lokasi Kota"', 'required');
 		$this->form_validation->set_rules('id_provinsi', '"Lokasi Provinsi"', 'required');
+		$this->form_validation->set_rules('jenis_kelamin', '"Jenis Kelamin"', 'required');
+		$this->form_validation->set_rules('status_pernikahan', '"Status Pernikahan"', 'required');
 
 		if($this->form_validation->run() != FALSE) {
 			// update db
@@ -87,7 +89,7 @@ class Talent extends CI_Controller {
 		}
 
 		// redirect to page ...
-		redirect('talent/account/edit');
+		redirect('talent');
 	}
 
 	public function updatePassword()
@@ -126,7 +128,7 @@ class Talent extends CI_Controller {
 		}
 
 		// redirect to page ...
-		redirect('talent/account/edit');
+		redirect('talent');
 	}
 
 	public function editProfile()

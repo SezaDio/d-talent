@@ -75,6 +75,8 @@ class AccountTalent extends CI_Controller
 			$this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
 			$this->form_validation->set_rules('kota', 'Kota', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('jenis_kelamin', '"Jenis Kelamin"', 'required');
+			$this->form_validation->set_rules('status_pernikahan', '"Status Pernikahan"', 'required');
 
 			if (($this->form_validation->run() == TRUE))
 			{
@@ -86,7 +88,9 @@ class AccountTalent extends CI_Controller
 					'id_kota'=>$this->input->post('kota'),
 					'id_provinsi'=>$this->input->post('provinsi'),
 					'password'=>md5($this->input->post('password')),
-					'membership'=>1 // 1 -> Free | 2 -> Bronze | 3 -> Silver | 4 -> Gold | 5 -> Platinum
+					'membership'=>1, // 1 -> Free | 2 -> Bronze | 3 -> Silver | 4 -> Gold | 5 -> Platinum
+					'jenis_kelamin' 	=> $this->input->post('jenis_kelamin'),
+					'status_pernikahan' => $this->input->post('status_pernikahan')
 				);
 				$data['dataTalentMember'] = $data_talent_member;
 
