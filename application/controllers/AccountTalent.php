@@ -122,7 +122,8 @@ class AccountTalent extends CI_Controller
 				{
 					$this->db->insert('talent', $data_talent_member);
 					$this->session->set_flashdata('msg_berhasil', 'Selamat Datang, Selamat berjuang');
-					redirect('AccountTalent/view_signup');
+					redirect(site_url('talent/login'));
+
 				}
 			}
 		}
@@ -177,12 +178,12 @@ class AccountTalent extends CI_Controller
     				$this->session->set_userdata($array_items);
     				
     				//Tampilkan halaman My CV
-    				$this->session->set_flashdata('notification','Selamat Datang');
-        		    $this->load->view('account/form_login_talent');
+    				$this->session->set_flashdata('msg_success','Login berhasil');
+					redirect(site_url('talent'));
     			}
     			else
     			{
-    				//Jika akun tidak dittemukan, kembali ke halaman login
+    				//Jika akun tidak ditemukan, kembali ke halaman login
     				$this->session->set_flashdata('notification','Email dan Password tidak ditemukan');
         		    $this->load->view('account/form_login_talent');
     			}
@@ -196,6 +197,6 @@ class AccountTalent extends CI_Controller
 	
 	function logout_member(){
 		$this->session->sess_destroy();
-		redirect(site_url());
+		redirect(site_url('talent/login'));
 	}
 }
