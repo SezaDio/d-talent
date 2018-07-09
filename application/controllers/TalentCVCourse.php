@@ -55,7 +55,7 @@ class TalentCVCourse extends CI_Controller {
 			$this->session->set_flashdata('msg_success', 'Tambah pelatihan berhasil');
 
 			// redirect to page ...
-			redirect('talent/cv-course/create');
+			redirect('talent');
 		}
 	}
 
@@ -115,7 +115,7 @@ class TalentCVCourse extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Edit pelatihan gagal');
 			}
 			// redirect to page ...
-			redirect('talent/cv-course/edit/' . $id_talent_cv_course);
+			redirect('talent');
 		}
 	}
 

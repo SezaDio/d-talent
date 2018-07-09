@@ -60,8 +60,7 @@ class TalentCVWork extends CI_Controller {
 			$this->session->set_flashdata('msg_success', 'Tambah pengalaman kerja berhasil');
 
 			// redirect to page ...
-			redirect('talent/cv-work-experience/create');
-			// redirect('talent');
+			redirect('talent');
 		}
 	}
 
@@ -127,7 +126,7 @@ class TalentCVWork extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Edit pengalaman kerja gagal');
 			}
 			// redirect to page ...
-			redirect('talent/cv-work-experience/edit/' . $id_talent_cv_work);
+			redirect('talent' . $id_talent_cv_work);
 		}
 	}
 
