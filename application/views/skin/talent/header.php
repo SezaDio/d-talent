@@ -93,6 +93,9 @@
             <li>
               <a class="page-scroll" href="<?php echo site_url('talent/account/edit');?>">My Account</a>
             </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/logout');?>">Logout</a>
+            </li>
         </ul>
         <!-- Mobile Menu End -->
       </nav>

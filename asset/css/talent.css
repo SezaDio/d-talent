@@ -13,9 +13,9 @@ header{
 .navbar-nav .nav-item .nav-link{
 	color: #333;
 }
-.navbar-nav .nav-item .nav-link:hover{
-	color: #FDD835 !important;	/*yellow*/
-}
+a:hover,
+.navbar-nav .nav-item .nav-link:hover,
+.slicknav_nav a:hover,
 .top-nav-collapse .navbar-nav .nav-item .nav-link:hover{
 	color: #FDD835 !important;	/*yellow*/
 }
@@ -391,9 +391,6 @@ a, a:focus{
 }
 .vacancy-attribute span:nth-child(n+2){
 	margin-left: 15px;
-}
-a:hover{
-	color: #FDD835;
 }
 .requirement{
 	padding-left: 10px;
