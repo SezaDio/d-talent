@@ -8,7 +8,7 @@
 	<div class="bg-talent">
 		<figure class="image-bg" style="background-color: #ccc"></figure>
 	</div>
-	<br>
+	
 	<!-- konten -->
 	<div class="content">
 		<div class="company-profile card">

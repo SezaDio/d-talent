@@ -27,10 +27,6 @@
 	.label-colors .label{
 		margin-bottom: 5px;
 	}
-	.cv{
-	    width: 100%;
-	    max-width: 100%;
-	}
 	.contact-talent span{
 		margin-bottom: 5px;
 	}
@@ -52,11 +48,11 @@
 	}
 
 	/*** talent - my cv ***/
+	.profile{
+		padding-left: 0px;
+	}
 	.label-colors .label{
 		margin-bottom: 5px;
-	}
-	.cv{
-	    width: 100%;
 	}
 	.contact-talent span{
 		margin-bottom: 5px;

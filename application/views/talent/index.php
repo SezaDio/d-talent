@@ -18,8 +18,6 @@
 		<div class="img-talent">
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
 		</div>
-		
-		<br>
 
 		<div class="card">
 			<div class="card-body">
@@ -50,7 +48,7 @@
 
 					<div class="center-block fit-content">
 						<div class="dropdown">
-						  <button id="cv" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    CV Section
 						    <span class="caret"></span>
 						  </button>
@@ -70,7 +68,7 @@
 		<br>
 		<!-- konten -->
 		<div class="content">
-			<div class="cv center-block">
+			<div class="cv">
 				<?php
 					if($cv_works != null) {
 				?>
@@ -203,12 +201,15 @@
 				    <table class="table">
 				    	<?php foreach ($cv_courses as $cv_course):?>
 					    	<tr>
-					    		<td class="">
-					    			<?php echo $cv_course->title; ?>
+					    		<td class="periode">
+					    			<?php echo displayYear($cv_course->year); ?>
 					    		</td>
 					    		<td>
 					    			<?php
-					    				// echo "";
+					    				echo $cv_course->title;
+					    				if ($cv_course->organizer != "") {
+					    					echo '<span class="space">|</span>' . $cv_course->organizer;
+					    				}
 					    			?>
 					    		</td>
 					    		<td class="action">

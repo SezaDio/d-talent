@@ -61,13 +61,10 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#hero-area"><i class="fa fa-home"></i> <b>Home</b></a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> My CV</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="#features"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> My CV</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
@@ -81,14 +78,11 @@
 
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
-           <li>
-              <a class="page-scroll" href="#hero-area">Home</a>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent');?>">My CV</a>
             </li>
             <li>
               <a class="page-scroll" href="#services">Job List</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="<?php echo site_url('talent');?>">My CV</a>
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('talent/account/edit');?>">My Account</a>
