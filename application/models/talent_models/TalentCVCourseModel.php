@@ -9,7 +9,7 @@
 
 		public function get_all($id_talent)
 		{
-			$query = $this->db->get_where('talent_cv_course', array('id_talent' => $id_talent));
+			$query = $this->db->order_by('year', 'DESC')->get_where('talent_cv_course', array('id_talent' => $id_talent));
 			return $query->result();
 		}
 
