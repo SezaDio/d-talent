@@ -129,9 +129,12 @@
 					    				if ($cv_education->field_of_study != "") {
 					    					echo '<span class="space">|</span>' . $cv_education->field_of_study;
 					    				}
+					    				if ($cv_education->degree != "") {
+					    					echo '<span class="space">('. $cv_education->degree.')</span>';
+					    				}
 
-					    				if ($cv_education->description != "") {
-					    					echo "<br>" . character_limiter($cv_work->description, 60);
+					    				if ($cv_education->activity != "") {
+					    					echo "<br>" . character_limiter($cv_education->activity, 60);
 					    				}
 					    			?>
 					    		</td>
