@@ -11,7 +11,6 @@ class CompanyMember extends CI_Controller
 		$this->load->library('input');
 		$this->load->library('form_validation');
 		$this->load->library('session');
-
 	}
 
 	// Menampilkan halaman Company Member awal setelah company login

@@ -12,9 +12,8 @@
     <!-- Bootstrap CSS -->
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/jquery-min.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
-    <link rel="stylesheet" type="text/css"> href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">  
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>"> 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
@@ -24,7 +23,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>
 	
 	<style>
     .button {
