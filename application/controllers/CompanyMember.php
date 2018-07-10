@@ -25,9 +25,20 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Update)
 	public function updates_page()
 	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		$data['company_updates'] = $this->CompanyUpdatesModel->get_all($id_company);
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		// var_dump($data['company_updates']);
+		// die();
+
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
-		$this->load->view('content_front_end/company_updates_page');
+		$this->load->view('content_front_end/company_updates_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
@@ -62,7 +73,7 @@ class CompanyMember extends CI_Controller
 				);
 
 				$this->upload->initialize($config_image);
-				// if uploaded, delete old file & use new file name
+				// if uploaded use new file name
 				if($this->upload->do_upload('image')) {
 					$upload_data = $this->upload->data();
 					$image_filename = $upload_data['file_name'];
@@ -80,17 +91,90 @@ class CompanyMember extends CI_Controller
 
 	public function edit_updates($id_company_update)
 	{
-		# code...
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_updates_page_edit', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	public function update_updates($id_company_update)
 	{
-		# code...
+		$this->load->library('upload');
+	
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// default name: use old file name
+		$image_filename = $this->input->post('old_image');
+
+		$this->form_validation->set_rules('title', '"Judul"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// get edit data
+			$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+
+			$this->load->view('skin/front_end/header_company_page_topbar');
+			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('content_front_end/company_updates_page_edit', $data);
+			$this->load->view('skin/front_end/footer_company_page');
+		}
+		else {
+			// upload images to path for image
+			if( !empty($_FILES['image']['name']) ) {
+				// get filename image
+				$image_filename_new = $_FILES['image']['name'];
+				$upload_path = "asset/img/upload_img_company_updates/";
+				$config_image = array(
+					'upload_path' => "./" . $upload_path,
+					'allowed_types' => "jpg|png|jpeg",
+					'overwrite' => FALSE,
+					'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					'file_name' => $image_filename_new
+				);
+
+				$this->upload->initialize($config_image);
+				// if uploaded, delete old file & use new file name
+				if($this->upload->do_upload('image')) {
+					if (file_exists($upload_path . $image_filename)) {
+						unlink($upload_path . $image_filename);
+					}
+					$upload_data = $this->upload->data();
+					$image_filename = $upload_data['file_name'];
+				}
+			}
+			// save data to db
+			$this->CompanyUpdatesModel->update($id_company_update, $image_filename);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Edit artikel berhasil');
+
+			// redirect to page ...
+			redirect('company/updates');
+		}
 	}
 
 	public function delete_updates($id_company_update)
 	{
-		# code...
+		$company_update = $this->CompanyUpdatesModel->edit($id_company_update);
+		$query = $this->CompanyUpdatesModel->delete($id_company_update);
+
+		if ($query) {
+			// delete image
+			$upload_path = "asset/img/upload_img_company_updates/";
+			if (file_exists($upload_path . $company_update->image)) {
+				unlink($upload_path . $company_update->image);
+			}
+			
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Hapus artikel berhasil');
+		}
+		else {
+			// add message to session
+			$this->session->set_flashdata('msg_error', 'Hapus artikel gagal');
+		}
+		// redirect to page ...
+		redirect('company/updates');
 	}
 
 

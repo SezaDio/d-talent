@@ -1,5 +1,6 @@
 <?php
-	$this->load->library('form_validation');
+	$this->load->helper('text');
+	$this->load->helper('custom');
 ?>
 <div class="container">
 	<div class="row">
@@ -7,7 +8,7 @@
 		
 		<div class="col-lg-10" style="background: whitesmoke; padding: 20px; width: 100%;">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 add-company-updates">
 					<form role="form" enctype="multipart/form-data" action="<?php echo site_url('company/updates/store');?>" method="POST" enctype="multipart/form-data">
 						<!--Text Area Updates-->
 						<div class="row">
@@ -64,28 +65,52 @@
 				</div>
 			</div>
 			<br>
-			<div class="row">
-				<div class="col-md-12" style="background: white; padding: 20px;">
+			<div class="row company-updates">
+				<?php
+					if($company_updates != null) {
+						foreach ($company_updates as $company_update):
+				?>
+				<div class="col-md-12 item">
 					<div class="row">
-						<div class="col-md-2" style="padding-left: 20px;">
-							<img style="width: 100%; height: 100px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+						<div class="col-md-2 image-wrapper">
+							<figure class="image-bg img-fulid" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>');"></figure>
 						</div>
-						<div class="col-md-6" style="padding: 5px; margin-left: 20px;">
-							<strong style="font-size: 1.5em;">PT Dash Indo Persada</strong>
-							<p style="font-size: 1.1em; font-family: sans-serif;">Human Resource Development</p>
-							<strong style="color: gray;"> Waktu Publish</strong>
+
+						<div class="col-md-6 item-attribute">
+							<strong class="company-update-title">
+								<?php echo $company_update->title; ?>
+							</strong>
+							<p class="company-name">
+								<?php echo $company_name; ?>
+							</p>
+							<strong class="text-gray">
+								<?php
+									echo displayDate($company_update->created_at);
+									echo '<span class="space">|</span>'. displayCompanyUpdateStatus($company_update->status);
+								?>
+							</strong>
 						</div>
 						<div class="col-md-3" >
-							<button style="width: 130px; float: right;" type="submit" class="button button1"><i class="fa fa-pencil"></i>Edit</button>
+							<!-- <button style="width: 130px; float: right;" type="submit" class="button button1"><i class="fa fa-pencil"></i>Edit</button> -->
+							<a href="<?php echo site_url('company/updates/edit/') . $company_update->id_company_update;?>" class="button button1">
+								<i class="fa fa-edit"></i> Edit
+							</a>
+							<a href="#!" class="button button3" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $company_update->id_company_update;?>">
+								<i class="fa fa-trash"></i> Delete
+							</a>
 						</div>
 					</div>
-					<hr style="border: solid 1px lightgray">
+					<hr class="lightgray-line">
 					<div class="row" style="padding: 20px;">
-						<div class="col-md-12" style="background: whitesmoke; padding: 10px;">
-							Konten
+						<div class="col-md-12 company-update-content">
+							<?php echo character_limiter($company_update->content, 250); ?>
 						</div>
 					</div>
 				</div>
+				<?php
+						endforeach;
+					}
+				?>
 			</div>
 		</div>
 
@@ -94,7 +119,34 @@
 	<br><br>
 </div>
 
+<!-- modal delete -->
+<div class="modal fade modal-delete" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Hapus Artikel</h4>
+			</div>
+			<div class="modal-body">
+				<p>Apakah Anda yakin?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button button2" data-dismiss="modal">Cancel</button>
+				<a class="button button3">Delete</a>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script type="text/javascript">
+	// delete cv work
+	$('.modal-delete').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget);
+        var delete_target = button.data('id');
+		var route = "<?php echo site_url('company/updates/delete/');?>" + delete_target;
+        $(this).find('a').attr('href', route);
+    });
+
 	$(function () {
 		// preview image before upload
 		function readURL(input, id_preview) {

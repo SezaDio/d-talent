@@ -128,10 +128,57 @@ background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 }
-#image_preview{
+.add-company-updates #image_preview{
 display: none;
 }
 .image-updates .image-bg{
 width: 150px;
 height: 100px;
+}
+.space{
+margin-left: 7px;
+margin-right: 7px;
+}
+.company-updates{
+background-color: #fff;
+}
+.company-updates .item{
+padding: 20px;
+}
+.image-wrapper{
+padding-left: 20px;
+}
+.modal{
+  top: 15%;
+}
+.modal-content{
+  border-radius: 0px;
+}
+.modal-header{
+  display: block;
+}
+.company-updates .image-bg{
+width: 100%;
+height: 100px;
+}
+.company-updates .item-attribute{
+padding: 5px;
+margin-left: 20px;
+}
+.company-update-title{
+font-size: 1.5em;
+}
+.company-name{
+font-size: 1.1em;
+font-family: sans-serif;
+}
+.text-gray{
+color: gray;
+}
+.lightgray-line{
+border: solid 1px lightgray;
+}
+.company-update-content{
+background: whitesmoke;
+padding: 10px;
 }

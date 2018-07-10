@@ -12,10 +12,9 @@
 			$this->db->select('*');
 			$this->db->from('company_update');
 			$this->db->where('id_company', $id_company);
-			$this->db->where('status', 1);
 			$this->db->order_by('created_at', 'DESC');
 
-			return $this->db->get();
+			return $this->db->get()->result();
 		}
 
 		public function create($id_company, $image_filename=null)
@@ -39,12 +38,12 @@
 			return $query->row();
 		}
 
-		public function update($id_company_update)
+		public function update($id_company_update, $image_filename=null)
 		{
 			$data = array(
 				'title' 	  => $this->input->post('title'),
 				'content' 	  => $this->input->post('content'),
-				'image' 	  => $this->input->post('image'),
+				'image' 	  => $image_filename,
 				'status' 	  => $this->input->post('status'),
 			);
 			

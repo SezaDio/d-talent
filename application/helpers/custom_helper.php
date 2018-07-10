@@ -121,3 +121,13 @@ function displayMaritalStatus($status)
         return "Sudah menikah";
     }
 }
+
+function displayCompanyUpdateStatus($status)
+{
+    if ($status == 0) {
+        return "Konsep";
+    }
+    else{
+        return "Terbit";
+    }
+}
