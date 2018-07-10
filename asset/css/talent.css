@@ -290,6 +290,9 @@ p.text-danger{
 .alert h4{
 	font-size: 24px;
 }
+.alert-dismissable .close{
+	right: 0px;
+}
 form{
 	padding: 15px;
 }

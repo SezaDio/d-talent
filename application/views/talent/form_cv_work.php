@@ -46,7 +46,9 @@
 							<?php
 								foreach ($locations as $location) {
 							?>
-								<option value="<?php echo $location->lokasi_ID; ?>"><?php echo $location->lokasi_nama; ?></option>
+								<option value="<?php echo $location->lokasi_ID; ?>" <?php echo set_value('id_location')==$location->lokasi_ID ? "selected" : ""; ?> >
+									<?php echo $location->lokasi_nama; ?>
+								</option>
 							<?php
 								}
 							?>
