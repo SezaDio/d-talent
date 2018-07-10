@@ -3,14 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CompanyMember extends CI_Controller 
 {
-	public function _construct()
+	public function __construct()
 	{
-		parent::_construct();
+		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->library('input');
+		// $this->load->library('input');
 		$this->load->library('form_validation');
 		$this->load->library('session');
+		$this->load->model('company_member_models/CompanyUpdatesModel');
 	}
 
 	// Menampilkan halaman Company Member awal setelah company login
@@ -29,6 +30,69 @@ class CompanyMember extends CI_Controller
 		$this->load->view('content_front_end/company_updates_page');
 		$this->load->view('skin/front_end/footer_company_page');
 	}
+
+	// Tambah artikel
+	public function store_updates()
+	{
+		$this->load->library('upload');
+	
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		$this->form_validation->set_rules('title', '"Judul"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			$this->load->view('skin/front_end/header_company_page_topbar');
+			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('content_front_end/company_updates_page');
+			$this->load->view('skin/front_end/footer_company_page');
+		}
+		else {
+			// upload images to path for image
+			if( !empty($_FILES['image']['name']) ) {
+				// get filename image
+				$image_filename_new = $_FILES['image']['name'];
+				$upload_path = "asset/img/upload_img_company_updates/";
+				$config_image = array(
+					'upload_path' => "./" . $upload_path,
+					'allowed_types' => "jpg|png|jpeg",
+					'overwrite' => FALSE,
+					'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+					'file_name' => $image_filename_new
+				);
+
+				$this->upload->initialize($config_image);
+				// if uploaded, delete old file & use new file name
+				if($this->upload->do_upload('image')) {
+					$upload_data = $this->upload->data();
+					$image_filename = $upload_data['file_name'];
+				}
+			}
+			// save data to db
+			$this->CompanyUpdatesModel->create($id_company, $image_filename);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Tambah artikel berhasil');
+
+			// redirect to page ...
+			redirect('company/updates');
+		}
+	}
+
+	public function edit_updates($id_company_update)
+	{
+		# code...
+	}
+
+	public function update_updates($id_company_update)
+	{
+		# code...
+	}
+
+	public function delete_updates($id_company_update)
+	{
+		# code...
+	}
+
 
 	//Menampilkan halaman Company Member (Menu Update)
 	public function overview_page()
