@@ -3,9 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TalentCVAchievement extends CI_Controller {
 
-	public function _construct()
+	public function __construct()
 	{
-		parent::_construct();
+		parent::__construct();
+
+		$id_talent = $this->session->userdata('id_talent');
+		if ($id_talent == "") {
+			redirect( site_url('talent/login') );
+		}
 	}
 
 	public function index()

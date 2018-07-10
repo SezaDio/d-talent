@@ -6,6 +6,11 @@ class Talent extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		
+		$id_talent = $this->session->userdata('id_talent');
+		if ($id_talent == "") {
+			redirect( site_url('talent/login') );
+		}
 	}
 
 	public function index()
