@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2018 at 09:04 AM
+-- Generation Time: Jul 09, 2018 at 05:54 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `job_vacancy` (
   `job_type` varchar(50) NOT NULL,
   `job_role` varchar(200) NOT NULL,
   `job_category` varchar(50) NOT NULL,
+  `job_id_provinsi` int(100) NOT NULL,
+  `job_id_kota` int(100) NOT NULL,
   `job_date_start` date NOT NULL,
   `job_date_end` date NOT NULL,
   `job_description` text NOT NULL,

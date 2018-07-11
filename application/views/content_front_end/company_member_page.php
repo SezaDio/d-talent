@@ -42,20 +42,22 @@
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-industry"></i> Industry</strong></td>
 							<td><strong><i class="fa fa-globe"></i> Website</strong></td>
-							<td><strong><i class="fa fa-calendar"></i> Year Founded</strong></td>
+							<td><strong><i class="fa fa-envelope"></i> E-mail</strong></td>
 						</tr>
 						<tr>
 							<td style="padding-left: 0px;">HRD</td>
 							<td>www.d-talent.com</td>
-							<td>2018</td>
+							<td>company.service@d-talent.id</td>
 						</tr>
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-user"></i> Company Type</strong></td>
-							<td colspan="2"><strong><i class="fa fa-gear"></i> Specialties</strong></td>
+							<td><strong><i class="fa fa-gear"></i> Specialties</strong></td>
+							<td><strong><i class="fa fa-calendar"></i> Year Founded</strong></td>
 						</tr>
 						<tr>
 							<td style="padding-left: 0px;">Public Company</td>
-							<td colspan="2">Talent Solution and Talent Service</td>
+							<td>Talent Solution and Talent Service</td>
+							<td>2018</td>
 						</tr>
 					</table>
 				</div>

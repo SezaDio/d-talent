@@ -93,6 +93,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Add Jobs)
 	public function add_jobs_page()
 	{
+		$this->load->model('account/UserModel');
+		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		
 		//Data Job Categoru Perusahaan
 		$job_category = array(
 							  'jc-1'=>'Software Engineering',

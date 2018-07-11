@@ -88,6 +88,39 @@
 					</div> 
                 </div>
 
+                <!--Job Category-->
+                <div class="form-group">
+					<label for="exampleInputEmail1"><strong>Job Location</strong></label>
+					<div class="row">
+						<div class="col-md-6">
+							<label>Provinsi</label>
+                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="provinsi" onchange="ajax_post();" id="lokasi_provinsi" required class="form-control">
+                                <option value="All">--Pilih Lokasi Provinsi--</option>
+	                            <?php
+	                                foreach ($lokasiProvinsi as $key=>$provinsi) 
+	                                {
+	                                  
+	                                    echo '<option value="'.$key.'">'.$provinsi['lokasi_nama'].'</option>';   
+	                                }
+	                            ?>
+                            </select>
+						</div>
+						<div class="col-md-6">
+							<label>Kabupaten/Kota</label>
+                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;"name="kota" id="lokasi_kota" required class="form-control">
+                                <option value="All">--Pilih Lokasi Kota--</option>
+	                            <?php
+	                                foreach ($lokasiKabupatenKota as $key=>$kota) 
+	                                {
+	                                  
+	                                    echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
+	                                }
+	                            ?>
+                            </select>
+						</div>
+					</div> 
+                </div>
+
                 <!--Waktu Pendaftaran-->
                 <label for="exampleInputEmail1"><strong>Waktu Pendaftaran</strong></label>
                 <div class="row">
@@ -131,7 +164,7 @@
                         	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_skills" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
 						</div>
 						<div class="col-md-1">
-							<button id="add_field" style="margin: unset; padding-left: 25px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
+							<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
 						</div>
 					</div> 
 					
@@ -158,7 +191,7 @@
 	</div><br><br>
 </div>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 		var counter = 0;
 		
 		$(function () {
@@ -171,6 +204,27 @@
             });
         });
 
+		function ajax_post()
+		{
+			var id_provinsi = document.getElementById("lokasi_provinsi").value;
+			$.ajax({
+				url: '../AccountTalent/lokasi_kabupaten_kota',	
+				type: 'POST',
+				data: {id_provinsi:id_provinsi},
+				success: function(respData){
+							var cTotal = respData.kota.length;
+							var ctr;
+
+							// clear options
+							$('#lokasi_kota').html('<option value="All">--Pilih Lokasi Kota--</option>');
+							for ( ctr = 0; ctr < cTotal; ctr++) 
+							{
+								$('#lokasi_kota').append('<option value="'+respData.kota[ctr].id+'">'+respData.kota[ctr].name+'</option>');
+							}
+						}
+			});
+		}
+
         $('button#add_field').click(function(){
             counter += 1;
 			var tambah_field = '';
@@ -179,12 +233,12 @@
 			tambah_field += '<div class="col-md-8"><input style="border-color: black; background-color: white; color: black;" class="form-control" id="field_' + counter + '" name="job_skills[]' + '" type="text" placeholder="Company Specialties . . ." /><br /></div>';
             
 			tambah_field += '<div class="col-md-1" style="text-align: center;">';
-				tambah_field += '<button style="padding-left: 25px; height: 40px;" onclick="delete_field('+counter+')" type="button" class="button button3">';
+				tambah_field += '<button style="padding-left: 16px; height: 40px;" onclick="delete_field('+counter+')" type="button" class="button button3">';
 					tambah_field += '<i class="fa fa-minus"></i>';
 				tambah_field += '</button>';
 			tambah_field += '</div>';
 			
-			tambah_field += '</div><br/>';
+			tambah_field += '</div>';
 			$('#tambah_field').append(tambah_field);
         });
 

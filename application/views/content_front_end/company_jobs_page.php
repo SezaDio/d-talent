@@ -13,7 +13,7 @@
 								<button class="button button1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Job Category
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height: 300px; overflow: auto;">
 									<?php
                                         foreach ($job_category as $key=>$category) 
                                         {
