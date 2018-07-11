@@ -4,7 +4,7 @@
 <div class="container">
 	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-8 col-md-offset-2" style="min-height: 45.5vh;">
+	<div class="cv col-md-8 col-md-offset-2" style="min-height: 50vh;">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-course/update/' .  $cv_course->id_talent_cv_course); ?>" method="post">
 				<?php
