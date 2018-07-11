@@ -5,37 +5,19 @@
 		<div class="col-lg-10" style="background-color: white; padding: 20px; border: solid 1px lightgray; box-shadow: 5px 10px 12px lightgrey;">
 			<p style="font-size: 1.5em; text-align: center;"><strong>Add Job</strong></p>
 			<hr style="border: solid 1px lightgray;">
-			<form method="post" action="<?php echo site_url('CompanyMember/add_jobs_page/');?>">
+			<form method="post" action="<?php echo site_url('company/job-vacancy/store');?>">
 
 				<?php 
 					$this->load->library('form_validation');
 					echo validation_errors(); 
 				?>
 
-				<?php 
-					if($this->session->flashdata('msg_berhasil')!='')
-					{?>
-                        <div class="alert alert-success alert-dismissable">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <?php echo $this->session->flashdata('msg_berhasil');?> 
-                        </div>
-              <?php }
-              		elseif ($this->session->flashdata('msg_gagal')!='')
-              		{ ?>
-                		 <div class="alert alert-warning alert-dismissable">
-                            <i class="glyphicon glyphicon-remove"></i>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <?php echo $this->session->flashdata('msg_gagal');?> 
-                        </div>
-              <?php } ?>
-
               	<!--Job Title-->
 				<div class="form-group">
 					<label for="exampleInputEmail1"><strong>Job Title</strong></label>
 					<div class="row">
 						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_title" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
+                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_title" class="form-control" value="<?php echo set_value('job_title'); ?>">
 						</div>
 					</div> 
                 </div>
@@ -51,7 +33,7 @@
                                     foreach ($job_type as $key=>$type) 
                                     {
                                       
-                                        echo '<option value="'.$key.'">'.$type.'</option>';   
+                                        echo '<option value="'.$key.'"'. (set_value('job_type')==$key? "selected" : "") .'>'.$type.'</option>';   
                                     }
                                 ?>
                             </select>
@@ -64,7 +46,7 @@
 					<label for="exampleInputEmail1"><strong>Role (Posisi)</strong></label>
 					<div class="row">
 						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
+                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo set_value('job_role'); ?>">
 						</div>
 					</div> 
                 </div>
@@ -80,7 +62,7 @@
                                     foreach ($job_category as $key=>$category) 
                                     {
                                       
-                                        echo '<option value="'.$key.'">'.$category.'</option>';   
+                                        echo '<option value="'.$key.'"'. (set_value('job_category')==$key? "selected" : "") .'>'.$category.'</option>';   
                                     }
                                 ?>
                             </select>
@@ -88,13 +70,13 @@
 					</div> 
                 </div>
 
-                <!--Job Category-->
+                <!--Job Location-->
                 <div class="form-group">
 					<label for="exampleInputEmail1"><strong>Job Location</strong></label>
 					<div class="row">
 						<div class="col-md-6">
 							<label>Provinsi</label>
-                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="provinsi" onchange="ajax_post();" id="lokasi_provinsi" required class="form-control">
+                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_province_location_id" onchange="ajax_post();" id="lokasi_provinsi" required class="form-control">
                                 <option value="All">--Pilih Lokasi Provinsi--</option>
 	                            <?php
 	                                foreach ($lokasiProvinsi as $key=>$provinsi) 
@@ -107,7 +89,7 @@
 						</div>
 						<div class="col-md-6">
 							<label>Kabupaten/Kota</label>
-                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;"name="kota" id="lokasi_kota" required class="form-control">
+                        	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_city_location_id" id="lokasi_kota" required class="form-control">
                                 <option value="All">--Pilih Lokasi Kota--</option>
 	                            <?php
 	                                foreach ($lokasiKabupatenKota as $key=>$kota) 
@@ -129,7 +111,7 @@
 							<label for="exampleInputEmail1">Mulai</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker4" placeholder="Tanggal Mulai . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_start_date" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
+		                        	<input id="datetimepicker4" placeholder="Tanggal Mulai . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_start" class="form-control" value="<?php echo set_value('job_date_start'); ?>">
 								</div>
 							</div> 
 		                </div>
@@ -139,7 +121,7 @@
 							<label for="exampleInputEmail1">Tutup</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker5" placeholder="Tanggal Tutup . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_end_date" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
+		                        	<input id="datetimepicker5" placeholder="Tanggal Tutup . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_end" class="form-control" value="<?php echo set_value('job_date_end'); ?>">
 								</div>
 							</div> 
 		                </div>
@@ -151,7 +133,7 @@
 					<label for="exampleInputEmail1"><strong>Job Description</strong></label>
 					<div class="row">
 						<div class="col-md-12">
-                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required></textarea>
+                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo set_value('job_description'); ?></textarea>
 						</div>
 					</div> 
                 </div>
@@ -161,7 +143,7 @@
 					<label for="exampleInputEmail1"><strong>Required Skills</strong></label>
 					<div class="row" style="padding-bottom: 10px;">
 						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_skills" class="form-control" value="<?php //echo htmlspecialchars($dataTestimoni['nama_testimoni']); ?>">
+                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_required_skill[]" class="form-control" value="">
 						</div>
 						<div class="col-md-1">
 							<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
@@ -176,7 +158,7 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-2">
-						<a href="<?php echo site_url('CompanyMember/updates_page'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
+						<a href="<?php echo site_url('company/job-vacancy'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
 					</div>
 					<div class="col-md-2">
 						<button value="1" class="button button1" type="submit"><i class="fa fa-save"></i> Save</button>
@@ -230,7 +212,7 @@
 			var tambah_field = '';
 			tambah_field += '<div class="row" id="field_'+counter+'">';
 			
-			tambah_field += '<div class="col-md-8"><input style="border-color: black; background-color: white; color: black;" class="form-control" id="field_' + counter + '" name="job_skills[]' + '" type="text" placeholder="Company Specialties . . ." /><br /></div>';
+			tambah_field += '<div class="col-md-8"><input style="border-color: black; background-color: white; color: black;" class="form-control" id="field_' + counter + '" name="job_required_skill[]' + '" type="text" /><br /></div>';
             
 			tambah_field += '<div class="col-md-1" style="text-align: center;">';
 				tambah_field += '<button style="padding-left: 16px; height: 40px;" onclick="delete_field('+counter+')" type="button" class="button button3">';

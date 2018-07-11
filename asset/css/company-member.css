@@ -148,8 +148,8 @@
 .image-wrapper{
     padding-left: 20px;
 }
-.modal{
-    top: 15%;
+.modal-dialog{
+    top: 25%;
 }
 .modal-content{
     border-radius: 0px;
@@ -194,4 +194,11 @@
 }
 .company-update-attribute span:nth-child(n+2){
     margin-left: 15px;
+}
+
+/* company job vacancy */
+@media only screen and (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px;
+    }
 }

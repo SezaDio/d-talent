@@ -114,3 +114,12 @@ $route['company/updates/edit/(:num)'] 	= 'CompanyMember/edit_updates/$1';
 $route['company/updates/store'] 		= 'CompanyMember/store_updates';
 $route['company/updates/update/(:num)'] = 'CompanyMember/update_updates/$1';
 $route['company/updates/delete/(:num)'] = 'CompanyMember/delete_updates/$1';
+
+/* company job vacancy */
+$route['company/job-vacancy'] 				= 'CompanyMember/jobs_page';
+$route['company/job-vacancy/create'] 		= 'CompanyMember/add_jobs_page';
+$route['company/job-vacancy/detail/(:num)'] = 'CompanyMember/detail_job/$1';
+$route['company/job-vacancy/edit/(:num)'] 	= 'CompanyMember/edit_job/$1';
+$route['company/job-vacancy/store'] 		= 'CompanyMember/store_job';
+$route['company/job-vacancy/update/(:num)'] = 'CompanyMember/update_job/$1';
+$route['company/job-vacancy/delete/(:num)'] = 'CompanyMember/delete_job/$1';
