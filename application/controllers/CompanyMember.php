@@ -89,6 +89,20 @@ class CompanyMember extends CI_Controller
 		}
 	}
 
+	// Lihat detail artikel
+	public function detail_updates($id_company_update)
+	{
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_updates_page_detail', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+
+	// Lihat form edit artikel
 	public function edit_updates($id_company_update)
 	{
 		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
@@ -99,6 +113,7 @@ class CompanyMember extends CI_Controller
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
+	// Update artikel
 	public function update_updates($id_company_update)
 	{
 		$this->load->library('upload');
@@ -154,6 +169,7 @@ class CompanyMember extends CI_Controller
 		}
 	}
 
+	// Hapus artikel
 	public function delete_updates($id_company_update)
 	{
 		$company_update = $this->CompanyUpdatesModel->edit($id_company_update);
