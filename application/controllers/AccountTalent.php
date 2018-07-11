@@ -178,7 +178,7 @@ class AccountTalent extends CI_Controller
     				$this->session->set_userdata($array_items);
     				
     				//Tampilkan halaman My CV
-    				$this->session->set_flashdata('msg_success','Login berhasil');
+    				// $this->session->set_flashdata('msg_success','Login berhasil');
 					redirect(site_url('talent'));
     			}
     			else
