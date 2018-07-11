@@ -18,8 +18,6 @@
 		<div class="img-talent">
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
 		</div>
-		
-		<br>
 
 		<div class="card">
 			<div class="card-body">
@@ -28,15 +26,23 @@
 						<!-- Name | Age | City -->
 						<span><?php echo $talent->nama; ?></span> |
 						<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
-						<span><?php echo capitalizeEachWord($talent_location_city); ?></span>
+						<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
+						<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
+						<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
 					</div>
 					<br>
 					<div class="text-justify">
 						<?php echo $talent->tentang_saya; ?>
 					</div>
-					<div class="text-center job-interest label-colors">
-						<?php echo displaySkills($talent->kemampuan)?>
-					</div>
+					<?php
+						if (!empty($talent->kemampuan)) {
+					?>
+						<div class="text-center job-interest label-colors">
+							<?php echo displaySkills($talent->kemampuan)?>
+						</div>
+					<?php
+						}
+					?>
 
 					<!-- contact -->
 					<div class="contact-talent">
@@ -50,7 +56,7 @@
 
 					<div class="center-block fit-content">
 						<div class="dropdown">
-						  <button id="cv" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    CV Section
 						    <span class="caret"></span>
 						  </button>
@@ -70,7 +76,7 @@
 		<br>
 		<!-- konten -->
 		<div class="content">
-			<div class="cv center-block">
+			<div class="cv">
 				<?php
 					if($cv_works != null) {
 				?>
@@ -129,9 +135,12 @@
 					    				if ($cv_education->field_of_study != "") {
 					    					echo '<span class="space">|</span>' . $cv_education->field_of_study;
 					    				}
+					    				if ($cv_education->degree != "") {
+					    					echo '<span class="space">('. $cv_education->degree.')</span>';
+					    				}
 
-					    				if ($cv_education->description != "") {
-					    					echo "<br>" . character_limiter($cv_work->description, 60);
+					    				if ($cv_education->activity != "") {
+					    					echo "<br>" . character_limiter($cv_education->activity, 60);
 					    				}
 					    			?>
 					    		</td>
@@ -200,12 +209,15 @@
 				    <table class="table">
 				    	<?php foreach ($cv_courses as $cv_course):?>
 					    	<tr>
-					    		<td class="">
-					    			<?php echo $cv_course->title; ?>
+					    		<td class="periode">
+					    			<?php echo displayYear($cv_course->year); ?>
 					    		</td>
 					    		<td>
 					    			<?php
-					    				// echo "";
+					    				echo $cv_course->title;
+					    				if ($cv_course->organizer != "") {
+					    					echo '<span class="space">|</span>' . $cv_course->organizer;
+					    				}
 					    			?>
 					    		</td>
 					    		<td class="action">

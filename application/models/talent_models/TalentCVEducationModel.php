@@ -20,12 +20,10 @@
 				'school' 	  => $this->input->post('school'),
 				'degree' 	  => $this->input->post('degree'),
 				'field_of_study' => $this->input->post('field_of_study'),
-				'grade' 	  => $this->input->post('grade'),
 				'activity' 	  => $this->input->post('activity'),
 				// add -01-01 because the month & the day is ignored
 				'from_year'   => $this->input->post('from_year') . '-01-01',
 				'to_year' 	  => $this->input->post('to_year') . '-01-01',
-				'description' => $this->input->post('description'),
 			);
 			
 			return $this->db->insert('talent_cv_education', $data);
@@ -44,12 +42,10 @@
 				'school' 	  => $this->input->post('school'),
 				'degree' 	  => $this->input->post('degree'),
 				'field_of_study' => $this->input->post('field_of_study'),
-				'grade' 	  => $this->input->post('grade'),
 				'activity' 	  => $this->input->post('activity'),
 				// add -01-01 because the month & the day is ignored
 				'from_year'   => $this->input->post('from_year') . '-01-01',
 				'to_year' 	  => $this->input->post('to_year') . '-01-01',
-				'description' => $this->input->post('description'),
 			);
 			
 			$this->db->where('id_talent_cv_education', $id_talent_cv_education);

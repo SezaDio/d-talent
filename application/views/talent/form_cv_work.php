@@ -41,12 +41,14 @@
 				<div class="form-group">
 					<label>Lokasi</label>
 					<div class="clearfix">
-						<select name="id_location" class="form-control selectpicker" data-live-search="true" required="required" data-size="7">
+						<select name="id_location" class="form-control selectpicker" data-live-search="true" data-size="7">
 							<option value="">-</option>
 							<?php
 								foreach ($locations as $location) {
 							?>
-								<option value="<?php echo $location->lokasi_ID; ?>"><?php echo $location->lokasi_nama; ?></option>
+								<option value="<?php echo $location->lokasi_ID; ?>" <?php echo set_value('id_location')==$location->lokasi_ID ? "selected" : ""; ?> >
+									<?php echo $location->lokasi_nama; ?>
+								</option>
 							<?php
 								}
 							?>
@@ -122,6 +124,14 @@
 			        scrollTop: $("input[name=work_end]").offset().top - 35
 			    }, 200);
         	}
+        });
+
+        // close bs select dropdown on change
+        $('.selectpicker').on('changed.bs.select', function() {
+        	$('.bootstrap-select.show').removeClass('show');
+        	$('.bootstrap-select.open').removeClass('open');
+        	$('.dropdown-menu.show').removeClass('show');
+        	$('.dropdown-toggle').attr('aria-expanded', 'false');
         });
     });
 </script>

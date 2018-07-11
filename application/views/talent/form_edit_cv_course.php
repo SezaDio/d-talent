@@ -1,3 +1,6 @@
+<?php
+	$this->load->helper('custom');
+?>
 <div class="container">
 	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
@@ -61,6 +64,21 @@
 					<input type="hidden" name="associated_work" id="associated_work" value="<?php echo $cv_course->associated_work; ?>">
 				</div>
 
+				<div class="form-group">
+					<label>Penyelenggara</label>
+					<input type="text" name="organizer" class="form-control" value="<?php echo $cv_course->organizer; ?>">
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-6">
+						<label>Tahun</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input type="text" class="form-control yearpicker" name="year" value="<?php echo displayYear($cv_course->year); ?>">
+						</div>
+					</div>
+				</div>
+				
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
@@ -79,6 +97,13 @@
 
 <script type="text/javascript">
 	$(function () {
+		// pick year
+        $('.yearpicker').datepicker({
+        	format: 'yyyy',
+        	minViewMode: 'years',
+        	maxViewMode: 'decades',
+        });
+
         // select associated
         $('#associated_with').change(function() {
         	var id = $(this).val();

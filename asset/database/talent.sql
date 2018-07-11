@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 05, 2018 at 05:59 AM
+-- Generation Time: Jul 09, 2018 at 03:29 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -33,9 +33,11 @@ CREATE TABLE `talent` (
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `nomor_ponsel` varchar(30) NOT NULL,
+  `jenis_kelamin` tinyint(1) NOT NULL COMMENT '0: perempuan, 1: laki-laki',
   `tanggal_lahir` date NOT NULL,
   `id_kota` varchar(100) NOT NULL,
   `id_provinsi` varchar(100) NOT NULL,
+  `status_pernikahan` tinyint(1) NOT NULL COMMENT '0: belum menikah, 1: sudah menikah',
   `password` varchar(50) NOT NULL,
   `membership` int(1) NOT NULL,
   `foto_sampul` varchar(200) DEFAULT NULL,
@@ -48,9 +50,9 @@ CREATE TABLE `talent` (
 -- Dumping data for table `talent`
 --
 
-INSERT INTO `talent` (`id_talent`, `nama`, `email`, `nomor_ponsel`, `tanggal_lahir`, `id_kota`, `id_provinsi`, `password`, `membership`, `foto_sampul`, `foto_profil`, `kemampuan`, `tentang_saya`) VALUES
-(1, 'Seza Dio Firmansyah, S.Kom', 'sefirman12@gmail.com', '085640357417', '1994-08-31', '33.74.00.0000', '33', '26cac717deaa5188a5dc13c472741c5b', 1, NULL, NULL, NULL, NULL),
-(3, 'Febra', 'm.febras@yahoo.com', '0856', '1994-02-05', '33.75.00.0000', '33', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, 'autumn_winter-wallpaper-1366x768.jpg', 'Blibli_21.jpg', 'Web dev, PHP, Laravel, Code Igniter, Android, UI Design, Asana, Git, Inkscape, Ms. Word, Ms. Power Point, Libre Office, Linux', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+INSERT INTO `talent` (`id_talent`, `nama`, `email`, `nomor_ponsel`, `jenis_kelamin`, `tanggal_lahir`, `id_kota`, `id_provinsi`, `status_pernikahan`, `password`, `membership`, `foto_sampul`, `foto_profil`, `kemampuan`, `tentang_saya`) VALUES
+(1, 'Seza Dio Firmansyah, S.Kom', 'sefirman12@gmail.com', '085640357417', 0, '1994-08-31', '33.74.00.0000', '33', 0, '26cac717deaa5188a5dc13c472741c5b', 1, NULL, NULL, NULL, NULL),
+(3, 'M. Febra', 'm.febras@yahoo.com', '0856777', 0, '1994-02-01', '36.71.00.0000', '36', 0, 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, 'red_german_poppy_and_wheat_field-1366x768.jpg', 'Blibli_2.jpg', 'Web dev, PHP, Laravel, Code Igniter, Android, UI Design, Asana, Git, Inkscape, Ms. Word, Ms. Power Point, Libre Office, Linux', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 --
 -- Indexes for dumped tables

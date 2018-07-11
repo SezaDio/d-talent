@@ -69,8 +69,10 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['talent/login'] = 'AccountTalent/view_signup';
+/* talent */
+$route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
+$route['talent/signup'] = 'AccountTalent/view_signup';
 
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
@@ -103,3 +105,11 @@ $route['talent/cv-course/update/(:num)'] = 'TalentCVCourse/update/$1';
 $route['talent/cv-course/delete/(:num)'] = 'TalentCVCourse/delete/$1';
 
 $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
+
+
+/* company member */
+$route['company/updates'] 				= 'CompanyMember/updates_page';
+$route['company/updates/edit/(:num)'] 	= 'CompanyMember/edit_updates/$1';
+$route['company/updates/store'] 		= 'CompanyMember/store_updates';
+$route['company/updates/update/(:num)'] = 'CompanyMember/update_updates/$1';
+$route['company/updates/delete/(:num)'] = 'CompanyMember/delete_updates/$1';

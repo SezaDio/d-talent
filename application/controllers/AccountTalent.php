@@ -75,6 +75,8 @@ class AccountTalent extends CI_Controller
 			$this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
 			$this->form_validation->set_rules('kota', 'Kota', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('jenis_kelamin', '"Jenis Kelamin"', 'required');
+			$this->form_validation->set_rules('status_pernikahan', '"Status Pernikahan"', 'required');
 
 			if (($this->form_validation->run() == TRUE))
 			{
@@ -86,7 +88,9 @@ class AccountTalent extends CI_Controller
 					'id_kota'=>$this->input->post('kota'),
 					'id_provinsi'=>$this->input->post('provinsi'),
 					'password'=>md5($this->input->post('password')),
-					'membership'=>1 // 1 -> Free | 2 -> Bronze | 3 -> Silver | 4 -> Gold | 5 -> Platinum
+					'membership'=>1, // 1 -> Free | 2 -> Bronze | 3 -> Silver | 4 -> Gold | 5 -> Platinum
+					'jenis_kelamin' 	=> $this->input->post('jenis_kelamin'),
+					'status_pernikahan' => $this->input->post('status_pernikahan')
 				);
 				$data['dataTalentMember'] = $data_talent_member;
 
@@ -118,7 +122,8 @@ class AccountTalent extends CI_Controller
 				{
 					$this->db->insert('talent', $data_talent_member);
 					$this->session->set_flashdata('msg_berhasil', 'Selamat Datang, Selamat berjuang');
-					redirect('AccountTalent/view_signup');
+					redirect(site_url('talent/login'));
+
 				}
 			}
 		}
@@ -173,12 +178,12 @@ class AccountTalent extends CI_Controller
     				$this->session->set_userdata($array_items);
     				
     				//Tampilkan halaman My CV
-    				$this->session->set_flashdata('notification','Selamat Datang');
-        		    $this->load->view('account/form_login_talent');
+    				$this->session->set_flashdata('msg_success','Login berhasil');
+					redirect(site_url('talent'));
     			}
     			else
     			{
-    				//Jika akun tidak dittemukan, kembali ke halaman login
+    				//Jika akun tidak ditemukan, kembali ke halaman login
     				$this->session->set_flashdata('notification','Email dan Password tidak ditemukan');
         		    $this->load->view('account/form_login_talent');
     			}
@@ -192,6 +197,6 @@ class AccountTalent extends CI_Controller
 	
 	function logout_member(){
 		$this->session->sess_destroy();
-		redirect(site_url());
+		redirect(site_url('talent/login'));
 	}
 }

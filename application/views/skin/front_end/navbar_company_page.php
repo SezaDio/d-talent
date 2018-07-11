@@ -67,3 +67,37 @@
       <br><br><br><br><br><br><br>
     </header>
     <!-- Header Section End --> 
+
+    
+  <!-- Toast Message -->
+  <?php
+    $this->load->library('form_validation');
+  ?>
+  <div class="toast">
+    <!-- Cek error -->
+    <?php
+        if($this->session->has_userdata('msg_error')) {
+    ?>
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        <?php echo $this->session->msg_error; ?>
+      </div>
+      <?php
+        }
+    ?>
+
+    <!-- Cek success -->
+    <?php
+        if($this->session->has_userdata('msg_success')) {
+      ?>
+          <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i> Success!</h4>
+              <?php echo $this->session->msg_success; ?> 
+          </div>
+      <?php
+        }
+    ?>
+  </div>
+  <!-- ./Toast Message -->
