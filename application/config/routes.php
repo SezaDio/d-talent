@@ -117,6 +117,7 @@ $route['company/updates/delete/(:num)'] = 'CompanyMember/delete_updates/$1';
 
 /* company job vacancy */
 $route['company/job-vacancy'] 				= 'CompanyMember/jobs_page';
+$route['company/job-vacancy/category/(:any)'] = 'CompanyMember/filter_job/$1';
 $route['company/job-vacancy/create'] 		= 'CompanyMember/add_jobs_page';
 $route['company/job-vacancy/detail/(:num)'] = 'CompanyMember/detail_job/$1';
 $route['company/job-vacancy/edit/(:num)'] 	= 'CompanyMember/edit_job/$1';

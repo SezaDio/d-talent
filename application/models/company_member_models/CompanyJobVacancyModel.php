@@ -19,6 +19,20 @@
 			return $this->db->get()->result();
 		}
 
+		// filter by category
+		public function filter($id_company, $category)
+		{
+			$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+			$this->db->from('job_vacancy');
+			$this->db->where('id_company', $id_company);
+			$this->db->where('job_category', $category);
+			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
+			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
+			$this->db->order_by('publish_date', 'DESC');
+
+			return $this->db->get()->result();
+		}
+
 		public function detail($id_job)
 		{
 			$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');

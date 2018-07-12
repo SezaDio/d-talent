@@ -243,6 +243,34 @@ class CompanyMember extends CI_Controller
 		$this->load->view('content_front_end/company_jobs_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
+	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan category
+	public function filter_job($category)
+	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->filter($id_company, $category);
+
+		$data['filter_category'] = $data['job_category'][$category];
+
+		if (empty($data['company_jobs'])) {
+			$data['filter_result'] = 'Lowongan dengan kategori "'.$data['filter_category'].'" tidak ditemukan.';
+		}
+		else{
+			$data['filter_result'] = 'Kategori: "'. $data['filter_category'] .'"';
+		}
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
 
 	//Menampilkan halaman Company Member (Add Jobs)
 	public function add_jobs_page()

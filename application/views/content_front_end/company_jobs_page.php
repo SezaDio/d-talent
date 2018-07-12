@@ -18,11 +18,12 @@
 									Job Category
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height: 300px; overflow: auto;">
+									<a href="<?php echo site_url('company/job-vacancy')?>" class="dropdown-item">- All -</a>
 									<?php
                                         foreach ($job_category as $key=>$category) 
                                         {
                                           
-                                            echo '<p class="dropdown-item" value="'.$key.'">'.$category.'</p>';   
+                                            echo '<a href="'. site_url('company/job-vacancy/category/') . $key .'" class="dropdown-item" value="'.$key.'">'.$category.'</a>';   
                                         }
                                     ?>
 								</div>
@@ -46,6 +47,13 @@
 				</div>
 			</div>
 			<hr style="border: solid 1px lightgray;">
+
+			<?php
+				if (isset($filter_result)) {
+					echo '<div>'. $filter_result . '</div><br>';
+				}
+			?>
+
 			<div class="col-md-12">
 				<!--Show Jobs list-->
 				<div class="row">
