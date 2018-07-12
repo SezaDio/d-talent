@@ -56,12 +56,18 @@
 					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
 						<div class="col-md-12" style="background-color: white;">
 							<div style="padding-top: 10px;  padding-bottom: 10px;">
-								<strong style="padding-top: 5px; font-size: 1.3em;"><?php echo $job->job_title; ?></strong>
+								<a href="<?php echo site_url('company/job-vacancy/detail/') . $job->id_job;?>">
+									<strong style="padding-top: 5px; font-size: 1.3em;"><?php echo $job->job_title; ?></strong>
+								</a>
 							</div>
 							<div class="row">
 								<div class="col-md-8">
 									<small style="font-size: 1em;"><b><?php echo $company_name; ?></b></small>
-									<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
+									<p style="font-size: 1em;">
+									<?php
+										echo capitalizeEachWord($job->city) .", ". $job->province
+									?>
+									</p>
 								</div>
 								<div class="col-md-4" style="height: 65px;">
 									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">

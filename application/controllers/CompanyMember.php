@@ -233,24 +233,9 @@ class CompanyMember extends CI_Controller
 		// $id_company = $this->session->userdata('company_name');
 		$data['company_name'] = "PT . ABC";
 
-		//Data Job Category Perusahaan
-		$job_category = array(
-							  'jc-1'=>'Software Engineering',
-                              'jc-2'=>'Data Science',
-                              'jc-3'=>'Design',
-                              'jc-4'=>'Operations',
-                              'jc-5'=>'Marketing',
-                              'jc-6'=>'Product Management',
-                              'jc-7'=>'Bussiness Development',
-                              'jc-8'=>'Engineering',
-                              'jc-9'=>'Management',
-                              'jc-10'=>'Finance',
-                              'jc-11'=>'Human Resource',
-                              'jc-12'=>'Media & Communication',
-                              'jc-13'=>'Consulting',
-                              'jc-14'=>'Other'
-                              );
-		$data['job_category']= $job_category;
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		
 		$data['company_jobs'] = $this->CompanyJobVacancyModel->get_all($id_company);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
@@ -264,33 +249,11 @@ class CompanyMember extends CI_Controller
 	{
 		$this->load->model('account/UserModel');
 		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
-		
-		//Data Job Category Perusahaan
-		$job_category = array(
-							  'jc-1'=>'Software Engineering',
-                              'jc-2'=>'Data Science',
-                              'jc-3'=>'Design',
-                              'jc-4'=>'Operations',
-                              'jc-5'=>'Marketing',
-                              'jc-6'=>'Product Management',
-                              'jc-7'=>'Bussiness Development',
-                              'jc-8'=>'Engineering',
-                              'jc-9'=>'Management',
-                              'jc-10'=>'Finance',
-                              'jc-11'=>'Human Resource',
-                              'jc-12'=>'Media & Communication',
-                              'jc-13'=>'Consulting',
-                              'jc-14'=>'Other'
-                              );
 
-		$job_type = array(
-							  'jt-1'=>'Part Time',
-                              'jt-2'=>'Full Time',
-                              'jt-3'=>'Internship'
-                              );
-
-		$data['job_category']= $job_category;
-		$data['job_type']= $job_type;
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		// get job type list
+		$data['job_type'] 	  = $this->get_job_type_list();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -414,59 +377,149 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail lowongan kerja
 	public function detail_job($id_job)
 	{
-		# code...
+		$this->load->model('account/UserModel');
+
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		$data['company_job'] = $this->CompanyJobVacancyModel->detail($id_job);
+
+		// get job category
+		$job_categories 	  = $this->get_job_category_list();
+		$data['job_category'] = $job_categories[$data['company_job']->job_category];
+		// get job type list
+		$job_types 	  	  = $this->get_job_type_list();
+		$data['job_type'] = $job_types[$data['company_job']->job_type];
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page_detail', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	// Menampilkan halaman edit lowongan kerja
 	public function edit_job($id_job)
 	{
 		$this->load->model('account/UserModel');
-		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		$array_province = $this->UserModel->lokasi_provinsi();
+		$data['lokasiProvinsi'] = $array_province;
 		
-		//Data Job Category Perusahaan
-		$job_category = array(
-							  'jc-1'=>'Software Engineering',
-                              'jc-2'=>'Data Science',
-                              'jc-3'=>'Design',
-                              'jc-4'=>'Operations',
-                              'jc-5'=>'Marketing',
-                              'jc-6'=>'Product Management',
-                              'jc-7'=>'Bussiness Development',
-                              'jc-8'=>'Engineering',
-                              'jc-9'=>'Management',
-                              'jc-10'=>'Finance',
-                              'jc-11'=>'Human Resource',
-                              'jc-12'=>'Media & Communication',
-                              'jc-13'=>'Consulting',
-                              'jc-14'=>'Other'
-                              );
-
-		$job_type = array(
-							  'jt-1'=>'Part Time',
-                              'jt-2'=>'Full Time',
-                              'jt-3'=>'Internship'
-                              );
-
-		$data['job_category']= $job_category;
-		$data['job_type']= $job_type;
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		// get job type list
+		$data['job_type'] 	  = $this->get_job_type_list();
 
 		$data['company_job'] = $this->CompanyJobVacancyModel->edit($id_job);
+
+		// convert string to array
+		$data['company_job_skills'] = explode(',', $data['company_job']->job_required_skill);
+
+		// get id province
+		$id_province = $this->get_id_province($array_province, $data['company_job']->job_province_location_id);
+		// get company job cities
+		$data['company_job_cities'] = $this->UserModel->lokasi_kabupaten_kota($id_province);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
 		$this->load->view('content_front_end/company_jobs_page_edit', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
+	// get id province from location (province) array by lokasi_ID
+	private function get_id_province($provinces, $lokasi_ID)
+	{
+	   foreach ($provinces as $key => $val) {
+	       if ($val['lokasi_ID'] === $lokasi_ID) {
+	           return $val['lokasi_propinsi'];
+	       }
+	   }
+	   return null;
+	}
+
 
 	// Meng-update lowongan kerja
 	public function update_job($id_job)
 	{
-		# code...
+		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
+		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
+		$this->form_validation->set_rules('job_role', '"Job Role"', 'required');
+		$this->form_validation->set_rules('job_category', '"Job Category"', 'required');
+		$this->form_validation->set_rules('job_province_location_id', '"Job Province"', 'required');
+		$this->form_validation->set_rules('job_city_location_id', '"Job City"', 'required');
+		$this->form_validation->set_rules('job_date_start', '"Job Date Start"', 'required');
+		$this->form_validation->set_rules('job_date_end', '"Job Date End"', 'required');
+		$this->form_validation->set_rules('job_description', '"Job Description"', 'required');
+		$this->form_validation->set_rules('job_required_skill[]', '"Required Skills"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// redirect to function if form not valid
+			$this->edit_job($id_job);
+		}
+		else {
+			// get job_required_skill[]
+			$skills = $this->input->post('job_required_skill[]');
+			// convert array to string
+			$job_required_skill = implode(",", $skills);
+
+			// save data to db
+			$this->CompanyJobVacancyModel->update($id_job, $job_required_skill);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Edit lowongan kerja berhasil');
+
+			// redirect to page ...
+			redirect('company/job-vacancy');
+		}
 	}
 
 	// Manghapus lowongan kerja
 	public function delete_job($id_job)
 	{
-		# code...
+		$query = $this->CompanyJobVacancyModel->delete($id_job);
+
+		if ($query) {
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Hapus lowongan kerja berhasil');
+		}
+		else {
+			// add message to session
+			$this->session->set_flashdata('msg_error', 'Hapus lowongan kerja gagal');
+		}
+		// redirect to page ...
+		redirect('company/job-vacancy');
+	}
+
+	// company job category list
+	private function get_job_category_list()
+	{
+		$job_category = array(
+						  'jc-1'=>'Software Engineering',
+	                      'jc-2'=>'Data Science',
+	                      'jc-3'=>'Design',
+	                      'jc-4'=>'Operations',
+	                      'jc-5'=>'Marketing',
+	                      'jc-6'=>'Product Management',
+	                      'jc-7'=>'Bussiness Development',
+	                      'jc-8'=>'Engineering',
+	                      'jc-9'=>'Management',
+	                      'jc-10'=>'Finance',
+	                      'jc-11'=>'Human Resource',
+	                      'jc-12'=>'Media & Communication',
+	                      'jc-13'=>'Consulting',
+	                      'jc-14'=>'Other'
+	                      );
+		return $job_category;
+	}
+
+	// company job type list
+	private function get_job_type_list()
+	{
+		$job_type = array(
+					  'jt-1'=>'Part Time',
+	                  'jt-2'=>'Full Time',
+	                  'jt-3'=>'Internship'
+	                  );
+		return $job_type;
 	}
 }

@@ -202,3 +202,43 @@
         max-width: 600px;
     }
 }
+
+/* company job vacancy detail */
+.bg-company .image-bg{
+    height: 200px;
+}
+figure{
+    margin-bottom: 0px;
+}
+.vacancy-title{
+    margin-top: 13px;
+    margin-bottom: 7px;
+}
+.company-profile .image-bg{
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+}
+.vacancy-attribute span:nth-child(n+2){
+    margin-left: 15px;
+}
+.requirement{
+    padding-left: 10px;
+}
+.requirement li{
+    padding-left: 5px;
+    margin-bottom: 3px;
+}
+.card{
+    border-radius: 0px;
+}
+.card-header{
+    background-color: #fff;
+    border-bottom: 2px solid #333;
+}
+.card-header h4{
+    margin-top: 5px;
+}
+.card-body .table > tbody > tr:first-child > td{
+    border-top: none;
+}

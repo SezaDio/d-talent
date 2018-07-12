@@ -142,3 +142,15 @@ function displayApplyDate($start_date, $end_date)
         return "-";
     }
 }
+
+function displayRequiredSkills($string)
+{
+    if ($string == "") {
+        return "";
+    }
+
+    $array = explode(',', $string);
+    foreach ($array as $key => $value) {
+        echo "<li>". $value ."</li>";
+    }
+}
