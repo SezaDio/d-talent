@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2018 at 08:44 AM
+-- Generation Time: Jul 09, 2018 at 07:22 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -40,6 +40,13 @@ CREATE TABLE `talent_cv_work` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `talent_cv_work`
+--
+
+INSERT INTO `talent_cv_work` (`id_talent_cv_work`, `id_talent`, `position`, `company`, `id_location`, `work_start`, `work_end`, `description`) VALUES
+(1, 3, 'Developer', 'DCS1', '440', '2018-03-01', '2018-12-01', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -57,7 +64,7 @@ ALTER TABLE `talent_cv_work`
 -- AUTO_INCREMENT for table `talent_cv_work`
 --
 ALTER TABLE `talent_cv_work`
-  MODIFY `id_talent_cv_work` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_talent_cv_work` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

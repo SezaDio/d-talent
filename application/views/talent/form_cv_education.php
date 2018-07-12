@@ -1,6 +1,7 @@
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-education/store'); ?>" method="post">
 				<?php
@@ -14,62 +15,53 @@
 
 				<div class="form-group">
 					<label>Sekolah *</label>
-					<input type="text" name="school" class="form-control" required>
+					<input type="text" name="school" class="form-control" required value="<?php echo set_value('school'); ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Gelar/ derajat</label>
 					<p class="text-muted">Contoh: SD, SMP</p>
-					<input type="text" name="degree" class="form-control">
+					<input type="text" name="degree" class="form-control" value="<?php echo set_value('degree'); ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Bidang studi</label>
-					<input type="text" name="field_of_study" class="form-control">
-				</div>
-
-				<div class="form-group">
-					<label>Kelas/ tingkat</label>
-					<input type="text" name="grade" class="form-control">
+					<input type="text" name="field_of_study" class="form-control" value="<?php echo set_value('field_of_study'); ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Aktivitas dan sosial</label>
-					<textarea name="activity" class="form-control"></textarea>
+					<p class="text-muted">Contoh: Pengurus OSIS, Anggota ekskul voli</p>
+					<textarea name="activity" class="form-control"><?php echo set_value('activity'); ?></textarea>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-6">
-							<label>Dari</label>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>">
-							</div>
+						<label>Dari</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>">
+						</div>
 					</div>
 					<div class="col-md-6">
-							<label>Hingga</label>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>">
-							</div>
+						<label>Hingga</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>">
+						</div>
 					</div>
 					<div class="col-md-12">
 						<p class="text-danger" id="date-error"></p>
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label>Deskripsi</label>
-					<textarea name="description" rows="5" class="form-control"></textarea>
-				</div>
-
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<input type="submit" value="Simpan" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<input type="submit" value="Simpan" class="button button1" style="margin-left: 15px;">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
 					</div>
 				</div>
 

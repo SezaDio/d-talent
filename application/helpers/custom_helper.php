@@ -92,8 +92,65 @@ function countAge($birthday)
 
 function displaySkills($string)
 {
+    if ($string == "") {
+        return "";
+    }
+
     $array = explode(',', $string);
     foreach ($array as $key => $value) {
         echo '<span class="label">'. $value .'</span> ';
+    }
+}
+
+function displayGender($gender)
+{
+    if ($gender == 0) {
+        return "Perempuan";
+    }
+    else{
+        return "Laki-laki";
+    }
+}
+
+function displayMaritalStatus($status)
+{
+    if ($status == 0) {
+        return "Belum menikah";
+    }
+    else{
+        return "Sudah menikah";
+    }
+}
+
+function displayCompanyUpdateStatus($status)
+{
+    if ($status == 0) {
+        return "Konsep";
+    }
+    else{
+        return "Terbit";
+    }
+}
+
+/* Company Job Vacancy */
+function displayApplyDate($start_date, $end_date)
+{
+    if ($start_date != null && $start_date != '' && $start_date != '0000-00-00') {
+        return date('d M', strtotime($start_date)) . ' - ' . date('d M Y', strtotime($end_date));
+    }
+    else{
+        return "-";
+    }
+}
+
+function displayRequiredSkills($string)
+{
+    if ($string == "") {
+        return "";
+    }
+
+    $array = explode(',', $string);
+    foreach ($array as $key => $value) {
+        echo "<li>". $value ."</li>";
     }
 }

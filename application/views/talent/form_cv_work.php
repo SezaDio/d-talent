@@ -2,8 +2,9 @@
 	// $this->load->library('form_validation');	==> loaded on talent header
 ?>
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-work-experience/store'); ?>" method="post">
 				<?php
@@ -39,16 +40,20 @@
 
 				<div class="form-group">
 					<label>Lokasi</label>
-					<select name="id_location" class="form-control selectpicker" data-live-search="true" required="required" data-size="7">
-						<option value="">-</option>
-						<?php
-							foreach ($locations as $location) {
-						?>
-							<option value="<?php echo $location->lokasi_ID; ?>"><?php echo $location->lokasi_nama; ?></option>
-						<?php
-							}
-						?>
-					</select>
+					<div class="clearfix">
+						<select name="id_location" class="form-control selectpicker" data-live-search="true" data-size="7">
+							<option value="">-</option>
+							<?php
+								foreach ($locations as $location) {
+							?>
+								<option value="<?php echo $location->lokasi_ID; ?>" <?php echo set_value('id_location')==$location->lokasi_ID ? "selected" : ""; ?> >
+									<?php echo $location->lokasi_nama; ?>
+								</option>
+							<?php
+								}
+							?>
+						</select>
+					</div>
 				</div>
 
 				<div class="row form-group">
@@ -81,10 +86,10 @@
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<input type="submit" value="Simpan" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<input type="submit" value="Simpan" class="button button1" style="margin-left: 15px;">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
 					</div>
 				</div>
 
@@ -119,6 +124,14 @@
 			        scrollTop: $("input[name=work_end]").offset().top - 35
 			    }, 200);
         	}
+        });
+
+        // close bs select dropdown on change
+        $('.selectpicker').on('changed.bs.select', function() {
+        	$('.bootstrap-select.show').removeClass('show');
+        	$('.bootstrap-select.open').removeClass('open');
+        	$('.dropdown-menu.show').removeClass('show');
+        	$('.dropdown-toggle').attr('aria-expanded', 'false');
         });
     });
 </script>

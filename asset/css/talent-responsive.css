@@ -1,0 +1,106 @@
+/* Medium device - Dekstop */
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.col-md-4 {
+		float: left;
+	}
+	/* header */
+	.navbar-header{
+		width: 100%;
+	}
+	.navbar > .container .navbar-brand{
+		position: absolute;
+		top: 0px;
+		margin-left: 0px;
+	}
+	.slicknav_menu{
+	    display: block;
+	}
+	.navbar-collapse.collapse{
+	    display: none !important;
+	}
+
+	/*** talent - my cv ***/
+	.label-colors .label{
+		margin-bottom: 5px;
+	}
+	.contact-talent span{
+		margin-bottom: 5px;
+	}
+
+	/*** talent - form ***/
+	.page-title{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.cv .col-md-offset-2 {
+	    margin-left: 16.66666667%;
+	}
+}
+
+/* Phone */
+@media screen and (max-width: 767px) {
+	.talent-page{
+		padding-top: 30px;
+	}
+
+	/*** talent - my cv ***/
+	.profile{
+		padding-left: 0px;
+	}
+	.label-colors .label{
+		margin-bottom: 5px;
+	}
+	.contact-talent span{
+		margin-bottom: 5px;
+		display: block;
+	}
+	.table .periode {
+	    width: 30%;
+	}
+
+	/*** talent - form ***/
+	.page-title{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.form-group .col-md-4.col-md-offset-2 input{
+		margin-bottom: 15px;
+	}
+
+	/*** talent - vacancy detail ***/
+	.company-profile .fit-content{
+		margin-right: 0px;
+		display: inline-block;
+	}
+	.vacancy-attribute{
+		margin-top: 15px;
+	}
+	.vacancy-attribute span{
+		display: block;
+		margin-bottom: 7px;
+	}
+	.vacancy-attribute span:nth-child(n+2){
+		margin-left: 0px;
+	}
+
+	@media screen and (max-width: 500px) {
+		/*** talent - my cv ***/
+		.bg-talent{
+			height: 150px;
+		}
+
+		/*** talent - vacancy detail ***/
+		.company-profile .image-bg{
+			width: 70px;
+			height: 70px;
+		}
+		.vacancy-attribute{
+			margin-top: 5px;
+		}
+
+	}
+}

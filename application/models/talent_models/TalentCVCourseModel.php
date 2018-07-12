@@ -9,7 +9,7 @@
 
 		public function get_all($id_talent)
 		{
-			$query = $this->db->get_where('talent_cv_course', array('id_talent' => $id_talent));
+			$query = $this->db->order_by('year', 'DESC')->get_where('talent_cv_course', array('id_talent' => $id_talent));
 			return $query->result();
 		}
 
@@ -24,6 +24,9 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'organizer' 	  => $this->input->post('organizer'),
+				// add -01-01 because day & month are ignored
+				'year' 	  => $this->input->post('year') . '-01-01',
 			);
 			
 			return $this->db->insert('talent_cv_course', $data);
@@ -46,6 +49,9 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'organizer' 	  => $this->input->post('organizer'),
+				// add -01-01 because day & month are ignored
+				'year' 	  => $this->input->post('year') . '-01-01',
 			);
 
 			$this->db->where('id_talent_cv_course', $id_talent_cv_course);

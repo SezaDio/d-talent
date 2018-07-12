@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2018 at 12:08 PM
+-- Generation Time: Jul 09, 2018 at 07:21 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -41,6 +41,14 @@ CREATE TABLE `talent_cv_achievement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `talent_cv_achievement`
+--
+
+INSERT INTO `talent_cv_achievement` (`id_talent_cv_achievement`, `id_talent`, `title`, `associated_education`, `associated_work`, `issuer`, `month`, `year`, `description`) VALUES
+(1, 3, 'Ewdq', 1, NULL, 'Dqqw', '0000-02-01', '2010-01-01', ''),
+(2, 3, 'Feds', 1, NULL, '', '0000-03-01', '2015-01-01', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -58,7 +66,7 @@ ALTER TABLE `talent_cv_achievement`
 -- AUTO_INCREMENT for table `talent_cv_achievement`
 --
 ALTER TABLE `talent_cv_achievement`
-  MODIFY `id_talent_cv_achievement` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_talent_cv_achievement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

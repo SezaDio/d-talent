@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2018 at 12:07 PM
+-- Generation Time: Jul 09, 2018 at 12:34 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -33,7 +33,9 @@ CREATE TABLE `talent_cv_course` (
   `id_talent` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `associated_education` int(11) DEFAULT NULL COMMENT 'talent_cv_education_id',
-  `associated_work` int(11) DEFAULT NULL COMMENT 'talent_cv_achievement_id'
+  `associated_work` int(11) DEFAULT NULL COMMENT 'talent_cv_achievement_id',
+  `organizer` varchar(150) DEFAULT NULL,
+  `year` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

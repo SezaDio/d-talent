@@ -6,6 +6,11 @@ class Talent extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		
+		$id_talent = $this->session->userdata('id_talent');
+		if ($id_talent == "") {
+			redirect( site_url('talent/login') );
+		}
 	}
 
 	public function index()
@@ -30,7 +35,6 @@ class Talent extends CI_Controller {
 
 		// get user data
 		$data['talent'] 	= $this->TalentModel->find($id_talent);
-		// $data['talent'] = $this->session->userdata();
 
 		// get location name
 		$this->db->select('lokasi_nama');
@@ -38,18 +42,98 @@ class Talent extends CI_Controller {
 		$this->db->where(array('lokasi_kode' => $data['talent']->id_kota));
 		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
 
-		// var_dump($data['talent']);
-		// die();
-
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/index');
 		$this->load->view('skin/talent/footer');
 	}
 
+	public function editAccount()
+	{
+		$this->load->model('talent_models/TalentModel');
+		$this->load->model('account/UserModel');
+
+		$id_talent = $this->session->userdata('id_talent');
+
+		$data['page_title'] 	= "Edit Account";
+		$data['talent'] 		= $this->TalentModel->find($id_talent);
+		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		$data['lokasiKabupatenKota'] = $this->UserModel->lokasi_kabupaten_kota($data['talent']->id_provinsi);
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/form_edit_account');
+		$this->load->view('skin/talent/footer');
+	}
+
 	public function updateAccount()
 	{
+		$this->load->model('talent_models/TalentModel');
+		$this->load->library('form_validation');
+		
 		$id_talent = $this->session->userdata('id_talent');
-		# code...
+
+		$this->form_validation->set_rules('nama', '"Nama"', 'required');
+		$this->form_validation->set_rules('email', '"Email"', 'required');
+		$this->form_validation->set_rules('nomor_ponsel', '"Telepon"', 'required');
+		$this->form_validation->set_rules('tanggal_lahir', '"Tanggal Lahir"', 'required');
+		$this->form_validation->set_rules('id_kota', '"Lokasi Kota"', 'required');
+		$this->form_validation->set_rules('id_provinsi', '"Lokasi Provinsi"', 'required');
+		$this->form_validation->set_rules('jenis_kelamin', '"Jenis Kelamin"', 'required');
+		$this->form_validation->set_rules('status_pernikahan', '"Status Pernikahan"', 'required');
+
+		if($this->form_validation->run() != FALSE) {
+			// update db
+			$update = $this->TalentModel->updateAccount($id_talent);
+			if ($update) {
+				// message
+				$this->session->set_flashdata('msg_success', 'Edit akun berhasil');
+			}
+			else{
+				// message
+				$this->session->set_flashdata('msg_error', 'Edit akun gagal');
+			}
+		}
+
+		// redirect to page ...
+		redirect('talent');
+	}
+
+	public function updatePassword()
+	{
+		$this->load->model('talent_models/TalentModel');
+		$this->load->library('form_validation');
+		
+		$id_talent = $this->session->userdata('id_talent');
+
+		$this->form_validation->set_rules('old_password', '"Password Lama"', 'required');
+		$this->form_validation->set_rules('new_password', '"Password Baru"', 'required');
+
+		if($this->form_validation->run() != FALSE) {
+
+			$old_password = $this->input->post('old_password', 'true');
+			$new_password = $this->input->post('new_password','true');
+			// check old password
+			$temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+
+			if ($temp_account != "") {
+				// update db
+				$update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				if ($update) {
+					// message
+					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');
+				}
+				else{
+					// message
+					$this->session->set_flashdata('msg_error', 'Ubah password gagal');
+				}
+			}
+			else{
+				// message
+				$this->session->set_flashdata('msg_error', 'Password lama tidak valid');
+			}
+		}
+
+		// redirect to page ...
+		redirect('talent');
 	}
 
 	public function editProfile()
@@ -73,8 +157,6 @@ class Talent extends CI_Controller {
 
 		$id_talent = $this->session->userdata('id_talent');
 
-		// $foto_sampul_filename = "file_".time();
-
 		// default name: use old file name
 		$foto_sampul_filename = $this->input->post('old_foto_sampul');
 		$foto_profil_filename = $this->input->post('old_foto_profil');
@@ -92,7 +174,6 @@ class Talent extends CI_Controller {
 				'file_name' => $foto_sampul_filename_new
 			);
 
-			// $this->load->library('upload', $config_foto_sampul);
 			$this->upload->initialize($config_foto_sampul);
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_sampul')) {
@@ -116,7 +197,6 @@ class Talent extends CI_Controller {
 				'file_name' => $foto_profil_filename_new
 			);
 
-			// $this->load->library('upload', $config_foto_profil);
 			$this->upload->initialize($config_foto_profil);
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_profil')) {
@@ -140,6 +220,15 @@ class Talent extends CI_Controller {
 		}
 
 		// redirect to page ...
-		redirect('talent/profile/edit');
+		redirect('talent');
+	}
+
+	public function vacancyDetail()
+	{
+		$data['page_title'] = "Detail Lowongan";
+
+		$this->load->view('skin/talent/header', $data);
+		$this->load->view('talent/vacancy-detail');
+		$this->load->view('skin/talent/footer');
 	}
 }

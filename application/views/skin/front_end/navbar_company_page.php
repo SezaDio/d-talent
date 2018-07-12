@@ -1,57 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Bootstrap, Parallax, Template, Registration, Landing">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Grayrids">
-    <title>D-Talent | Company Page</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
-	
-	<style>
-		/* Extra small devices (phones, 600px and down) */
-			@media only screen and (max-width: 600px) {
-				.big-slider {display: none;}
-				.small-slider {display: block;}
-			}
-		/* Medium devices (landscape tablets, 768px and up) */
-			@media only screen and (min-width: 768px) {
-				.small-slider {display: none;}
-			} 
-		
-		/* Large devices (laptops/desktops, 992px and up) */
-			@media only screen and (min-width: 992px) {
-				.small-slider {display: none;}
-			} 
-
-	</style>
-	
-  </head>
-  <body>
-
-    <!-- Header Section Start -->
-    <header id="hero-area" data-stellar-background-ratio="0.5">    
+    <header style="z-index: 9999;" id="hero-area" data-stellar-background-ratio="0.5">
       <!-- Navbar Start -->
-      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo" style="background: black;">
+      <nav class="navbar navbar-expand-lg scrolling-navbar indigo" style="position: fixed; background: white; box-shadow: 5px 5px 5px lightgrey; width:100%; margin-top: 17px;">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="img/logo.png" alt=""></a>
+          <div class="navbar-header" style="height: 85px;">
+            <!--Gambar Logo Company-->
+            <a href="index.html" class="navbar-brand">
+              <img style="width: 60px; height: 60px; margin-top: 5px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>
@@ -59,28 +15,27 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#hero-area">Home</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>">Updates</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">Services</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>">Overview</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features">Features</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Jobs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#portfolios">Works</a>
+                <a class="nav-link page-scroll" href="#portfolios">Notification</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#pricing">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#team">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#blog">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">Contact</a>
+              <li class="nav-item treeview dropdown" role="presentation" style="border-left: solid 1px black;">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
+                  <strong>Admin Tools <i class="fa fa-chevron-down"></i></strong>
+                </a>
+                <div class="dropdown-menu" style="margin-top: -25px; margin-left: 20px;">
+                  <ul>
+                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Member View</a></li>
+                    <li class="dropdown-item"><a href="" style="color: black;">Log Out</a></li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>
@@ -89,28 +44,16 @@
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
            <li>
-              <a class="page-scroll" href="#hero-area">Home</a>
+              <a class="page-scroll" href="#hero-area">Updates</a>
             </li>
             <li>
-              <a class="page-scroll" href="#services">Services</a>
+              <a class="page-scroll" href="#services">Overview</a>
             </li>
             <li>
-              <a class="page-scroll" href="#features">Features</a>
+              <a class="page-scroll" href="#features">Jobs</a>
             </li>
             <li>
-              <a class="page-scroll" href="#portfolios">Works</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#pricing">Pricing</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#team">Team</a>
-            </li>
-            <li >
-              <a class="page-scroll" href="#blog">Blog</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#contact">Contact</a>
+              <a class="page-scroll" href="#portfolios">Notification</a>
             </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -121,5 +64,40 @@
           
         </div>
       </div>
-      <br><br><br><br><br>
+      <br><br><br><br><br><br><br>
+    </header>
     <!-- Header Section End --> 
+
+    
+  <!-- Toast Message -->
+  <?php
+    $this->load->library('form_validation');
+  ?>
+  <div class="toast">
+    <!-- Cek error -->
+    <?php
+        if($this->session->has_userdata('msg_error')) {
+    ?>
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        <?php echo $this->session->msg_error; ?>
+      </div>
+      <?php
+        }
+    ?>
+
+    <!-- Cek success -->
+    <?php
+        if($this->session->has_userdata('msg_success')) {
+      ?>
+          <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check"></i> Success!</h4>
+              <?php echo $this->session->msg_success; ?> 
+          </div>
+      <?php
+        }
+    ?>
+  </div>
+  <!-- ./Toast Message -->

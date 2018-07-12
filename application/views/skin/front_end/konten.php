@@ -86,7 +86,7 @@
 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
-              <a href="#"> 
+              <a href="<?php echo site_url('AccountTalent/index/'); ?>"> 
                 <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
                 </div>
@@ -292,6 +292,7 @@
                 <span>$3.99</span>
                 <ul>
                   <li>Ready-to-work talent</li>
+                  <li><br></li>
                 </ul>
               </div>
               <div class="col-md-12">

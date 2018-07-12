@@ -3,9 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TalentCVEducation extends CI_Controller {
 
-	public function _construct()
+	public function __construct()
 	{
-		parent::_construct();
+		parent::__construct();
+		
+		$id_talent = $this->session->userdata('id_talent');
+		if ($id_talent == "") {
+			redirect( site_url('talent/login') );
+		}
 	}
 
 	public function index()
@@ -41,7 +46,7 @@ class TalentCVEducation extends CI_Controller {
 			$this->session->set_flashdata('msg_success', 'Tambah pendidikan berhasil');
 
 			// redirect to page ...
-			redirect('talent/cv-education/create');
+			redirect('talent');
 		}
 	}
 
@@ -88,7 +93,7 @@ class TalentCVEducation extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Edit pendidikan gagal');
 			}
 			// redirect to page ...
-			redirect('talent/cv-education/edit/' . $id_talent_cv_education);
+			redirect('talent');
 		}
 	}
 

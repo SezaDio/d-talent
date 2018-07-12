@@ -2,8 +2,9 @@
 	$this->load->helper('custom');
 ?>
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-education/update/' .  $cv_education->id_talent_cv_education); ?>" method="post">
 				<?php
@@ -32,47 +33,38 @@
 				</div>
 
 				<div class="form-group">
-					<label>Kelas/ tingkat</label>
-					<input type="text" name="grade" class="form-control" value="<?php echo $cv_education->grade; ?>">
-				</div>
-
-				<div class="form-group">
 					<label>Aktivitas dan sosial</label>
+					<p class="text-muted">Contoh: Pengurus OSIS, Anggota ekskul voli</p>
 					<textarea name="activity" class="form-control"><?php echo $cv_education->activity; ?></textarea>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-6">
-							<label>Dari</label>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="from_year" value="<?php echo displayYear($cv_education->from_year); ?>">
-							</div>
+						<label>Dari</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo displayYear($cv_education->from_year); ?>">
+						</div>
 					</div>
 					<div class="col-md-6">
-							<label>Hingga</label>
-							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="to_year" value="<?php echo displayYear($cv_education->to_year); ?>">
-							</div>
+						<label>Hingga</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo displayYear($cv_education->to_year); ?>">
+						</div>
 					</div>
 					<div class="col-md-12">
 						<p class="text-danger" id="date-error"></p>
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label>Deskripsi</label>
-					<textarea name="description" rows="5" class="form-control"><?php echo $cv_education->description; ?></textarea>
-				</div>
-
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<input type="submit" value="Simpan" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<input type="submit" value="Simpan" class="button button1" style="margin-left: 15px;">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
 					</div>
 				</div>
 

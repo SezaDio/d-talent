@@ -9,75 +9,29 @@
     <meta name="author" content="Grayrids">
     <title>D-Talent | Company Page</title>
 
+    <!-- D-Talent -->
+    <!-- <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" /> -->
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
-    <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
-	
-	<style>
-    .button {
-          background-color: #4CAF50;
-          border: none;
-          border-radius: 5px;
-          width: 100%;
-          color: white;
-          padding: 10px 30px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 15px;
-          margin: 4px 2px;
-          -webkit-transition-duration: 0.4s;
-          transition-duration: 0.4s;
-          cursor: pointer;
-      }
+    <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/jquery-min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">  
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/nivo-lightbox.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/magnific-popup.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/slicknav.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>
+	   
+    <link href="<?php echo base_url('asset/css/company-member.css'); ?>" rel="stylesheet" type="text/css" />
 
-      .button1 {
-          background-color: black;
-          color: white;
-          border: 2px solid black;
-      }
-
-      .button1:hover {
-          background-color: white;
-          color: black;
-      }
-
-      .button2 {
-          background-color: white;
-          color: black;
-          border: 2px solid black;
-      }
-
-      .button2:hover {
-          background-color: black;
-          color: white;
-
-		/* Extra small devices (phones, 600px and down) */
-			@media only screen and (max-width: 600px) {
-				.big-slider {display: none;}
-				.small-slider {display: block;}
-			}
-		/* Medium devices (landscape tablets, 768px and up) */
-			@media only screen and (min-width: 768px) {
-				.small-slider {display: none;}
-			} 
-		
-		/* Large devices (laptops/desktops, 992px and up) */
-			@media only screen and (min-width: 992px) {
-				.small-slider {display: none;}
-			} 
-
-	</style>
 
   </head>
   <body background='light-gray'>
@@ -100,7 +54,8 @@
           
         </div>
       </div>
+    
+      <br><br>
     </header>
-    <br><br><br>
 
     <!-- Header Section End --> 

@@ -2,8 +2,9 @@
 	$this->load->helper('custom');
 ?>
 <div class="container">
+	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
-	<div class="cv col-md-6 col-md-offset-3">
+	<div class="cv col-md-8 col-md-offset-2">
 		<div class="card">
 			<form action="<?php echo site_url('talent/cv-achievement/update/' .  $cv_achievement->id_talent_cv_achievement); ?>" method="post">
 				<?php
@@ -94,10 +95,10 @@
 
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<input type="submit" value="Simpan" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<input type="submit" value="Simpan" class="button button1" style="margin-left: 15px;">
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
 					</div>
 				</div>
 

@@ -103,6 +103,16 @@
 									</div>
 									<br>
 
+									<!--Jenis Kelamin-->
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+										<select class="form-control" name="jenis_kelamin" required>
+											<option value="1">Laki-laki</option>
+											<option value="0">Perempuan</option>
+										</select>
+									</div>
+									<br>
+
 									<!--Tanggal Lahir-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -139,6 +149,16 @@
 				                                }
 				                            ?>
 				                        </select>
+									</div>
+									<br>
+
+									<!--Status Pernikahan-->
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
+										<select class="form-control" name="status_pernikahan" required>
+											<option value="0">Belum menikah</option>
+											<option value="1">Sudah menikah</option>
+										</select>
 									</div>
 									<br>
 
@@ -189,6 +209,8 @@
 								var cTotal = respData.kota.length;
 								var ctr;
 
+								// clear options
+								$('#lokasi_kota').html('<option value="All">--Pilih Lokasi Kota--</option>');
 								for ( ctr = 0; ctr < cTotal; ctr++) 
 								{
 									$('#lokasi_kota').append('<option value="'+respData.kota[ctr].id+'">'+respData.kota[ctr].name+'</option>');

@@ -69,10 +69,16 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* talent */
+$route['talent/login'] = 'AccountTalent/index';
+$route['talent/logout'] = 'AccountTalent/logout_member';
+$route['talent/signup'] = 'AccountTalent/view_signup';
+
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';
 $route['talent/profile/update'] = 'Talent/updateProfile';
+$route['talent/password/update'] = 'Talent/updatePassword';
 
 $route['talent/cv-work-experience/create'] = 'TalentCVWork';
 $route['talent/cv-work-experience/edit/(:num)'] = 'TalentCVWork/edit/$1';
@@ -97,3 +103,23 @@ $route['talent/cv-course/edit/(:num)'] = 'TalentCVCourse/edit/$1';
 $route['talent/cv-course/store'] = 'TalentCVCourse/store';
 $route['talent/cv-course/update/(:num)'] = 'TalentCVCourse/update/$1';
 $route['talent/cv-course/delete/(:num)'] = 'TalentCVCourse/delete/$1';
+
+$route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
+
+
+/* company member */
+$route['company/updates'] 				= 'CompanyMember/updates_page';
+$route['company/updates/detail/(:num)'] = 'CompanyMember/detail_updates/$1';
+$route['company/updates/edit/(:num)'] 	= 'CompanyMember/edit_updates/$1';
+$route['company/updates/store'] 		= 'CompanyMember/store_updates';
+$route['company/updates/update/(:num)'] = 'CompanyMember/update_updates/$1';
+$route['company/updates/delete/(:num)'] = 'CompanyMember/delete_updates/$1';
+
+/* company job vacancy */
+$route['company/job-vacancy'] 				= 'CompanyMember/jobs_page';
+$route['company/job-vacancy/create'] 		= 'CompanyMember/add_jobs_page';
+$route['company/job-vacancy/detail/(:num)'] = 'CompanyMember/detail_job/$1';
+$route['company/job-vacancy/edit/(:num)'] 	= 'CompanyMember/edit_job/$1';
+$route['company/job-vacancy/store'] 		= 'CompanyMember/store_job';
+$route['company/job-vacancy/update/(:num)'] = 'CompanyMember/update_job/$1';
+$route['company/job-vacancy/delete/(:num)'] = 'CompanyMember/delete_job/$1';
