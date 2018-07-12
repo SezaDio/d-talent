@@ -10,7 +10,7 @@
     <title>D-Talent | Company Page</title>
 
     <!-- D-Talent -->
-    <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
+    <!-- <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" /> -->
 
     <!-- Bootstrap CSS -->
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/jquery-min.js')?>"></script>

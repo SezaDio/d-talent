@@ -12,7 +12,7 @@
 	<!-- konten -->
 	<div class="content">
 		<div class="company-profile card">
-			<div class="card-body">
+			<div class="card-body row">
 				<div class="fit-content col-xs-4 col-md-2">
 					<figure class="image-bg"></figure>
 				</div>

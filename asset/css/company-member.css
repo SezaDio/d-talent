@@ -211,8 +211,8 @@ figure{
     margin-bottom: 0px;
 }
 .vacancy-title{
-    margin-top: 13px;
-    margin-bottom: 7px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 .company-profile .image-bg{
     width: 120px;
@@ -241,4 +241,25 @@ figure{
 }
 .card-body .table > tbody > tr:first-child > td{
     border-top: none;
+}
+p{
+    margin-bottom: 7px;
+}
+
+@media screen and (min-width: 767px) {
+    .hidden-xs{
+        display: block;
+    }
+    .visible-xs{
+        display: none;
+    }
+}
+/* Phone */
+@media screen and (max-width: 767px) {
+    .hidden-xs{
+        display: none;
+    }
+    .visible-xs{
+        display: block;
+    }
 }
