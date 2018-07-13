@@ -6,13 +6,19 @@
 		{
 			parent::__construct();
 		}
+		
+		public function get_total() 
+	    {
+	        return $this->db->count_all("company_update");
+	    }
 
-		public function get_all($id_company)
+		public function get_all($id_company, $limit_per_page, $start_index)
 		{
 			$this->db->select('*');
 			$this->db->from('company_update');
 			$this->db->where('id_company', $id_company);
 			$this->db->order_by('created_at', 'DESC');
+			$this->db->limit($limit_per_page, $start_index);
 
 			return $this->db->get()->result();
 		}

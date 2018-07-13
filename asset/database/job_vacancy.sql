@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2018 at 05:23 AM
+-- Generation Time: Jul 13, 2018 at 04:32 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -41,8 +41,19 @@ CREATE TABLE `job_vacancy` (
   `job_date_end` date NOT NULL,
   `job_description` text NOT NULL,
   `job_required_skill` text NOT NULL,
-  `publish_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `publish_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_vacancy`
+--
+
+INSERT INTO `job_vacancy` (`id_job`, `id_company`, `job_title`, `job_type`, `job_role`, `job_category`, `job_province_location_id`, `job_city_location_id`, `job_date_start`, `job_date_end`, `job_description`, `job_required_skill`, `publish_date`) VALUES
+(2, 1, 'Tes', 'jt-1', 'AA', 'jc-1', 12, '32.12.00.0000', '2018-07-01', '2018-07-23', 'BBB', 'Desain,HTML,CSS,JavaScript', '2018-07-12 07:54:29'),
+(3, 1, 'Job 2', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(4, 1, 'Job 3', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 3', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(5, 1, 'Job 4', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 4', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(6, 1, 'Job 5', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 5', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +73,7 @@ ALTER TABLE `job_vacancy`
 -- AUTO_INCREMENT for table `job_vacancy`
 --
 ALTER TABLE `job_vacancy`
-  MODIFY `id_job` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_job` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

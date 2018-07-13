@@ -11,6 +11,7 @@ class CompanyMember extends CI_Controller
 		// $this->load->library('input');
 		$this->load->library('form_validation');
 		$this->load->library('session');
+		$this->load->library('pagination');
 		$this->load->model('company_member_models/CompanyUpdatesModel');
 		$this->load->model('company_member_models/CompanyJobVacancyModel');
 	}
@@ -29,10 +30,21 @@ class CompanyMember extends CI_Controller
 		// $id_company = $this->session->userdata('id_company');
 		$id_company = 1;
 
-		$data['company_updates'] = $this->CompanyUpdatesModel->get_all($id_company);
-
 		// $id_company = $this->session->userdata('company_name');
 		$data['company_name'] = "PT . ABC";
+
+		// pagination
+		$base_url = site_url('company/updates/page');
+		$uri_segment = 4;
+		$limit_per_page = 10;
+        $total_rows = $this->CompanyUpdatesModel->get_total();
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_updates'] = $this->CompanyUpdatesModel->get_all($id_company, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -236,7 +248,17 @@ class CompanyMember extends CI_Controller
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
 		
-		$data['company_jobs'] = $this->CompanyJobVacancyModel->get_all($id_company);
+		// pagination
+		$base_url = site_url('company/job-vacancy/page');
+		$uri_segment = 4;
+		$limit_per_page = 10;
+        $total_rows = $this->CompanyJobVacancyModel->get_total();
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->get_all($id_company, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -255,7 +277,18 @@ class CompanyMember extends CI_Controller
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
 
-		$data['company_jobs'] = $this->CompanyJobVacancyModel->filter($id_company, $category);
+		// pagination
+		$base_url = site_url('company/job-vacancy/category/') . $category . '/page';
+		$uri_segment = 6;
+		$limit_per_page = 10;
+        $total_rows  = $this->CompanyJobVacancyModel->get_total_filter($id_company, $category);
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->filter($id_company, $category, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+		// ./pagination
 
 		$data['filter_category'] = $data['job_category'][$category];
 
@@ -283,16 +316,38 @@ class CompanyMember extends CI_Controller
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
 
-		$data['keyword'] = $this->input->post('keyword');
+		$keyword = $this->input->post('keyword');
+		if ($keyword != "") {
+			$this->session->set_userdata('keyword', $keyword);
+		}
+		else {
+			$keyword = $this->session->userdata('keyword');
+		}
 
-		$data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $data['keyword']);
+		// $data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $keyword);
+
+		// pagination
+		$base_url = site_url('company/job-vacancy/search/page');
+		$uri_segment = 5;
+		$limit_per_page = 10;
+        $total_rows  = $this->CompanyJobVacancyModel->get_total_search($id_company, $keyword);
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $keyword, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+		// ./pagination
+
 
 		if (empty($data['company_jobs'])) {
-			$data['filter_result'] = 'Hasil pencarian "'. $data['keyword'] .'" tidak ditemukan.';
+			$data['filter_result'] = 'Hasil pencarian "'. $keyword .'" tidak ditemukan.';
 		}
 		else{
-			$data['filter_result'] = 'Hasil pencarian "'. $data['keyword'] .'"';
+			$data['filter_result'] = 'Hasil pencarian "'. $keyword .'"';
 		}
+
+		$data['keyword'] = $keyword;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -577,5 +632,49 @@ class CompanyMember extends CI_Controller
 	                  'jt-3'=>'Internship'
 	                  );
 		return $job_type;
+	}
+
+	private function custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows)
+	{
+        // pagination config
+        $config['base_url'] = $base_url;
+		$config["uri_segment"] = $uri_segment;
+		$config['per_page'] = $limit_per_page;
+		$config['total_rows'] = $total_rows;
+		
+		// custom paging configuration
+        $config['num_links'] = 3;
+        $config['use_page_numbers'] = TRUE;
+        $config['reuse_query_string'] = TRUE;
+         
+        $config['full_tag_open'] = '<nav class="fit-content">';
+        $config['full_tag_close'] = '</nav>';
+         
+        $config['first_link'] = 'First Page';
+        $config['first_tag_open'] = '<li class="firstlink">';
+        $config['first_tag_close'] = '</li>';
+         
+        $config['last_link'] = 'Last Page';
+        $config['last_tag_open'] = '<li class="lastlink">';
+        $config['last_tag_close'] = '</li>';
+         
+        $config['prev_link'] = 'Prev Page';
+        $config['prev_tag_open'] = '<li class="prevlink">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['next_link'] = 'Next Page';
+        $config['next_tag_open'] = '<li class="nextlink">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="curlink">';
+        $config['cur_tag_close'] = '</li>';
+
+        $config['num_tag_open'] = '<li class="numlink">';
+        $config['num_tag_close'] = '</li>';
+         
+		$this->pagination->initialize($config);
+
+		// build paging links
+        return $this->pagination->create_links();
 	}
 }

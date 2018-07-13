@@ -119,10 +119,20 @@
 						endforeach;
 					}
 				?>
-
 				</div>
+
 			</div>
+
+		<!-- Pagination -->
+		<?php if (isset($links)) { ?>
 			<br>
+			<br>
+			<div class="pagination">
+            	<?php echo $links ?>
+            </div>
+			<br>
+        <?php } ?>
+            
 		</div>
 	</div>
 
@@ -159,7 +169,7 @@
 			var route = "<?php echo site_url('company/job-vacancy/delete/');?>" + delete_target;
 	        $(this).find('a').attr('href', route);
 	    });
-		
+
 	    // open bs select dropdown on click, cause at first click the dropdown menu doesn't show
 	    $('.dropdown-category .dropdown-toggle').dropdown();
     });

@@ -114,6 +114,15 @@
 					}
 				?>
 			</div>
+
+		<!-- Pagination -->
+		<?php if (isset($links)) { ?>
+			<br>
+			<div class="pagination">
+            	<?php echo $links ?>
+            </div>
+        <?php } ?>
+            
 		</div>
 
 		<div class="col-lg-1"></div>	
