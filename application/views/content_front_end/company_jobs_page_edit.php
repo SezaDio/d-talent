@@ -3,9 +3,9 @@
 		<div class="col-lg-1"></div>
 
 		<div class="col-lg-10" style="background-color: white; padding: 20px; border: solid 1px lightgray; box-shadow: 5px 10px 12px lightgrey;">
-			<p style="font-size: 1.5em; text-align: center;"><strong>Add Job</strong></p>
+			<p style="font-size: 1.5em; text-align: center;"><strong>Edit Job</strong></p>
 			<hr style="border: solid 1px lightgray;">
-			<form method="post" action="<?php echo site_url('company/job-vacancy/store');?>">
+			<form method="post" action="<?php echo site_url('company/job-vacancy/update/') . $company_job->id_job;?>">
 
 				<?php 
 					$this->load->library('form_validation');
@@ -17,7 +17,7 @@
 					<label for="exampleInputEmail1"><strong>Job Title</strong></label>
 					<div class="row">
 						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_title" class="form-control" value="<?php echo set_value('job_title'); ?>">
+                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_title" class="form-control" value="<?php echo $company_job->job_title; ?>">
 						</div>
 					</div> 
                 </div>
@@ -33,7 +33,7 @@
                                     foreach ($job_type as $key=>$type) 
                                     {
                                       
-                                        echo '<option value="'.$key.'"'. (set_value('job_type')==$key? "selected" : "") .'>'.$type.'</option>';   
+                                        echo '<option value="'.$key.'"'. ($company_job->job_type==$key ? "selected" : "") .'>'.$type.'</option>';   
                                     }
                                 ?>
                             </select>
@@ -46,7 +46,7 @@
 					<label for="exampleInputEmail1"><strong>Role (Posisi)</strong></label>
 					<div class="row">
 						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo set_value('job_role'); ?>">
+                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo $company_job->job_role; ?>">
 						</div>
 					</div> 
                 </div>
@@ -62,7 +62,7 @@
                                     foreach ($job_category as $key=>$category) 
                                     {
                                       
-                                        echo '<option value="'.$key.'"'. (set_value('job_category')==$key? "selected" : "") .'>'.$category.'</option>';   
+                                        echo '<option value="'.$key.'"'. ($company_job->job_category==$key? "selected" : "") .'>'.$category.'</option>';   
                                     }
                                 ?>
                             </select>
@@ -81,7 +81,7 @@
 	                            <?php
 	                                foreach ($lokasiProvinsi as $key=>$provinsi) 
 	                                {
-	                                    echo '<option value="'.$provinsi['lokasi_ID'].'" data-id-provinsi="'.$key.'">'.$provinsi['lokasi_nama'].'</option>';   
+	                                    echo '<option value="'.$provinsi['lokasi_ID'].'" data-id-provinsi="'.$key.'" '. ($provinsi['lokasi_ID']==$company_job->job_province_location_id ? "selected" : "") .'>'.$provinsi['lokasi_nama'].'</option>';   
 	                                }
 	                            ?>
                             </select>
@@ -91,10 +91,10 @@
                         	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_city_location_id" id="lokasi_kota" required class="form-control">
                                 <option value="All">--Pilih Lokasi Kota--</option>
 	                            <?php
-	                                foreach ($lokasiKabupatenKota as $key=>$kota) 
+	                                foreach ($company_job_cities as $key=>$kota) 
 	                                {
 	                                  
-	                                    echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
+	                                    echo '<option value="'.$key.'"'. ($key==$company_job->job_city_location_id ? "selected" : "") .'>'.$kota['lokasi_nama'].'</option>';   
 	                                }
 	                            ?>
                             </select>
@@ -110,7 +110,7 @@
 							<label for="exampleInputEmail1">Mulai</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker4" placeholder="Tanggal Mulai . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_start" class="form-control" value="<?php echo set_value('job_date_start'); ?>">
+		                        	<input id="datetimepicker4" placeholder="Tanggal Mulai . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_start" class="form-control" value="<?php echo $company_job->job_date_start; ?>">
 								</div>
 							</div> 
 		                </div>
@@ -120,7 +120,7 @@
 							<label for="exampleInputEmail1">Tutup</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker5" placeholder="Tanggal Tutup . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_end" class="form-control" value="<?php echo set_value('job_date_end'); ?>">
+		                        	<input id="datetimepicker5" placeholder="Tanggal Tutup . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_end" class="form-control" value="<?php echo $company_job->job_date_end; ?>">
 								</div>
 							</div> 
 		                </div>
@@ -132,7 +132,7 @@
 					<label for="exampleInputEmail1"><strong>Job Description</strong></label>
 					<div class="row">
 						<div class="col-md-12">
-                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo set_value('job_description'); ?></textarea>
+                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo $company_job->job_description; ?></textarea>
 						</div>
 					</div> 
                 </div>
@@ -140,14 +140,31 @@
                 <!--Required Skills-->
                 <div class="form-group">
 					<label for="exampleInputEmail1"><strong>Required Skills</strong></label>
-					<div class="row" style="padding-bottom: 10px;">
-						<div class="col-md-8">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_required_skill[]" class="form-control" value="">
+					<?php
+						foreach ($company_job_skills as $key => $skill) {
+					?>
+						<div class="row" style="padding-bottom: 10px;">
+							<div class="col-md-8">
+	                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_required_skill[]" class="form-control" value="<?php echo $skill;?>">
+							</div>
+							<div class="col-md-1">
+								<?php
+									// display plus & minus btn
+									if($key==0) {
+								?>
+								<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
+								<?php
+									} else{
+								?>
+								<button style="padding-left: 16px; height: 40px;" type="button" class="button button3 required_skill"><i class="fa fa-minus"></i></button>
+								<?php
+									}
+								?>
+							</div>
 						</div>
-						<div class="col-md-1">
-							<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
-						</div>
-					</div> 
+					<?php
+						}
+					?>
 					
 					<div id="tambah_field"> </div>
                 </div>
@@ -224,7 +241,14 @@
 			$('#tambah_field').append(tambah_field);
         });
 
+        // delete required skill when it was added by plus button
         function delete_field(z){
 			document.getElementById('field_'+z+'').remove();
 		}
+
+		// delete required skill which generated first
+		$('.required_skill').on('click', function(){
+			$(this).parent().parent().remove();
+		});
+
 	</script>

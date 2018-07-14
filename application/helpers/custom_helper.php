@@ -131,3 +131,26 @@ function displayCompanyUpdateStatus($status)
         return "Terbit";
     }
 }
+
+/* Company Job Vacancy */
+function displayApplyDate($start_date, $end_date)
+{
+    if ($start_date != null && $start_date != '' && $start_date != '0000-00-00') {
+        return date('d M', strtotime($start_date)) . ' - ' . date('d M Y', strtotime($end_date));
+    }
+    else{
+        return "-";
+    }
+}
+
+function displayRequiredSkills($string)
+{
+    if ($string == "") {
+        return "";
+    }
+
+    $array = explode(',', $string);
+    foreach ($array as $key => $value) {
+        echo "<li>". $value ."</li>";
+    }
+}

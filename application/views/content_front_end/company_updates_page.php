@@ -79,7 +79,9 @@
 
 						<div class="col-md-6 item-attribute">
 							<strong class="company-update-title">
-								<?php echo $company_update->title; ?>
+								<a href="<?php echo site_url('company/updates/detail/') . $company_update->id_company_update;?>">
+									<?php echo $company_update->title; ?>
+								</a>
 							</strong>
 							<p class="company-name">
 								<?php echo $company_name; ?>
@@ -112,6 +114,15 @@
 					}
 				?>
 			</div>
+
+		<!-- Pagination -->
+		<?php if (isset($links)) { ?>
+			<br>
+			<div class="pagination">
+            	<?php echo $links ?>
+            </div>
+        <?php } ?>
+            
 		</div>
 
 		<div class="col-lg-1"></div>	

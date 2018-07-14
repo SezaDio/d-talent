@@ -40,4 +40,11 @@ class JobVacancy extends CI_Controller
 		$this->load->view('content_front_end/job_list_page_talent_view', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
+	
+	public function job_list()
+	{
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('content_front_end/job_list');
+		$this->load->view('skin/front_end/footer_company_page');
+	}
 }

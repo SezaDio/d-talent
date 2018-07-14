@@ -267,7 +267,7 @@ p.text-danger{
 
 
 /* Overwrite */
-.modal{
+.modal-dialog{
 	top: 15%;
 }
 .modal-content{

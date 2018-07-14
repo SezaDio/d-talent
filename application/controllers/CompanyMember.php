@@ -11,8 +11,10 @@ class CompanyMember extends CI_Controller
 		// $this->load->library('input');
 		$this->load->library('form_validation');
 		$this->load->library('session');
+		$this->load->library('pagination');
 		$this->load->model('company_member_models/CompanyUpdatesModel');
 		$this->load->model('company_member_models/CompanyOverviewModel');
+		$this->load->model('company_member_models/CompanyJobVacancyModel');
 	}
 
 	// Menampilkan halaman Company Member awal setelah company login
@@ -29,13 +31,21 @@ class CompanyMember extends CI_Controller
 		// $id_company = $this->session->userdata('id_company');
 		$id_company = 1;
 
-		$data['company_updates'] = $this->CompanyUpdatesModel->get_all($id_company);
-
 		// $id_company = $this->session->userdata('company_name');
 		$data['company_name'] = "PT . ABC";
 
-		// var_dump($data['company_updates']);
-		// die();
+		// pagination
+		$base_url = site_url('company/updates/page');
+		$uri_segment = 4;
+		$limit_per_page = 10;
+        $total_rows = $this->CompanyUpdatesModel->get_total();
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_updates'] = $this->CompanyUpdatesModel->get_all($id_company, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -43,7 +53,7 @@ class CompanyMember extends CI_Controller
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
-	// Tambah artikel
+	// Menyimpan artikel
 	public function store_updates()
 	{
 		$this->load->library('upload');
@@ -90,6 +100,20 @@ class CompanyMember extends CI_Controller
 		}
 	}
 
+	// Menampilkan halaman detail artikel
+	public function detail_updates($id_company_update)
+	{
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_updates_page_detail', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+
+	// Menampilkan halaman edit artikel
 	public function edit_updates($id_company_update)
 	{
 		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
@@ -100,6 +124,7 @@ class CompanyMember extends CI_Controller
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
+	// Meng-update artikel
 	public function update_updates($id_company_update)
 	{
 		$this->load->library('upload');
@@ -155,6 +180,7 @@ class CompanyMember extends CI_Controller
 		}
 	}
 
+	// Manghapus artikel
 	public function delete_updates($id_company_update)
 	{
 		$company_update = $this->CompanyUpdatesModel->edit($id_company_update);
@@ -439,24 +465,115 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs)
 	public function jobs_page()
 	{
-		//Data Job Categoru Perusahaan
-		$job_category = array(
-							  'jc-1'=>'Software Engineering',
-                              'jc-2'=>'Data Science',
-                              'jc-3'=>'Design',
-                              'jc-4'=>'Operations',
-                              'jc-5'=>'Marketing',
-                              'jc-6'=>'Product Management',
-                              'jc-7'=>'Bussiness Development',
-                              'jc-8'=>'Engineering',
-                              'jc-9'=>'Management',
-                              'jc-10'=>'Finance',
-                              'jc-11'=>'Human Resource',
-                              'jc-12'=>'Media & Communication',
-                              'jc-13'=>'Consulting',
-                              'jc-14'=>'Other'
-                              );
-		$data['job_category']= $job_category;
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		
+		// pagination
+		$base_url = site_url('company/job-vacancy/page');
+		$uri_segment = 4;
+		$limit_per_page = 10;
+        $total_rows = $this->CompanyJobVacancyModel->get_total();
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->get_all($id_company, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan category
+	public function filter_job($category)
+	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+
+		// pagination
+		$base_url = site_url('company/job-vacancy/category/') . $category . '/page';
+		$uri_segment = 6;
+		$limit_per_page = 10;
+        $total_rows  = $this->CompanyJobVacancyModel->get_total_filter($id_company, $category);
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->filter($id_company, $category, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+		// ./pagination
+
+		$data['filter_category'] = $data['job_category'][$category];
+
+		if (empty($data['company_jobs'])) {
+			$data['filter_result'] = 'Lowongan dengan kategori "'.$data['filter_category'].'" tidak ditemukan.';
+		}
+		else{
+			$data['filter_result'] = 'Kategori: "'. $data['filter_category'] .'"';
+		}
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan search
+	public function search_job()
+	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+
+		$keyword = $this->input->post('keyword');
+		if ($keyword != "") {
+			$this->session->set_userdata('keyword', $keyword);
+		}
+		else {
+			$keyword = $this->session->userdata('keyword');
+		}
+
+		// $data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $keyword);
+
+		// pagination
+		$base_url = site_url('company/job-vacancy/search/page');
+		$uri_segment = 5;
+		$limit_per_page = 10;
+        $total_rows  = $this->CompanyJobVacancyModel->get_total_search($id_company, $keyword);
+        $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
+        $start_index = $start_index * $limit_per_page;
+
+		$data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $keyword, $limit_per_page, $start_index);
+
+		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
+		// ./pagination
+
+
+		if (empty($data['company_jobs'])) {
+			$data['filter_result'] = 'Hasil pencarian "'. $keyword .'" tidak ditemukan.';
+		}
+		else{
+			$data['filter_result'] = 'Hasil pencarian "'. $keyword .'"';
+		}
+
+		$data['keyword'] = $keyword;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -469,36 +586,20 @@ class CompanyMember extends CI_Controller
 	{
 		$this->load->model('account/UserModel');
 		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
-		
-		//Data Job Categoru Perusahaan
-		$job_category = array(
-							  'jc-1'=>'Software Engineering',
-                              'jc-2'=>'Data Science',
-                              'jc-3'=>'Design',
-                              'jc-4'=>'Operations',
-                              'jc-5'=>'Marketing',
-                              'jc-6'=>'Product Management',
-                              'jc-7'=>'Bussiness Development',
-                              'jc-8'=>'Engineering',
-                              'jc-9'=>'Management',
-                              'jc-10'=>'Finance',
-                              'jc-11'=>'Human Resource',
-                              'jc-12'=>'Media & Communication',
-                              'jc-13'=>'Consulting',
-                              'jc-14'=>'Other'
-                              );
 
-		$job_type = array(
-							  'jt-1'=>'Part Time',
-                              'jt-2'=>'Full Time',
-                              'jt-3'=>'Internship'
-                              );
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		// get job type list
+		$data['job_type'] 	  = $this->get_job_type_list();
 
-		$data['job_category']= $job_category;
-		$data['job_type']= $job_type;
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_add_jobs_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 
-		//if($this->session->userdata('admin_logged_in'))
-		//{
+		/*
+		if($this->session->userdata('admin_logged_in'))
+		{
 	        //$this->load->model('jobVacancy_models/JobVacancyModels');
 			$this->load->library('form_validation');
 
@@ -565,10 +666,241 @@ class CompanyMember extends CI_Controller
 				$this->load->view('content_front_end/company_add_jobs_page', $data);
 				$this->load->view('skin/front_end/footer_company_page');
 			}     
-		//} 
-		//else 
-		//{
-			//redirect(site_url('Account'));
-		//}
+		} 
+		else 
+		{
+			redirect(site_url('Account'));
+		}
+		*/
+	}
+
+	// Menyimpan lowongan kerja
+	public function store_job()
+	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
+		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
+		$this->form_validation->set_rules('job_role', '"Job Role"', 'required');
+		$this->form_validation->set_rules('job_category', '"Job Category"', 'required');
+		$this->form_validation->set_rules('job_province_location_id', '"Job Province"', 'required');
+		$this->form_validation->set_rules('job_city_location_id', '"Job City"', 'required');
+		$this->form_validation->set_rules('job_date_start', '"Job Date Start"', 'required');
+		$this->form_validation->set_rules('job_date_end', '"Job Date End"', 'required');
+		$this->form_validation->set_rules('job_description', '"Job Description"', 'required');
+		$this->form_validation->set_rules('job_required_skill[]', '"Required Skills"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// redirect to function if form not valid
+			$this->add_jobs_page();
+		}
+		else {
+			// get job_required_skill[]
+			$skills = $this->input->post('job_required_skill[]');
+			// convert array to string
+			$job_required_skill = implode(",", $skills);
+
+			// save data to db
+			$this->CompanyJobVacancyModel->create($id_company, $job_required_skill);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Tambah lowongan kerja berhasil');
+
+			// redirect to page ...
+			redirect('company/job-vacancy');
+		}
+	}
+
+	// Menampilkan halaman detail lowongan kerja
+	public function detail_job($id_job)
+	{
+		$this->load->model('account/UserModel');
+
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		// $id_company = $this->session->userdata('company_name');
+		$data['company_name'] = "PT . ABC";
+
+		$data['company_job'] = $this->CompanyJobVacancyModel->detail($id_job);
+
+		// get job category
+		$job_categories 	  = $this->get_job_category_list();
+		$data['job_category'] = $job_categories[$data['company_job']->job_category];
+		// get job type list
+		$job_types 	  	  = $this->get_job_type_list();
+		$data['job_type'] = $job_types[$data['company_job']->job_type];
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page_detail', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+
+	// Menampilkan halaman edit lowongan kerja
+	public function edit_job($id_job)
+	{
+		$this->load->model('account/UserModel');
+		$array_province = $this->UserModel->lokasi_provinsi();
+		$data['lokasiProvinsi'] = $array_province;
+		
+		// get job category list
+		$data['job_category'] = $this->get_job_category_list();
+		// get job type list
+		$data['job_type'] 	  = $this->get_job_type_list();
+
+		$data['company_job'] = $this->CompanyJobVacancyModel->edit($id_job);
+
+		// convert string to array
+		$data['company_job_skills'] = explode(',', $data['company_job']->job_required_skill);
+
+		// get id province
+		$id_province = $this->get_id_province($array_province, $data['company_job']->job_province_location_id);
+		// get company job cities
+		$data['company_job_cities'] = $this->UserModel->lokasi_kabupaten_kota($id_province);
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobs_page_edit', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+	// get id province from location (province) array by lokasi_ID
+	private function get_id_province($provinces, $lokasi_ID)
+	{
+	   foreach ($provinces as $key => $val) {
+	       if ($val['lokasi_ID'] === $lokasi_ID) {
+	           return $val['lokasi_propinsi'];
+	       }
+	   }
+	   return null;
+	}
+
+
+	// Meng-update lowongan kerja
+	public function update_job($id_job)
+	{
+		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
+		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
+		$this->form_validation->set_rules('job_role', '"Job Role"', 'required');
+		$this->form_validation->set_rules('job_category', '"Job Category"', 'required');
+		$this->form_validation->set_rules('job_province_location_id', '"Job Province"', 'required');
+		$this->form_validation->set_rules('job_city_location_id', '"Job City"', 'required');
+		$this->form_validation->set_rules('job_date_start', '"Job Date Start"', 'required');
+		$this->form_validation->set_rules('job_date_end', '"Job Date End"', 'required');
+		$this->form_validation->set_rules('job_description', '"Job Description"', 'required');
+		$this->form_validation->set_rules('job_required_skill[]', '"Required Skills"', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			// redirect to function if form not valid
+			$this->edit_job($id_job);
+		}
+		else {
+			// get job_required_skill[]
+			$skills = $this->input->post('job_required_skill[]');
+			// convert array to string
+			$job_required_skill = implode(",", $skills);
+
+			// save data to db
+			$this->CompanyJobVacancyModel->update($id_job, $job_required_skill);
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Edit lowongan kerja berhasil');
+
+			// redirect to page ...
+			redirect('company/job-vacancy');
+		}
+	}
+
+	// Manghapus lowongan kerja
+	public function delete_job($id_job)
+	{
+		$query = $this->CompanyJobVacancyModel->delete($id_job);
+
+		if ($query) {
+			// add message to session
+			$this->session->set_flashdata('msg_success', 'Hapus lowongan kerja berhasil');
+		}
+		else {
+			// add message to session
+			$this->session->set_flashdata('msg_error', 'Hapus lowongan kerja gagal');
+		}
+		// redirect to page ...
+		redirect('company/job-vacancy');
+	}
+
+	// company job category list
+	private function get_job_category_list()
+	{
+		$job_category = array(
+						  'jc-1'=>'Software Engineering',
+	                      'jc-2'=>'Data Science',
+	                      'jc-3'=>'Design',
+	                      'jc-4'=>'Operations',
+	                      'jc-5'=>'Marketing',
+	                      'jc-6'=>'Product Management',
+	                      'jc-7'=>'Bussiness Development',
+	                      'jc-8'=>'Engineering',
+	                      'jc-9'=>'Management',
+	                      'jc-10'=>'Finance',
+	                      'jc-11'=>'Human Resource',
+	                      'jc-12'=>'Media & Communication',
+	                      'jc-13'=>'Consulting',
+	                      'jc-14'=>'Other'
+	                      );
+		return $job_category;
+	}
+
+	// company job type list
+	private function get_job_type_list()
+	{
+		$job_type = array(
+					  'jt-1'=>'Part Time',
+	                  'jt-2'=>'Full Time',
+	                  'jt-3'=>'Internship'
+	                  );
+		return $job_type;
+	}
+
+	private function custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows)
+	{
+        // pagination config
+        $config['base_url'] = $base_url;
+		$config["uri_segment"] = $uri_segment;
+		$config['per_page'] = $limit_per_page;
+		$config['total_rows'] = $total_rows;
+		
+		// custom paging configuration
+        $config['num_links'] = 3;
+        $config['use_page_numbers'] = TRUE;
+        $config['reuse_query_string'] = TRUE;
+         
+        $config['full_tag_open'] = '<nav class="fit-content">';
+        $config['full_tag_close'] = '</nav>';
+         
+        $config['first_link'] = 'First Page';
+        $config['first_tag_open'] = '<li class="firstlink">';
+        $config['first_tag_close'] = '</li>';
+         
+        $config['last_link'] = 'Last Page';
+        $config['last_tag_open'] = '<li class="lastlink">';
+        $config['last_tag_close'] = '</li>';
+         
+        $config['prev_link'] = 'Prev Page';
+        $config['prev_tag_open'] = '<li class="prevlink">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['next_link'] = 'Next Page';
+        $config['next_tag_open'] = '<li class="nextlink">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="curlink">';
+        $config['cur_tag_close'] = '</li>';
+
+        $config['num_tag_open'] = '<li class="numlink">';
+        $config['num_tag_close'] = '</li>';
+         
+		$this->pagination->initialize($config);
+
+		// build paging links
+        return $this->pagination->create_links();
 	}
 }
