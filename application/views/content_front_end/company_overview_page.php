@@ -3,7 +3,8 @@
 		<div class="col-lg-1"></div>
 		
 		<div class="col-lg-10" style="background: whitesmoke; padding: 20px; width: 100%;">
-			<form role="form" enctype="multipart/form-data" method="post" action="<?php echo site_url('CompanyMember/kirim_pesan_hubungi_kami/');?>">
+			<form role="form" enctype="multipart/form-data" method="post" action="<?php echo site_url('CompanyMember/update_data_company/');?>">
+				<input style="visibility: hidden; width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="id_company" class="form-control" value="<?php echo htmlspecialchars($dataCompany->id_company); ?>">
 				<!--Section Cover Company-->
 				<div class="row">
 					<div class="col-md-12">
@@ -22,8 +23,12 @@
 						<p style="font-size: 1.3em;"><strong>Company Name & Logo</strong></p>
 						<div class="row">
 							<div class="col-md-3" style="padding-top: 15px;">
-								<img style="width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+								<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 15px; width: 30px; height: 30px;">
+									<a href="#!" data-target=".modal-logo-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
+								</div>
 							</div>
+
 							<div class="col-md-9" style="padding-top: 15px;">
 								<div class="row">
 									<div class="col-md-6">
@@ -36,25 +41,14 @@
 											</div> 
 					                    </div>
 					                </div>
-
+				                </div>
+								<div class="row">
 									<div class="col-md-6">
 					                    <div class="form-group">
 											<label for="exampleInputEmail1">Year Founded</label>
 											<div class="row">
 												<div class="col-md-4">
 				                                	<input placeholder="Year . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="number" required name="company_year" class="form-control" value="<?php echo htmlspecialchars($dataCompany->company_year); ?>">
-												</div>
-											</div> 
-					                    </div>
-					                </div>
-				                </div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="exampleInputEmail1">Company Logo</label>
-											<div class="row">
-												<div class="col-md-4">
-				                                	<input type="file" required name="company_logo" value="<?php echo htmlspecialchars($dataCompany->company_logo); ?>">
 												</div>
 											</div> 
 					                    </div>
@@ -137,7 +131,22 @@
 										<label for="exampleInputEmail1">Company Type</label>
 										<div class="row">
 											<div class="col-md-12">
-			                                	<input placeholder="Your Company Type . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_type" class="form-control" value="<?php echo htmlspecialchars($dataCompany->company_type); ?>">
+												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_type" required class="form-control" id="kategori">
+	                                                <option value="">--Company Type--</option>
+	                                                <?php
+	                                                    foreach ($company_type as $key=>$ct) 
+	                                                    {
+	                                                        if ($key == $dataCompany->company_type)
+	                                                        {
+	                                                            echo '<option value="'.$key.'" selected>'.$ct.'</option>';
+	                                                        }
+	                                                        else
+	                                                        {
+	                                                            echo '<option value="'.$key.'">'.$ct.'</option>';   
+	                                                        }
+	                                                    }
+	                                                ?>
+	                                            </select>
 											</div>
 										</div> 
 				                    </div>
@@ -174,7 +183,7 @@
 							  					{ ?>
 													<div class="row" style="padding-bottom: 10px;">
 														<div class="col-md-10">
-						                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties" class="form-control" value="<?php //echo htmlspecialchars($company_specialties[0]); ?>">
+						                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties[]" class="form-control" value="<?php //echo htmlspecialchars($company_specialties[0]); ?>">
 														</div>
 														<div class="col-md-1">
 															<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
@@ -190,7 +199,7 @@
 					  			  	 				{ ?>
 					  			  	 					<div class="row" style="padding-bottom: 10px;">
 															<div class="col-md-10">
-							                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties" class="form-control" value="<?php echo htmlspecialchars($value); ?>">
+							                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties[]" class="form-control" value="<?php echo htmlspecialchars($value); ?>">
 															</div>
 															<div class="col-md-1">
 																<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button1"><i class="fa fa-plus"></i></button>
@@ -203,10 +212,10 @@
 					  			  	 				{ ?>
 					  			  	 					<div class="row" style="padding-bottom: 10px;">
 															<div class="col-md-10">
-							                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties" class="form-control" value="<?php echo htmlspecialchars($value); ?>">
+							                                	<input placeholder="Company Specialties . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="company_specialties[]" class="form-control" value="<?php echo htmlspecialchars($value); ?>">
 															</div>
 															<div class="col-md-1">
-																<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button3"><i class="fa fa-minus"></i></button>
+																<button id="add_field" style="margin: unset; padding-left: 16px;" type="button" class="button button3 required_skill"><i class="fa fa-minus"></i></button>
 															</div>
 														</div>
 					  			  	 		  <?php } ?>
@@ -241,7 +250,7 @@
 	</div>
 	<br><br>
 
-	<!-- modal delete -->
+	<!-- modal Update Cover Picture -->
 	<div class="modal fade modal-cover-company" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document" style="margin-top: 250px;">
 			<div class="modal-content">
@@ -266,10 +275,37 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
+	<!-- modal Update Logo Picture -->
+	<div class="modal fade modal-logo-company" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document" style="margin-top: 250px;">
+			<div class="modal-content">
+
+				<form role="form" method="POST" enctype="multipart/form-data" action="<?php echo site_url('CompanyMember/update_company_logo/');?>">
+					<div class="modal-header">
+						<strong class="modal-title"><i class="fa fa-images"></i> Change Your Company Logo</strong>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+						<div class="custom-file" style="height: 28px;">
+						  <input name="company_logo" required type="file" class="custom-file-input" id="customFile" style="opacity: 1;">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="button button3" data-dismiss="modal">Cancel</button>
+						<button class="button button1" type="submit" name="save"><i class="fa fa-save"></i> Save</button>
+					</div>
+				</form>
+
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 	<script type="text/javascript">
 		var counter = 0;
 
-			$('.modal-cover-company').on('show.bs.modal');
+		$('.modal-cover-company').on('show.bs.modal');
+
+		$('.modal-logo-company').on('show.bs.modal');
 		
         $('button#add_field').click(function(){
             counter += 1;
@@ -288,7 +324,13 @@
 			$('#tambah_field').append(tambah_field);
         });
 
+        // delete company specialties which generated by plus button
         function delete_field(z){
 			document.getElementById('field_'+z+'').remove();
 		}
+
+		// delete company specialties which generated first
+		$('.required_skill').on('click', function(){
+			$(this).parent().parent().remove();
+		});
 	</script>

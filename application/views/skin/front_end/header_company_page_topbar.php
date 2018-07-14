@@ -17,7 +17,7 @@
     <script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">  
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/line-icons.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.carousel.css?v='.rand().'')?>"> 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/owl.theme.css?v='.rand().'')?>">    

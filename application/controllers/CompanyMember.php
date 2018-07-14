@@ -213,6 +213,7 @@ class CompanyMember extends CI_Controller
 
 		//get data company
 		$data['dataCoverCompany'] = $this->CompanyOverviewModel->get_data_cover_by_id($id_company)->row();
+		$data['dataLogoCompany'] = $this->CompanyOverviewModel->get_data_logo_by_id($id_company)->row();
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
 		//Data Bidang Usaha Perusahaan
@@ -236,6 +237,19 @@ class CompanyMember extends CI_Controller
                               'bu-17'=>'Kesenian, Hiburan, dan Rekreasi',
                               'bu-18'=>'Kegiatan Jasa Lainnya'
                               );
+		//Data Company Type
+		$company_type = array(
+							  'ct-1'=>'Public Company',
+                              'ct-2'=>'Educational Institution',
+                              'ct-3'=>'Self-Employed',
+                              'ct-4'=>'Government Agency',
+                              'ct-5'=>'Nonprofit',
+                              'ct-6'=>'Sole Proprietorship',
+                              'ct-7'=>'Privately Held',
+                              'ct-8'=>'Partnership'
+                              );
+		
+		$data['company_type']= $company_type;
 		$data['bidang_usaha']= $bidang_usaha;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
@@ -245,8 +259,10 @@ class CompanyMember extends CI_Controller
 	}
 
 	//Fungsi melakukan update data company pada database
-	public function update_data_company($id_company) 
+	public function update_data_company() 
 	{	
+		$id_company = $this->input->post('id_company');
+
 		//Data Bidang Usaha Perusahaan
 		$bidang_usaha = array(
 							  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
@@ -268,7 +284,21 @@ class CompanyMember extends CI_Controller
                               'bu-17'=>'Kesenian, Hiburan, dan Rekreasi',
                               'bu-18'=>'Kegiatan Jasa Lainnya'
                               );
+
+		//Data Company Type
+		$company_type = array(
+							  'ct-1'=>'Public Company',
+                              'ct-2'=>'Educational Institution',
+                              'ct-3'=>'Self-Employed',
+                              'ct-4'=>'Government Agency',
+                              'ct-5'=>'Nonprofit',
+                              'ct-6'=>'Sole Proprietorship',
+                              'ct-7'=>'Privately Held',
+                              'ct-8'=>'Partnership'
+                              );
+
 		$data['bidang_usaha']= $bidang_usaha;
+		$data['company_type']= $company_type;
 
 
 		//if($this->session->userdata('admin_logged_in'))
@@ -283,7 +313,6 @@ class CompanyMember extends CI_Controller
 				$id_company = $this->input->post('id_company');
 
 				$this->form_validation->set_rules('company_name', 'Nama Company', 'required');
-				$this->form_validation->set_rules('company_logo', 'Logo Company', 'required');
 				$this->form_validation->set_rules('company_description', 'Deskripsi Company', 'required');
 				$this->form_validation->set_rules('company_address', 'Address Company', 'required');
 				$this->form_validation->set_rules('company_industries', 'Industries Company', 'required');
@@ -291,13 +320,11 @@ class CompanyMember extends CI_Controller
 				$this->form_validation->set_rules('company_type', 'Type Company', 'required');
 				$this->form_validation->set_rules('company_email', 'Email Company', 'required');
 				$this->form_validation->set_rules('company_year', 'Year Company', 'required');
+				$this->form_validation->set_rules('company_specialties[]', 'Company Specialties', 'required');
 
-				//Mengambil filename gambar untuk disimpan
-				$nmfile = "logo_company_".time();
-				$config['upload_path'] = './asset/img/upload_img_company/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = '2048000'; //kb
-				$config['file_name'] = $nmfile;
+				// convert array to string
+				$data_company_specialties = $this->input->post('company_specialties[]');
+				$company_specialties = implode(",", $data_company_specialties);
 
 				$data_company=array(
 								'company_name'=>$this->input->post('company_name'),
@@ -308,37 +335,17 @@ class CompanyMember extends CI_Controller
 								'company_type'=>$this->input->post('company_type'),
 								'company_email'=>$this->input->post('company_email'),
 								'company_year'=>$this->input->post('company_year'),
+								'company_specialties'=>$company_specialties,
 								'company_address'=>$this->input->post('company_address')
-								
 								);
 				$data['dataCompany'] = $data_company;
 
 				//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
 				if (($this->form_validation->run() == TRUE))
 				{
-					$gbr = NULL;
-					$iserror = false;
-					if ((!empty($_FILES['company_logo']['name']))) 
-					{
-						$this->load->library('upload', $config);
-						if($this->upload->do_upload('company_logo'))
-						{
-							$gbr = $this->upload->data();
-							$this->crop($gbr['full_path'],$gbr['file_name']);
-							$data_company['path_gambar'] = $gbr['file_name'];
-						}
-						else
-						{
-							$this->session->set_flashdata('msg_gagal', 'Data Company Member gagal diperbaharui');
-							$iserror = true;
-						}
-					}
-					if (!$iserror) 
-					{
-						$this->db->update('company', $data_company, array('id_company'=>$id_company));
-						$this->session->set_flashdata('msg_berhasil', 'Data Company Member berhasil diperbaharui');
-						redirect('CompanyMember/overview_page');
-					}
+					$this->db->update('company', $data_company, array('id_company'=>$id_company));
+					$this->session->set_flashdata('msg_berhasil', 'Data Company Member berhasil diperbaharui');
+					redirect('CompanyMember/overview_page');
 				}
 				else
 				{
@@ -426,6 +433,85 @@ class CompanyMember extends CI_Controller
 				if (!$iserror) 
 				{
 					$this->db->update('company', $data_cover_company, array('id_company'=>$id_company));
+					$this->session->set_flashdata('msg_berhasil', 'Cover Picture berhasil diperbaharui');
+					redirect('CompanyMember/overview_page');
+				}
+			}
+			else
+			{
+				$id_company = 1;
+				$this->load->model('company_member_models/CompanyOverviewModel');
+				$data['company'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
+
+				$data_company=array(
+								'company_name'=>$data['company']->company_name,
+								'company_email'=>$data['company']->company_email,
+								'company_telepon'=>$data['company']->company_telepon,
+								'company_website'=>$data['company']->company_website,
+								'company_address'=>$data['company']->company_address,
+								'company_industries'=>$data['company']->company_industries,
+								'company_type'=>$data['company']->company_type,
+								'company_specialties'=>$data['company']->company_specialties,
+								'company_year'=>$data['company']->company_year,
+								'company_description'=>$data['company']->company_description,
+								'company_cover'=>$data['company']->company_cover,
+								'company_logo'=>$data['company']->company_logo,
+								'company_date_join'=>$data['company']->company_date_join
+								);
+				$data['dataCompany'] = $data_company;
+			}
+
+			$data['idCompany'] = $id_company;
+			$this->load->view('skin/front_end/header_company_page_topbar');
+			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('content_front_end/company_overview_page', $data);
+			$this->load->view('skin/front_end/footer_company_page');
+		
+	}
+
+	// menyimpan update data company cover picture
+	public function update_company_logo()
+	{
+			
+			$this->load->model('company_member_models/CompanyUpdatesModel');
+			$this->load->library('form_validation');
+
+			$edit = $this->input->post('save');
+
+			if (isset($_POST['save']))
+			{
+				//$id_company = $this->input->post('id_company');
+				$id_company = 1;
+
+				//Mengambil filename gambar untuk disimpan
+				$nmfile = "company_logo_".time();
+				$config['upload_path'] = './asset/img/upload_img_company/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size'] = "2048000"; //kb
+				$config['file_name'] = $nmfile;
+
+				//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+				$gbr = NULL;
+				$iserror = false;
+				if ((!empty($_FILES['company_logo']['name']))) 
+				{
+
+					$this->load->library('upload', $config);
+					if($this->upload->do_upload('company_logo'))
+					{
+						$gbr = $this->upload->data();
+						$data_logo_company['company_logo'] = $gbr['file_name'];
+					}
+					else
+					{
+						$this->session->set_flashdata('msg_gagal', 'Data Testimoni gagal diedit');
+						$iserror = true;
+					}
+
+				}
+				if (!$iserror) 
+				{
+					$this->db->update('company', $data_logo_company, array('id_company'=>$id_company));
 					$this->session->set_flashdata('msg_berhasil', 'Cover Picture berhasil diperbaharui');
 					redirect('CompanyMember/overview_page');
 				}
