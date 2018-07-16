@@ -45,6 +45,34 @@
 			return $this->db->get();
 		}
 
+		//Mengambil data dari tabel Talent
+		function get_data_company()
+		{
+			$query = $this->db->query("SELECT * FROM `company`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		// Cek keberadaan user di sistem
+		function check_company_member_account($email, $password)
+		{
+			$this->db->select('*');
+			$this->db->from('company');
+			$this->db->where('company_email', $email);
+			$this->db->where('password', md5($password));
+
+			return $this->db->get();
+		}
+
+
 		//Mengambil data user
 		function get_member($id_member)
 		{
