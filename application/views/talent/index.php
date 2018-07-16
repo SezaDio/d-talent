@@ -210,7 +210,7 @@
 				    	<?php foreach ($cv_courses as $cv_course):?>
 					    	<tr>
 					    		<td class="periode">
-					    			<?php echo displayYear($cv_course->year); ?>
+					    			<?php echo $cv_course->year; ?>
 					    		</td>
 					    		<td>
 					    			<?php

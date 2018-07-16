@@ -24,9 +24,8 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
-				'organizer' 	  => $this->input->post('organizer'),
-				// add -01-01 because day & month are ignored
-				'year' 	  => $this->input->post('year') . '-01-01',
+				'organizer' 	  	   => $this->input->post('organizer'),
+				'year' 	  			   => $this->input->post('year'),
 			);
 			
 			return $this->db->insert('talent_cv_course', $data);
@@ -49,9 +48,8 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
-				'organizer' 	  => $this->input->post('organizer'),
-				// add -01-01 because day & month are ignored
-				'year' 	  => $this->input->post('year') . '-01-01',
+				'organizer' 	  	   => $this->input->post('organizer'),
+				'year' 	  			   => $this->input->post('year'),
 			);
 
 			$this->db->where('id_talent_cv_course', $id_talent_cv_course);
