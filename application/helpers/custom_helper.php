@@ -20,16 +20,6 @@ function displayMonthYear($date)
     }
 }
 
-function displayMonth($date)
-{
-    if ($date != null && $date != '' && $date != '0000-00-00') {
-        return date('m', strtotime($date));
-    }
-    else{
-        return "";
-    }
-}
-
 function displayMonthName($month)
 {
     if ($month != null && $month != '') {
@@ -78,7 +68,30 @@ function displayMonthName($month)
     }
 }
 
-function displayYear($date)
+function displayCVWorkDate($work_start, $work_end)
+{
+    if ($work_start != '0000-00-00' && $work_end != '0000-00-00') {
+        return date('F Y', strtotime($work_start)) . " - " . date('F Y', strtotime($work_end));
+    }
+    elseif ($work_start != '0000-00-00' && $work_end == '0000-00-00'){
+        return date('F Y', strtotime($work_start)) . " - ...";
+    }
+    else{
+        return "-";
+    }
+}
+
+/*function displayMonth($date)
+{
+    if ($date != null && $date != '' && $date != '0000-00-00') {
+        return date('m', strtotime($date));
+    }
+    else{
+        return "";
+    }
+}*/
+
+/*function displayYear($date)
 {
     if ($date != null && $date != '' && $date != '0000-00-00') {
         return date('Y', strtotime($date));
@@ -86,20 +99,7 @@ function displayYear($date)
     else{
         return "";
     }
-}
-
-function displayCVWorkDate($work_start, $work_end)
-{
-    if ($work_start != '0000-00-00' && $work_end != '0000-00-00') {
-        return date('F Y', strtotime($work_start)) . " - " . date('F Y', strtotime($work_end));
-    }
-    elseif ($work_start != '0000-00-00' && $work_end == '0000-00-00'){
-    	return date('F Y', strtotime($work_start)) . " - ...";
-    }
-    else{
-        return "-";
-    }
-}
+}*/
 
 /*function displayCVEducationDate($start_date, $end_date)
 {
