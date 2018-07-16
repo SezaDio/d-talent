@@ -101,7 +101,7 @@ function displayCVWorkDate($work_start, $work_end)
     }
 }
 
-function displayCVEducationDate($start_date, $end_date)
+/*function displayCVEducationDate($start_date, $end_date)
 {
     if ($start_date != '0000-00-00' && $end_date != '0000-00-00') {
         return date('Y', strtotime($start_date)) . " - " . date('Y', strtotime($end_date));
@@ -112,7 +112,7 @@ function displayCVEducationDate($start_date, $end_date)
     else{
         return "-";
     }
-}
+}*/
 
 function capitalizeEachWord($string)
 {

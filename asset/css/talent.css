@@ -325,7 +325,7 @@ select.form-control{
 	padding-right: 15px;
 }
 .dropdown-menu{
-	font-size: 14px;
+	font-size: 15px;
 }
 .dropdown button{
 	background-color: #fefefe;
@@ -340,8 +340,8 @@ select.form-control{
 	margin-left: 15px;
 }
 .dropdown-menu > li > a{
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 }
 figure{
 	margin-bottom: 0px;
