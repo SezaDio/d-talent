@@ -74,14 +74,14 @@
 						<label>Bulan</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control monthpicker" name="month" value="<?php echo displayMonth($cv_achievement->month); ?>">
+							<input type="text" class="form-control monthpicker" name="month" value="<?php echo $cv_achievement->month; ?>">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label>Tahun</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control yearpicker" name="year" value="<?php echo displayYear($cv_achievement->year); ?>">
+							<input type="text" class="form-control yearpicker" name="year" value="<?php echo $cv_achievement->year; ?>">
 						</div>
 					</div>
 				</div>
@@ -112,7 +112,7 @@
 <script type="text/javascript">
 	$(function () {
         $('.monthpicker').datepicker({
-        	format: 'mm',
+        	format: 'm',
         	minViewMode: 'months',
         	maxViewMode: 'months',
         });

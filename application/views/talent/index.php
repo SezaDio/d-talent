@@ -172,7 +172,7 @@
 				    	<?php foreach ($cv_achievements as $cv_achievement):?>
 					    	<tr>
 					    		<td class="periode">
-					    			<?php echo displayMonthName($cv_achievement->month) ." ". displayYear($cv_achievement->year); ?>
+					    			<?php echo displayMonthName($cv_achievement->month) ." ". $cv_achievement->year; ?>
 					    		</td>
 					    		<td>
 					    			<?php

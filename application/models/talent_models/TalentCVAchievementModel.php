@@ -26,9 +26,8 @@
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
 
 				'issuer' 	  => $this->input->post('issuer'),
-				// add -01-01 because day, month, or year are ignored
-				'month'   	  => '0000-' . $this->input->post('month') . '-01',
-				'year' 	  	  => $this->input->post('year') . '-01-01',
+				'month'   	  => $this->input->post('month'),
+				'year' 	  	  => $this->input->post('year'),
 				'description' => $this->input->post('description'),
 			);
 			
@@ -54,12 +53,11 @@
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
 
 				'issuer' 	  => $this->input->post('issuer'),
-				// add -01-01 because day, month, or year are ignored
-				'month'   	  => '0000-' . $this->input->post('month') . '-01',
-				'year' 	  	  => $this->input->post('year') . '-01-01',
+				'month'   	  => $this->input->post('month'),
+				'year' 	  	  => $this->input->post('year'),
 				'description' => $this->input->post('description'),
 			);
-
+			
 			$this->db->where('id_talent_cv_achievement', $id_talent_cv_achievement);
 			return $this->db->update('talent_cv_achievement', $data);
 		}

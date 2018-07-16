@@ -105,7 +105,7 @@
 <script type="text/javascript">
 	$(function () {
         $('.monthpicker').datepicker({
-        	format: 'mm',
+        	format: 'm',
         	minViewMode: 'months',
         	maxViewMode: 'months',
         });
