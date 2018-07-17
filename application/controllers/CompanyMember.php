@@ -8,10 +8,10 @@ class CompanyMember extends CI_Controller
 		parent::__construct();
 
 		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
+		// $id_company = $this->session->userdata('id_company');
+		// if ($id_company == "") {
+		// 	redirect( site_url('AccountCompany') );
+		// }
 
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -22,22 +22,21 @@ class CompanyMember extends CI_Controller
 		$this->load->model('company_member_models/CompanyUpdatesModel');
 		$this->load->model('company_member_models/CompanyOverviewModel');
 		$this->load->model('company_member_models/CompanyJobVacancyModel');
+		$this->load->model('company_member_models/CompanyNotificationModel');
+
 	}
 
 	// Menampilkan halaman Company Member awal setelah company login
 	public function index()
 	{
-		//if($this->session->userdata('company_logged_in'))
-		//{
-			$id_company = $this->session->userdata('id_company');
-			$this->load->model('company_member_models/CompanyOverviewModel');
+		$id_company = $this->session->userdata('id_company');
+		$this->load->model('company_member_models/CompanyOverviewModel');
 
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
-			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('content_front_end/company_member_page', $data);
-			$this->load->view('skin/front_end/footer_company_page');
-		//}
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('content_front_end/company_member_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	//Menampilkan halaman Company Member (Menu Update)
@@ -801,7 +800,6 @@ class CompanyMember extends CI_Controller
 	   return null;
 	}
 
-
 	// Meng-update lowongan kerja
 	public function update_job($id_job)
 	{
@@ -928,5 +926,22 @@ class CompanyMember extends CI_Controller
 
 		// build paging links
         return $this->pagination->create_links();
+	}
+
+
+	/* Job Notification */
+	public function notification_page()
+	{
+		// $id_company = $this->session->userdata('id_company');
+		$id_company = 1;
+
+		$data['job_notifications'] = $this->CompanyNotificationModel->get_all($id_company);
+		// var_dump($data['job_notifications']);
+		// die();
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_notification_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 }

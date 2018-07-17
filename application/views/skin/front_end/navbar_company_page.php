@@ -24,7 +24,7 @@
                 <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Jobs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#portfolios">Notification</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('company/notification'); ?>">Notification</a>
               </li>
               <li class="nav-item treeview dropdown" role="presentation" style="border-left: solid 1px black;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">

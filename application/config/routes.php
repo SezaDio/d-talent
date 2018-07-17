@@ -134,3 +134,7 @@ $route['company/job-vacancy/category/(:any)/page/(:num)'] = 'CompanyMember/filte
 $route['company/job-vacancy/search'] 			 = 'CompanyMember/search_job';
 $route['company/job-vacancy/search/page']		 = 'CompanyMember/search_job';
 $route['company/job-vacancy/search/page/(:num)'] = 'CompanyMember/search_job';
+
+/* company job notification */
+$route['company/notification'] 				 = 'CompanyMember/notification_page';
+$route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';
