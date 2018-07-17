@@ -11,6 +11,9 @@ class TalentCVWork extends CI_Controller {
 		if ($id_talent == "") {
 			redirect( site_url('talent/login') );
 		}
+
+		$this->load->library('form_validation');
+		$this->load->model('talent_models/TalentCVWorkModel');
 	}
 
 	public function index()
@@ -33,9 +36,6 @@ class TalentCVWork extends CI_Controller {
 
 	public function store()
 	{
-		$this->load->model('talent_models/TalentCVWorkModel');
-		$this->load->library('form_validation');
-
 		$id_talent = $this->session->userdata('id_talent');
 		// used for if form not valid
 		$data['page_title'] = "Tambah Pengalaman Kerja";
@@ -71,10 +71,10 @@ class TalentCVWork extends CI_Controller {
 
 	public function edit($id_talent_cv_work)
 	{
-		$this->load->model('talent_models/TalentCVWorkModel');
+		$id_talent = $this->session->userdata('id_talent');
 
 		$data['page_title'] = "Edit Pengalaman Kerja";
-		$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
+		$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent, $id_talent_cv_work);
 
 		// get location's name
 		$this->db->select('lokasi_ID, lokasi_nama');
@@ -92,8 +92,7 @@ class TalentCVWork extends CI_Controller {
 
 	public function update($id_talent_cv_work)
 	{
-		$this->load->model('talent_models/TalentCVWorkModel');
-		$this->load->library('form_validation');
+		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
 		$data['page_title'] = "Edit Pengalaman Kerja";
@@ -102,25 +101,12 @@ class TalentCVWork extends CI_Controller {
 		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			// get edit data
-			$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent_cv_work);
-			
-			// get location's name
-			$this->db->select('lokasi_ID, lokasi_nama');
-			$this->db->from('inf_lokasi');
-			$this->db->where('lokasi_kabupatenkota >', 0);
-			$this->db->where('lokasi_kecamatan', 0);
-			$this->db->where('lokasi_kelurahan', 0);
-
-			$data['locations'] = $this->db->get()->result();
-
-			$this->load->view('skin/talent/header', $data);
-			$this->load->view('talent/form_edit_cv_work');
-			$this->load->view('skin/talent/footer');
+			// redirect to function
+			$this->edit($id_talent_cv_work);
 		}
 		else {
 			// update data to db
-			$affected = $this->TalentCVWorkModel->update_talent_cv_work($id_talent_cv_work);
+			$affected = $this->TalentCVWorkModel->update_talent_cv_work($id_talent, $id_talent_cv_work);
 			
 			if ($affected) {
 				// add message to session
@@ -137,8 +123,9 @@ class TalentCVWork extends CI_Controller {
 
 	public function delete($id_talent_cv_work)
 	{
-		$this->load->model('talent_models/TalentCVWorkModel');
-		$query = $this->TalentCVWorkModel->delete($id_talent_cv_work);
+		$id_talent = $this->session->userdata('id_talent');
+
+		$query = $this->TalentCVWorkModel->delete($id_talent, $id_talent_cv_work);
 
 		if ($query) {
 			// add message to session

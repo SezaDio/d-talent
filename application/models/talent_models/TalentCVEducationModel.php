@@ -28,14 +28,14 @@
 			return $this->db->insert('talent_cv_education', $data);
 		}
 
-		public function edit($id_talent_cv_education)
+		public function edit($id_talent, $id_talent_cv_education)
 		{
-			$query = $this->db->get_where('talent_cv_education', array('id_talent_cv_education' => $id_talent_cv_education));
+			$query = $this->db->get_where('talent_cv_education', array('id_talent'=>$id_talent, 'id_talent_cv_education' => $id_talent_cv_education));
 			// get 1 object from query
 			return $query->row();
 		}
 
-		public function update($id_talent_cv_education)
+		public function update($id_talent, $id_talent_cv_education)
 		{
 			$data = array(
 				'school' 	  => $this->input->post('school'),
@@ -46,12 +46,14 @@
 				'to_year' 	  => $this->input->post('to_year')
 			);
 			
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_education', $id_talent_cv_education);
 			return $this->db->update('talent_cv_education', $data);
 		}
 
-		public function delete($id_talent_cv_education)
+		public function delete($id_talent, $id_talent_cv_education)
 		{
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_education', $id_talent_cv_education);
 			return $this->db->delete('talent_cv_education');
 		}

@@ -11,6 +11,9 @@ class TalentCVEducation extends CI_Controller {
 		if ($id_talent == "") {
 			redirect( site_url('talent/login') );
 		}
+
+		$this->load->library('form_validation');
+		$this->load->model('talent_models/TalentCVEducationModel');
 	}
 
 	public function index()
@@ -24,9 +27,6 @@ class TalentCVEducation extends CI_Controller {
 
 	public function store()
 	{
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$this->load->library('form_validation');
-
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
@@ -52,10 +52,10 @@ class TalentCVEducation extends CI_Controller {
 
 	public function edit($id_talent_cv_education)
 	{
-		$this->load->model('talent_models/TalentCVEducationModel');
+		$id_talent = $this->session->userdata('id_talent');
 
 		$data['page_title'] = "Edit Pendidikan";
-		$data['cv_education'] 	= $this->TalentCVEducationModel->edit($id_talent_cv_education);
+		$data['cv_education'] 	= $this->TalentCVEducationModel->edit($id_talent, $id_talent_cv_education);
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_edit_cv_education');
@@ -64,25 +64,20 @@ class TalentCVEducation extends CI_Controller {
 
 	public function update($id_talent_cv_education)
 	{
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$this->load->library('form_validation');
-
+		$id_talent = $this->session->userdata('id_talent');
+	
 		// used for if form not valid
 		$data['page_title'] = "Edit Pendidikan";
 
 		$this->form_validation->set_rules('school', '"Sekolah"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			// get edit data
-			$data['cv_education'] 	= $this->TalentCVEducationModel->edit($id_talent_cv_education);
-			
-			$this->load->view('skin/talent/header', $data);
-			$this->load->view('talent/form_edit_cv_education');
-			$this->load->view('skin/talent/footer');
+			// redirect to function
+			$this->edit($id_talent_cv_education);
 		}
 		else {
 			// update data to db
-			$affected = $this->TalentCVEducationModel->update($id_talent_cv_education);
+			$affected = $this->TalentCVEducationModel->update($id_talent, $id_talent_cv_education);
 			
 			if ($affected) {
 				// add message to session
@@ -99,8 +94,9 @@ class TalentCVEducation extends CI_Controller {
 
 	public function delete($id_talent_cv_education)
 	{
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$query = $this->TalentCVEducationModel->delete($id_talent_cv_education);
+		$id_talent = $this->session->userdata('id_talent');
+
+		$query = $this->TalentCVEducationModel->delete($id_talent, $id_talent_cv_education);
 
 		if ($query) {
 			// add message to session

@@ -29,14 +29,14 @@
 			return $this->db->insert('talent_cv_work', $data);
 		}
 
-		public function edit_talent_cv_work($id_talent_cv_work)
+		public function edit_talent_cv_work($id_talent, $id_talent_cv_work)
 		{
-			$query = $this->db->get_where('talent_cv_work', array('id_talent_cv_work' => $id_talent_cv_work));
+			$query = $this->db->get_where('talent_cv_work', array('id_talent'=>$id_talent, 'id_talent_cv_work' => $id_talent_cv_work));
 			// get 1 object from query
 			return $query->row();
 		}
 
-		public function update_talent_cv_work($id_talent_cv_work)
+		public function update_talent_cv_work($id_talent, $id_talent_cv_work)
 		{
 			$data = array(
 				'position' => $this->input->post('position'),
@@ -48,13 +48,15 @@
 				'description' => $this->input->post('description'),
 			);
 			
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_work', $id_talent_cv_work);
 			return $this->db->update('talent_cv_work', $data);
 			// return $this->db->affected_rows;
 		}
 
-		public function delete($id_talent_cv_work)
+		public function delete($id_talent, $id_talent_cv_work)
 		{
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_work', $id_talent_cv_work);
 			return $this->db->delete('talent_cv_work');
 		}
