@@ -11,7 +11,7 @@
 					<h3><?php echo $company_update->title; ?></h3>
 					<br>
 					<div class="company-update-image">
-						<img src="<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>">
+						<img src="<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>" alt="">
 					</div>
 					<br>
 					<div>
