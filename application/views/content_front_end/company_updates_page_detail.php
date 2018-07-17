@@ -30,6 +30,12 @@
 				</div>
 			</div>
 			
+			<br>
+			<br>
+
+			<div>
+				<a href="<?php echo site_url('company/updates'); ?>" class="button button1" style="width: 130px;">Kembali</a>
+			</div>
 		</div>
 
 		<div class="col-lg-1"></div>	
