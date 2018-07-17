@@ -148,8 +148,9 @@ class AccountCompany extends CI_Controller
 		{
     		if($this->form_validation->run() == FALSE)
     		{
-    			
-    			redirect(site_url());
+    			// redirect to function if form not valid
+				$this->index();
+    			// redirect(site_url(''));
     		}
     		else
     		{

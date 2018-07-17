@@ -6,6 +6,13 @@ class CompanyMember extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		// check user's auth
+		$id_company = $this->session->userdata('id_company');
+		if ($id_company == "") {
+			redirect( site_url('AccountCompany') );
+		}
+
 		$this->load->helper('url');
 		$this->load->helper('form');
 		// $this->load->library('input');
@@ -20,17 +27,14 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman Company Member awal setelah company login
 	public function index()
 	{
-		if($this->session->userdata('company_logged_in'))
-		{
-			$id_company = $this->session->userdata('id_company');
-			$this->load->model('company_member_models/CompanyOverviewModel');
+		$id_company = $this->session->userdata('id_company');
+		$this->load->model('company_member_models/CompanyOverviewModel');
 
-			$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
+		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
-			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('content_front_end/company_member_page', $data);
-			$this->load->view('skin/front_end/footer_company_page');
-		}
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('content_front_end/company_member_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	//Menampilkan halaman Company Member (Menu Update)
