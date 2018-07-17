@@ -37,14 +37,14 @@
 			return $this->db->insert('company_update', $data);
 		}
 
-		public function edit($id_company_update)
+		public function edit($id_company, $id_company_update)
 		{
-			$query = $this->db->get_where('company_update', array('id_company_update' => $id_company_update));
+			$query = $this->db->get_where('company_update', array('id_company'=>$id_company, 'id_company_update' => $id_company_update));
 			// get 1 object from query
 			return $query->row();
 		}
 
-		public function update($id_company_update, $image_filename=null)
+		public function update($id_company, $id_company_update, $image_filename=null)
 		{
 			$data = array(
 				'title' 	  => $this->input->post('title'),
@@ -53,12 +53,14 @@
 				'status' 	  => $this->input->post('status'),
 			);
 			
+			$this->db->where('id_company', $id_company);
 			$this->db->where('id_company_update', $id_company_update);
 			return $this->db->update('company_update', $data);
 		}
 
-		public function delete($id_company_update)
+		public function delete($id_company, $id_company_update)
 		{
+			$this->db->where('id_company', $id_company);
 			$this->db->where('id_company_update', $id_company_update);
 			return $this->db->delete('company_update');
 		}

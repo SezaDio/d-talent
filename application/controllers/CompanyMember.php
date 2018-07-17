@@ -115,7 +115,8 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail artikel
 	public function detail_updates($id_company_update)
 	{
-		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+		$id_company = $this->session->userdata('id_company');
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
 		$company_name = $this->session->userdata('company_name');
 		$data['company_name'] = $company_name;
@@ -129,7 +130,8 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit artikel
 	public function edit_updates($id_company_update)
 	{
-		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+		$id_company = $this->session->userdata('id_company');
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -150,13 +152,15 @@ class CompanyMember extends CI_Controller
 		$this->form_validation->set_rules('title', '"Judul"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
+			// redirect to function
+			$this->edit_updates($id_company_update);
 			// get edit data
-			$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+			// $data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
-			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('skin/front_end/navbar_company_page');
-			$this->load->view('content_front_end/company_updates_page_edit', $data);
-			$this->load->view('skin/front_end/footer_company_page');
+			// $this->load->view('skin/front_end/header_company_page_topbar');
+			// $this->load->view('skin/front_end/navbar_company_page');
+			// $this->load->view('content_front_end/company_updates_page_edit', $data);
+			// $this->load->view('skin/front_end/footer_company_page');
 		}
 		else {
 			// upload images to path for image
@@ -183,7 +187,7 @@ class CompanyMember extends CI_Controller
 				}
 			}
 			// save data to db
-			$this->CompanyUpdatesModel->update($id_company_update, $image_filename);
+			$this->CompanyUpdatesModel->update($id_company, $id_company_update, $image_filename);
 			// add message to session
 			$this->session->set_flashdata('msg_success', 'Edit artikel berhasil');
 
@@ -196,7 +200,7 @@ class CompanyMember extends CI_Controller
 	public function delete_updates($id_company_update)
 	{
 		$id_company = $this->session->userdata('id_company');
-		$company_update = $this->CompanyUpdatesModel->edit($id_company_update);
+		$company_update = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 		$query = $this->CompanyUpdatesModel->delete($id_company, $id_company_update);
 
 		if ($query) {
@@ -794,7 +798,7 @@ class CompanyMember extends CI_Controller
 	public function update_job($id_job)
 	{
 		$id_company = $this->session->userdata('id_company');
-		
+
 		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
 		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
 		$this->form_validation->set_rules('job_role', '"Job Role"', 'required');
