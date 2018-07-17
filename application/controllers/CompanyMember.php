@@ -8,10 +8,10 @@ class CompanyMember extends CI_Controller
 		parent::__construct();
 
 		// check user's auth
-		// $id_company = $this->session->userdata('id_company');
-		// if ($id_company == "") {
-		// 	redirect( site_url('AccountCompany') );
-		// }
+		$id_company = $this->session->userdata('id_company');
+		if ($id_company == "") {
+			redirect( site_url('AccountCompany') );
+		}
 
 		$this->load->helper('url');
 		$this->load->helper('form');
