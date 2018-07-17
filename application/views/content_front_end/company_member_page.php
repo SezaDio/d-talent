@@ -4,14 +4,16 @@
 	<div class="col-lg-10">
 		<!--COver/background picture-->
 		<div class="col-md-12" style="padding: 0;">
-			<img style="border-radius: 5px; border-top: solid 2px black; width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+
+			<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_cover;?>');"></figure>
+
 		</div>
 		<br>
 		<div class="col-md-12" style="background-color: whitesmoke;">
 			<div class="row">
 				<!--Company picture-->
 				<div class="col-md-3" style="padding-top: 15px;">
-					<img style="width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+					<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_logo;?>');"></figure>
 				</div>
 
 				<!--Nama, Bidang, dan tombol manage dan see jobs -->
