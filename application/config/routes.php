@@ -108,6 +108,7 @@ $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 
 
 /* company member */
+$route['company'] 						= 'CompanyMember/index';
 $route['company/updates'] 				= 'CompanyMember/updates_page';
 $route['company/updates/page']		 	= 'CompanyMember/updates_page';
 $route['company/updates/page/(:num)'] 	= 'CompanyMember/updates_page';

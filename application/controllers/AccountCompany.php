@@ -167,9 +167,9 @@ class AccountCompany extends CI_Controller
     									'is_logged_in' => true
     								);
     				$this->session->set_userdata($array_items);
-    				
+
     				//Tampilkan halaman Company Member
-    				redirect('CompanyMember/index');
+    				redirect('company');
     			}
     			else
     			{

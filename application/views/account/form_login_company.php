@@ -71,7 +71,7 @@
 														
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-										<input  type="password" class="form-control" name="password" placeholder="Password" required value="<?php echo set_value('password'); ?>">
+										<input  type="password" class="form-control" name="company_password" placeholder="Password" required value="<?php echo set_value('password'); ?>">
 									</div>
 									<br>
 									<div class="input-group" style="float: right;">
