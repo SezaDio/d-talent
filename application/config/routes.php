@@ -69,6 +69,20 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* company profile admin */
+$route['admin'] = 'Account/index';
+
+/* test character */
+$route['admin/test-character'] 				 = 'TestCharacter/index';
+// $route['admin/test-character/create'] 		 = 'TestCharacter/create';
+$route['admin/test-character/edit/(:num)']   = 'TestCharacter/edit/$1';
+$route['admin/test-character/store'] 		 = 'TestCharacter/store';
+$route['admin/test-character/update/(:num)'] = 'TestCharacter/update/$1';
+$route['admin/test-character/delete/(:num)'] = 'TestCharacter/delete/$1';
+
+
+/*=========================================================*/
+
 /* talent */
 $route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
