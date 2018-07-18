@@ -34,7 +34,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?php echo site_url('admin/test-character'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Karakter</a></li>
-                                <li><a href="<?php //echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Bahasa Inggris</a></li>
+                                <li><a href="<?php echo site_url('admin/test-passion-interest'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Minat dan Bakat</a></li>
                             </ul>
                         </li>
 
