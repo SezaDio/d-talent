@@ -79,13 +79,21 @@ $route['admin/test-character/store'] 		 = 'TestCharacter/store';
 $route['admin/test-character/update/(:num)'] = 'TestCharacter/update/$1';
 $route['admin/test-character/delete/(:num)'] = 'TestCharacter/delete/$1';
 
-/* test character */
+/* test passion */
 $route['admin/test-passion-interest'] 				= 'TestPassion/index';
 $route['admin/test-passion-interest/create'] 		= 'TestPassion/create';
 $route['admin/test-passion-interest/edit/(:num)']   = 'TestPassion/edit/$1';
 $route['admin/test-passion-interest/store'] 		= 'TestPassion/store';
 $route['admin/test-passion-interest/update/(:num)'] = 'TestPassion/update/$1';
 $route['admin/test-passion-interest/delete/(:num)'] = 'TestPassion/delete/$1';
+
+/* test softskill */
+$route['admin/test-softskill'] 				 = 'TestSoftskill/index';
+$route['admin/test-softskill/create'] 		 = 'TestSoftskill/create';
+$route['admin/test-softskill/edit/(:num)']   = 'TestSoftskill/edit/$1';
+$route['admin/test-softskill/store'] 		 = 'TestSoftskill/store';
+$route['admin/test-softskill/update/(:num)'] = 'TestSoftskill/update/$1';
+$route['admin/test-softskill/delete/(:num)'] = 'TestSoftskill/delete/$1';
 
 
 /*=========================================================*/

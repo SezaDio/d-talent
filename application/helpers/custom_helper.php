@@ -216,3 +216,21 @@ function displayNotificatioonStatus($status)
             break;
     }
 }
+
+/* Online Test */
+function displaySoftskillCategory($category)
+{
+    // 1: intrapersonal, 2: interpersonal
+    switch ($category) {
+        case 1:
+            return "Intrapersonal";
+            break;
+        case 2:
+            return "Interpersonal";
+            break;
+        
+        default:
+            return "";
+            break;
+    }
+}
