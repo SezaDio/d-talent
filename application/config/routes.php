@@ -69,6 +69,35 @@ $route['upload_bukti_bayar'] = 'KelolaPendaftar/upload_bukti_bayar';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* company profile admin */
+$route['admin'] = 'Account/index';
+
+/* test character */
+$route['admin/test-character'] 				 = 'TestCharacter/index';
+$route['admin/test-character/edit/(:num)']   = 'TestCharacter/edit/$1';
+$route['admin/test-character/store'] 		 = 'TestCharacter/store';
+$route['admin/test-character/update/(:num)'] = 'TestCharacter/update/$1';
+$route['admin/test-character/delete/(:num)'] = 'TestCharacter/delete/$1';
+
+/* test passion */
+$route['admin/test-passion-interest'] 				= 'TestPassion/index';
+$route['admin/test-passion-interest/create'] 		= 'TestPassion/create';
+$route['admin/test-passion-interest/edit/(:num)']   = 'TestPassion/edit/$1';
+$route['admin/test-passion-interest/store'] 		= 'TestPassion/store';
+$route['admin/test-passion-interest/update/(:num)'] = 'TestPassion/update/$1';
+$route['admin/test-passion-interest/delete/(:num)'] = 'TestPassion/delete/$1';
+
+/* test softskill */
+$route['admin/test-softskill'] 				 = 'TestSoftskill/index';
+$route['admin/test-softskill/create'] 		 = 'TestSoftskill/create';
+$route['admin/test-softskill/edit/(:num)']   = 'TestSoftskill/edit/$1';
+$route['admin/test-softskill/store'] 		 = 'TestSoftskill/store';
+$route['admin/test-softskill/update/(:num)'] = 'TestSoftskill/update/$1';
+$route['admin/test-softskill/delete/(:num)'] = 'TestSoftskill/delete/$1';
+
+
+/*=========================================================*/
+
 /* talent */
 $route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
@@ -108,7 +137,10 @@ $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 
 
 /* company member */
+$route['company'] 						= 'CompanyMember/index';
 $route['company/updates'] 				= 'CompanyMember/updates_page';
+$route['company/updates/page']		 	= 'CompanyMember/updates_page';
+$route['company/updates/page/(:num)'] 	= 'CompanyMember/updates_page';
 $route['company/updates/detail/(:num)'] = 'CompanyMember/detail_updates/$1';
 $route['company/updates/edit/(:num)'] 	= 'CompanyMember/edit_updates/$1';
 $route['company/updates/store'] 		= 'CompanyMember/store_updates';
@@ -117,9 +149,21 @@ $route['company/updates/delete/(:num)'] = 'CompanyMember/delete_updates/$1';
 
 /* company job vacancy */
 $route['company/job-vacancy'] 				= 'CompanyMember/jobs_page';
+$route['company/job-vacancy/page'] 			= 'CompanyMember/jobs_page';
+$route['company/job-vacancy/page/(:num)'] 	= 'CompanyMember/jobs_page';
 $route['company/job-vacancy/create'] 		= 'CompanyMember/add_jobs_page';
 $route['company/job-vacancy/detail/(:num)'] = 'CompanyMember/detail_job/$1';
 $route['company/job-vacancy/edit/(:num)'] 	= 'CompanyMember/edit_job/$1';
 $route['company/job-vacancy/store'] 		= 'CompanyMember/store_job';
 $route['company/job-vacancy/update/(:num)'] = 'CompanyMember/update_job/$1';
 $route['company/job-vacancy/delete/(:num)'] = 'CompanyMember/delete_job/$1';
+$route['company/job-vacancy/category/(:any)'] 			  = 'CompanyMember/filter_job/$1';
+$route['company/job-vacancy/category/(:any)/page']		  = 'CompanyMember/filter_job/$1';
+$route['company/job-vacancy/category/(:any)/page/(:num)'] = 'CompanyMember/filter_job/$1';
+$route['company/job-vacancy/search'] 			 = 'CompanyMember/search_job';
+$route['company/job-vacancy/search/page']		 = 'CompanyMember/search_job';
+$route['company/job-vacancy/search/page/(:num)'] = 'CompanyMember/search_job';
+
+/* company job notification */
+$route['company/notification'] 				 = 'CompanyMember/notification_page';
+$route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';

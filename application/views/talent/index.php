@@ -95,7 +95,7 @@
 					    			<?php
 					    				echo $cv_work->position ." di ". $cv_work->company;
 					    				if ($cv_work->description != "") {
-					    					echo "<br>" . character_limiter($cv_work->description, 60);
+					    					echo "<br>" . character_limiter($cv_work->description, 100);
 					    				}
 					    			?>
 					    		</td>
@@ -127,7 +127,7 @@
 				    	<?php foreach ($cv_educations as $cv_education):?>
 					    	<tr>
 					    		<td class="periode">
-					    			<?php echo displayCVEducationDate($cv_education->from_year, $cv_education->to_year); ?>
+					    			<?php echo $cv_education->from_year. " - " .$cv_education->to_year; ?>
 					    		</td>
 					    		<td>
 					    			<?php
@@ -140,7 +140,7 @@
 					    				}
 
 					    				if ($cv_education->activity != "") {
-					    					echo "<br>" . character_limiter($cv_education->activity, 60);
+					    					echo "<br>" . character_limiter($cv_education->activity, 100);
 					    				}
 					    			?>
 					    		</td>
@@ -172,7 +172,7 @@
 				    	<?php foreach ($cv_achievements as $cv_achievement):?>
 					    	<tr>
 					    		<td class="periode">
-					    			<?php echo displayMonthName($cv_achievement->month) ." ". displayYear($cv_achievement->year); ?>
+					    			<?php echo displayMonthName($cv_achievement->month) ." ". $cv_achievement->year; ?>
 					    		</td>
 					    		<td>
 					    			<?php
@@ -210,7 +210,7 @@
 				    	<?php foreach ($cv_courses as $cv_course):?>
 					    	<tr>
 					    		<td class="periode">
-					    			<?php echo displayYear($cv_course->year); ?>
+					    			<?php echo $cv_course->year; ?>
 					    		</td>
 					    		<td>
 					    			<?php

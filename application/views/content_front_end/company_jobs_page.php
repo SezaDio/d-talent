@@ -1,5 +1,4 @@
 <?php
-	// $this->load->helper('text');
 	$this->load->helper('custom');
 ?>
 <div class="row">
@@ -13,16 +12,17 @@
 				<div class="col-md-12" style="padding-top: 13px;">
 					<div class="row">
 						<div class="col-md-2" style="text-align: center; padding: 5px;">
-							<div class="dropdown">
+							<div class="dropdown dropdown-category">
 								<button class="button button1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Job Category
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height: 300px; overflow: auto;">
+									<a href="<?php echo site_url('company/job-vacancy')?>" class="dropdown-item">- All -</a>
 									<?php
                                         foreach ($job_category as $key=>$category) 
                                         {
                                           
-                                            echo '<p class="dropdown-item" value="'.$key.'">'.$category.'</p>';   
+                                            echo '<a href="'. site_url('company/job-vacancy/category/') . $key .'" class="dropdown-item" value="'.$key.'">'.$category.'</a>';   
                                         }
                                     ?>
 								</div>
@@ -36,16 +36,27 @@
 							</a>
 						</div>
 						<div class="col-md-5"></div>
-						<div class="col-md-3" style="text-align: center; padding: 5px;">
-							<div class="input-group">
-								<span class="input-group-addon" style="background-color: black; color: white;"><i class="fa fa-search"></i></span>
-								<input style=" border-color: black; background-color: white; color: black;" type="text" class="form-control" name="email" placeholder="Search Job . . ." required>
-							</div>
+						<div class="col-md-3" style="text-align: center; padding: 7px;">
+							<form action="<?php echo site_url('company/job-vacancy/search'); ?>" method="post">
+								<div class="input-group">
+									<button type="submit" class="input-group-addon" style="background-color: black; color: white;">
+										<i class="fa fa-search"></i>
+									</button>
+									<input style=" border-color: black; background-color: white; color: black;" type="text" class="form-control" name="keyword" placeholder="Search Job . . ." required value="<?php echo isset($keyword) ? $keyword : ''; ?>">
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 			<hr style="border: solid 1px lightgray;">
+
+			<?php
+				if (isset($filter_result)) {
+					echo '<div>'. $filter_result . '</div><br>';
+				}
+			?>
+
 			<div class="col-md-12">
 				<!--Show Jobs list-->
 				<div class="row">
@@ -107,10 +118,20 @@
 						endforeach;
 					}
 				?>
-
 				</div>
+
 			</div>
+
+		<!-- Pagination -->
+		<?php if (isset($links)) { ?>
 			<br>
+			<br>
+			<div class="pagination">
+            	<?php echo $links ?>
+            </div>
+			<br>
+        <?php } ?>
+            
 		</div>
 	</div>
 
@@ -139,11 +160,16 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-	// delete job
-	$('.modal-delete').on('show.bs.modal', function(event){
-        var button = $(event.relatedTarget);
-        var delete_target = button.data('id');
-		var route = "<?php echo site_url('company/job-vacancy/delete/');?>" + delete_target;
-        $(this).find('a').attr('href', route);
+	$(function () {
+		// delete job
+		$('.modal-delete').on('show.bs.modal', function(event){
+	        var button = $(event.relatedTarget);
+	        var delete_target = button.data('id');
+			var route = "<?php echo site_url('company/job-vacancy/delete/');?>" + delete_target;
+	        $(this).find('a').attr('href', route);
+	    });
+
+	    // open bs select dropdown on click, cause at first click the dropdown menu doesn't show
+	    $('.dropdown-category .dropdown-toggle').dropdown();
     });
 </script>

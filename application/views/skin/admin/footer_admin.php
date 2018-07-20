@@ -55,6 +55,7 @@
                         {"orderable":false, "targets":4}
                     ]
                 });
+                $('.dataTable').DataTable();
                 
                 CKEDITOR.replace('editor_wow');
                 $(".textarea").wysihtml5();

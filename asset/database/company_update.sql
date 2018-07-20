@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2018 at 09:08 AM
+-- Generation Time: Jul 13, 2018 at 03:31 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -35,7 +35,7 @@ CREATE TABLE `company_update` (
   `content` text,
   `image` varchar(100) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0: draft, 1: publish',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -43,7 +43,11 @@ CREATE TABLE `company_update` (
 --
 
 INSERT INTO `company_update` (`id_company_update`, `id_company`, `title`, `content`, `image`, `status`, `created_at`) VALUES
-(1, 1, 'Judul Artikel', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'autumn_winter-wallpaper-1366x7681.jpg', 1, '2018-07-10 07:06:38');
+(2, 1, 'Title 1 Edit', '111 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'beautiful_red_poppy_green_wheat_field-wallpaper-1366x768.jpg', 0, '2018-07-13 05:25:07'),
+(3, 1, 'Title 2', 'Konten 2', 'autumn-1572822_640.png', 1, '2018-07-13 06:38:32'),
+(4, 1, 'Title 3', 'Konten 3', '3D-Diamond-Design-Wallpaper.jpg', 1, '2018-07-13 13:15:43'),
+(5, 1, 'Title 4 Edit', 'Konten 4', 'background-1462755_1920.jpg', 1, '2018-07-13 13:16:05'),
+(6, 1, 'Title 5', 'Konten 5', 'americana-1512910.png', 1, '2018-07-13 13:24:37');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +67,7 @@ ALTER TABLE `company_update`
 -- AUTO_INCREMENT for table `company_update`
 --
 ALTER TABLE `company_update`
-  MODIFY `id_company_update` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_company_update` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

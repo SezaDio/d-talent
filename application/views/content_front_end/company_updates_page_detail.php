@@ -11,7 +11,7 @@
 					<h3><?php echo $company_update->title; ?></h3>
 					<br>
 					<div class="company-update-image">
-						<img src="<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>">
+						<img src="<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>" alt="">
 					</div>
 					<br>
 					<div>
@@ -30,6 +30,12 @@
 				</div>
 			</div>
 			
+			<br>
+			<br>
+
+			<div>
+				<a href="<?php echo site_url('company/updates'); ?>" class="button button1" style="width: 130px;">Kembali</a>
+			</div>
 		</div>
 
 		<div class="col-lg-1"></div>	

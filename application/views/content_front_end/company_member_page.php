@@ -4,19 +4,21 @@
 	<div class="col-lg-10">
 		<!--COver/background picture-->
 		<div class="col-md-12" style="padding: 0;">
-			<img style="border-radius: 5px; border-top: solid 2px black; width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+
+			<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_cover;?>');"></figure>
+
 		</div>
 		<br>
 		<div class="col-md-12" style="background-color: whitesmoke;">
 			<div class="row">
 				<!--Company picture-->
 				<div class="col-md-3" style="padding-top: 15px;">
-					<img style="width: 100%; height: 200px;" class="img-fulid" src="<?php echo base_url('asset/img/upload_img_slider/empty.png')?>" alt="">
+					<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_logo;?>');"></figure>
 				</div>
 
 				<!--Nama, Bidang, dan tombol manage dan see jobs -->
 				<div class="col-md-6" style="padding: 20px;">
-					<p style="font-size: 1.8em; font-family: sans-serif;"><strong>PT Dash Indo Persada</strong></p>
+					<p style="font-size: 1.8em; font-family: sans-serif;"><strong><?php echo $dataCompany->company_name ?></strong></p>
 					<p style="font-size: 1.4em; font-family: sans-serif;">Human Resource Development</p>
 					<br>
 					<div class="row">

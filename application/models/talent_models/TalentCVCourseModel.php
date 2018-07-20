@@ -24,22 +24,21 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
-				'organizer' 	  => $this->input->post('organizer'),
-				// add -01-01 because day & month are ignored
-				'year' 	  => $this->input->post('year') . '-01-01',
+				'organizer' 	  	   => $this->input->post('organizer'),
+				'year' 	  			   => $this->input->post('year'),
 			);
 			
 			return $this->db->insert('talent_cv_course', $data);
 		}
 
-		public function edit($id_talent_cv_course)
+		public function edit($id_talent, $id_talent_cv_course)
 		{
-			$query = $this->db->get_where('talent_cv_course', array('id_talent_cv_course' => $id_talent_cv_course));
+			$query = $this->db->get_where('talent_cv_course', array('id_talent'=>$id_talent, 'id_talent_cv_course' => $id_talent_cv_course));
 			// get 1 object from query
 			return $query->row();
 		}
 
-		public function update($id_talent_cv_course)
+		public function update($id_talent, $id_talent_cv_course)
 		{
 			$associated_education = $this->input->post('associated_education');
 			$associated_work 	  = $this->input->post('associated_work');
@@ -49,17 +48,18 @@
 				// give null if field is empty
 				'associated_education' => !empty($associated_education) ? $associated_education : null,
 				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
-				'organizer' 	  => $this->input->post('organizer'),
-				// add -01-01 because day & month are ignored
-				'year' 	  => $this->input->post('year') . '-01-01',
+				'organizer' 	  	   => $this->input->post('organizer'),
+				'year' 	  			   => $this->input->post('year'),
 			);
 
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_course', $id_talent_cv_course);
 			return $this->db->update('talent_cv_course', $data);
 		}
 
-		public function delete($id_talent_cv_course)
+		public function delete($id_talent, $id_talent_cv_course)
 		{
+			$this->db->where('id_talent', $id_talent);
 			$this->db->where('id_talent_cv_course', $id_talent_cv_course);
 			return $this->db->delete('talent_cv_course');
 		}

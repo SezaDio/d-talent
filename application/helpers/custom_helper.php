@@ -20,30 +20,48 @@ function displayMonthYear($date)
     }
 }
 
-function displayMonth($date)
+function displayMonthName($month)
 {
-    if ($date != null && $date != '' && $date != '0000-00-00') {
-        return date('m', strtotime($date));
-    }
-    else{
-        return "";
-    }
-}
-
-function displayMonthName($date)
-{
-    if ($date != null && $date != '' && $date != '0000-00-00') {
-        return date('M', strtotime($date));
-    }
-    else{
-        return "";
-    }
-}
-
-function displayYear($date)
-{
-    if ($date != null && $date != '' && $date != '0000-00-00') {
-        return date('Y', strtotime($date));
+    if ($month != null && $month != '') {
+        // return date('M', strtotime($date));
+        switch ($month) {
+            case 1:
+                return "January";
+                break;
+            case 2:
+                return "February";
+                break;
+            case 3:
+                return "March";
+                break;
+            case 4:
+                return "April";
+                break;
+            case 5:
+                return "May";
+                break;
+            case 6:
+                return "June";
+                break;
+            case 7:
+                return "July";
+                break;
+            case 8:
+                return "August";
+                break;
+            case 9:
+                return "September";
+                break;
+            case 10:
+                return "October";
+                break;
+            case 11:
+                return "November";
+                break;
+            case 12:
+                return "December";
+                break;
+        }
     }
     else{
         return "";
@@ -56,14 +74,34 @@ function displayCVWorkDate($work_start, $work_end)
         return date('F Y', strtotime($work_start)) . " - " . date('F Y', strtotime($work_end));
     }
     elseif ($work_start != '0000-00-00' && $work_end == '0000-00-00'){
-    	return date('F Y', strtotime($work_start)) . " - ...";
+        return date('F Y', strtotime($work_start)) . " - ...";
     }
     else{
         return "-";
     }
 }
 
-function displayCVEducationDate($start_date, $end_date)
+/*function displayMonth($date)
+{
+    if ($date != null && $date != '' && $date != '0000-00-00') {
+        return date('m', strtotime($date));
+    }
+    else{
+        return "";
+    }
+}*/
+
+/*function displayYear($date)
+{
+    if ($date != null && $date != '' && $date != '0000-00-00') {
+        return date('Y', strtotime($date));
+    }
+    else{
+        return "";
+    }
+}*/
+
+/*function displayCVEducationDate($start_date, $end_date)
 {
     if ($start_date != '0000-00-00' && $end_date != '0000-00-00') {
         return date('Y', strtotime($start_date)) . " - " . date('Y', strtotime($end_date));
@@ -74,7 +112,7 @@ function displayCVEducationDate($start_date, $end_date)
     else{
         return "-";
     }
-}
+}*/
 
 function capitalizeEachWord($string)
 {
@@ -152,5 +190,47 @@ function displayRequiredSkills($string)
     $array = explode(',', $string);
     foreach ($array as $key => $value) {
         echo "<li>". $value ."</li>";
+    }
+}
+
+/* Company Job Notification */
+function displayNotificatioonStatus($status)
+{
+    //  1 accept, 2 decline, 3 expired, 0 menunggu
+    switch ($status) {
+        case 0:           
+            return '<span class="label label-info">Menunggu</span>';
+            break;
+        case 1:           
+            return '<span class="label label-success">Menerima</span>';
+            break;
+        case 2:           
+            return '<span class="label label-danger">Menolak</span>';
+            break;
+        case 3:           
+            return '<span class="label label-warning">Kadaluarsa</span>';
+            break;
+        
+        default:
+            return '';
+            break;
+    }
+}
+
+/* Online Test */
+function displaySoftskillCategory($category)
+{
+    // 1: intrapersonal, 2: interpersonal
+    switch ($category) {
+        case 1:
+            return "Intrapersonal";
+            break;
+        case 2:
+            return "Interpersonal";
+            break;
+        
+        default:
+            return "";
+            break;
     }
 }

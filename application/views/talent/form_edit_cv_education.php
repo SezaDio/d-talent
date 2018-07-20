@@ -43,14 +43,14 @@
 						<label>Dari</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo displayYear($cv_education->from_year); ?>">
+							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo $cv_education->from_year; ?>">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label>Hingga</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo displayYear($cv_education->to_year); ?>">
+							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo $cv_education->to_year; ?>">
 						</div>
 					</div>
 					<div class="col-md-12">
@@ -90,7 +90,7 @@
         	// console.log(from_year);
         	// console.log(to_year);
 
-        	$('#date-error').text('');	// delete message
+        	$('#date-error').text('');	// clean message
         	if (to_year != '' && to_year < from_year) {
         		e.preventDefault();
         		$('#date-error').text('Tahun akhir tidak boleh lebih kecil dari tahun awal');

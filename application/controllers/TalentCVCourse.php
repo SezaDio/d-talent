@@ -11,14 +11,16 @@ class TalentCVCourse extends CI_Controller {
 		if ($id_talent == "") {
 			redirect( site_url('talent/login') );
 		}
+
+		$this->load->library('form_validation');
+		$this->load->model('talent_models/TalentCVCourseModel');
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
 	}
 
 	public function index()
 	{
 		$data['page_title'] = "Tambah Pelatihan";
-		
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$this->load->model('talent_models/TalentCVWorkModel');
 		
 		// get data for select
 		$id_talent = $this->session->userdata('id_talent');
@@ -32,11 +34,6 @@ class TalentCVCourse extends CI_Controller {
 
 	public function store()
 	{
-		$this->load->model('talent_models/TalentCVCourseModel');
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$this->load->model('talent_models/TalentCVWorkModel');
-		$this->load->library('form_validation');
-
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
@@ -66,16 +63,12 @@ class TalentCVCourse extends CI_Controller {
 
 	public function edit($id_talent_cv_course)
 	{
-		$this->load->model('talent_models/TalentCVCourseModel');
-
-		$this->load->model('talent_models/TalentCVEducationModel');
-		$this->load->model('talent_models/TalentCVWorkModel');
+		$id_talent = $this->session->userdata('id_talent');
 		
 		$data['page_title'] = "Edit Pelatihan";
-		$data['cv_course'] = $this->TalentCVCourseModel->edit($id_talent_cv_course);
+		$data['cv_course'] = $this->TalentCVCourseModel->edit($id_talent, $id_talent_cv_course);
 
 		// get data for select
-		$id_talent = $this->session->userdata('id_talent');
 		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
 		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
 
@@ -86,8 +79,7 @@ class TalentCVCourse extends CI_Controller {
 
 	public function update($id_talent_cv_course)
 	{
-		$this->load->model('talent_models/TalentCVCourseModel');
-		$this->load->library('form_validation');
+		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
 		$data['page_title'] = "Edit Pelatihan";
@@ -95,21 +87,12 @@ class TalentCVCourse extends CI_Controller {
 		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			// get edit data
-			$data['cv_course'] 	= $this->TalentCVCourseModel->edit($id_talent_cv_course);
-			
-			// get data for select
-			$id_talent = $this->session->userdata('id_talent');
-			$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
-			$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
-
-			$this->load->view('skin/talent/header', $data);
-			$this->load->view('talent/form_edit_cv_course');
-			$this->load->view('skin/talent/footer');
+			// redirect to function
+			$this->edit($id_talent_cv_course);
 		}
 		else {
 			// update data to db
-			$affected = $this->TalentCVCourseModel->update($id_talent_cv_course);
+			$affected = $this->TalentCVCourseModel->update($id_talent, $id_talent_cv_course);
 			
 			if ($affected) {
 				// add message to session
@@ -126,8 +109,9 @@ class TalentCVCourse extends CI_Controller {
 
 	public function delete($id_talent_cv_course)
 	{
-		$this->load->model('talent_models/TalentCVCourseModel');
-		$query = $this->TalentCVCourseModel->delete($id_talent_cv_course);
+		$id_talent = $this->session->userdata('id_talent');
+
+		$query = $this->TalentCVCourseModel->delete($id_talent, $id_talent_cv_course);
 
 		if ($query) {
 			// add message to session
