@@ -33,9 +33,10 @@
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo site_url('admin/test-character'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Karakter</a></li>
-                                <li><a href="<?php echo site_url('admin/test-passion-interest'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Minat dan Bakat</a></li>
                                 <li><a href="<?php echo site_url('admin/test-softskill'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Softskill</a></li>
+                                <li><a href="<?php echo site_url('admin/test-character'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Karakter</a></li>
+                                <li><a href="<?php //echo site_url('admin/test-work-attitude'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Work Attitude</a></li>
+                                <li><a href="<?php echo site_url('admin/test-passion-interest'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Minat dan Bakat</a></li>
                             </ul>
                         </li>
 
