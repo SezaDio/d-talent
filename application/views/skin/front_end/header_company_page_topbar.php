@@ -32,17 +32,19 @@
 	   
     <link href="<?php echo base_url('asset/css/company-member.css'); ?>" rel="stylesheet" type="text/css" />
 
+    <link href="<?php echo base_url('asset/css/talent.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('asset/css/talent-responsive.css'); ?>" rel="stylesheet" type="text/css" />
 
   </head>
   <body background='light-gray'>
 
     <!-- Header Section Start -->
-    <header id="hero-area" data-stellar-background-ratio="0.5">    
+    <!--<header id="hero-area" data-stellar-background-ratio="0.5"> -->   
       <!-- Navbar Start -->
-      <div class="fixed-top" style="background: black; background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">
-        <div class="container">
+       <!--<div class="fixed-top" style="background: black; background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">
+        <div class="container">-->
           <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="row">
+          <!--<div class="row">
             <div class="col-lg-12" style="text-align: center;">
               <a href="index.html"><img class="img-fulid" src="<?php echo base_url('asset/img/logo.png')?>" alt=""></a>
             </div>
@@ -56,6 +58,6 @@
       </div>
     
       <br><br>
-    </header>
+    </header>-->
 
     <!-- Header Section End --> 
