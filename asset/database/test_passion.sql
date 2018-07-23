@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2018 at 08:12 AM
+-- Generation Time: Jul 19, 2018 at 01:28 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,44 +25,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `job_notification`
+-- Table structure for table `test_passion`
 --
 
-CREATE TABLE `job_notification` (
-  `id_notification` int(11) NOT NULL,
-  `id_company` int(11) NOT NULL,
-  `id_talent` int(11) NOT NULL,
-  `id_job` int(11) NOT NULL,
-  `notification_status` int(1) NOT NULL COMMENT '1 accept, 2 decline, 3 expired, 0 menunggu',
-  `notification_date` date NOT NULL
+CREATE TABLE `test_passion` (
+  `id_test_passion` int(11) NOT NULL,
+  `category` varchar(12) NOT NULL COMMENT 'realistis, investigasi, artistik, enterpreuner, konvensional',
+  `statement` varchar(75) NOT NULL COMMENT 'the answer: corresponding or not'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `job_notification`
+-- Dumping data for table `test_passion`
 --
 
-INSERT INTO `job_notification` (`id_notification`, `id_company`, `id_talent`, `id_job`, `notification_status`, `notification_date`) VALUES
-(1, 1, 3, 2, 0, '2018-07-17');
+INSERT INTO `test_passion` (`id_test_passion`, `category`, `statement`) VALUES
+(1, 'Realistis', 'Saya senang bekerja dengan benda yang memiliki motor'),
+(2, 'Realistis', 'Saya senang mendaur ulang barang-barang'),
+(3, 'Realistis', 'Saya senang merawat hewan-hewan');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `job_notification`
+-- Indexes for table `test_passion`
 --
-ALTER TABLE `job_notification`
-  ADD PRIMARY KEY (`id_notification`);
+ALTER TABLE `test_passion`
+  ADD PRIMARY KEY (`id_test_passion`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `job_notification`
+-- AUTO_INCREMENT for table `test_passion`
 --
-ALTER TABLE `job_notification`
-  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `test_passion`
+  MODIFY `id_test_passion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,32 +22,30 @@ class CompanyMember extends CI_Controller
 		$this->load->model('company_member_models/CompanyUpdatesModel');
 		$this->load->model('company_member_models/CompanyOverviewModel');
 		$this->load->model('company_member_models/CompanyJobVacancyModel');
+		$this->load->model('company_member_models/CompanyNotificationModel');
+
 	}
 
 	// Menampilkan halaman Company Member awal setelah company login
 	public function index()
 	{
-		//if($this->session->userdata('company_logged_in'))
-		//{
-			$id_company = $this->session->userdata('id_company');
-			$this->load->model('company_member_models/CompanyOverviewModel');
+		$id_company = $this->session->userdata('id_company');
+		$this->load->model('company_member_models/CompanyOverviewModel');
 
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
-			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('content_front_end/company_member_page', $data);
-			$this->load->view('skin/front_end/footer_company_page');
-		//}
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('content_front_end/company_member_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	//Menampilkan halaman Company Member (Menu Update)
 	public function updates_page()
 	{
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$company_name = $this->session->userdata('company_name');
+		$data['company_name'] = $company_name;
 
 		// pagination
 		$base_url = site_url('company/updates/page');
@@ -73,8 +71,7 @@ class CompanyMember extends CI_Controller
 	{
 		$this->load->library('upload');
 	
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
 		$this->form_validation->set_rules('title', '"Judul"', 'required');
 
@@ -118,9 +115,11 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail artikel
 	public function detail_updates($id_company_update)
 	{
-		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$id_company = $this->session->userdata('id_company');
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
+
+		$company_name = $this->session->userdata('company_name');
+		$data['company_name'] = $company_name;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -131,7 +130,8 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit artikel
 	public function edit_updates($id_company_update)
 	{
-		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+		$id_company = $this->session->userdata('id_company');
+		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -144,8 +144,7 @@ class CompanyMember extends CI_Controller
 	{
 		$this->load->library('upload');
 	
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
 		// default name: use old file name
 		$image_filename = $this->input->post('old_image');
@@ -153,13 +152,15 @@ class CompanyMember extends CI_Controller
 		$this->form_validation->set_rules('title', '"Judul"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
+			// redirect to function
+			$this->edit_updates($id_company_update);
 			// get edit data
-			$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company_update);
+			// $data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
-			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('skin/front_end/navbar_company_page');
-			$this->load->view('content_front_end/company_updates_page_edit', $data);
-			$this->load->view('skin/front_end/footer_company_page');
+			// $this->load->view('skin/front_end/header_company_page_topbar');
+			// $this->load->view('skin/front_end/navbar_company_page');
+			// $this->load->view('content_front_end/company_updates_page_edit', $data);
+			// $this->load->view('skin/front_end/footer_company_page');
 		}
 		else {
 			// upload images to path for image
@@ -186,7 +187,7 @@ class CompanyMember extends CI_Controller
 				}
 			}
 			// save data to db
-			$this->CompanyUpdatesModel->update($id_company_update, $image_filename);
+			$this->CompanyUpdatesModel->update($id_company, $id_company_update, $image_filename);
 			// add message to session
 			$this->session->set_flashdata('msg_success', 'Edit artikel berhasil');
 
@@ -198,8 +199,9 @@ class CompanyMember extends CI_Controller
 	// Manghapus artikel
 	public function delete_updates($id_company_update)
 	{
-		$company_update = $this->CompanyUpdatesModel->edit($id_company_update);
-		$query = $this->CompanyUpdatesModel->delete($id_company_update);
+		$id_company = $this->session->userdata('id_company');
+		$company_update = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
+		$query = $this->CompanyUpdatesModel->delete($id_company, $id_company_update);
 
 		if ($query) {
 			// delete image
@@ -566,11 +568,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs)
 	public function jobs_page()
 	{
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$data['company_name'] = $this->session->userdata('company_name');
 
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
@@ -595,11 +595,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan category
 	public function filter_job($category)
 	{
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$data['company_name'] = $this->session->userdata('company_name');
 
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
@@ -634,11 +632,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan search
 	public function search_job()
 	{
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$data['company_name'] = $this->session->userdata('company_name');
 
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
@@ -650,8 +646,6 @@ class CompanyMember extends CI_Controller
 		else {
 			$keyword = $this->session->userdata('keyword');
 		}
-
-		// $data['company_jobs'] = $this->CompanyJobVacancyModel->search($id_company, $keyword);
 
 		// pagination
 		$base_url = site_url('company/job-vacancy/search/page');
@@ -703,8 +697,7 @@ class CompanyMember extends CI_Controller
 	// Menyimpan lowongan kerja
 	public function store_job()
 	{
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
 		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
 		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
@@ -742,13 +735,11 @@ class CompanyMember extends CI_Controller
 	{
 		$this->load->model('account/UserModel');
 
-		// $id_company = $this->session->userdata('id_company');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
-		// $id_company = $this->session->userdata('company_name');
-		$data['company_name'] = "PT . ABC";
+		$data['company_name'] = $this->session->userdata('company_name');
 
-		$data['company_job'] = $this->CompanyJobVacancyModel->detail($id_job);
+		$data['company_job'] = $this->CompanyJobVacancyModel->detail($id_company, $id_job);
 
 		// get job category
 		$job_categories 	  = $this->get_job_category_list();
@@ -770,12 +761,14 @@ class CompanyMember extends CI_Controller
 		$array_province = $this->UserModel->lokasi_provinsi();
 		$data['lokasiProvinsi'] = $array_province;
 		
+		$id_company = $this->session->userdata('id_company');
+		
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
 		// get job type list
 		$data['job_type'] 	  = $this->get_job_type_list();
 
-		$data['company_job'] = $this->CompanyJobVacancyModel->edit($id_job);
+		$data['company_job'] = $this->CompanyJobVacancyModel->edit($id_company, $id_job);
 
 		// convert string to array
 		$data['company_job_skills'] = explode(',', $data['company_job']->job_required_skill);
@@ -801,10 +794,11 @@ class CompanyMember extends CI_Controller
 	   return null;
 	}
 
-
 	// Meng-update lowongan kerja
 	public function update_job($id_job)
 	{
+		$id_company = $this->session->userdata('id_company');
+
 		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
 		$this->form_validation->set_rules('job_type', '"Job Type"', 'required');
 		$this->form_validation->set_rules('job_role', '"Job Role"', 'required');
@@ -827,7 +821,7 @@ class CompanyMember extends CI_Controller
 			$job_required_skill = implode(",", $skills);
 
 			// save data to db
-			$this->CompanyJobVacancyModel->update($id_job, $job_required_skill);
+			$this->CompanyJobVacancyModel->update($id_company, $id_job, $job_required_skill);
 			// add message to session
 			$this->session->set_flashdata('msg_success', 'Edit lowongan kerja berhasil');
 
@@ -839,7 +833,8 @@ class CompanyMember extends CI_Controller
 	// Manghapus lowongan kerja
 	public function delete_job($id_job)
 	{
-		$query = $this->CompanyJobVacancyModel->delete($id_job);
+		$id_company = $this->session->userdata('id_company');
+		$query = $this->CompanyJobVacancyModel->delete($id_company, $id_job);
 
 		if ($query) {
 			// add message to session
@@ -1062,10 +1057,29 @@ class CompanyMember extends CI_Controller
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
-      if ($this->email->send()){
+      if ($this->email->send())
+      {
          $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
-         redirect('FrontControl_ContactUs/kelola_message');}
-      else{
-         show_error($this->email->print_debugger());}
+         redirect('FrontControl_ContactUs/kelola_message');
+      }
+      else
+      {
+         show_error($this->email->print_debugger());
+      }
     }
+
+	/* Job Notification */
+	public function notification_page()
+	{
+		$id_company = $this->session->userdata('id_company');
+
+		$data['job_notifications'] = $this->CompanyNotificationModel->get_all($id_company);
+		// var_dump($data['job_notifications']);
+		// die();
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_notification_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');
+	}
 }

@@ -59,6 +59,8 @@
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
+    <!-- DataTables --> 
+    <script src="<?php echo base_url('asset/js/jquery.dataTables.js?ver=b1.0'); ?>" type="text/javascript"></script>
   
     <script type="text/javascript">
       $(function () {
@@ -95,7 +97,12 @@
             }
         });
         /* ./toast */
-        });
+
+        /* notification page */
+        // data table
+        $('.data-table').DataTable();
+
+      });
     </script>
 
   </body>

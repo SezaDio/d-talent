@@ -52,6 +52,13 @@
 			animation-name: animatetop;
 			animation-duration: 0.4s
 		}
+        .modal-dialog{
+            width: 800px;
+        }
+        /* handling anomaly bootstrap modal */
+        .modal-backdrop.in{
+            display: none;
+        }
 
 	</style>    
     </head>
@@ -103,3 +110,8 @@
                 </div>
             </nav>
         </header>
+        
+        <!-- load for form validation -->
+        <?php
+            $this->load->library('form_validation');
+        ?>

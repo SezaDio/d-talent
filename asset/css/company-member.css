@@ -289,3 +289,34 @@ p{
     color: #fff;
     background-color: #333;
 }
+
+/* Notification Page */
+.dataTables_wrapper{
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+}
+.notification .image-bg{
+    width: 100px;
+    height: 100px;
+}
+.label{
+    padding: 3px 5px;
+    border-radius: 3px;
+    color: #fff;
+}
+.label-primary{
+    background-color: #2196F3;
+}
+.label-info{
+    background-color: #03A9F4;
+}
+.label-success{
+    background-color: #4CAF50;
+}
+.label-warning{
+    background-color: #FFC107;
+}
+.label-danger{
+    background-color: #E53935;
+}

@@ -1,5 +1,4 @@
 <?php
-	// $this->load->helper('text');
 	$this->load->helper('custom');
 ?>
 <div class="row">

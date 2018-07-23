@@ -83,10 +83,11 @@
 			return $this->db->get()->result();
 		}
 
-		public function detail($id_job)
+		public function detail($id_company, $id_job)
 		{
 			$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
 			$this->db->from('job_vacancy');
+			$this->db->where('id_company', $id_company);
 			$this->db->where('id_job', $id_job);
 			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
 			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
@@ -115,14 +116,14 @@
 			return $this->db->insert('job_vacancy', $data);
 		}
 
-		public function edit($id_job)
+		public function edit($id_company, $id_job)
 		{
-			$query = $this->db->get_where('job_vacancy', array('id_job' => $id_job));
+			$query = $this->db->get_where('job_vacancy', array('id_company'=>$id_company, 'id_job' => $id_job));
 			// get 1 object from query
 			return $query->row();
 		}
 
-		public function update($id_job, $job_required_skill)
+		public function update($id_company, $id_job, $job_required_skill)
 		{
 			$data = array(
 				'job_title' 	  	 => $this->input->post('job_title'),
@@ -137,12 +138,14 @@
 				'job_required_skill' => $job_required_skill,
 			);
 			
+			$this->db->where('id_company', $id_company);
 			$this->db->where('id_job', $id_job);
 			return $this->db->update('job_vacancy', $data);
 		}
 
-		public function delete($id_job)
+		public function delete($id_company, $id_job)
 		{
+			$this->db->where('id_company', $id_company);
 			$this->db->where('id_job', $id_job);
 			return $this->db->delete('job_vacancy');
 		}

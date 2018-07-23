@@ -192,3 +192,45 @@ function displayRequiredSkills($string)
         echo "<li>". $value ."</li>";
     }
 }
+
+/* Company Job Notification */
+function displayNotificatioonStatus($status)
+{
+    //  1 accept, 2 decline, 3 expired, 0 menunggu
+    switch ($status) {
+        case 0:           
+            return '<span class="label label-info">Menunggu</span>';
+            break;
+        case 1:           
+            return '<span class="label label-success">Menerima</span>';
+            break;
+        case 2:           
+            return '<span class="label label-danger">Menolak</span>';
+            break;
+        case 3:           
+            return '<span class="label label-warning">Kadaluarsa</span>';
+            break;
+        
+        default:
+            return '';
+            break;
+    }
+}
+
+/* Online Test */
+function displaySoftskillCategory($category)
+{
+    // 1: intrapersonal, 2: interpersonal
+    switch ($category) {
+        case 1:
+            return "Intrapersonal";
+            break;
+        case 2:
+            return "Interpersonal";
+            break;
+        
+        default:
+            return "";
+            break;
+    }
+}
