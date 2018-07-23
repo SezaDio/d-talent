@@ -1005,13 +1005,13 @@ class CompanyMember extends CI_Controller
 		$msg = $this->load->view('skin/email/template_email', $data, true); 
 		//$this->kirim_email($data['subject'], $msg, $to);
 
-		//$this->load->view('skin/email/template_email');
+		$this->load->view('skin/email/template_email');
 		//Tampilkan halaman detail jobseeker
 		//Redirect('CompanyMember/jobseeker_detail_page/'.$id_talent); //.$id_talent
 	}
 
 	//Function update notification status (Accept)
-	function update_notif_accept ()//$id_notification)
+	function update_notif_accept ($id_notification)
 	{
 		$data_status_notif = array(
 									'notification_status' => 1
@@ -1025,7 +1025,7 @@ class CompanyMember extends CI_Controller
 	}
 
 	//Function update notification status (Decline)
-	function update_notif_decline ()//$id_notification)
+	function update_notif_decline ($id_notification)
 	{
 		$data_status_notif = array(
 									'notification_status' => 2
