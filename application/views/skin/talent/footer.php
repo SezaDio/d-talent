@@ -3,7 +3,7 @@
 
 	
     <!-- Footer Section Start -->
-    <footer>          
+    <footer style="background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">          
       <div class="container">
         <div class="row">
           <!-- Footer Links -->

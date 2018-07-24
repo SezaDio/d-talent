@@ -1,6 +1,6 @@
     <header style="z-index: 9999;" id="hero-area" data-stellar-background-ratio="0.5">
       <!-- Navbar Start -->
-      <nav class="navbar navbar-expand-lg scrolling-navbar indigo" style="position: fixed; background: white; box-shadow: 5px 5px 5px lightgrey; width:100%; margin-top: 17px;">
+      <nav class="navbar navbar-expand-lg scrolling-navbar indigo" style="position: fixed; background: white; box-shadow: 5px 5px 5px lightgrey; width:100%;">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header" style="height: 85px;">
@@ -66,6 +66,8 @@
       </div>
       <br><br><br><br><br><br><br>
     </header>
+    <br><br>
+
     <!-- Header Section End --> 
 
     

@@ -925,6 +925,148 @@ class CompanyMember extends CI_Controller
         return $this->pagination->create_links();
 	}
 
+	//Fungsi melakukan update data company pada database
+	public function jobseeker_detail_page() 
+	{
+		$id_company = $this->session->userdata('id_company');
+
+		if ($id_company == null) {
+			return redirect('AccountCompany');
+		}
+
+		$this->load->model('talent_models/TalentModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVAchievementModel');
+		$this->load->model('talent_models/TalentCVCourseModel');
+
+		$id_talent = 3;
+
+		$data['data_id_company'] = array(
+							'id_company' => $id_company
+							);
+		$data['page_title'] = "Talent";
+		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+		$data['cv_achievements'] = $this->TalentCVAchievementModel->get_all($id_talent);
+		$data['cv_courses'] = $this->TalentCVCourseModel->get_all($id_talent);
+
+		// get user data
+		$data['talent'] 	= $this->TalentModel->find($id_talent);
+
+		// get location name
+		$this->db->select('lokasi_nama');
+		$this->db->from('inf_lokasi');
+		$this->db->where(array('lokasi_kode' => $data['talent']->id_kota));
+		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
+
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_jobseeker_detail_page', $data);
+		$this->load->view('skin/front_end/footer_company_page');		
+	}
+
+	//Function Send Invitation Message
+	function invitation_message ()
+	{
+		$data_job_notification = array(
+						   'id_talent'=>$this->input->post('id_talent'),
+						   'id_company'=>$this->input->post('id_company'),
+						   'notification_status'=>0
+							);
+
+		//Insert data id_company, id_talent,
+		$this->db->insert('job_notification', $data_job_notification);
+		$id_notification = $this->db->insert_id();
+		
+		$data['kirim_email'] = array(
+						   'from'=>$this->input->post('invitation_from'),
+						   'to'=>$this->input->post('invitation_to'),
+						   'subject'=>$this->input->post('invitation_subject'),
+						   'message'=>$this->input->post('invitation_message'),
+						   'id_talent'=>$this->input->post('id_talent'),
+						   'id_company'=>$this->input->post('id_company'),
+						   'id_notification'=>$id_notification,
+						   'notification_status'=>0
+						   );
+
+
+		$from = $this->input->post('invitation_from');
+		$subject = $this->input->post('invitation_subject');
+		$to = $this->input->post('invitation_to');
+		$id_talent = $this->input->post('id_talent');
+		
+		//Send Email to Talent
+		$data['subject'] = $subject;
+		$isi = $this->load->view('skin/email/content_invitation_message_email', $data, true);
+		$data['content'] = $isi;
+		$data['link_confirm_accept'] = site_url('CompanyMember/update_notif_accept/'.$id_notification);
+		$data['link_confirm_decline'] = site_url('CompanyMember/update_notif_decline/'.$id_notification);
+		$msg = $this->load->view('skin/email/template_email', $data, true); 
+		//$this->kirim_email($data['subject'], $msg, $to);
+
+		$this->load->view('skin/email/template_email');
+		//Tampilkan halaman detail jobseeker
+		//Redirect('CompanyMember/jobseeker_detail_page/'.$id_talent); //.$id_talent
+	}
+
+	//Function update notification status (Accept)
+	function update_notif_accept ($id_notification)
+	{
+		$data_status_notif = array(
+									'notification_status' => 1
+								   );
+
+		//Update data status notification database
+		$this->db->update('job_notification', $data_status_notif, array('id_notification'=>$id_notification));
+
+		//Tampilkan halaman sukses terima respon 
+		$this->load->view('content_front_end/talent_respon_accept_page');
+	}
+
+	//Function update notification status (Decline)
+	function update_notif_decline ($id_notification)
+	{
+		$data_status_notif = array(
+									'notification_status' => 2
+								   );
+
+		//Update data status notification database
+		$this->db->update('job_notification', $data_status_notif, array('id_notification'=>$id_notification));
+
+		//Tampilkan halaman sukses terima respon
+		$this->load->view('content_front_end/talent_respon_decline_page');
+	}
+
+	//kirim email
+   	function kirim_email($sub, $msg, $email) 
+   	{
+      $config['protocol'] = 'smtp';
+      $config['smtp_host'] = 'mail.boloku.id'; //change this
+      $config['smtp_port'] = '465';
+      $config['smtp_user'] = 'info@boloku.id'; //change this
+      $config['smtp_pass'] = 'cz431081994'; //change this
+      $config['mailtype'] = 'html';
+      $config['charset'] = 'iso-8859-1';
+      $config['smtp_crypto'] = 'ssl';
+      $config['wordwrap'] = TRUE;
+      $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
+      $this->load->library('email'); // load email library
+      $this->email->initialize($config);
+      $this->email->from('info@boloku.id', 'boloku.id');
+      $this->email->to($email);
+      $this->email->subject($sub);
+      $this->email->message($msg);
+      if ($this->email->send())
+      {
+         $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
+         redirect('FrontControl_ContactUs/kelola_message');
+      }
+      else
+      {
+         show_error($this->email->print_debugger());
+      }
+    }
 
 	/* Job Notification */
 	public function notification_page()

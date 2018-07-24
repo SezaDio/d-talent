@@ -87,6 +87,14 @@ $route['admin/test-passion-interest/store'] 		= 'TestPassion/store';
 $route['admin/test-passion-interest/update/(:num)'] = 'TestPassion/update/$1';
 $route['admin/test-passion-interest/delete/(:num)'] = 'TestPassion/delete/$1';
 
+/* test work attitude */
+$route['admin/test-work-attitude'] 				 = 'TestWorkAttitude/index';
+$route['admin/test-work-attitude/create'] 		 = 'TestWorkAttitude/create';
+$route['admin/test-work-attitude/edit/(:num)']   = 'TestWorkAttitude/edit/$1';
+$route['admin/test-work-attitude/store'] 		 = 'TestWorkAttitude/store';
+$route['admin/test-work-attitude/update/(:num)'] = 'TestWorkAttitude/update/$1';
+$route['admin/test-work-attitude/delete/(:num)'] = 'TestWorkAttitude/delete/$1';
+
 /* test softskill */
 $route['admin/test-softskill'] 				 = 'TestSoftskill/index';
 $route['admin/test-softskill/create'] 		 = 'TestSoftskill/create';
@@ -134,6 +142,14 @@ $route['talent/cv-course/update/(:num)'] = 'TalentCVCourse/update/$1';
 $route['talent/cv-course/delete/(:num)'] = 'TalentCVCourse/delete/$1';
 
 $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
+
+
+/* test character */
+$route['talent/test-character'] 		= 'TalentTest/showCharacter';
+$route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
+
+
+/*================================================================================*/
 
 
 /* company member */
