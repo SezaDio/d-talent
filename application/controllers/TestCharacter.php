@@ -27,14 +27,6 @@ class TestCharacter extends CI_Controller {
 		$this->load->view('skin/admin/footer_admin');
 	}
 
-	/*public function create()
-	{
-		$this->load->view('skin/admin/header_admin');
-		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/tambah_test_character');
-		$this->load->view('skin/admin/footer_admin');
-	}*/
-
 	public function store()
 	{
 		$this->form_validation->set_rules('question', '"Soal"', 'required');

@@ -144,6 +144,14 @@ $route['talent/cv-course/delete/(:num)'] = 'TalentCVCourse/delete/$1';
 $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 
 
+/* test character */
+$route['talent/test-character'] 		= 'TalentTest/showCharacter';
+$route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
+
+
+/*================================================================================*/
+
+
 /* company member */
 $route['company'] 						= 'CompanyMember/index';
 $route['company/updates'] 				= 'CompanyMember/updates_page';
