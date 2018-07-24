@@ -9,44 +9,34 @@
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
-						<input type="text" id="valCategory2" value="" style="display:none">
-							<div class="dropdown">
-								<button class="button button1 dropdown-toggle" type="button" id="Category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span id="valCategory">Job Category</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="Category">
-									<p class="dropdown-item" onclick="category('Information Technology')">Information Technology</p>
-									<p class="dropdown-item" onclick="category('Marketing')">Marketing</p>
-									<p class="dropdown-item" onclick="category('Human Resource Development')">Human Resource Development</p>
-								</div>
-							</div>
+							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valCategory">
+								<option value="">-- Job Category --</option>
+                                <?php
+                                    foreach ($job_category as $key=>$category) 
+                                    { ?>
+                                        <option value="<?php echo $key;?>"><?php echo $category;?></option>';   
+                                    <?php } ?>
+							</select>
 						</div>
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
-						<input type="text" id="valType2" value="" style="display:none">
-							<div class="dropdown">
-								<button class="button button1 dropdown-toggle" type="button" id="Type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span id="valType">Job Type</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<p class="dropdown-item" onclick="type('Full Time')">Full Time</p>
-									<p class="dropdown-item" onclick="type('Part Time')">Part Time</p>
-									<p class="dropdown-item" onclick="type('Internship')">Internship</p>
-								</div>
-							</div>
+							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valType">
+								<option value="">-- Job Type --</option>
+                                <?php
+                                    foreach ($job_type as $key=>$type) 
+                                    { ?>
+                                        <option value="<?php echo $key;?>"><?php echo $type;?></option>';   
+                                    <?php } ?>
+							</select>
 						</div>
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
-						<input type="text" id="valBidIndustri2" value="" style="display:none">
-							<div class="dropdown">
-								<button class="button button1 dropdown-toggle" type="button" id="BidIndustri" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span id="valBidIndustri">Bidang Industri</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<p class="dropdown-item" onclick="bidindustri('all')">Semua Industri</p>
-									<p class="dropdown-item" onclick="bidindustri('Arsitek')">Arsitek</p>
-									<p class="dropdown-item" onclick="bidindustri('Industri Kimia')">Industri Kimia</p>
-									<p class="dropdown-item" onclick="bidindustri('Elektronik')">Elektronik</p>
-								</div>
-							</div>
+							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valProvince">
+								<option value="">-- Location Province --</option>
+                                <?php
+                                    foreach ($lokasiProvinsi as $key=>$provinsi) 
+                                    { ?>
+                                        <option value="<?php echo $provinsi['lokasi_ID'];?>"><?php echo $provinsi['lokasi_nama'];?></option>';   
+                                    <?php } ?>
+							</select>
 						</div>
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<div class="input-group">
@@ -61,49 +51,56 @@
 			<div class="col-md-12" id="job_all">
 				<!--Show Jobs list-->
 				<div class="row">
+				<?php
+					if($jobs_list != null) {
+						foreach ($jobs_list as $job){
+				?>
 					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
 						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">People Partner Analyst</strong></div>
-							<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
-							<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
+							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;"><?php echo $job->job_title; ?></strong></div>
+							<div class="row">
+								<div class="col-md-8">
+									<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
+									<p style="font-size: 1em;">
+									<?php
+										echo ucwords(strtolower($job->city)) .", ". $job->province
+									?>
+									</p>
+								</div>
+								<div class="col-md-4" style="height: 65px;">
+									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
+										<small><b>Batas Pendaftaran</b></small>
+										<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
+										<small style="font-size: 1em;">
+											<?php echo date("j M",strtotime($job->job_date_start))." - ".date("j M Y", strtotime($job->job_date_end)); ?>
+										</small>
+									</div>
+								</div>
+							</div>
 							<hr style="border: solid 1px lightgray;">
 							<div style="padding-bottom: 10px;">
 								<small style="font-size: 1em;">Category : </small>
-								<span class="badge badge-dark">Information Technology</span>
+								<span class="badge badge-dark"><?php echo $job_category[$job->job_category]; ?></span>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">People Partner Analyst</strong></div>
-							<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
-							<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
-							<hr style="border: solid 1px lightgray;">
-							<div style="padding-bottom: 10px;">
-								<small style="font-size: 1em;">Category : </small>
-								<span class="badge badge-dark">Information Technology</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">People Partner Analyst</strong></div>
-							<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
-							<p style="font-size: 1em;">Semarang, Jawa Tengah</p>
-							<hr style="border: solid 1px lightgray;">
-							<div style="padding-bottom: 10px;">
-								<small style="font-size: 1em;">Category : </small>
-								<span class="badge badge-dark">Information Technology</span>
-							</div>
-						</div>
-					</div>
+					<?php } } ?>
+					
 				</div>
 			</div>
 			<div class="col-md-12" id="job_search" style="display:none">
 			</div>
 			<br>
+			
+		<!-- Pagination -->
+		<?php if (isset($links)) { ?>
+			<br>
+			<br>
+			<div class="pagination">
+            	<?php echo $links ?>
+            </div>
+			<br>
+        <?php } ?>
 		</div>
 	</div>
 
@@ -122,31 +119,17 @@
 	  }
 	  
 	  
-	function category(x) {
-	  document.getElementById("valCategory").innerHTML = ""+x+"";
-	  document.getElementById("valCategory2").value = ""+x+"";
-	}
-	function type(y) {
-	  document.getElementById("valType").innerHTML = ""+y+"";
-	  document.getElementById("valType2").value = ""+y+"";
-	}
-	function bidindustri(z) {
-	  document.getElementById("valBidIndustri").innerHTML = ""+z+"";
-	  document.getElementById("valBidIndustri2").value = ""+z+"";
-	}
 	
 	//fungsi search
 	function search_job(){
 		var description = document.getElementById("valDescription").value;
-		var category = document.getElementById("valCategory2").value;
-		var type = document.getElementById("valType2").value;		
-		var bidindustri = document.getElementById("valBidIndustri2").value;		
-		alert(category);
-		alert(type);
-		alert(bidindustri);
+		var category = $('#valCategory').val();
+		var type = $('#valType').val();
+		var province = $('#valProvince').val();
+		
 		document.getElementById("job_all").style.display = "none";
 		document.getElementById("job_search").style.display = "block";
-		$.post('<?php echo site_url('JobVacancy/search_job/'); ?>', {description:description,category:category,type:type}, function(dataJob){
+		$.post('<?php echo site_url('JobVacancy/search_job/'); ?>', {description:description,category:category,type:type,province:province}, function(dataJob){
 			var xml = parseXml(dataJob);
 			var getJob = xml.documentElement.getElementsByTagName("job");
 			var div_job_search = '';
@@ -154,6 +137,7 @@
 			for (var i = 0; i < getJob.length; i++) {
 				var id_job = getJob[i].getAttribute("id_job");
 				var id_company = getJob[i].getAttribute("id_company");
+				var company_name = getJob[i].getAttribute("company_name");
 				var job_title = getJob[i].getAttribute("job_title");
 				var job_category = getJob[i].getAttribute("job_category");
 				var job_city_location_id = getJob[i].getAttribute("job_city_location_id");
@@ -166,8 +150,21 @@
 								div_job_search += ''+job_title+'';
 							div_job_search += '</strong>';
 						div_job_search += '</div>';
-						div_job_search += '<small style="font-size: 1em;"><b>'+id_company+'</b></small>';
-						div_job_search += '<p style="font-size: 1em;">'+job_city_location_id+', '+job_province_location_id+'</p>';
+						div_job_search += '<div class="row">';
+							div_job_search += '<div class="col-md-8">';
+								div_job_search += '<small style="font-size: 1em;"><b>'+company_name+'</b></small>';
+								div_job_search += '<p style="font-size: 1em;">'+titleCase(job_city_location_id)+', '+job_province_location_id+'</p>';
+							div_job_search += '</div>';
+							div_job_search += '<div class="col-md-4" style="height: 65px;">';
+								div_job_search += '<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">';
+									div_job_search += '<small><b>Batas Pendaftaran</b></small>';
+									div_job_search += '<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">';
+									div_job_search += '<small style="font-size: 1em;">';
+										div_job_search += '';
+									div_job_search += '</small>';
+								div_job_search += '</div>';
+							div_job_search += '</div>';
+						div_job_search += '</div>';
 						div_job_search += '<hr style="border: solid 1px lightgray;">';
 						div_job_search += '<div style="padding-bottom: 10px;">';
 							div_job_search += '<small style="font-size: 1em;">Category : </small>';
@@ -175,13 +172,15 @@
 						div_job_search += '</div>';
 					div_job_search += '</div>';
 				div_job_search += '</div>';
-				
-				
-				
-					
 			}
 			div_job_search += '</div>';
 			document.getElementById("job_search").innerHTML = div_job_search;
 		},"text");
+	}
+	
+	function titleCase(str) {
+	  return str.split(' ').map(function(val){ 
+		return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
+	  }).join(' ');
 	}
 </script>
