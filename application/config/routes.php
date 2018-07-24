@@ -111,6 +111,7 @@ $route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
 $route['talent/signup'] = 'AccountTalent/view_signup';
 
+$route['talent'] = 'Talent/index';
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';

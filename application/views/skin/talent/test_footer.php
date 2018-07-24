@@ -55,6 +55,17 @@
 					$('.btn-submit-wrapper').hide();
 				}
 			});
+
+			// check radio buttons
+			$('.btn-submit').click(function(e) {
+				$('.radio-validation').each(function(){
+					if($(this).find('input[type="radio"]:checked').length == 0) {
+						e.preventDefault();
+				    	alert("Semua pertanyaan harus diisi");
+				    	return false;
+					}
+				});
+			});
         });
 	</script>
 </body>

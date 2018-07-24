@@ -2,10 +2,20 @@
 	<div class="container">
 		<h3 class="text-center">Tes Karakter</h3>
 		<div class="card center-block">
-			<form method="" action="post">
+			<form action="<?php echo site_url('talent/test-character/submit'); ?>" method="post">
 				<div class="card-body">
 					<div class="test page-1">
 						<br>
+						<?php
+					    	if($this->session->has_userdata('msg_error')) {
+						?>
+						    <div class="alert alert-danger">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<?php echo $this->session->msg_error; ?>
+							</div>
+					  	<?php
+					  		}
+						?>
 						<br>
 						<p class="text-center">
 							<b>Instruksi Tes</b>
@@ -26,10 +36,11 @@
 						if ($i % 2 == 1) {	// if $no is odd => new page (pagination)
 							$page++;
 							echo '<div class="test page-'. $page .'">';
-							echo '<div>'.
+							
+							echo '<div class="radio-validation">'.
 									'<p><span class="number">'.($no+1).' .</span>'. $test[$no]->question .'</p>'.
 									'<div><label>'.
-										'<input type="radio" name="answer['.$no.']" value="a">'.
+										'<input type="radio" name="answer['.$no.']" value="a" required>'.
 										'<span>'. $test[$no]->option_a .'</span>'.
 									'</label></div>'.
 									'<div><label>'.
@@ -38,10 +49,10 @@
 									'</label></div>'.
 								'</div>';
 							$no++;
-							echo '<div>'.
+							echo '<div class="radio-validation">'.
 									'<p><span class="number">'.($no+1).' .</span>'. $test[$no]->question .'</p>'.
 									'<div><label>'.
-										'<input type="radio" name="answer['.$no.']" value="a">'.
+										'<input type="radio" name="answer['.$no.']" value="a" required>'.
 										'<span>'. $test[$no]->option_a .'</span>'.
 									'</label></div>'.
 									'<div><label>'.
@@ -59,7 +70,7 @@
 
 				<!-- submit button -->
 				<div class="btn-submit-wrapper">
-					<input type="submit" value="Selesai" class="btn btn-default">
+					<input type="submit" value="Selesai" class="btn btn-default btn-submit">
 				</div>
 
 				<!-- pagination -->
@@ -86,7 +97,7 @@
 					</nav>
 				</div>
 			</form>
-			
+
 		</div>
 	</div>
 </div>
