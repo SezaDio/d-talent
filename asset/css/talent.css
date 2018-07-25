@@ -24,11 +24,22 @@ header{
 a:hover{
 	color: #FDD835;
 }
+.navbar-expand-lg .navbar-nav li a:hover,
+.navbar-expand-lg .navbar-nav li .active > a,
+.navbar-expand-lg .navbar-nav li a:focus {
+    color: #FDD835;
+}
 .slicknav_btn{
 	border-color: #333;
 }
 .slicknav_menu .slicknav_icon-bar {
     background: #333;
+}
+.navbar-nav > li > .dropdown-menu{
+	margin-top: -15px;
+}
+.menu-bg .navbar-nav > li > .dropdown-menu{
+	margin-top: 0px;
 }
 
 /* toast message */
@@ -110,6 +121,9 @@ h4{
 .bg-talent .image-bg,
 .img-talent .image-bg{
 	height: 100%;
+}
+.online-test p{
+	margin-bottom: 0px;
 }
 
 .profile-edit{
@@ -345,6 +359,10 @@ select.form-control{
 .dropdown-menu > li > a{
 	padding-top: 7px;
 	padding-bottom: 7px;
+}
+.dropdown-item.active,
+.dropdown-item:active{
+	background-color: #fefefe;
 }
 figure{
 	margin-bottom: 0px;

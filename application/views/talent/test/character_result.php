@@ -18,6 +18,7 @@
 					
 				<?php
 			    	if($this->session->has_userdata('msg_success')) {
+			    		unset($_SESSION['msg_success']);
 				?>
 					<div class="text-justify">
 			  	<?php
@@ -29,8 +30,8 @@
 				</div>
 			</div>
 			
-			<div class="pull-right">
-				<a href="<?php echo site_url('talent');?>" class="btn btn-default">My CV</a>
+			<div style="position: absolute; bottom: 15px; right: 15px;">
+				<a href="<?php echo site_url('talent');?>">My CV</a>
 			</div>
 
 			<div class="clearfix"></div>

@@ -233,6 +233,39 @@
 				<?php
 					} 	//./if
 				?>
+
+				<?php
+					if($result_character != null) {
+				?>
+				<br>
+				<br>
+				<div class="card online-test">
+				  <div class="card-header">
+				    <h3>Tes Online</h3>
+				  </div>
+				  <div class="card-body">
+				    <table class="table">
+				    	<tr>
+				    		<td class="periode">
+				    			Tes Karakter
+				    			<br>
+				    			<?php
+				    				echo displayDate($result_character->test_date);
+				    			?>
+				    		</td>
+				    		<td>
+				    			<?php
+				    				echo "- " . $result_character_sub_title . " -<br>";
+				    				echo $result_character_detail;
+				    			?>
+				    		</td>
+				    	</tr>
+				    </table>
+				  </div>
+				</div>
+				<?php
+					} 	//./if
+				?>
 			</div>
 
 		</div>

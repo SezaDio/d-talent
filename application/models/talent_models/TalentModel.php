@@ -63,4 +63,12 @@
 			$this->db->where('id_talent', $id_talent);
 			return $this->db->update('talent', $data);
 		}
+
+		/* Online Test */
+		public function findCharacterTest($id_talent)
+		{
+			$query = $this->db->get_where('result_character', array('id_talent' => $id_talent));
+			return $query->row();
+		}
+
 	}

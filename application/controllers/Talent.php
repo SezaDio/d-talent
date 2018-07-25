@@ -19,21 +19,18 @@ class Talent extends CI_Controller {
 	{
 		$id_talent = $this->session->userdata('id_talent');
 
-		if ($id_talent == null) {
+		/*if ($id_talent == null) {
 			return redirect('AccountTalent');
-		}
+		}*/
 
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('talent_models/TalentCVWorkModel');
 		$this->load->model('talent_models/TalentCVEducationModel');
 		$this->load->model('talent_models/TalentCVAchievementModel');
 		$this->load->model('talent_models/TalentCVCourseModel');
+		$this->load->helper('custom');
 
 		$data['page_title'] = "Talent";
-		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
-		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
-		$data['cv_achievements'] = $this->TalentCVAchievementModel->get_all($id_talent);
-		$data['cv_courses'] = $this->TalentCVCourseModel->get_all($id_talent);
 
 		// get user data
 		$data['talent'] 	= $this->TalentModel->find($id_talent);
@@ -43,6 +40,21 @@ class Talent extends CI_Controller {
 		$this->db->from('inf_lokasi');
 		$this->db->where(array('lokasi_kode' => $data['talent']->id_kota));
 		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
+
+		// cv
+		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+		$data['cv_achievements'] = $this->TalentCVAchievementModel->get_all($id_talent);
+		$data['cv_courses'] = $this->TalentCVCourseModel->get_all($id_talent);
+
+		// online test
+		$data['result_character'] = $this->TalentModel->findCharacterTest($id_talent);
+		if ($data['result_character'] != null) {
+			// use function from helper
+			$response = detailCharacterResult($data['result_character']->result);
+			$data['result_character_sub_title'] = $response['sub_title'];
+			$data['result_character_detail'] = $response['result_detail'];
+		}
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/index');

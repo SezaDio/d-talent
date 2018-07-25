@@ -72,6 +72,18 @@
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/logout');?>"><i class="fa fa-sign-out-alt"></i> <b>Logout</b></a>
               </li>
+
+              <li class="nav-item treeview dropdown" role="presentation">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
+                  <i class="fa fa-file-alt"></i> <b>Tes Online</b> <i class="fa fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu" style="margin-left: 20px;">
+                  <ul>
+                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Karakter</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Minat dan Bakat</a></li>
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
