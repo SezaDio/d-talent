@@ -7,10 +7,10 @@
 			parent::_construct();
 		}
 
-		/*Mengambil data jumlah approved event
-		function get_jumlah_approved_event()
+		//Mengambil data jumlah approved event
+		function get_jumlah_job_vacancy()
 		{
-			$query = $this->db->query("SELECT * FROM `coming` WHERE status='1'");
+			$query = $this->db->query("SELECT * FROM `job_vacancy`");
 		
 			$result = $query->num_rows();
 			
@@ -18,14 +18,14 @@
 		}
 
 		//Mengambil data jumlah pending event
-		function get_jumlah_pending_event()
+		function get_jumlah_company_member()
 		{
-			$query = $this->db->query("SELECT * FROM `coming` WHERE status='2'");
+			$query = $this->db->query("SELECT * FROM `company`");
 		
 			$result = $query->num_rows();
 			
 			return $result;
-		} */
+		}
 		//Mengambil data jumlah pesan
 		function get_jumlah_pesan()
 		{
@@ -36,11 +36,11 @@
 			return $result;
 		}
 
-		/*
+		
 		//Mengambil data jumlah pending event
-		function get_jumlah_pending_pepak()
+		function get_jumlah_talent_member()
 		{
-			$query = $this->db->query("SELECT * FROM `pepak` WHERE status='2'");
+			$query = $this->db->query("SELECT * FROM `talent`");
 		
 			$result = $query->num_rows();
 			
@@ -67,7 +67,7 @@
 		function get_data_jumlah_member()
 		{
 
-		    $query =$this->db->query("SELECT YEARWEEK(date_join) as minggu, COUNT(*) as jumlah FROM member GROUP BY minggu");
+		    $query =$this->db->query("SELECT YEARWEEK(company_date_join) as minggu, COUNT(*) as jumlah FROM company GROUP BY minggu");
 
 			$result = array();
 			
@@ -77,5 +77,21 @@
 			}
 		
 			return $result;
-		} */	
+		}	
+
+		//Mengambil data jumlah member untuk grafik
+		function get_data_jumlah_talent_member()
+		{
+
+		    $query =$this->db->query("SELECT YEARWEEK(talent_date_join) as minggu, COUNT(*) as jumlah FROM talent GROUP BY minggu");
+
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$row['minggu']] = $row['jumlah'];
+			}
+		
+			return $result;
+		}	
 	}

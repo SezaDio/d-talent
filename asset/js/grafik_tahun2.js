@@ -2,12 +2,12 @@ $(document).ready
 (
     function(){
         var options = {
-            chart: {
-                renderTo: 'container',
+            chart2: {
+                renderTo: 'container2',
                 type: 'line'
             },
             title: {
-                text: 'Jumlah Company Member',
+                text: 'Jumlah Talent Member',
                 x: -20 //center
             },
             subtitle: {
@@ -43,9 +43,9 @@ $(document).ready
             },
             series: []
         };
-        $.getJSON(data_member_url, function(json) {
+        $.getJSON(data_member_url2, function(json) {
             options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
             options.series[0] = json[1];
-            chart = new Highcharts.Chart(options);
+            chart2 = new Highcharts.Chart(options);
         });
     });

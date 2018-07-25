@@ -15,23 +15,26 @@ class AdminDashboard extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('admin_logged_in')){
-		$this->load->helper('url');
-		$this->load->model('dashboard_models/DashboardModels');
+		if($this->session->userdata('admin_logged_in'))
+		{
+			$this->load->helper('url');
+			$this->load->model('dashboard_models/DashboardModels');
 
-		//$data['jum_approve_event'] = $this->DashboardModels->get_jumlah_approved_event();
-		//$data['jum_pending_event'] = $this->DashboardModels->get_jumlah_pending_event();
-		//$data['jum_pending_pepak'] = $this->DashboardModels->get_jumlah_pending_pepak();
-		$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
-		//$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
+			$data['jum_job_vacancy'] = $this->DashboardModels->get_jumlah_job_vacancy();
+			$data['jum_company_member'] = $this->DashboardModels->get_jumlah_company_member();
+			$data['jum_talent_member'] = $this->DashboardModels->get_jumlah_talent_member();
+			$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
+			//$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
 
-		$this->load->view('skin/admin/welcome', $data);
-		} else {
+			$this->load->view('skin/admin/welcome', $data);
+		} 
+		else 
+		{
 			redirect(site_url('Account'));
 		}
 	}
 
-	/*Delete Data Coming + data news dan testimoni dari halaman Lihat Detail
+	//Delete Data Coming + data news dan testimoni dari halaman Lihat Detail
 	public function delete_event($id_coming)
 	{
 		$this->load->model('coming_models/ComingModels');
@@ -43,7 +46,7 @@ class AdminDashboard extends CI_Controller {
 		$this->index();
 	}
 
-	public function get_data_jumlah_member()
+	public function get_data_jumlah_company_member()
 	{
 		$this->load->model('dashboard_models/DashboardModels');
 
@@ -61,6 +64,26 @@ class AdminDashboard extends CI_Controller {
 
 		print json_encode($rslt);
 
-	} */
+	}
+
+	public function get_data_jumlah_talent_member()
+	{
+		$this->load->model('dashboard_models/DashboardModels');
+
+		$data['jumlah_member']=$this->DashboardModels->get_data_jumlah_talent_member();
+
+		foreach ($data['jumlah_member'] as $key=>$data_jumlah_member) 
+		{
+			$data_jumlah['data'][] = intval($data_jumlah_member);
+			$data_minggu['data'][] = strval($key);
+		}
+
+		$rslt = array();
+		array_push($rslt, $data_minggu);
+		array_push($rslt, $data_jumlah);
+
+		print json_encode($rslt);
+
+	}
 
 }

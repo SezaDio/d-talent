@@ -35,7 +35,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="<?php echo site_url('admin/test-softskill'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Softskill</a></li>
                                 <li><a href="<?php echo site_url('admin/test-character'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Karakter</a></li>
-                                <li><a href="<?php //echo site_url('admin/test-work-attitude'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Work Attitude</a></li>
+                                <li><a href="<?php echo site_url('admin/test-work-attitude'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Work Attitude</a></li>
                                 <li><a href="<?php echo site_url('admin/test-passion-interest'); ?>"><i class="glyphicon glyphicon-minus"></i> Tes Minat dan Bakat</a></li>
                             </ul>
                         </li>
@@ -46,8 +46,8 @@
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php //echo site_url('KelolaComing/index'); ?>"><i class="glyphicon glyphicon-minus"></i> List Company Member</a></li>
-                                <li><a href="<?php //echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> List Talent Member</a></li>
+                                <li><a href="<?php echo site_url('KelolaCompanyTalent/company_list'); ?>"><i class="glyphicon glyphicon-minus"></i> List Company Member</a></li>
+                                <li><a href="<?php echo site_url('KelolaCompanyTalent/talent_list'); ?>"><i class="glyphicon glyphicon-minus"></i> List Talent Member</a></li>
                             </ul>
                         </li>
 
