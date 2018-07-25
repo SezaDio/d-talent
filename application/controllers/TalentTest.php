@@ -16,8 +16,22 @@ class TalentTest extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
+	public function accessDenied()
+	{
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/access_denied');
+		$this->load->view('skin/talent/test_footer');
+	}
+
 	public function showCharacter()
 	{
+
+		$id_talent = $this->session->userdata('id_talent');
+		$query = $this->db->get_where('result_character', ['id_talent'=>$id_talent]);
+		if ($query->num_rows() > 0) {
+			redirect('talent/test/access-denied');
+		}
+
 		$this->load->model('test_models/TestCharacterModel');
 		$data['test_character'] = $this->TestCharacterModel->get_all();
 		$data['total_records'] = count($data['test_character']);
@@ -52,7 +66,9 @@ class TalentTest extends CI_Controller {
 			$query = $this->db->insert('result_character', $insert_data);
 
 			if($query) {
-				$response = $this->detailCharacterResult($test_result);
+				$this->load->helper('custom');
+				// use function from helper
+				$response = detailCharacterResult($test_result);
 	  			$data['result'] = $test_result;
 	  			$data['sub_title'] = $response['sub_title'];
 				// get result detail
@@ -70,7 +86,6 @@ class TalentTest extends CI_Controller {
 			$this->load->view('skin/talent/test_header');
 			$this->load->view('talent/test/character_result', $data);
 			$this->load->view('skin/talent/test_footer');
-			// redirect('talent/test-character/result');
 		}
 	}
 
@@ -160,7 +175,7 @@ class TalentTest extends CI_Controller {
 	}
 
 	// get character test's result detail
-	private function detailCharacterResult($test_result)
+	/*public function detailCharacterResult($test_result)
 	{
 		switch ($test_result) {
 			case 'ISTJ':
@@ -370,6 +385,6 @@ class TalentTest extends CI_Controller {
 		$response['result_detail'] = $result_detail;
 
 		return $response;
-	}
+	}*/
 
 }
