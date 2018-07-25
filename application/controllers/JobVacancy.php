@@ -67,9 +67,9 @@ class JobVacancy extends CI_Controller
 		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
 		
 		
-		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/talent/header', $data);
 		$this->load->view('content_front_end/job_list',$data);
-		$this->load->view('skin/front_end/footer_company_page');
+		$this->load->view('skin/talent/footer');
 	}
 	
 	function search_job(){

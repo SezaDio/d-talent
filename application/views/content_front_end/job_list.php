@@ -40,7 +40,7 @@
 						</div>
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<div class="input-group">
-								<input style=" border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
+								<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
 								<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_job()"><i class="fa fa-search"></i></span>
 							</div>
 						</div>
@@ -106,7 +106,6 @@
 
 	<div class="col-lg-1"></div>
 </div>
-<br>
 <script>
 	function parseXml(str) {
 		  if (window.ActiveXObject) {

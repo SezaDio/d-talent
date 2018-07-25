@@ -58,7 +58,7 @@
 								<i class="glyphicon glyphicon-menu-right pull-right"></i>
 							</a> 
 							<ul class="treeview-menu">
-                                <li><a href="<?php //echo site_url('KelolaMember/index'); ?>"><i class="glyphicon glyphicon-minus"></i> List Lowongan Kerja</a></li>
+                                <li><a href="<?php echo site_url('KelolaLowonganPendaftar/vacancy_list'); ?>"><i class="glyphicon glyphicon-minus"></i> List Lowongan Kerja</a></li>
                                 <li><a href="<?php //echo site_url('KelolaMember/validasi_member'); ?>"><i class="glyphicon glyphicon-minus"></i> List Pendaftar Kerja</a></li>
                             </ul>
                         </li> 

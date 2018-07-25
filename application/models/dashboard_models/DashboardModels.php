@@ -47,6 +47,54 @@
 			return $result;
 		}
 
+		//Mengambil data talent member
+		function get_data_talent_member()
+		{
+			$query = $this->db->query("SELECT * FROM `talent`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+
+		//Mengambil data company member
+		function get_data_company_member()
+		{
+			$query = $this->db->query("SELECT * FROM `company`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+
+		//Mengambil data company member
+		function get_data_job_vacancy()
+		{
+			$query = $this->db->query("SELECT * FROM `job_vacancy`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+
 		//Mengambil data coming coming terdekat
 		function get_data_coming_terdekat()
 		{
@@ -93,5 +141,19 @@
 			}
 		
 			return $result;
+		}
+
+		//Menghapus data company member
+		function delete_company_member($id_company)
+		{
+			$this->db->where('id_company',$id_company);
+			$this->db->delete('company');
+		}
+
+		//Menghapus data talent member
+		function delete_talent_member($id_talent)
+		{
+			$this->db->where('id_talent',$id_talent);
+			$this->db->delete('talent');
 		}	
 	}

@@ -35,7 +35,6 @@
 
     <link href="<?php echo base_url('asset/css/company-member.css'); ?>" rel="stylesheet" type="text/css" />
 
-    <link href="<?php echo base_url('asset/css/talent.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('asset/css/talent-responsive.css'); ?>" rel="stylesheet" type="text/css" />
 
   </head>

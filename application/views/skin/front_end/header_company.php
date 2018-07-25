@@ -21,8 +21,9 @@
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/animate.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
-	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
+  	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">
+    <link href="<?php echo base_url('asset/css/company-member.css'); ?>" rel="stylesheet" type="text/css" />
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
 	
 	<style>
 		/* Extra small devices (phones, 600px and down) */

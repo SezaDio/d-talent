@@ -64,13 +64,10 @@
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> My CV</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('JobVacancy/job_list');?>"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent/logout');?>"><i class="fa fa-sign-out-alt"></i> <b>Logout</b></a>
               </li>
 
               <li class="nav-item treeview dropdown" role="presentation">
@@ -83,6 +80,9 @@
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Minat dan Bakat</a></li>
                   </ul>
                 </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent/logout');?>"><i class="fa fa-sign-out-alt"></i> <b>Logout</b></a>
               </li>
             </ul>
           </div>

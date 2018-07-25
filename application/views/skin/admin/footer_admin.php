@@ -15,13 +15,13 @@
             $(document).ready( function () {
                 $('#dataTables-list').DataTable({
                     "columnDefs":[
-                        {"orderable":false, "targets":4}
+                        {"orderable":false, "targets":6}
                     ]
                 });
 
                 $('#dataTables-list-faq').DataTable({
                     "columnDefs":[
-                        {"orderable":false, "targets":3}
+                        {"orderable":false, "targets":7}
                     ]
                 });
                 
