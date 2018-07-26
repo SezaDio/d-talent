@@ -56,6 +56,7 @@
                                         <option value="Realistis">Realistis</option>
                                         <option value="Investigasi">Investigasi</option>
                                         <option value="Artistik">Artistik</option>
+                                        <option value="Sosial">Sosial</option>
                                         <option value="Enterpreuner">Enterpreuner</option>
                                         <option value="Konvensional">Konvensional</option>
                                     </select>
@@ -97,6 +98,7 @@
                             '<option value="Realistis">Realistis</option>'+
                             '<option value="Investigasi">Investigasi</option>'+
                             '<option value="Artistik">Artistik</option>'+
+                            '<option value="Sosial">Sosial</option>'+
                             '<option value="Enterpreuner">Enterpreuner</option>'+
                             '<option value="Konvensional">Konvensional</option>'+
                         '</select>'+

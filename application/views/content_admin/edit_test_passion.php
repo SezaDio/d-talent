@@ -48,6 +48,7 @@
                                         <option value="Realistis" <?php echo $test->category=='Realistis'? 'selected' : ''; ?> >Realistis</option>
                                         <option value="Investigasi" <?php echo $test->category=='Investigasi'? 'selected' : ''; ?> >Investigasi</option>
                                         <option value="Artistik" <?php echo $test->category=='Artistik'? 'selected' : ''; ?> >Artistik</option>
+                                        <option value="Sosial" <?php echo $test->category=='Sosial'? 'selected' : ''; ?> >Sosial</option>
                                         <option value="Enterpreuner" <?php echo $test->category=='Enterpreuner'? 'selected' : ''; ?> >Enterpreuner</option>
                                         <option value="Konvensional" <?php echo $test->category=='Konvensional'? 'selected' : ''; ?> >Konvensional</option>
                                     </select>
