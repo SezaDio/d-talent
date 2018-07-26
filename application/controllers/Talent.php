@@ -19,10 +19,6 @@ class Talent extends CI_Controller {
 	{
 		$id_talent = $this->session->userdata('id_talent');
 
-		/*if ($id_talent == null) {
-			return redirect('AccountTalent');
-		}*/
-
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('talent_models/TalentCVWorkModel');
 		$this->load->model('talent_models/TalentCVEducationModel');
@@ -54,6 +50,11 @@ class Talent extends CI_Controller {
 			$response = detailCharacterResult($data['result_character']->result);
 			$data['result_character_sub_title'] = $response['sub_title'];
 			$data['result_character_detail'] = $response['result_detail'];
+		}
+		$data['result_passion'] = $this->TalentModel->findPassionTest($id_talent);
+		if ($data['result_passion'] != null) {
+			// use function from helper
+			$data['result_passion_detail'] = detailPassionResult($data['result_passion']->result);
 		}
 
 		$this->load->view('skin/talent/header', $data);

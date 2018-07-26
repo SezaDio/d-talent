@@ -57,6 +57,9 @@
     		top: -3px;
     		left: 3px;
     	}
+        .test-result ol{
+            padding-left: 15px;
+        }
     	.pagination-wrapper,
     	.btn-submit-wrapper{
     		position: absolute;

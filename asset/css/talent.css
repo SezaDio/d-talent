@@ -125,6 +125,9 @@ h4{
 .online-test p{
 	margin-bottom: 0px;
 }
+.online-test ol{
+	padding-left: 15px;
+}
 
 .profile-edit{
 	position: absolute;

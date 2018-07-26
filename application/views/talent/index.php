@@ -235,7 +235,7 @@
 				?>
 
 				<?php
-					if($result_character != null) {
+					if($result_character != null || $result_passion != null) {
 				?>
 				<br>
 				<br>
@@ -245,6 +245,9 @@
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
+				<?php
+					if($result_character != null) {
+				?>
 				    	<tr>
 				    		<td class="periode">
 				    			Tes Karakter
@@ -260,6 +263,31 @@
 				    			?>
 				    		</td>
 				    	</tr>
+				<?php
+					} 	//./character
+				?>
+
+				<?php
+					if($result_passion != null) {
+				?>
+						<tr>
+				    		<td class="periode">
+				    			Tes Minat dan Bakat
+				    			<br>
+				    			<?php
+				    				echo displayDate($result_passion->test_date);
+				    			?>
+				    		</td>
+				    		<td>
+				    			<?php
+				    				echo $result_passion_detail;
+				    			?>
+				    		</td>
+				    	</tr>
+				<?php
+					} 	//./passion
+				?>
+
 				    </table>
 				  </div>
 				</div>

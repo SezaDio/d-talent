@@ -149,7 +149,11 @@ $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 $route['talent/test-character'] 		= 'TalentTest/showCharacter';
 $route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
 
-$route['talent/test/access-denied'] 	= 'TalentTest/accessDenied';
+/* test passion */
+$route['talent/test-passion'] 		 = 'TalentTest/showPassion';
+$route['talent/test-passion/submit'] = 'TalentTest/submitPassion';
+
+$route['talent/test/access-denied'] = 'TalentTest/accessDenied';
 
 
 /*================================================================================*/
