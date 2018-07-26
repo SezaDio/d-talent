@@ -77,6 +77,8 @@
                 <div class="dropdown-menu" style="margin-left: 20px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Karakter</a></li>
+                    <li class="dropdown-item"><a href="<?php //echo site_url('talent/test-character'); ?>" >Tes Soft Skill</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Work Attitude</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Minat dan Bakat</a></li>
                   </ul>
                 </div>
