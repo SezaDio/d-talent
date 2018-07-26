@@ -14,11 +14,9 @@
 
 		public function get_all($id_company)
 		{
-			$this->db->select('job_notification.*, job_vacancy.job_title, talent.*');
+			$this->db->select('job_notification.*, talent.*');
 			$this->db->from('job_notification');
 			$this->db->where('job_notification.id_company', $id_company);
-			// $this->db->join('company', 'company.id_company = job_notification.id_company', 'left');
-			$this->db->join('job_vacancy', 'job_vacancy.id_job = job_notification.id_job', 'left');
 			$this->db->join('talent', 'talent.id_talent = job_notification.id_talent', 'left');
 			$this->db->order_by('notification_date', 'DESC');
 

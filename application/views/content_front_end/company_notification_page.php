@@ -20,7 +20,6 @@
                     			<th>Nama Talent</th>
                     			<th>Kontak Talent</th>
                     			<th>Keterangan</th>
-                    			<th>Lowongan Kerja</th>
                     			<th>Status</th>
                     			<th>Tanggal</th>
                     		</tr>
@@ -53,7 +52,6 @@
                     				?>
                     				<!-- Laki-laki <br> Belum menikah <br> 24 tahun -->
                     			</td>
-                    			<td><?php echo $notification->job_title; ?></td>
                     			<td><?php echo displayNotificatioonStatus($notification->notification_status); ?></td>
                     			<td><?php echo displayDate($notification->notification_date); ?></td>
                     		</tr>
