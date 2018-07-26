@@ -236,6 +236,102 @@ function displaySoftskillCategory($category)
 }
 
 /* Online Test - Talent */
+// get passion test's detail
+function detailPassionResult($test_result)
+{
+    switch ($test_result) {
+        case 'Realistis':
+            return '<p><b>Realistis</b></p>
+                Orang dengan tipe realistis sangat hebat mengerjakan hal-hal mekanis atau pekerjaan yang ketahanan fisik. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Agrikultur</li>
+                <li>Tenaga kesehatan</li>
+                <li>Ahli computer atau programmer</li>
+                <li>Ahli konstruksi</li>
+                <li>Mekanik</li>
+                <li>Ahli mesin (Engineering)</li>
+                <li>Ahli pengolahan makanan dan perhotelan</li>
+                </ol>';
+            break;
+
+        case 'Investigasi':
+            return '<p><b>Investigasi</b></p>
+                Orang dengan tipe investigasi menyukai kegiatan mengamati, belajar, menganalisa dan menyelesaikan masalah. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Ahli biologi laut</li>
+                <li>Dokter</li>
+                <li>Ahli kimia</li>
+                <li>Ahli mesin</li>
+                <li>Psikolog dan psikiater</li>
+                <li>Ekonom</li>
+                <li>Human Resource Development (HRD)</li>
+                </ol>';
+            break;
+
+        case 'Artistik':
+            return '<p><b>Artistik</b></p>
+                Orang dengan tipe artistik menyukai pekerjaan yang membutuhkan kreativitas, situasi pekerjaan yang bebas, dan bisa bekerja sendiri. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Pelobi</li>
+                <li>Wartawan</li>
+                <li>Arsitektur</li>
+                <li>Desainer interior</li>
+                <li>Fotografer</li>
+                <li>Ahli tata rias</li>
+                <li>Seniman</li>
+                </ol>';
+            break;
+
+        case 'Sosial':
+            return '<p><b>Sosial</b></p>
+                Orang dengan tipe sosial menyukai pekerjaan yang selalu berinteraksi dengan konsumen dan partner kerja. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Perawat</li>
+                <li>Konselor</li>
+                <li>Terapis</li>
+                <li>Pemandu wisata</li>
+                <li>Ahli dibidang iklan</li>
+                <li>Guru</li>
+                <li>Ahli public relation</li>
+                </ol>';
+            break;
+
+        case 'Enterpreuner':
+            return '<p><b>Enterpreuner</b></p>
+                Orang dengan tipe entrepeuner lebih optimal bekerja dalam tim dan senang dengan kegiatan persuasi dan memamerkan produk atau jasa. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Perancang pakaian</li>
+                <li>Agen real estate</li>
+                <li>Marketer atau sales</li>
+                <li>Pengacara</li>
+                <li>Politikus</li>
+                <li>Banker</li>
+                <li>Pembisnis</li>
+                </ol>';
+            break;
+
+        case 'Konvensional':
+            return '<p><b>Konvensional</b></p>
+                Orang dengan tipe konvensional menyukai pekerjaan mengolah data, pekerjaan yang membutuhkan ketelitian dan pengaturan. Pekerjaan yang cocok untuk tipe ini:
+                <br>
+                <ol>
+                <li>Akuntan</li>
+                <li>Appraisal asuransi</li>
+                <li>Administrator</li>
+                <li>Banker</li>
+                <li>Pengolah data</li>
+                <li>Peneliti</li>
+                <li>Petugas rekam medis</li>
+                </ol>';
+            break;
+    }
+}
+
 // get character test's detail
 function detailCharacterResult($test_result)
 {

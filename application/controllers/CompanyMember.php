@@ -1074,8 +1074,6 @@ class CompanyMember extends CI_Controller
 		$id_company = $this->session->userdata('id_company');
 
 		$data['job_notifications'] = $this->CompanyNotificationModel->get_all($id_company);
-		// var_dump($data['job_notifications']);
-		// die();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');

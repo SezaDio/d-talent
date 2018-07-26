@@ -16,6 +16,7 @@ class TalentTest extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
+	// display access denied view
 	public function accessDenied()
 	{
 		$this->load->view('skin/talent/test_header');
@@ -23,9 +24,9 @@ class TalentTest extends CI_Controller {
 		$this->load->view('skin/talent/test_footer');
 	}
 
+	// display character test view
 	public function showCharacter()
 	{
-
 		$id_talent = $this->session->userdata('id_talent');
 		$query = $this->db->get_where('result_character', ['id_talent'=>$id_talent]);
 		if ($query->num_rows() > 0) {
@@ -41,6 +42,7 @@ class TalentTest extends CI_Controller {
 		$this->load->view('skin/talent/test_footer');
 	}
 
+	// scoring character test
 	public function submitCharacter()
 	{
 		$id_talent = $this->session->userdata('id_talent');
@@ -172,6 +174,90 @@ class TalentTest extends CI_Controller {
 		}
 
 		return $result;
+	}
+
+
+	// display passion test view
+	public function showPassion()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+		$query = $this->db->get_where('result_passion', ['id_talent'=>$id_talent]);
+		if ($query->num_rows() > 0) {
+			redirect('talent/test/access-denied');
+		}
+
+		$this->load->model('test_models/TestPassionModel');
+		$data['test_passion'] = $this->TestPassionModel->get_all();
+		$data['total_records'] = count($data['test_passion']);
+
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/passion', $data);
+		$this->load->view('skin/talent/test_footer');
+	}
+
+	// scoring character test
+	public function submitPassion()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+
+		$this->form_validation->set_rules('realistis[]', '', 'required');
+		$this->form_validation->set_rules('investigasi[]', '', 'required');
+		$this->form_validation->set_rules('artistik[]', '', 'required');
+		$this->form_validation->set_rules('sosial[]', '', 'required');
+		$this->form_validation->set_rules('enterpreuner[]', '', 'required');
+		$this->form_validation->set_rules('konvensional[]', '', 'required');
+
+		if($this->form_validation->run() === FALSE) {
+			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');
+			// redirect to function
+			$this->showPassion();
+		}
+		else {
+			// get test's result
+			$realistis    = $this->input->post('realistis[]');
+			$investigasi  = $this->input->post('investigasi[]');
+			$artistik 	  = $this->input->post('artistik[]');
+			$sosial 	  = $this->input->post('sosial[]');
+			$enterpreuner = $this->input->post('enterpreuner[]');
+			$konvensional = $this->input->post('konvensional[]');
+
+			// sum all array values
+			$array_result['realistis']    = array_sum($realistis);
+			$array_result['investigasi']  = array_sum($investigasi);
+			$array_result['artistik'] 	  = array_sum($artistik);
+			$array_result['sosial'] 	  = array_sum($sosial);
+			$array_result['enterpreuner'] = array_sum($enterpreuner);
+			$array_result['konvensional'] = array_sum($konvensional);
+
+			// get array key that has max value
+			$test_result = array_keys($array_result, max($array_result));
+			$test_result = ucfirst($test_result[0]);
+
+			// insert data to db
+			$insert_data = array(
+				'id_talent' => $id_talent,
+				'result'    => $test_result
+			);
+			$query = $this->db->insert('result_passion', $insert_data);
+
+			if($query) {
+				$this->load->helper('custom');
+				// use function from helper
+	  			$data['result_detail'] = detailPassionResult($test_result);
+
+				// add success message to session
+				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+			}
+			else {
+				// add failed message to session
+				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+			}
+
+			// redirect to index ...
+			$this->load->view('skin/talent/test_header');
+			$this->load->view('talent/test/passion_result', $data);
+			$this->load->view('skin/talent/test_footer');
+		}
 	}
 
 }

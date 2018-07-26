@@ -71,4 +71,10 @@
 			return $query->row();
 		}
 
+		public function findPassionTest($id_talent)
+		{
+			$query = $this->db->get_where('result_passion', array('id_talent' => $id_talent));
+			return $query->row();
+		}
+
 	}
