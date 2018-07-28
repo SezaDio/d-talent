@@ -11,6 +11,11 @@
 		<link href="<?php echo base_url('asset/bootstrap/css/style.css'); ?>" rel="stylesheet">
 
 		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css?family=Poppins');
+	    	body{
+	    		font-family: 'Poppins', sans-serif;
+	    	}
+
 			.button {
 			    background-color: #4CAF50;
 			    border: none;
@@ -177,7 +182,7 @@
 									<button class="button button5" type="submit" name="submit" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Join D-Talent </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center; font-family: monospace">Sudah Punya Akun? <a href="<?php echo site_url('AccountTalent/index'); ?>">Log In </a></p>
+									<p style="text-align: center;">Sudah Punya Akun? <a href="<?php echo site_url('AccountTalent/index'); ?>">Log In </a></p>
 									<br>
 								</form>
 							</div>

@@ -8,7 +8,12 @@
 		<link href="<?php echo base_url('asset/bootstrap/css/style.css'); ?>" rel="stylesheet">
 
 		<style type="text/css">
-			.button {
+			@import url('https://fonts.googleapis.com/css?family=Poppins');
+	    	body{
+	    		font-family: 'Poppins', sans-serif;
+	    	}
+
+	    	.button {
 			    background-color: #4CAF50;
 			    border: none;
 			    border-radius: 8px;
@@ -82,7 +87,7 @@
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center; font-family: monospace">Belum Jadi Member? <a href="<?php echo site_url('AccountTalent/view_signup'); ?>">Sign Up</a></p>
+									<p style="text-align: center;">Belum Jadi Member? <a href="<?php echo site_url('AccountTalent/view_signup'); ?>">Sign Up</a></p>
 									<br>
 								</form>
 							</div>
