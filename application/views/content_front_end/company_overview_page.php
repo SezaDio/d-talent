@@ -94,7 +94,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_industries" required class="form-control" id="kategori">
-	                                                <option value="">--Pilih Kategori Ngerti Rak?--</option>
+	                                                <option value="">--Pilih Kategori--</option>
 	                                                <?php
 	                                                    foreach ($bidang_usaha as $key=>$bu) 
 	                                                    {

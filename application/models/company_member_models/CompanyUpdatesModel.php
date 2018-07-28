@@ -23,6 +23,17 @@
 			return $this->db->get()->result();
 		}
 
+		public function get_limit($id_company, $limit)
+		{
+			$this->db->select('*');
+			$this->db->from('company_update');
+			$this->db->where('id_company', $id_company);
+			$this->db->order_by('created_at', 'DESC');
+			$this->db->limit($limit, 0);
+
+			return $this->db->get()->result();
+		}
+
 		public function create($id_company, $image_filename=null)
 		{
 			$data = array(

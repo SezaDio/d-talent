@@ -1,4 +1,8 @@
-<div class="row">
+<?php
+	$this->load->helper('text');
+	$this->load->helper('custom');
+?>
+<div class="row company-member">
 	<div class="col-lg-1"></div>
 
 	<div class="col-lg-10">
@@ -23,7 +27,7 @@
 					<br>
 					<div class="row">
 						<div class="col-md-5">
-							<a href="<?php echo site_url('CompanyMember/updates_page'); ?>" class="button button1"><i class="fa fa-edit"></i> Manage Page</a>
+							<a href="<?php echo site_url('CompanyMember/overview_page'); ?>" class="button button1"><i class="fa fa-edit"></i> Manage Page</a>
 						</div>
 						<div class="col-md-5">
 							<a href="<?php echo site_url('CompanyMember/jobs_page'); ?>">
@@ -39,7 +43,7 @@
 				<div class="col-md-12" style="padding-top: 10px">
 					<hr style="border: solid 1px lightgray">
 					<strong style="font-size: 1.2em;"><i class="fa fa-home" ></i> Office Address</strong><br>
-					<p>Jalan Prof. Soedarto SH, Tembalang, Semarang 50211</p>
+					<p><?php echo $dataCompany->company_address ?></p>
 					<table class="table">
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-industry"></i> Industry</strong></td>
@@ -47,9 +51,9 @@
 							<td><strong><i class="fa fa-envelope"></i> E-mail</strong></td>
 						</tr>
 						<tr>
-							<td style="padding-left: 0px;">HRD</td>
-							<td>www.d-talent.com</td>
-							<td>company.service@d-talent.id</td>
+							<td style="padding-left: 0px;"><?php echo $bidang_usaha[$dataCompany->company_industries] ?></td>
+							<td><?php echo $dataCompany->company_website ?></td>
+							<td><?php echo $dataCompany->company_email ?></td>
 						</tr>
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-user"></i> Company Type</strong></td>
@@ -57,9 +61,20 @@
 							<td><strong><i class="fa fa-calendar"></i> Year Founded</strong></td>
 						</tr>
 						<tr>
-							<td style="padding-left: 0px;">Public Company</td>
-							<td>Talent Solution and Talent Service</td>
-							<td>2018</td>
+							<td style="padding-left: 0px;"><?php echo $company_type[$dataCompany->company_type] ?></td>
+							<td>
+								<?php
+									$specialties = explode(',', $dataCompany->company_specialties);
+									$count = count($specialties);
+									for ($i=0; $i < $count; $i++) { 
+										echo $specialties[$i];
+										if ($i+1 != $count) {
+											echo ", ";
+										}
+									}
+								?>
+							</td>
+							<td><?php echo $dataCompany->company_year ?></td>
 						</tr>
 					</table>
 				</div>
@@ -72,7 +87,7 @@
 			<hr style="border: solid 1px lightgray">
 			<div class="row">
 				<div class="col-md-12" style="padding-bottom: 15px;">
-					Lorem Ipsum . . .
+					<?php echo $dataCompany->company_description ?>
 				</div>
 			</div>
 		</div>
@@ -83,12 +98,64 @@
 			<strong style="font-size: 1.2em"><i class="fa fa-list"></i> Recent Updates</strong>
 			<hr style="border: solid 1px lightgray">
 			<!--Recent Updates Content-->
-				<div class="col-md-12" style="background-color: whitesmoke;">
-					<p>Content Recent Updates. Lorem Ipsum . . . </p>
+			<div class="col-md-12" style="background-color: whitesmoke;">
+				<?php
+					if($company_updates != null) {
+						foreach ($company_updates as $company_update):
+				?>
+				<div class="col-md-12 item">
+					<div class="row">
+						<div class="col-md-2 image-wrapper">
+							<figure class="image-bg img-fulid" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>');"></figure>
+						</div>
+
+						<div class="col-md-6 item-attribute">
+							<strong class="company-update-title">
+								<a href="<?php echo site_url('company/updates/detail/') . $company_update->id_company_update;?>">
+									<?php echo $company_update->title; ?>
+								</a>
+							</strong>
+							<p class="company-name">
+								<?php echo $dataCompany->company_name; ?>
+							</p>
+							<strong class="text-gray">
+								<?php
+									echo displayDate($company_update->created_at);
+									echo '<span class="space">|</span>'. displayCompanyUpdateStatus($company_update->status);
+								?>
+							</strong>
+						</div>
+						<div class="col-md-3" >
+							<!-- <a href="<?php echo site_url('company/updates/edit/') . $company_update->id_company_update;?>" class="button button1">
+								<i class="fa fa-edit"></i> Edit
+							</a>
+							<a href="#!" class="button button3" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $company_update->id_company_update;?>">
+								<i class="fa fa-trash"></i> Delete
+							</a> -->
+						</div>
+					</div>
+					<hr class="lightgray-line">
+					<div class="row" style="padding: 20px;">
+						<div class="col-md-12 company-update-content">
+							<?php echo character_limiter($company_update->content, 250); ?>
+						</div>
+					</div>
 				</div>
-			
+				<?php
+						endforeach;
+					}
+				?>
+				<div>
+					<a href="<?php echo site_url('company/updates'); ?>" class="button button1" style="width: 180px;">
+						View All
+					</a>
+				</div>
+				<br>
+			</div>
 		</div>
 		
+		<br>
+		<br>
 	</div>
 
 	<div class="col-lg-1"></div>	

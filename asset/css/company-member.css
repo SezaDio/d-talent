@@ -91,7 +91,7 @@ button:hover{
     min-height: 60px;
     position: fixed;
     /*top: 120px;*/
-    top: 150px;
+    top: 140px;
     right: -250px;
     z-index: 1000;
 }
@@ -145,7 +145,8 @@ button:hover{
 .company-updates{
     background-color: #fff;
 }
-.company-updates .item{
+.company-updates .item,
+.company-member .item{
     padding: 20px;
 }
 .image-wrapper{
@@ -160,11 +161,13 @@ button:hover{
 .modal-header{
     display: block;
 }
-.company-updates .image-bg{
+.company-updates .image-bg,
+.company-member .image-bg{
     width: 100%;
     height: 100px;
 }
-.company-updates .item-attribute{
+.company-updates .item-attribute,
+.company-member .item-attribute{
     padding: 5px;
     margin-left: 20px;
 }

@@ -34,6 +34,12 @@ class CompanyMember extends CI_Controller
 
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
+		$data['company_type']= $this->get_company_type();
+		$data['bidang_usaha']= $this->get_business_field();
+		
+		// get max 5 company updates
+		$data['company_updates'] = $this->CompanyUpdatesModel->get_limit($id_company, 5);
+
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
 		$this->load->view('content_front_end/company_member_page', $data);
@@ -155,13 +161,6 @@ class CompanyMember extends CI_Controller
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function
 			$this->edit_updates($id_company_update);
-			// get edit data
-			// $data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
-
-			// $this->load->view('skin/front_end/header_company_page_topbar');
-			// $this->load->view('skin/front_end/navbar_company_page');
-			// $this->load->view('content_front_end/company_updates_page_edit', $data);
-			// $this->load->view('skin/front_end/footer_company_page');
 		}
 		else {
 			// upload images to path for image
@@ -227,13 +226,13 @@ class CompanyMember extends CI_Controller
 	public function overview_page()
 	{
 		$this->load->model('company_member_models/CompanyOverviewModel');
-		$id_company = 1;
+		$id_company = $this->session->userdata('id_company');
 
 		//get data company
 		$data['dataCoverCompany'] = $this->CompanyOverviewModel->get_data_cover_by_id($id_company)->row();
 		$data['dataLogoCompany'] = $this->CompanyOverviewModel->get_data_logo_by_id($id_company)->row();
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
-
+/*
 		//Data Bidang Usaha Perusahaan
 		$bidang_usaha = array(
 							  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
@@ -266,9 +265,9 @@ class CompanyMember extends CI_Controller
                               'ct-7'=>'Privately Held',
                               'ct-8'=>'Partnership'
                               );
-		
-		$data['company_type']= $company_type;
-		$data['bidang_usaha']= $bidang_usaha;
+		*/
+		$data['company_type']= $this->get_company_type();
+		$data['bidang_usaha']= $this->get_business_field();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page');
@@ -276,11 +275,51 @@ class CompanyMember extends CI_Controller
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
+	// Data Bidang Usaha Perusahaan
+	public function get_business_field()
+	{
+		return array(
+		  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
+          'bu-2'=>'Pertambangan dan Penggalian',
+          'bu-3'=>'Industri Pengolahan',
+          'bu-4'=>'Pengadaan Listrik Gas, Uap/Air Panas dan Udara Dingin',
+          'bu-5'=>'Konstruksi',
+          'bu-6'=>'Perdagangan Besar Eceran, Reparasi dan Perawatan Mobil',
+          'bu-7'=>'Transportasi Pergudangan',
+          'bu-8'=>'Penyedia Akomodasi dan Penyedia Makan Minum',
+          'bu-9'=>'Informasi dan Komunikasi',
+          'bu-10'=>'Jasa Keuangan dan Asuransi',
+          'bu-11'=>'Real Estate',
+          'bu-12'=>'Jasa Profesional, Ilmiah, dan Teknis',
+          'bu-13'=>'Jasa Persewaan dan Sewa Guna Usaha Tanpa Hak Opsi',
+          'bu-14'=>'Administrasi Pemerintahan, Pertanahan, dan Jaminan Sosial',
+          'bu-15'=>'Jasa Pendidikan',
+          'bu-16'=>'Jasa Kesehatan dan Kegiatan Sosial',
+          'bu-17'=>'Kesenian, Hiburan, dan Rekreasi',
+          'bu-18'=>'Kegiatan Jasa Lainnya'
+        );
+	}
+
+	// Data Company Type
+	public function get_company_type()
+	{
+		return array(
+		  'ct-1'=>'Public Company',
+          'ct-2'=>'Educational Institution',
+          'ct-3'=>'Self-Employed',
+          'ct-4'=>'Government Agency',
+          'ct-5'=>'Nonprofit',
+          'ct-6'=>'Sole Proprietorship',
+          'ct-7'=>'Privately Held',
+          'ct-8'=>'Partnership'
+        );
+	}
+
 	//Fungsi melakukan update data company pada database
 	public function update_data_company() 
 	{	
 		$id_company = $this->input->post('id_company');
-
+/*
 		//Data Bidang Usaha Perusahaan
 		$bidang_usaha = array(
 							  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
@@ -314,10 +353,12 @@ class CompanyMember extends CI_Controller
                               'ct-7'=>'Privately Held',
                               'ct-8'=>'Partnership'
                               );
+*/
+		// $data['bidang_usaha']= $bidang_usaha;
+		// $data['company_type']= $company_type;
 
-		$data['bidang_usaha']= $bidang_usaha;
-		$data['company_type']= $company_type;
-
+		$data['company_type']= $this->get_company_type();
+		$data['bidang_usaha']= $this->get_business_field();
 
 		//if($this->session->userdata('admin_logged_in'))
 		//{
@@ -373,7 +414,8 @@ class CompanyMember extends CI_Controller
 			}
 			else
 			{
-				$id_company = 1;
+				$id_company = $this->session->userdata('id_company');
+				
 				$this->load->model('company_member_models/CompanyOverviewModel');
 				$data['company'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
@@ -411,7 +453,6 @@ class CompanyMember extends CI_Controller
 	// menyimpan update data company cover picture
 	public function update_company_cover()
 	{
-			
 			$this->load->model('company_member_models/CompanyUpdatesModel');
 			$this->load->library('form_validation');
 
@@ -420,7 +461,7 @@ class CompanyMember extends CI_Controller
 			if (isset($_POST['save']))
 			{
 				//$id_company = $this->input->post('id_company');
-				$id_company = 1;
+				$id_company = $this->session->userdata('id_company');
 
 				//Mengambil filename gambar untuk disimpan
 				$nmfile = "company_cover_".time();
@@ -457,7 +498,8 @@ class CompanyMember extends CI_Controller
 			}
 			else
 			{
-				$id_company = 1;
+				$id_company = $this->session->userdata('id_company');
+
 				$this->load->model('company_member_models/CompanyOverviewModel');
 				$data['company'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
@@ -499,7 +541,7 @@ class CompanyMember extends CI_Controller
 			if (isset($_POST['save']))
 			{
 				//$id_company = $this->input->post('id_company');
-				$id_company = 1;
+				$id_company = $this->session->userdata('id_company');
 
 				//Mengambil filename gambar untuk disimpan
 				$nmfile = "company_logo_".time();
@@ -536,7 +578,8 @@ class CompanyMember extends CI_Controller
 			}
 			else
 			{
-				$id_company = 1;
+				$id_company = $this->session->userdata('id_company');
+				
 				$this->load->model('company_member_models/CompanyOverviewModel');
 				$data['company'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
