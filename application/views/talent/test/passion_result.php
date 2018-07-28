@@ -1,9 +1,9 @@
-<div style="padding-top: 15px; padding-bottom: 15px;">
+<div class="test-result" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
 		<h3 class="text-center">Hasil Tes Minat dan Bakat</h3>
 		<div class="card center-block" style="width: 70%;">
 			<div class="card-body">
-				<div class="test test-result">
+				<div class="test">
 				<?php
 			    	if($this->session->has_userdata('msg_error')) {
 				?>

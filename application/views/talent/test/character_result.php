@@ -1,4 +1,4 @@
-<div style="padding-top: 15px; padding-bottom: 15px;">
+<div class="test-result" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
 		<h3 class="text-center">Hasil Tes Karakter</h3>
 		<div class="card center-block" style="width: 70%;">
