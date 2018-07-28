@@ -32,7 +32,7 @@
                                         </a>
 									</div>
                                     <div class="form-group">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-list">
+                                        <table class="table table-striped table-bordered table-hover dataTable">
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
