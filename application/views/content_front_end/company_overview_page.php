@@ -4,7 +4,7 @@
 		
 		<div class="col-lg-10" style="background: whitesmoke; padding: 20px; width: 100%;">
 			<form role="form" enctype="multipart/form-data" method="post" action="<?php echo site_url('CompanyMember/update_data_company/');?>">
-				<input style="visibility: hidden; width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="id_company" class="form-control" value="<?php echo htmlspecialchars($dataCompany->id_company); ?>">
+				<input type="hidden" required name="id_company" class="form-control" value="<?php echo htmlspecialchars($dataCompany->id_company); ?>">
 				<!--Section Cover Company-->
 				<div class="row">
 					<div class="col-md-12">
