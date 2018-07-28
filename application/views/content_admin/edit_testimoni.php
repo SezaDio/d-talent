@@ -6,7 +6,7 @@
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Ngerti Rak</a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Testimoni</a></li>
                         <li class="active">Edit Testimoni</li>
                     </ol>
                 </section>
