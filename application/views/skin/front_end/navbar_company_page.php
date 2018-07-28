@@ -55,6 +55,12 @@
             <li>
               <a class="page-scroll" href="<?php echo site_url('company/notification'); ?>">Notification</a>
             </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Member View</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="">Log Out</a>
+            </li>
         </ul>
         <!-- Mobile Menu End -->
 

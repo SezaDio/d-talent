@@ -102,6 +102,18 @@
               <a class="page-scroll" href="<?php echo site_url('talent/account/edit');?>">My Account</a>
             </li>
             <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/test-character');?>">Tes Karakter</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/');?>">Tes Soft Skill</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/');?>">Tes Work Attitude</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/test-passion');?>">Tes Minat dan Bakat</a>
+            </li>
+            <li>
               <a class="page-scroll" href="<?php echo site_url('talent/logout');?>">Logout</a>
             </li>
         </ul>
