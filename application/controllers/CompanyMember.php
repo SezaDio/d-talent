@@ -232,40 +232,7 @@ class CompanyMember extends CI_Controller
 		$data['dataCoverCompany'] = $this->CompanyOverviewModel->get_data_cover_by_id($id_company)->row();
 		$data['dataLogoCompany'] = $this->CompanyOverviewModel->get_data_logo_by_id($id_company)->row();
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
-/*
-		//Data Bidang Usaha Perusahaan
-		$bidang_usaha = array(
-							  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
-                              'bu-2'=>'Pertambangan dan Penggalian',
-                              'bu-3'=>'Industri Pengolahan',
-                              'bu-4'=>'Pengadaan Listrik Gas, Uap/Air Panas dan Udara Dingin',
-                              'bu-5'=>'Konstruksi',
-                              'bu-6'=>'Perdagangan Besar Eceran, Reparasi dan Perawatan Mobil',
-                              'bu-7'=>'Transportasi Pergudangan',
-                              'bu-8'=>'Penyedia Akomodasi dan Penyedia Makan Minum',
-                              'bu-9'=>'Informasi dan Komunikasi',
-                              'bu-10'=>'Jasa Keuangan dan Asuransi',
-                              'bu-11'=>'Real Estate',
-                              'bu-12'=>'Jasa Profesional, Ilmiah, dan Teknis',
-                              'bu-13'=>'Jasa Persewaan dan Sewa Guna Usaha Tanpa Hak Opsi',
-                              'bu-14'=>'Administrasi Pemerintahan, Pertanahan, dan Jaminan Sosial',
-                              'bu-15'=>'Jasa Pendidikan',
-                              'bu-16'=>'Jasa Kesehatan dan Kegiatan Sosial',
-                              'bu-17'=>'Kesenian, Hiburan, dan Rekreasi',
-                              'bu-18'=>'Kegiatan Jasa Lainnya'
-                              );
-		//Data Company Type
-		$company_type = array(
-							  'ct-1'=>'Public Company',
-                              'ct-2'=>'Educational Institution',
-                              'ct-3'=>'Self-Employed',
-                              'ct-4'=>'Government Agency',
-                              'ct-5'=>'Nonprofit',
-                              'ct-6'=>'Sole Proprietorship',
-                              'ct-7'=>'Privately Held',
-                              'ct-8'=>'Partnership'
-                              );
-		*/
+
 		$data['company_type']= $this->get_company_type();
 		$data['bidang_usaha']= $this->get_business_field();
 
@@ -319,43 +286,6 @@ class CompanyMember extends CI_Controller
 	public function update_data_company() 
 	{	
 		$id_company = $this->input->post('id_company');
-/*
-		//Data Bidang Usaha Perusahaan
-		$bidang_usaha = array(
-							  'bu-1'=>'Pertanian, Kehutanan, dan Perikanan',
-                              'bu-2'=>'Pertambangan dan Penggalian',
-                              'bu-3'=>'Industri Pengolahan',
-                              'bu-4'=>'Pengadaan Listrik Gas, Uap/Air Panas dan Udara Dingin',
-                              'bu-5'=>'Konstruksi',
-                              'bu-6'=>'Perdagangan Besar Eceran, Reparasi dan Perawatan Mobil',
-                              'bu-7'=>'Transportasi Pergudangan',
-                              'bu-8'=>'Penyedia Akomodasi dan Penyedia Makan Minum',
-                              'bu-9'=>'Informasi dan Komunikasi',
-                              'bu-10'=>'Jasa Keuangan dan Asuransi',
-                              'bu-11'=>'Real Estate',
-                              'bu-12'=>'Jasa Profesional, Ilmiah, dan Teknis',
-                              'bu-13'=>'Jasa Persewaan dan Sewa Guna Usaha Tanpa Hak Opsi',
-                              'bu-14'=>'Administrasi Pemerintahan, Pertanahan, dan Jaminan Sosial',
-                              'bu-15'=>'Jasa Pendidikan',
-                              'bu-16'=>'Jasa Kesehatan dan Kegiatan Sosial',
-                              'bu-17'=>'Kesenian, Hiburan, dan Rekreasi',
-                              'bu-18'=>'Kegiatan Jasa Lainnya'
-                              );
-
-		//Data Company Type
-		$company_type = array(
-							  'ct-1'=>'Public Company',
-                              'ct-2'=>'Educational Institution',
-                              'ct-3'=>'Self-Employed',
-                              'ct-4'=>'Government Agency',
-                              'ct-5'=>'Nonprofit',
-                              'ct-6'=>'Sole Proprietorship',
-                              'ct-7'=>'Privately Held',
-                              'ct-8'=>'Partnership'
-                              );
-*/
-		// $data['bidang_usaha']= $bidang_usaha;
-		// $data['company_type']= $company_type;
 
 		$data['company_type']= $this->get_company_type();
 		$data['bidang_usaha']= $this->get_business_field();
