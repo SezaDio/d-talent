@@ -44,16 +44,16 @@
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
            <li>
-              <a class="page-scroll" href="#hero-area">Updates</a>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>">Updates</a>
             </li>
             <li>
-              <a class="page-scroll" href="#services">Overview</a>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>">Overview</a>
             </li>
             <li>
-              <a class="page-scroll" href="#features">Jobs</a>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Jobs</a>
             </li>
             <li>
-              <a class="page-scroll" href="#portfolios">Notification</a>
+              <a class="page-scroll" href="<?php echo site_url('company/notification'); ?>">Notification</a>
             </li>
         </ul>
         <!-- Mobile Menu End -->
