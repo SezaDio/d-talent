@@ -26,6 +26,12 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
 	
 	<style>
+      @media only screen and (max-width: 340px) {
+        #company-button,
+        #jobseeker-button{
+          margin-bottom: 15px;
+        }
+      }
 		/* Extra small devices (phones, 600px and down) */
 			@media only screen and (max-width: 600px) {
 				.big-slider {display: none;}
@@ -39,7 +45,8 @@
 		/* Large devices (laptops/desktops, 992px and up) */
 			@media only screen and (min-width: 992px) {
 				.small-slider {display: none;}
-			} 
+			}
+
 
 	</style>
 	
