@@ -62,6 +62,17 @@ button:hover{
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+/* dropdown on navbar */
+.navbar-nav > li > .dropdown-menu{
+    margin-top: -15px;
+}
+.top-nav-collapse .navbar-nav > li > .dropdown-menu{
+    margin-top: 0px;
+}
+.dropdown-item.active,
+.dropdown-item:active{
+    background-color: #fefefe;
+}
 
 .hover-show-div {
     position: absolute;

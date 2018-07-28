@@ -30,10 +30,10 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
                   <strong>Admin Tools <i class="fa fa-chevron-down"></i></strong>
                 </a>
-                <div class="dropdown-menu" style="margin-top: -25px; margin-left: 20px;">
+                <div class="dropdown-menu" style="margin-left: 20px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Member View</a></li>
-                    <li class="dropdown-item"><a href="" style="color: black;">Log Out</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('AccountCompany/logout_company'); ?>" style="color: black;">Log Out</a></li>
                   </ul>
                 </div>
               </li>
@@ -59,7 +59,7 @@
               <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Member View</a>
             </li>
             <li>
-              <a class="page-scroll" href="">Log Out</a>
+              <a class="page-scroll" href="<?php echo site_url('AccountCompany/logout_company'); ?>">Log Out</a>
             </li>
         </ul>
         <!-- Mobile Menu End -->
