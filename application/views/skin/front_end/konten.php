@@ -97,7 +97,7 @@
           </div> 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
-              <a href="#">
+              <a href="<?php echo site_url('AccountCompany/index/'); ?>">
                 <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-building" style="font-size: 30px;line-height: 80px;"></i>
                 </div>
