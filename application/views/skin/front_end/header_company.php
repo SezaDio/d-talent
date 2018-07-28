@@ -91,22 +91,16 @@
               <a class="page-scroll" href="#hero-area">Home</a>
             </li>
             <li>
-              <a class="page-scroll" href="#services">Services</a>
+              <a class="page-scroll" href="#features">Mission</a>
             </li>
             <li>
-              <a class="page-scroll" href="#features">Features</a>
+              <a class="page-scroll" href="#blog">Benefit</a>
             </li>
             <li>
-              <a class="page-scroll" href="#portfolios">Works</a>
+              <a class="page-scroll" href="#pricing">Membership</a>
             </li>
             <li>
-              <a class="page-scroll" href="#pricing">Pricing</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#team">Team</a>
-            </li>
-            <li >
-              <a class="page-scroll" href="#blog">Blog</a>
+              <a class="page-scroll" href="#testimonial">Testimonial</a>
             </li>
             <li>
               <a class="page-scroll" href="#contact">Contact</a>
