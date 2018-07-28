@@ -35,6 +35,7 @@ class CompanyMember extends CI_Controller
 		$data['dataCompany'] = $this->CompanyOverviewModel->get_data_company_by_id($id_company)->row();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
 		$this->load->view('content_front_end/company_member_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
