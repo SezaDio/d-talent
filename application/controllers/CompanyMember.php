@@ -1016,10 +1016,10 @@ class CompanyMember extends CI_Controller
    	function kirim_email($sub, $msg, $email) 
    	{
       $config['protocol'] = 'smtp';
-      $config['smtp_host'] = 'mail.boloku.id'; //change this
+      $config['smtp_host'] = 'mail.d-talentsolution.id'; //change this
       $config['smtp_port'] = '465';
-      $config['smtp_user'] = 'info@boloku.id'; //change this
-      $config['smtp_pass'] = 'cz431081994'; //change this
+      $config['smtp_user'] = 'hello@d-talentsolution.id'; //change this
+      $config['smtp_pass'] = 'd-TalentInfo'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
       $config['smtp_crypto'] = 'ssl';
@@ -1027,14 +1027,14 @@ class CompanyMember extends CI_Controller
       $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
       $this->load->library('email'); // load email library
       $this->email->initialize($config);
-      $this->email->from('info@boloku.id', 'boloku.id');
+      $this->email->from('hello@d-talentsolution.id', 'd-talentsolution.id');
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
       if ($this->email->send())
       {
          $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
-         redirect('FrontControl_ContactUs/kelola_message');
+         redirect('CompanyMember/');
       }
       else
       {

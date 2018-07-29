@@ -60,7 +60,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo.png')?>" alt=""></a>
+            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>
@@ -74,7 +74,7 @@
                 <a class="nav-link page-scroll" href="#features"><i class="fa fa-bullseye"></i> <b>Mission</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#blog"><i class="fa fa-check"></i> Benefit</a>
+                <a class="nav-link page-scroll" href="#blog"><i class="fa fa-check"></i> <b>Benefit</b></a>
               </li>
               <!--<li class="nav-item">
                 <a class="nav-link page-scroll" href="#portfolios">Works</a>

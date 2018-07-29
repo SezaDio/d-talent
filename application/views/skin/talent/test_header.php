@@ -127,6 +127,6 @@
 <body>
 	<header>
 		<div class="text-center">
-			<img src="<?php echo base_url('asset/img/logo.png'); ?>">
+			<img src="<?php echo base_url('asset/img/logo1.png'); ?>">
 		</div>
 	</header>

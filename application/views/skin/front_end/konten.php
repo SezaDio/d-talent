@@ -280,7 +280,7 @@
               </div>
               <div class="col-md-12">
                 <div class="plan-button">
-                  <a href="#" class="btn btn-common">Buy Now</a>
+                  <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                 </div>
               </div>
             </div>
@@ -297,7 +297,7 @@
               </div>
               <div class="col-md-12">
                 <div class="plan-button">
-                  <a href="#" class="btn btn-common">Buy Now</a>
+                  <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                 </div>
               </div>
             </div>
@@ -348,7 +348,7 @@
                 </div>
                 <div class="col-md-12">
                   <div class="plan-button">
-                    <a href="#" class="btn btn-common">Buy Now</a>
+                    <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                   </div>
                 </div>
               </div>
@@ -368,7 +368,7 @@
                   
                 </div>
                 <div class="plan-button">
-                  <a href="#" class="btn btn-common">Buy Now</a>
+                  <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                 </div>
               </div>
             </div>
@@ -387,7 +387,7 @@
                   
                 </div>
                 <div class="plan-button">
-                  <a href="#" class="btn btn-common">Buy Now</a>
+                  <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                 </div>
               </div>
             </div>
@@ -406,7 +406,7 @@
                   </div>
                 
                 <div class="plan-button">
-                  <a href="#" class="btn btn-common">Buy Now</a>
+                  <!--<a href="#" class="btn btn-common">Buy Now</a>-->
                 </div>
               </div>
             </div>
@@ -470,7 +470,7 @@
     <!-- Counter Section End -->
 
     <!-- testimonial Section Start -->
-    <div id="testimonial" class="section" data-stellar-background-ratio="1">
+    <div id="testimonial" class="section" data-stellar-background-ratio="0.001">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
@@ -525,7 +525,7 @@
                 </div>
                 <div class="social-icons">
                   <ul>
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
