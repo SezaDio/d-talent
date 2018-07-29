@@ -1,5 +1,14 @@
-	<footer>
-		<div class="container text-center">&copy; D-Talent</div>
+	<br>
+	<footer style="position: inherit;">
+		<div class="container">
+	        <div class="row">
+	        	<div class="col-md-12" style="text-align: center;">
+					<div class="copyright">
+		              <p>&copy; D-Talent - 2018</p>
+		            </div>
+	        	</div>
+			</div>
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
@@ -11,7 +20,7 @@
 			var page = 1;
 			
 			// 2 item per page + 1 instruction page
-			var total_page = <?php echo (1 + ($total_records / 2)); ?>;
+			var total_page = <?php echo (1 + ($total_records / 2)); ?>
 
 			// if number page clicked
 			$('.pagination .page-number').click(function() {

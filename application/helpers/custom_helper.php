@@ -526,3 +526,244 @@ function detailCharacterResult($test_result)
 
     return $response;
 }
+
+// get work attitude test's detail
+function detailWorkAttitudeResult($test_result)
+{
+    
+    switch ($test_result) {
+        case 'Rendah':
+            $sub_title = '"Sikap Kerja Rendah"';
+            $result_detail = "<p>Orang dengan sikap kerja rendah cenderung tidak peduli pada perusahaanya karena kurangnya kepuasan kerja secara materil dan imateril yang didapat di perusahaan. Dia merasa tidak perlu berkomitmen apapun di perusahaan karena dia merasa bisa mendapatkan pekerjaan dan jabatan yang lebih baik di perusahaan lain. Dia juga kurang terlibat aktif di semua kegiatan perusahaan dan kurang bertanggung jawab dalam menyelesaikan tugas kantor.</p>";
+        break;
+            
+        case 'Sedang':
+            $sub_title = '"Sikap Kerja Sedang"';
+            $result_detail = "<p>Orang dengan sikap kerja sedang bekerja dengan baik di perusahaan karena merasa kebutuhan dasar secara materil dan imateril tercukupi di perusahaan. Peserta berusaha mencari pekerjaan, jabatan, dan gaji yang lebih baik di perusahaan lain. Peserta menyelesaikan tugas dengan baik, menjalin hubungan kerja yang personal dan professional dengan rekan kerja, dan aktif berdiskusi dengan rekan kerja maupun atasan.</p>";
+        break;
+            
+        case 'Baik':
+            $sub_title = '"Sikap Kerja Baik"';
+            $result_detail = "<p>Orang dengan sikap kerja baik cenderung loyal pada perusahaan, sehingga dia tidak mencari pekerjaan di perusahaan lain, dan dia juga akan bekerja sampai pensiun. Orang ini melihat perusahaan memberikan fasilitas dan kesempatan karier yang bagus untuk pengembangan keterampilannya, sehingga dia bersedia berkontribusi penuh di setiap aktivitas kantor. Dia aktif memberi saran, gagasan, dan kritik untuk pengembangan perusahaan, buat dia ketika perusahaan sukses dia juga merasa ikut sukses.</p>";
+        break;
+    }
+
+    $response['sub_title'] = $sub_title;
+    $response['result_detail'] = $result_detail;
+
+    return $response;
+}
+
+// get work attitude test's detail
+function detailSoftSkillResult($test_result)
+{
+    //looping
+    foreach ($test_result as $key => $value) 
+    {
+        if ($key == 1) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Keterampilan Pengambilan Keputusan';
+                    $result_detail[$key] = "<p>Peserta meminta bantuan orang lain untuk membuat keputusan dan tidak berani mengambil keputusan sendiri, karena teralu takut menanggung resiko dan konsekuensinya.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Keterampilan Pengambilan Keputusan';
+                    $result_detail[$key] = "<p>Peserta bisa mengambil keputusan sendiri tetapi tetap meminta pendapat oranglain sebelum mengambil keputusan. Peserta bersedia menanggung konsekuensi dari keputusannya.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Keterampilan Pengambilan Keputusan';
+                    $result_detail[$key] = "<p>Peserta mampu mengambil keputusan sendiri tanpa meminta pendapat dan bantuan dari oranglain, terkadang peserta mengambil keputusan yang beresiko tinggi. Peserta bersedia menanggung konsekuensi dari keputusannya.</p>";
+                break;
+            }
+        }
+        elseif ($key == 2) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Tanggung Jawab';
+                    $result_detail[$key] = "<p>Peserta memahami tugas dan target tugas kerja tetapi kesulitan menyelesaikan tugasnya, atau terkadang menyepelekan target kerja, dan menyelesaikan pekerjaan seadanya.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Tanggung Jawab';
+                    $result_detail[$key] = "<p>Peserta memahami tugas dan target tugas kerja dan dapat menyelesaikan tugasnya sesuai batas waktu</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Tanggung Jawab';
+                    $result_detail[$key] = "<p>Peserta memahami tugas dan target tugas kerja dan dapat menyelesaikan tugasnya sesuai batas waktu dengan sempurna.</p>";
+                break;
+            }
+        }
+        elseif ($key == 3) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Integritas';
+                    $result_detail[$key] = "<p>Peserta sering berubah-ubah dalam hal nilai-nilai dan budaya yang dianut. Peserta belum memiliki standar personel bagi diri sendiri yang terkait dengan kejujuran, tanggung jawab, menghormati orang lain, dan berlaku adil.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Integritas';
+                    $result_detail[$key] = "<p>Peserta konsisten dan berkomitmen dalam hal nilai-nilai dan budaya yang dianut. Peserta memiliki standar personel bagi diri sendiri yang terkait dengan kejujuran, tanggung jawab, menghormati orang lain, dan berlaku adil.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Integritas';
+                    $result_detail[$key] = "<p>Peserta konsisten dan berkomitmen dalam hal nilai-nilai dan budaya yang dianut. Peserta memiliki standar personel yang tinggi bagi diri sendiri yang terkait dengan kejujuran, tanggung jawab, menghormati orang lain, dan berlaku adil.</p>";
+                break;
+            }
+        }
+        elseif ($key == 4) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Resiliensi';
+                    $result_detail[$key] = "<p>Peserta kesulitan bertahan atau mengatasi kesulitan dari persitiwa tidak menyenangkan dan kesulitan beradaptasi dengan perubahan dan ketidakpastian. Peserta juga cenderung memiliki emosi yang labil dan temperamental, dan menolak berkontribusi di tim kerja.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Resiliensi';
+                    $result_detail[$key] = "<p>Peserta dapat bertahan atau mengatasi kesulitan dari persitiwa tidak menyenangkan dan kesulitan beradaptasi dengan perubahan dan ketidakpastian. Peserta memiliki emosi yang stabil dan bersedia berkontribusi di tim kerja.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Resiliensi';
+                    $result_detail[$key] = "<p>Peserta dapat bertahan atau mengatasi kesulitan dari persitiwa tidak menyenangkan dan kesulitan beradaptasi dengan perubahan dan ketidakpastian. Peserta memiliki emosi yang stabil dan bersedia berkontribusi di tim kerja.</p>";
+                break;
+            }
+        }
+        elseif ($key == 5) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Keinginan Untuk Belajar';
+                    $result_detail[$key] = "<p>Peserta kurang memiliki minat untuk terus menambah pengetahuan dan melatih keterampilan baik hardskill maupun softskill.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Keinginan Untuk Belajar';
+                    $result_detail[$key] = "<p>Peserta memiliki minat untuk terus menambah pengetahuan dan melatih keterampilan baik hardskill maupun softskill.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Keinginan Untuk Belajar';
+                    $result_detail[$key] = "<p>Peserta memiliki minat yang tinggi untuk terus menambah pengetahuan dan melatih keterampilan baik hardskill maupun softskill. Peserta aktif mengikuti seminar atau pelatihan untuk memperdalam ilmu atau kegiatan yang ditekuni.</p>";
+                break;
+            }
+        }
+        elseif ($key == 6) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Komunikasi';
+                    $result_detail[$key] = "<p>Peserta kesulitan menyampaikan ide, saran, gagasan ke rekan kerja dan atasan. Peserta juga kesulitan memahami instruksi atasan dengan baik, dan tidak menanyakan instruksi lebih lanjut ke atasan.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Komunikasi';
+                    $result_detail[$key] = "<p>Peserta mampu menyampaikan ide, saran, gagasan ke rekan kerja dan atasan. Peserta juga mampu memahami instruksi atasan dengan baik.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Komunikasi';
+                    $result_detail[$key] = "<p>Peserta mampu menyampaikan ide, saran, gagasan ke rekan kerja dan atasan dengan bahasa yang mudah dipahami oranglain. Peserta juga mampu memahami instruksi atasan dengan baik, dan mampu menyampaikan instruksi ke teman kerja dengan baik.</p>";
+                break;
+            }
+        }
+        elseif ($key == 7) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Sikap Positif';
+                    $result_detail[$key] = "<p>Peserta menolak menerima informasi ataupun saran dan kritik seputar kinerja karyawan. Tidak merespon, tidak memberikan jawaban apabila ditanya, mengerjakan dan menyelesaikan tugas yang diberikan; kurang menghargai, mengajak orang lain untuk mengerjakan atau mendiskusikan suatu masalah.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Sikap Positif';
+                    $result_detail[$key] = "<p>Peserta bersedia menerima informasi ataupun saran dan kritik seputar kinerja karyawan. Merespon dengan memberikan jawaban apabila ditanya, mengerjakan dan menyelesaikan tugas yang diberikan. Peserta menghargai, mengajak orang lain untuk mengerjakan atau mendiskusikan suatu masalah.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Sikap Positif';
+                    $result_detail[$key] = "<p>Peserta bersedia menerima informasi ataupun saran dan kritik seputar kinerja karyawan. Merespon dengan memberikan jawaban apabila ditanya, mengerjakan dan menyelesaikan tugas yang diberikan. Peserta menghargai, mengajak orang lain untuk mengerjakan atau mendiskusikan suatu masalah.</p>";
+                break;
+            }
+        }
+        elseif ($key == 8) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Antusiasme';
+                    $result_detail[$key] = "<p>Peserta kurang berminat melibatkan diri secara penuh dalam kegiatan perusahaan baik dalam hal tugas kerja maupun acara perusahaan.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Antusiasme';
+                    $result_detail[$key] = "<p>Peserta berminat melibatkan diri secara penuh dalam kegiatan perusahaan baik dalam hal tugas kerja maupun acara perusahaan.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Antusiasme';
+                    $result_detail[$key] = "<p>Peserta berminat melibatkan diri secara penuh dalam kegiatan perusahaan baik dalam hal tugas kerja maupun acara perusahaan. Peserta juga mengajukan diri untuk menjadi pemimpin proyek di perusahaan.</p>";
+                break;
+            }
+        }
+        elseif ($key == 9) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Kerja Tim';
+                    $result_detail[$key] = "<p>Peserta lebih nyaman dan bisa bekerja optimal jika bekerja sendiri dengan caranya sendiri.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Kerja Tim';
+                    $result_detail[$key] = "<p>Peserta dapat bekerja dalam tim dan dapat bekerja sendiri.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Kerja Tim';
+                    $result_detail[$key] = "<p>Peserta dapat bekerja dengan optimal jika didukung oleh tim kerja yang solid.</p>";
+                break;
+            }
+        }
+        elseif ($key == 10) 
+        {
+            switch ($value) 
+            {
+                case 'Dasar':
+                    $sub_title[$key] = 'Penyelesaian Masalah';
+                    $result_detail[$key] = "<p>Peserta kesulitan memahami masalah, merencanakan pemecahan masalah, melaksanakan rencana, dan mengevaluasi rencana.</p>";
+                break;
+                    
+                case 'Menengah':
+                    $sub_title[$key] = 'Penyelesaian Masalah';
+                    $result_detail[$key] = "<p>Peserta mampu memahami masalah, merencanakan pemecahan masalah, melaksanakan rencana, dan mengevaluasi rencana.</p>";
+                break;
+                    
+                case 'Tinggi':
+                    $sub_title[$key] = 'Penyelesaian Masalah';
+                    $result_detail[$key] = "<p>Peserta mampu memahami masalah, merencanakan pemecahan masalah dengan detail, melaksanakan rencana, dan mengevaluasi rencana secara berkala.</p>";
+                break;
+            }
+        }
+    }
+
+    $response['sub_title'] = $sub_title;
+    $response['result_detail'] = $result_detail;
+
+    return $response;
+}

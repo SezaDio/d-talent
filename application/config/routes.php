@@ -153,6 +153,14 @@ $route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
 $route['talent/test-passion'] 		 = 'TalentTest/showPassion';
 $route['talent/test-passion/submit'] = 'TalentTest/submitPassion';
 
+/* test work attitude */
+$route['talent/test-work-attitude'] 		= 'TalentTest/showWorkAttitude';
+$route['talent/test-work-attitude/submit']	= 'TalentTest/submitWorkAttitude';
+
+/* test soft skill */
+$route['talent/test-soft-skill'] 		= 'TalentTest/showSoftSkill';
+$route['talent/test-soft-skill/submit']	= 'TalentTest/submitSoftSkill';
+
 $route['talent/test/access-denied'] = 'TalentTest/accessDenied';
 
 

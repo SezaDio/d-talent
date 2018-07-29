@@ -74,7 +74,7 @@
 				<div class="col-md-12 item">
 					<div class="row">
 						<div class="col-md-2 image-wrapper">
-							<figure class="image-bg img-fulid" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>');"></figure>
+							<figure class="image-bg img-fluid" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>');"></figure>
 						</div>
 
 						<div class="col-md-6 item-attribute">

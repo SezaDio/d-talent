@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2018 at 08:05 AM
+-- Generation Time: Jul 29, 2018 at 09:10 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -48,6 +48,69 @@ INSERT INTO `admin` (`id_admin`, `username`, `nama_admin`, `email`, `telfon`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `company`
+--
+
+CREATE TABLE IF NOT EXISTS `company` (
+`id_company` int(11) NOT NULL,
+  `company_name` varchar(200) NOT NULL,
+  `company_email` varchar(100) NOT NULL,
+  `company_telepon` varchar(15) DEFAULT NULL,
+  `company_website` varchar(50) DEFAULT NULL,
+  `company_address` text NOT NULL,
+  `company_city` varchar(100) NOT NULL,
+  `company_province` varchar(100) NOT NULL,
+  `company_industries` varchar(5) NOT NULL,
+  `company_type` varchar(50) DEFAULT NULL,
+  `company_specialties` varchar(1000) DEFAULT NULL,
+  `company_year` int(11) NOT NULL,
+  `company_description` text NOT NULL,
+  `company_cover` varchar(100) DEFAULT NULL,
+  `company_logo` varchar(100) DEFAULT NULL,
+  `company_date_join` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `company_membership` int(1) NOT NULL COMMENT '1 Free; 2 Gold; 3 Platinum',
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`id_company`, `company_name`, `company_email`, `company_telepon`, `company_website`, `company_address`, `company_city`, `company_province`, `company_industries`, `company_type`, `company_specialties`, `company_year`, `company_description`, `company_cover`, `company_logo`, `company_date_join`, `company_membership`, `password`) VALUES
+(1, 'PT Dash Indo Persada 2', 'company.service@d-talent.id', '085640357417', 'www.d-talent.com', 'Jalan Prof. Soedarto SH, Tembalang, Semarang 50211', '', '', 'bu-9', 'ct-1', 'Teknologi Informasi,Marketing', 2018, 'Lorem Ipsum . . .', 'company_cover_1531837632.jpg', 'company_logo_1531557707.jpg', '2018-07-17 14:27:12', 0, '26cac717deaa5188a5dc13c472741c5b'),
+(2, 'PT Integer IT Solution', 'integer@gmail.com', NULL, 'PT Integer IT Solution', 'PT Integer IT Solution', '33.74.00.0000', '33', 'bu-2', 'ct-3', 'Assesment Center', 2018, 'PT Integer IT Solution', 'company_cover_1532847281.jpg', 'company_logo_1532847295.png', '2018-07-29 06:55:35', 1, '26cac717deaa5188a5dc13c472741c5b');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company_update`
+--
+
+CREATE TABLE IF NOT EXISTS `company_update` (
+`id_company_update` int(11) NOT NULL,
+  `id_company` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` text,
+  `image` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0: draft, 1: publish',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company_update`
+--
+
+INSERT INTO `company_update` (`id_company_update`, `id_company`, `title`, `content`, `image`, `status`, `created_at`) VALUES
+(2, 1, 'Title 1 Edit', '111 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'beautiful_red_poppy_green_wheat_field-wallpaper-1366x768.jpg', 0, '2018-07-13 05:25:07'),
+(3, 1, 'Title 2', 'Konten 2', 'autumn-1572822_640.png', 1, '2018-07-13 06:38:32'),
+(4, 1, 'Title 3', 'Konten 3', '3D-Diamond-Design-Wallpaper.jpg', 1, '2018-07-13 13:15:43'),
+(5, 1, 'Title 4 Edit', 'Konten 4', 'background-1462755_1920.jpg', 1, '2018-07-13 13:16:05'),
+(6, 1, 'Title 5', 'Konten 5', 'americana-1512910.png', 1, '2018-07-13 13:24:37'),
+(7, 2, 'Freelance Website Developer for boloku.id Project', 'PT Integer IT Solution', 'company_cover_1531386047.jpg', 1, '2018-07-29 07:00:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `header`
 --
 
@@ -83,18 +146,19 @@ CREATE TABLE IF NOT EXISTS `hubungi_kami` (
   `nama_lengkap` varchar(1000) NOT NULL,
   `email` varchar(30) NOT NULL,
   `subject` varchar(100) NOT NULL,
-  `telepon` varchar(15) NOT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
   `pesan` text NOT NULL,
-  `tgl_pesan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tgl_pesan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hubungi_kami`
 --
 
-INSERT INTO `hubungi_kami` (`id_pesan`, `nama_lengkap`, `email`, `subject`, `telepon`, `pesan`, `tgl_pesan`) VALUES
-(1, 'Devi', 'deviprnmsr@gmail.com', 'Training software Statistik', '087774404039', 'Selamat pagi ka saya Devi dari Statistics Center HIMASTA Universitas Diponegoro mau tanya ka, kalau mau share pamflet tentang pelatihan software bsa ka? procedurenya gmna ya ka? Makasih ka ', '2017-09-07 02:48:53'),
-(2, 'anonymouse', 'klonenganlagidanlagi@gmail.com', 'Redaksi deskripsi', '000000000', 'Min tolong redaksi di bagian deskripsi event diperhatikan, redaksinya kurang rapi. Semisal di event steril masih banyak karakter "?" (tanda tanya). Makasi min, semoga BOLOKU.ID MAKIS SUKSESSS !!!!', '2017-09-25 07:08:05');
+INSERT INTO `hubungi_kami` (`id_pesan`, `nama_lengkap`, `email`, `subject`, `telepon`, `pesan`, `tgl_pesan`, `status`) VALUES
+(1, 'Devi', 'deviprnmsr@gmail.com', 'Training software Statistik', '087774404039', 'Selamat pagi ka saya Devi dari Statistics Center HIMASTA Universitas Diponegoro mau tanya ka, kalau mau share pamflet tentang pelatihan software bsa ka? procedurenya gmna ya ka? Makasih ka ', '2018-05-23 07:56:25', 1),
+(2, 'Seza Dio F.', 'sefirman12@gmail.com', 'Seza Dio Firmansyah_2012_085640357417 ', NULL, 'jhgjhgfjhgj', '2018-07-02 06:02:08', 0);
 
 -- --------------------------------------------------------
 
@@ -68623,6 +68687,143 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `job_notification`
+--
+
+CREATE TABLE IF NOT EXISTS `job_notification` (
+`id_notification` int(11) NOT NULL,
+  `id_company` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `notification_status` int(1) NOT NULL COMMENT '1 accept, 2 decline, 3 expired, 0 menunggu',
+  `notification_date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_notification`
+--
+
+INSERT INTO `job_notification` (`id_notification`, `id_company`, `id_talent`, `notification_status`, `notification_date`) VALUES
+(1, 1, 3, 0, '2018-07-17'),
+(2, 2, 1, 1, '0000-00-00'),
+(3, 2, 3, 1, '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_vacancy`
+--
+
+CREATE TABLE IF NOT EXISTS `job_vacancy` (
+`id_job` int(11) NOT NULL,
+  `id_company` int(11) NOT NULL,
+  `job_title` varchar(200) NOT NULL,
+  `job_type` varchar(50) NOT NULL COMMENT 'get from array in controller',
+  `job_role` varchar(200) NOT NULL,
+  `job_category` varchar(50) NOT NULL COMMENT 'get from array in controller',
+  `job_province_location_id` int(11) NOT NULL COMMENT 'lokasi_ID',
+  `job_city_location_id` varchar(14) NOT NULL COMMENT 'lokasi_kode',
+  `job_date_start` date NOT NULL,
+  `job_date_end` date NOT NULL,
+  `job_description` text NOT NULL,
+  `job_required_skill` text NOT NULL,
+  `publish_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_vacancy`
+--
+
+INSERT INTO `job_vacancy` (`id_job`, `id_company`, `job_title`, `job_type`, `job_role`, `job_category`, `job_province_location_id`, `job_city_location_id`, `job_date_start`, `job_date_end`, `job_description`, `job_required_skill`, `publish_date`) VALUES
+(3, 1, 'Job 2', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(4, 1, 'Job 3', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 3', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(5, 1, 'Job 4', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 4', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29'),
+(6, 1, 'Job 5', 'jt-1', 'Staf', 'jc-4', 12, '32.09.00.0000', '2018-07-07', '2018-07-19', 'Lorem Desc 5', 'Skill 1,Skill 2,Skill 3', '2018-07-13 14:05:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result_character`
+--
+
+CREATE TABLE IF NOT EXISTS `result_character` (
+`id_result_character` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `result` varchar(4) NOT NULL,
+  `test_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `result_character`
+--
+
+INSERT INTO `result_character` (`id_result_character`, `id_talent`, `result`, `test_date`) VALUES
+(2, 3, 'INFP', '2018-07-27 08:16:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result_passion`
+--
+
+CREATE TABLE IF NOT EXISTS `result_passion` (
+`id_result_passion` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `result` varchar(12) NOT NULL,
+  `test_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result_soft_skill`
+--
+
+CREATE TABLE IF NOT EXISTS `result_soft_skill` (
+`id_result_soft_skill` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `pengambilan_keputusan` varchar(10) NOT NULL,
+  `tanggung_jawab` varchar(10) NOT NULL,
+  `integritas` varchar(10) NOT NULL,
+  `resiliensi` varchar(10) NOT NULL,
+  `keinginan_belajar` varchar(10) NOT NULL,
+  `komunikasi` varchar(10) NOT NULL,
+  `sikap_positif` varchar(10) NOT NULL,
+  `antusiasme` varchar(10) NOT NULL,
+  `kerja_tim` varchar(10) NOT NULL,
+  `penyelesaian_masalah` varchar(10) NOT NULL,
+  `test_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `result_soft_skill`
+--
+
+INSERT INTO `result_soft_skill` (`id_result_soft_skill`, `id_talent`, `pengambilan_keputusan`, `tanggung_jawab`, `integritas`, `resiliensi`, `keinginan_belajar`, `komunikasi`, `sikap_positif`, `antusiasme`, `kerja_tim`, `penyelesaian_masalah`, `test_date`) VALUES
+(1, 3, 'Tinggi', 'Menengah', 'Menengah', 'Tinggi', 'Tinggi', 'Tinggi', 'Menengah', 'Menengah', 'Menengah', 'Dasar', '2018-07-29 05:55:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `result_work_attitude`
+--
+
+CREATE TABLE IF NOT EXISTS `result_work_attitude` (
+`id_result_work_attitude` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `result` varchar(30) NOT NULL,
+  `test_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `result_work_attitude`
+--
+
+INSERT INTO `result_work_attitude` (`id_result_work_attitude`, `id_talent`, `result`, `test_date`) VALUES
+(5, 3, 'Rendah', '2018-07-29 05:52:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slider`
 --
 
@@ -68633,7 +68834,145 @@ CREATE TABLE IF NOT EXISTS `slider` (
   `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `path_gambar` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slider`
+--
+
+INSERT INTO `slider` (`id_slider`, `judul_slider`, `deskripsi`, `tanggal_posting`, `path_gambar`, `status`) VALUES
+(3, 'Nature', 'Nature', '2018-07-25 08:10:14', 'file_1531116522.jpg', 1),
+(4, 'Nature 2', 'Nature 2', '2018-07-09 08:13:12', 'file_1531123992.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talent`
+--
+
+CREATE TABLE IF NOT EXISTS `talent` (
+`id_talent` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nomor_ponsel` varchar(30) NOT NULL,
+  `jenis_kelamin` tinyint(1) NOT NULL COMMENT '0: perempuan, 1: laki-laki',
+  `tanggal_lahir` date NOT NULL,
+  `id_kota` varchar(100) NOT NULL,
+  `id_provinsi` varchar(100) NOT NULL,
+  `status_pernikahan` tinyint(1) NOT NULL COMMENT '0: belum menikah, 1: sudah menikah',
+  `password` varchar(50) NOT NULL,
+  `membership` int(1) NOT NULL COMMENT '1 Free; 2 Bronze; 3 Silver; 4 Gold; 5 Platinum',
+  `foto_sampul` varchar(200) DEFAULT NULL,
+  `foto_profil` varchar(200) DEFAULT NULL,
+  `kemampuan` text,
+  `tentang_saya` text,
+  `talent_date_join` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `talent`
+--
+
+INSERT INTO `talent` (`id_talent`, `nama`, `email`, `nomor_ponsel`, `jenis_kelamin`, `tanggal_lahir`, `id_kota`, `id_provinsi`, `status_pernikahan`, `password`, `membership`, `foto_sampul`, `foto_profil`, `kemampuan`, `tentang_saya`, `talent_date_join`) VALUES
+(3, 'M. Febra', 'm.febras@yahoo.com', '0856777', 1, '1994-02-01', '36.71.00.0000', '36', 0, 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, 'file_1527750193.jpg', 'file_1527005602.png', 'Web dev, PHP, Laravel, Code Igniter, Android, UI Design, Asana, Git, Inkscape, Ms. Word, Ms. Power Point, Libre Office, Linux', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2018-07-24 15:27:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talent_cv_achievement`
+--
+
+CREATE TABLE IF NOT EXISTS `talent_cv_achievement` (
+`id_talent_cv_achievement` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `associated_education` int(11) DEFAULT NULL COMMENT 'talent_cv_education_id',
+  `associated_work` int(11) DEFAULT NULL COMMENT 'talent_cv_achievement_id',
+  `issuer` varchar(100) DEFAULT NULL,
+  `month` tinyint(2) DEFAULT NULL,
+  `year` smallint(4) DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `talent_cv_achievement`
+--
+
+INSERT INTO `talent_cv_achievement` (`id_talent_cv_achievement`, `id_talent`, `title`, `associated_education`, `associated_work`, `issuer`, `month`, `year`, `description`) VALUES
+(1, 3, 'Prestasi 1', NULL, NULL, 'Less', 7, 2014, ''),
+(2, 3, 'Prestasi 2', NULL, NULL, 'Echo', 11, 2015, 'Lorem ipsum');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talent_cv_course`
+--
+
+CREATE TABLE IF NOT EXISTS `talent_cv_course` (
+`id_talent_cv_course` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `associated_education` int(11) DEFAULT NULL COMMENT 'talent_cv_education_id',
+  `associated_work` int(11) DEFAULT NULL COMMENT 'talent_cv_achievement_id',
+  `organizer` varchar(150) DEFAULT NULL,
+  `year` smallint(4) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `talent_cv_course`
+--
+
+INSERT INTO `talent_cv_course` (`id_talent_cv_course`, `id_talent`, `title`, `associated_education`, `associated_work`, `organizer`, `year`) VALUES
+(1, 3, 'Pelatihan 1', NULL, NULL, 'Qarck', 2014);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talent_cv_education`
+--
+
+CREATE TABLE IF NOT EXISTS `talent_cv_education` (
+`id_talent_cv_education` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `school` varchar(200) NOT NULL,
+  `degree` varchar(200) DEFAULT NULL,
+  `field_of_study` varchar(200) DEFAULT NULL COMMENT 'city of company',
+  `activity` text,
+  `from_year` smallint(4) DEFAULT NULL,
+  `to_year` smallint(4) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `talent_cv_education`
+--
+
+INSERT INTO `talent_cv_education` (`id_talent_cv_education`, `id_talent`, `school`, `degree`, `field_of_study`, `activity`, `from_year`, `to_year`) VALUES
+(1, 3, 'SMP', 'SMP', '', '', 2006, 2009),
+(2, 3, 'SMA 3', 'SMA', 'IPA', 'Tes', 2009, 2012);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talent_cv_work`
+--
+
+CREATE TABLE IF NOT EXISTS `talent_cv_work` (
+`id_talent_cv_work` int(11) NOT NULL,
+  `id_talent` int(11) NOT NULL,
+  `position` varchar(200) NOT NULL,
+  `company` varchar(200) NOT NULL,
+  `id_location` varchar(100) DEFAULT NULL COMMENT 'lokasi_ID',
+  `work_start` date DEFAULT NULL,
+  `work_end` date DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `talent_cv_work`
+--
+
+INSERT INTO `talent_cv_work` (`id_talent_cv_work`, `id_talent`, `position`, `company`, `id_location`, `work_start`, `work_end`, `description`) VALUES
+(1, 3, 'Developer', 'DCS1', '440', '2018-03-01', '2018-12-01', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
 
 -- --------------------------------------------------------
 
@@ -68643,10 +68982,147 @@ CREATE TABLE IF NOT EXISTS `slider` (
 
 CREATE TABLE IF NOT EXISTS `testimoni` (
 `id_testimoni` int(4) NOT NULL,
+  `nama_testimoni` varchar(100) NOT NULL,
+  `job` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `tanggal_posting` date NOT NULL,
+  `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `path_gambar` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testimoni`
+--
+
+INSERT INTO `testimoni` (`id_testimoni`, `nama_testimoni`, `job`, `deskripsi`, `tanggal_posting`, `path_gambar`) VALUES
+(1, 'Yusuf Dwi Santoso', 'CPNS Kementerian Hukum dan HAM', 'Mengikuti pelatihan dari D-Talent merupakan keputusan tepat bagi saya, sistem pelatihan yang sistematis oleh praktisi yang profesional memberikan bekal kepada saya untuk menghadapi test kerja, sehingga membuat saya mendapatkan pekerjaan yang saya impikan dan menikmati hasilnya sekarang.\r\n\r\nTerima kasih, D-Talent. ', '2018-05-22 14:00:00', ''),
+(2, 'Adilia Rismawati', 'Bank BTN', 'D-Talent menjadi salah satu support system dalam kesuksesan saya mendapatkan pekerjaan. Banyak pelatihan yang diberikan yang dapat meng-improve diri agar sesuai kebutuhan dunia kerja. Sekarang saya ', '2018-05-21 23:13:22', 'file_1527005602.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_character`
+--
+
+CREATE TABLE IF NOT EXISTS `test_character` (
+`id_test_character` int(11) NOT NULL,
+  `question` varchar(100) NOT NULL,
+  `option_a` varchar(100) NOT NULL,
+  `option_b` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_character`
+--
+
+INSERT INTO `test_character` (`id_test_character`, `question`, `option_a`, `option_b`) VALUES
+(2, 'Saat Anda berada di sebuah acara perusahaan', 'Berinteraksi dengan semua orang, termasuk orang yang tidak Anda kenal', 'Berinteraksi hanya dengan orang yang Anda kenal saja'),
+(3, 'Saat Anda berada di sebuah acara perusahaan Anda', 'Berinteraksi dengan semua orang, termasuk orang yang tidak Anda kenal', 'Berinteraksi hanya dengan orang yang Anda kenal saja.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_passion`
+--
+
+CREATE TABLE IF NOT EXISTS `test_passion` (
+`id_test_passion` int(11) NOT NULL,
+  `category` varchar(12) NOT NULL COMMENT 'realistis, investigasi, artistik, enterpreuner, konvensional',
+  `statement` varchar(75) NOT NULL COMMENT 'the answer: corresponding or not'
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_passion`
+--
+
+INSERT INTO `test_passion` (`id_test_passion`, `category`, `statement`) VALUES
+(2, 'Realistis', 'Saya senang mendaur ulang barang-barang'),
+(3, 'Realistis', 'Saya senang merawat hewan-hewan'),
+(4, 'Realistis', 'Saya senang menyusun atau merakit barang-barang'),
+(5, 'Realistis', 'Saya senang memasak atau mencoba resep masakan baru'),
+(6, 'Realistis', 'Saya sedang dengan segala hal yang praktis'),
+(7, 'Realistis', 'Saya senang kegiatan luar ruangan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_softskill`
+--
+
+CREATE TABLE IF NOT EXISTS `test_softskill` (
+`id_test_softskill` int(11) NOT NULL,
+  `category` tinyint(1) NOT NULL COMMENT '1: intrapersonal, 2: interpersonal',
+  `sub_category` varchar(7) NOT NULL COMMENT 'the subcategory list is in TestSoftskill controller',
+  `statement` varchar(150) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_softskill`
+--
+
+INSERT INTO `test_softskill` (`id_test_softskill`, `category`, `sub_category`, `statement`) VALUES
+(1, 1, 'subc-1', 'Saya mengamati situasi terlebih dahulu sebelum mengambil keputusan'),
+(3, 1, 'subc-1', 'Saya meminta pendapat rekan kerja sebelum mengambil keputusan'),
+(4, 1, 'subc-1', 'Saya memahami tidak mengambil keputusan adalah sebuah keputusan'),
+(5, 1, 'subc-1', 'Saya dapat mengambil kesimpulan dan membuat keputusan sendiri tanpa bantuan orang lain'),
+(6, 1, 'subc-2', 'Saya bersedia bertanggungjawab pada perilaku dan aksi yang saya lakukan'),
+(7, 1, 'subc-2', 'Saya mengerjakan tugas dengan kemampuan maksimal saya, meskipun terkadang berlawanan dengan hati nurani saya'),
+(8, 1, 'subc-2', 'Saya melakukan semua hal untuk menyelesaikan tugas tepat waktu'),
+(9, 1, 'subc-2', 'Saya datang ke tempat kerja dan rapat tepat waktu bahkan terkadang lebih awal'),
+(10, 1, 'subc-3', 'Saya adalah orang yang dapat dipercaya, jujur, bisa diandalkan, dan memiliki banyak karakter baik'),
+(11, 1, 'subc-3', 'Saya memahami pentingnya kepercayaan diri'),
+(12, 1, 'subc-3', 'Saya bersedia mengakui kesalahan jika saya memang salah dan memperbaiki kesalahan saya, saya tidak menyalahkan orang lain'),
+(13, 1, 'subc-3', 'Saya percaya diri dan menghargai keberagaman budaya dari tim'),
+(14, 1, 'subc-4', 'Saya mampu mengontrol emosi dan perasaan dengan tepat'),
+(15, 1, 'subc-4', 'Saya tidak mudah tersinggung dan marah ketika oranglain mengkritik saya'),
+(16, 1, 'subc-4', 'Saya mampu bekerja dalam tim dan bekerja sendiri'),
+(17, 1, 'subc-4', 'Saya mudah beradaptasi pada perubahan sistem kerja atau perubahan anggota tim'),
+(18, 1, 'subc-5', 'Saya antuasias untuk melaksanakan proyek yang diberikan kepada saya'),
+(19, 1, 'subc-5', 'Saya tertatik untuk belajar informasi dan keterampilan baru'),
+(20, 1, 'subc-5', 'Saya melakukan lebih dari harapan saya, dan saya tidak menunggu mendapatkan instruksi dari atasan'),
+(21, 1, 'subc-5', 'Saya bertanya “apa lagi yang dapat saya kerjakan” ketika saya selesai mengerjakan tugas lebih awal'),
+(22, 2, 'subc-6', 'Saya mendengarkan cerita orang lain dengan sungguhsungguh tanpa menyela'),
+(23, 2, 'subc-6', 'Saya mengekspresikan pikiran dan ide dengan jelas dan langsung kepada teman dengan tetap menghargai ide orang lain'),
+(24, 2, 'subc-6', 'Saya mampu berkomunikasi dengan atasan'),
+(25, 2, 'subc-6', 'Saya menulis email atau pesan dengan tata cara yang tepat'),
+(26, 2, 'subc-7', 'Saya bersedia berteman dengan siapa saja dan saya menghormati keyakinan orang lain'),
+(27, 2, 'subc-7', 'Saya termasuk orang humoris'),
+(28, 2, 'subc-7', 'Saya menawarkan diri untuk membantu tanpa diminta'),
+(29, 2, 'subc-7', 'Saya bersikap dan berpenampilan professional jika dibutuhkan'),
+(30, 2, 'subc-8', 'Saya memiliki sikap yang positif dan bertanggung jawab menyelesaikan tugas'),
+(31, 2, 'subc-8', 'Saya mendorong rekan kerja untuk bekerja secara optimal'),
+(32, 2, 'subc-8', 'Saya merayakan keberhasil dengan tim, karena kesuksesan milik bersama'),
+(33, 2, 'subc-8', 'Saya bersyukur memiliki tim kerja yang solid'),
+(34, 2, 'subc-9', 'Saya seorang anggota tim dan mampu bekerja sama dengan orang lain'),
+(35, 2, 'subc-9', 'Saya memperlakukan semua anggota tim dengan hormat dan sama rata setiap saat'),
+(36, 2, 'subc-9', 'Saya bisa mengikuti instruksi ketua tim dan saya juga bisa memberikan instruksi, saya bisa fleksibel saat dibutuhkan'),
+(37, 2, 'subc-9', 'Saya bisa diandalkan dan dipercaya. Orang-orang dapat mengandalkan saya untuk menyelesaikan suatu tugas'),
+(38, 2, 'subc-10', 'Saya dapat menyelesaikan masalah'),
+(39, 2, 'subc-10', 'Saya bertanya sampai saya paham tentang suatu tugas ke atasan'),
+(40, 2, 'subc-10', 'Saya proaktif, dan bersedia untuk menerima konsekuensi dari pilihan saya'),
+(41, 2, 'subc-10', 'Saya menganalisa masalah, dan merencanakan strategi penyelesaian masalah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_work_attitude`
+--
+
+CREATE TABLE IF NOT EXISTS `test_work_attitude` (
+`id_test_work_attitude` int(11) NOT NULL,
+  `statement` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_work_attitude`
+--
+
+INSERT INTO `test_work_attitude` (`id_test_work_attitude`, `statement`) VALUES
+(2, 'Anda melihat peraturan-peraturan yang diterapkan dalam perusahaan adil untuk semua karyawan'),
+(4, 'Sistem gaji di tempat Anda bekerja sudah mencukupi kebutuhan Anda setiap bulan'),
+(5, 'Anda merasa puas dengan apreasiasi yang diberikan atasan pada karyawan teladan'),
+(6, 'Langkah perusahaan mengadakan outbond setahun sekali, baik meningkatkan kinerja karyawan'),
+(7, 'Langkah perusahaan mengadakan outbond setahun sekali, baik meningkatkan kinerja karyawan'),
+(8, 'Langkah perusahaan mengadakan outbond setahun sekali, baik meningkatkan kinerja karyawan');
 
 --
 -- Indexes for dumped tables
@@ -68657,6 +69133,18 @@ CREATE TABLE IF NOT EXISTS `testimoni` (
 --
 ALTER TABLE `admin`
  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+ ADD PRIMARY KEY (`id_company`);
+
+--
+-- Indexes for table `company_update`
+--
+ALTER TABLE `company_update`
+ ADD PRIMARY KEY (`id_company_update`);
 
 --
 -- Indexes for table `header`
@@ -68677,16 +69165,106 @@ ALTER TABLE `inf_lokasi`
  ADD PRIMARY KEY (`lokasi_ID`), ADD KEY `lokasi_kode` (`lokasi_kode`), ADD KEY `lokasi_propinsi` (`lokasi_propinsi`), ADD KEY `lokasi_kabupatenkota` (`lokasi_kabupatenkota`), ADD KEY `lokasi_kecamatan` (`lokasi_kecamatan`), ADD KEY `lokasi_kelurahan` (`lokasi_kelurahan`);
 
 --
+-- Indexes for table `job_notification`
+--
+ALTER TABLE `job_notification`
+ ADD PRIMARY KEY (`id_notification`);
+
+--
+-- Indexes for table `job_vacancy`
+--
+ALTER TABLE `job_vacancy`
+ ADD PRIMARY KEY (`id_job`);
+
+--
+-- Indexes for table `result_character`
+--
+ALTER TABLE `result_character`
+ ADD PRIMARY KEY (`id_result_character`);
+
+--
+-- Indexes for table `result_passion`
+--
+ALTER TABLE `result_passion`
+ ADD PRIMARY KEY (`id_result_passion`);
+
+--
+-- Indexes for table `result_soft_skill`
+--
+ALTER TABLE `result_soft_skill`
+ ADD PRIMARY KEY (`id_result_soft_skill`);
+
+--
+-- Indexes for table `result_work_attitude`
+--
+ALTER TABLE `result_work_attitude`
+ ADD PRIMARY KEY (`id_result_work_attitude`);
+
+--
 -- Indexes for table `slider`
 --
 ALTER TABLE `slider`
  ADD PRIMARY KEY (`id_slider`);
 
 --
+-- Indexes for table `talent`
+--
+ALTER TABLE `talent`
+ ADD PRIMARY KEY (`id_talent`);
+
+--
+-- Indexes for table `talent_cv_achievement`
+--
+ALTER TABLE `talent_cv_achievement`
+ ADD PRIMARY KEY (`id_talent_cv_achievement`);
+
+--
+-- Indexes for table `talent_cv_course`
+--
+ALTER TABLE `talent_cv_course`
+ ADD PRIMARY KEY (`id_talent_cv_course`);
+
+--
+-- Indexes for table `talent_cv_education`
+--
+ALTER TABLE `talent_cv_education`
+ ADD PRIMARY KEY (`id_talent_cv_education`);
+
+--
+-- Indexes for table `talent_cv_work`
+--
+ALTER TABLE `talent_cv_work`
+ ADD PRIMARY KEY (`id_talent_cv_work`);
+
+--
 -- Indexes for table `testimoni`
 --
 ALTER TABLE `testimoni`
  ADD PRIMARY KEY (`id_testimoni`);
+
+--
+-- Indexes for table `test_character`
+--
+ALTER TABLE `test_character`
+ ADD PRIMARY KEY (`id_test_character`);
+
+--
+-- Indexes for table `test_passion`
+--
+ALTER TABLE `test_passion`
+ ADD PRIMARY KEY (`id_test_passion`);
+
+--
+-- Indexes for table `test_softskill`
+--
+ALTER TABLE `test_softskill`
+ ADD PRIMARY KEY (`id_test_softskill`);
+
+--
+-- Indexes for table `test_work_attitude`
+--
+ALTER TABLE `test_work_attitude`
+ ADD PRIMARY KEY (`id_test_work_attitude`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -68697,6 +69275,16 @@ ALTER TABLE `testimoni`
 --
 ALTER TABLE `admin`
 MODIFY `id_admin` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+MODIFY `id_company` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `company_update`
+--
+ALTER TABLE `company_update`
+MODIFY `id_company_update` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `header`
 --
@@ -68713,15 +69301,90 @@ MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `inf_lokasi`
 MODIFY `lokasi_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68427;
 --
+-- AUTO_INCREMENT for table `job_notification`
+--
+ALTER TABLE `job_notification`
+MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `job_vacancy`
+--
+ALTER TABLE `job_vacancy`
+MODIFY `id_job` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `result_character`
+--
+ALTER TABLE `result_character`
+MODIFY `id_result_character` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `result_passion`
+--
+ALTER TABLE `result_passion`
+MODIFY `id_result_passion` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `result_soft_skill`
+--
+ALTER TABLE `result_soft_skill`
+MODIFY `id_result_soft_skill` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `result_work_attitude`
+--
+ALTER TABLE `result_work_attitude`
+MODIFY `id_result_work_attitude` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-MODIFY `id_slider` int(3) NOT NULL AUTO_INCREMENT;
+MODIFY `id_slider` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `talent`
+--
+ALTER TABLE `talent`
+MODIFY `id_talent` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `talent_cv_achievement`
+--
+ALTER TABLE `talent_cv_achievement`
+MODIFY `id_talent_cv_achievement` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `talent_cv_course`
+--
+ALTER TABLE `talent_cv_course`
+MODIFY `id_talent_cv_course` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `talent_cv_education`
+--
+ALTER TABLE `talent_cv_education`
+MODIFY `id_talent_cv_education` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `talent_cv_work`
+--
+ALTER TABLE `talent_cv_work`
+MODIFY `id_talent_cv_work` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
-MODIFY `id_testimoni` int(4) NOT NULL AUTO_INCREMENT;
+MODIFY `id_testimoni` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `test_character`
+--
+ALTER TABLE `test_character`
+MODIFY `id_test_character` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `test_passion`
+--
+ALTER TABLE `test_passion`
+MODIFY `id_test_passion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `test_softskill`
+--
+ALTER TABLE `test_softskill`
+MODIFY `id_test_softskill` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `test_work_attitude`
+--
+ALTER TABLE `test_work_attitude`
+MODIFY `id_test_work_attitude` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

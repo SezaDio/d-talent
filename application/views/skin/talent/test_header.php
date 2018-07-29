@@ -94,12 +94,39 @@
     	.pagination > li > a{
     		color: #333;
     	}
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: black;
+            color: white;
+            border: 2px solid black;
+        }
+
+        .button1:hover {
+            background-color: white;
+            color: black;
+        }
     </style>
 </head>
 
 <body>
 	<header>
 		<div class="text-center">
-			<img src="<?php echo base_url('asset/img/logo.png'); ?>">
+			<img src="<?php echo base_url('asset/img/logo1.png'); ?>">
 		</div>
 	</header>

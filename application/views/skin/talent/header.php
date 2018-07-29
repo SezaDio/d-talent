@@ -53,7 +53,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo.png'); ?>" alt=""></a>
+            <a href="index.html" class="navbar-brand"><img style="height: 50px;" class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>
@@ -77,8 +77,8 @@
                 <div class="dropdown-menu" style="margin-left: 20px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Karakter</a></li>
-                    <li class="dropdown-item"><a href="<?php //echo site_url('talent/test-character'); ?>" >Tes Soft Skill</a></li>
-                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Work Attitude</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-soft-skill'); ?>" >Tes Soft Skill</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('talent/test-work-attitude'); ?>" >Tes Work Attitude</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-passion'); ?>" >Tes Minat dan Bakat</a></li>
                   </ul>
                 </div>

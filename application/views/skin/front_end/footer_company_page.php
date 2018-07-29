@@ -4,26 +4,10 @@
       <div class="container">
         <div class="row">
           <!-- Footer Links -->
-          <div class="col-lg-6 col-sm-6 col-xs-12">
-            <ul class="footer-links">
-              <li>
-                <a href="#">Homepage</a>
-              </li>
-              <li>
-                <a href="#">Services</a>
-              </li>
-              <li>
-                <a href="#">About Us</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-6 col-sm-6 col-xs-12">
-            <div class="copyright">
-              <p>All copyrights reserved &copy; 2018 - Designed & Developed by <a rel="nofollow" href="https://uideck.com">UIdeck</a></p>
-            </div>
+          <div class="col-lg-12" style="text-align: center; color: white;" >
+            
+              <p>All copyrights reserved &copy; 2018 - Designed & Developed by IT Team D-Talent</p>
+            
           </div>  
         </div>
       </div>

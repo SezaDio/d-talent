@@ -56,7 +56,7 @@
 
 					<div class="center-block fit-content">
 						<div class="dropdown">
-						  <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  <button class="button button2" style="border: solid 2px black;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    CV Section
 						    <span class="caret"></span>
 						  </button>

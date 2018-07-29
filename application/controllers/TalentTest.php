@@ -260,4 +260,560 @@ class TalentTest extends CI_Controller {
 		}
 	}
 
+	// display work attitude test view
+	public function showWorkAttitude()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+		$query = $this->db->get_where('result_work_attitude', ['id_talent'=>$id_talent]);
+		if ($query->num_rows() > 0) {
+			redirect('talent/test/access-denied');
+		}
+
+		$this->load->model('test_models/TestWorkAttitudeModel');
+		$data['test_work_attitude'] = $this->TestWorkAttitudeModel->get_all();
+		$data['total_records'] = count($data['test_work_attitude']);
+
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/work_attitude', $data);
+		$this->load->view('skin/talent/test_footer');
+	}
+
+	// scoring work attitude test
+	public function submitWorkAttitude()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+
+		$this->form_validation->set_rules('answer[]', '', 'required');
+
+		if ($this->form_validation->run() === FALSE) 
+		{
+			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			// redirect to function
+			$this->showWorkAttitude();
+		}
+		else {
+			// get test's result
+			$answers = $this->input->post('answer[]');
+
+			$test_result = $this->calculateWorkAttitudeResult($answers);
+
+			// insert data to db
+			$insert_data = array(
+				'id_talent' => $id_talent,
+				'result'    => $test_result
+			);
+			$query = $this->db->insert('result_work_attitude', $insert_data);
+
+			if ($query) 
+			{
+				$this->load->helper('custom');
+				// use function from helper
+				$response = detailWorkAttitudeResult($test_result);
+	  			$data['result'] = $test_result;
+	  			$data['sub_title'] = $response['sub_title'];
+				// get result detail
+	  			$data['result_detail'] = $response['result_detail'];
+
+				// add success message to session
+				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+			}
+			else 
+			{
+				// add failed message to session
+				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+			}
+
+			// redirect to index ...
+			$this->load->view('skin/talent/test_header');
+			$this->load->view('talent/test/work_attitude_result', $data);
+			$this->load->view('skin/talent/test_footer');
+		}
+	}
+
+	// calculate character test's result
+	private function calculateWorkAttitudeResult($answers)
+	{
+		$no = 0;
+		// character test's score
+		$ss_score = 0;
+		$s_score = 0;
+		$n_score = 0;
+		$ts_score = 0;
+		$sts_score = 0;
+
+		foreach ($answers as $key => $value) 
+		{
+			$no = $key + 1;
+
+			//Count answer (Sangat Sesuai)
+			if ($value == "Sangat Sesuai") 
+			{
+				$ss_score++;
+			}
+			elseif ($value == "Sesuai") 
+			{
+				$s_score++;
+			}
+			elseif ($value == "Netral") 
+			{
+				$n_score++;
+			}
+			elseif ($value == "Tidak Sesuai") 
+			{
+				$ts_score++;
+			}
+			elseif ($value == "Sangat Tidak Sesuai") 
+			{
+				$sts_score++;
+			}
+		}
+
+		//Menghitung nilai tiap kategori
+		$ss_score  = $ss_score*5;
+		$s_score   = $s_score*4;
+		$n_score   = $n_score*3;
+		$ts_score  = $ts_score*2;
+		$sts_score = $sts_score*1;
+
+		//Mengambil nilai yang paling besar
+		$result_max = max($ss_score, $s_score, $n_score, $ts_score, $sts_score);
+
+		//Kategori hasil nilai terbesar
+		if ($result_max >= 30 AND $result_max <= 70) 
+		{
+			$result = "Rendah";
+		}
+		elseif ($result_max > 70 AND $result_max <= 110) 
+		{
+			$result = "Sedang";
+		}
+		elseif ($result_max > 110 AND $result_max <= 150) 
+		{
+			$result = "Baik";
+		}
+
+		return $result;
+	}
+
+	// display soft skill test view
+	public function showSoftSkill()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+		$query = $this->db->get_where('result_soft_skill', ['id_talent'=>$id_talent]);
+		if ($query->num_rows() > 0) {
+			redirect('talent/test/access-denied');
+		}
+
+		$this->load->model('test_models/TestSoftSkillModel');
+		$data['test_soft_skill'] = $this->TestSoftSkillModel->get_all();
+		$data['total_records'] = count($data['test_soft_skill']);
+
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/soft_skill', $data);
+		$this->load->view('skin/talent/test_footer');
+	}
+
+	// scoring soft skill test
+	public function submitSoftSkill()
+	{
+		$id_talent = $this->session->userdata('id_talent');
+
+		$pengambilan_keputusan_skor = 0;
+		$tanggung_jawab_skor		= 0;
+		$integritas_skor			= 0;
+		$resiliensi_skor			= 0;
+		$keinginan_belajar_skor		= 0;
+		$komunikasi_skor			= 0;
+		$sikap_positif_skor			= 0;
+		$antusiasme_skor			= 0;
+		$kerja_tim_skor				= 0;
+		$penyelesaian_masalah_skor	= 0;
+
+		$this->form_validation->set_rules('subc-1[]', '', 'required');
+		$this->form_validation->set_rules('subc-2[]', '', 'required');
+		$this->form_validation->set_rules('subc-3[]', '', 'required');
+		$this->form_validation->set_rules('subc-4[]', '', 'required');
+		$this->form_validation->set_rules('subc-5[]', '', 'required');
+		$this->form_validation->set_rules('subc-6[]', '', 'required');
+		$this->form_validation->set_rules('subc-7[]', '', 'required');
+		$this->form_validation->set_rules('subc-8[]', '', 'required');
+		$this->form_validation->set_rules('subc-9[]', '', 'required');
+		$this->form_validation->set_rules('subc-10[]', '', 'required');
+
+		if($this->form_validation->run() === FALSE) 
+		{
+			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			// redirect to function
+			$this->showPassion();
+		}
+		else 
+		{
+			// get test's result intrapersonal
+			$pengambilan_keputusan    = $this->input->post('subc-1[]');
+			$tanggung_jawab    		  = $this->input->post('subc-2[]');
+			$integritas    			  = $this->input->post('subc-3[]');
+			$resiliensi    			  = $this->input->post('subc-4[]');
+			$keinginan_belajar    	  = $this->input->post('subc-5[]');
+
+			// get test's result interpersonal
+			$komunikasi    			  = $this->input->post('subc-6[]');
+			$sikap_positif    		  = $this->input->post('subc-7[]');
+			$antusiasme    			  = $this->input->post('subc-8[]');
+			$kerja_tim    			  = $this->input->post('subc-9[]');
+			$penyelesaian_masalah     = $this->input->post('subc-10[]');
+
+			//Count value every category (Pengambilan Keputusan)
+			foreach ($pengambilan_keputusan as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$pengambilan_keputusan_skor = $pengambilan_keputusan_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$pengambilan_keputusan_skor = $pengambilan_keputusan_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$pengambilan_keputusan_skor = $pengambilan_keputusan_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$pengambilan_keputusan_skor = $pengambilan_keputusan_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$pengambilan_keputusan_skor = $pengambilan_keputusan_skor + 1;
+				}
+			}
+
+			//Count value every category (Tanggung Jawab)
+			foreach ($tanggung_jawab as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$tanggung_jawab_skor = $tanggung_jawab_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$tanggung_jawab_skor = $tanggung_jawab_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$tanggung_jawab_skor = $tanggung_jawab_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$tanggung_jawab_skor = $tanggung_jawab_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$tanggung_jawab_skor = $tanggung_jawab_skor + 1;
+				}
+			}
+
+			//Count value every category (Integritas)
+			foreach ($integritas as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$integritas_skor = $integritas_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$integritas_skor = $integritas_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$integritas_skor = $integritas_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$integritas_skor = $integritas_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$integritas_skor = $integritas_skor + 1;
+				}
+			}
+
+			//Count value every category (Resiliensi)
+			foreach ($resiliensi as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$resiliensi_skor = $resiliensi_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$resiliensi_skor = $resiliensi_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$resiliensi_skor = $resiliensi_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$resiliensi_skor = $resiliensi_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$resiliensi_skor = $resiliensi_skor + 1;
+				}
+			}
+
+			//Count value every category (Keinginan Belajar)
+			foreach ($keinginan_belajar as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$keinginan_belajar_skor = $keinginan_belajar_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$keinginan_belajar_skor = $keinginan_belajar_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$keinginan_belajar_skor = $keinginan_belajar_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$keinginan_belajar_skor = $keinginan_belajar_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$keinginan_belajar_skor = $keinginan_belajar_skor + 1;
+				}
+			}
+
+			//Count value every category (Komunikasi)
+			foreach ($komunikasi as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$komunikasi_skor = $komunikasi_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$komunikasi_skor = $komunikasi_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$komunikasi_skor = $komunikasi_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$komunikasi_skor = $komunikasi_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$komunikasi_skor = $komunikasi_skor + 1;
+				}
+			}
+
+			//Count value every category (Sikap Positif)
+			foreach ($sikap_positif as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$sikap_positif_skor = $sikap_positif_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$sikap_positif_skor = $sikap_positif_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$sikap_positif_skor = $sikap_positif_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$sikap_positif_skor = $sikap_positif_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$sikap_positif_skor = $sikap_positif_skor + 1;
+				}
+			}
+
+			//Count value every category (Antusiasme)
+			foreach ($antusiasme as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$antusiasme_skor = $antusiasme_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$antusiasme_skor = $antusiasme_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$antusiasme_skor = $antusiasme_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$antusiasme_skor = $antusiasme_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$antusiasme_skor = $antusiasme_skor + 1;
+				}
+			}
+
+			//Count value every category (Kerja Tim)
+			foreach ($kerja_tim as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$kerja_tim_skor = $kerja_tim_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$kerja_tim_skor = $kerja_tim_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$kerja_tim_skor = $kerja_tim_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$kerja_tim_skor = $kerja_tim_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$kerja_tim_skor = $kerja_tim_skor + 1;
+				}
+			}
+
+			//Count value every category (Penyelesaian Masalah)
+			foreach ($penyelesaian_masalah as $key => $value) 
+			{
+				$no = $key + 1;
+
+				//Count Answer
+				if ($value == "Sangat Sesuai") 
+				{
+					$penyelesaian_masalah_skor = $penyelesaian_masalah_skor + 5;
+				}
+				elseif ($value == "Sesuai")
+				{
+					$penyelesaian_masalah_skor = $penyelesaian_masalah_skor + 4;
+				}
+				elseif ($value == "Netral")
+				{
+					$penyelesaian_masalah_skor = $penyelesaian_masalah_skor + 3;
+				}
+				elseif ($value == "Tidak Sesuai")
+				{
+					$penyelesaian_masalah_skor = $penyelesaian_masalah_skor + 2;
+				}
+				elseif ($value == "Sangat Tidak Sesuai")
+				{
+					$penyelesaian_masalah_skor = $penyelesaian_masalah_skor + 1;
+				}
+			}
+
+			//Simpan score ke array
+			$result_score = array(
+							1  => $pengambilan_keputusan_skor,
+							2  => $tanggung_jawab_skor,
+							3  => $integritas_skor,
+							4  => $resiliensi_skor,
+							5  => $keinginan_belajar_skor,
+							6  => $komunikasi_skor,
+							7  => $sikap_positif_skor,
+							8  => $antusiasme_skor,
+							9  => $kerja_tim_skor,
+							10 => $penyelesaian_masalah_skor 
+							);
+
+			//convert every category score into character value
+			$no = 0;
+			foreach ($result_score as $key => $value) 
+			{
+				$no++;
+				if ($value >= 4 AND $value <= 9) 
+				{
+					$char_result[$no] = "Dasar";
+				}
+				elseif ($value > 9 AND $value <= 15)
+				{
+					$char_result[$no] = "Menengah";
+				}
+				elseif ($value > 15 AND $value <= 20)
+				{
+					$char_result[$no] = "Tinggi";
+				}
+			}
+
+			// insert result data to database
+			$insert_data = array(
+				'id_talent' => $id_talent,
+				'pengambilan_keputusan' => $char_result[1],
+				'tanggung_jawab' => $char_result[2],
+				'integritas' => $char_result[3],
+				'resiliensi' => $char_result[4],
+				'keinginan_belajar' => $char_result[5],
+				'komunikasi' => $char_result[6],
+				'sikap_positif' => $char_result[7],
+				'antusiasme' => $char_result[8],
+				'kerja_tim' => $char_result[9],
+				'penyelesaian_masalah' => $char_result[10]
+			);
+			$query = $this->db->insert('result_soft_skill', $insert_data);
+
+			//Show result page 
+			if($query) 
+			{
+				$this->load->helper('custom');
+				// use function from helper
+	  			$response = detailSoftSkillResult($char_result);
+
+	  			$data['sub_title'] = $response['sub_title'];
+	  			$data['result'] = $response['result_detail'];
+
+				// add success message to session
+				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+			}
+			else 
+			{
+				// add failed message to session
+				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+			}
+
+			// redirect to index ...
+			$this->load->view('skin/talent/test_header');
+			$this->load->view('talent/test/soft_skill_result', $data);
+			$this->load->view('skin/talent/test_footer');
+		}
+	}
 }
