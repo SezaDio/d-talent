@@ -15,11 +15,11 @@
 			max-height: 100vh;
     	}
     	header{
-    		height: 60px;
+    		min-height: 75px;
     		border-bottom: 1px solid #333;
     	}
     	footer{
-    		height: 60px;
+    		min-height: 75px;
     		background-color: #333;
     		color: #fff;
             padding: 20px;
@@ -35,10 +35,10 @@
         }
         @media screen and (min-width: 992px) {
             header{
-                height: 10vh;
+                min-height: 12vh;
             }
             footer{
-                height: 10vh;
+                min-height: 12vh;
                 position: absolute;
                 left: 0px;
                 right: 0px;
@@ -47,13 +47,22 @@
             }
             .card{
                 width: 60%;
-                height: 55vh;
+                min-height: 55vh;
+            }
+            .access-denied .card{
+                min-height: 60vh;
             }
 
-            .pagination-wrapper,
             .btn-submit-wrapper{
                 position: absolute;
                 bottom: 20px;
+            }
+            .pagination-wrapper{
+                position: absolute;
+                bottom: 17px;
+            }
+            .pagination{
+                margin: 0px;
             }
         }
     	.test:nth-child(n+2){
@@ -126,7 +135,7 @@
 
 <body>
 	<header>
-		<div class="text-center">
+		<div class="text-center" style="padding: 5px;">
 			<img src="<?php echo base_url('asset/img/logo1.png'); ?>">
 		</div>
 	</header>

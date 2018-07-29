@@ -10,25 +10,25 @@ header{
 	height: 92px;
 }
 .navbar{
+	min-height: 70px;
 	background-color: #fff;
 	box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.06);
 }
-.navbar-nav .nav-item .nav-link{
-	color: #333;
+.navbar-brand{
+	height: auto;
 }
-.navbar-nav .nav-item .nav-link:hover,
-.slicknav_nav a:hover,
-.top-nav-collapse .navbar-nav .nav-item .nav-link:hover{
-	color: #FDD835 !important;	/*yellow*/
+a,
+.navbar .nav-link,
+.menu-bg.navbar .nav-link{
+	color: #333 !important;
 }
-a:hover{
-	color: #FDD835;
+.navbar .nav-link.active,
+.navbar .nav-link:hover,
+.menu-bg.navbar .nav-link:hover{
+	color: #fff !important;
+	background: #333;
 }
-.navbar-expand-lg .navbar-nav li a:hover,
-.navbar-expand-lg .navbar-nav li .active > a,
-.navbar-expand-lg .navbar-nav li a:focus {
-    color: #FDD835;
-}
+/* hamburger menu - responsive */
 .slicknav_btn{
 	border-color: #333;
 }
@@ -39,7 +39,7 @@ a:hover{
 	margin-top: -15px;
 }
 .menu-bg .navbar-nav > li > .dropdown-menu{
-	margin-top: 0px;
+	margin-top: 5px;
 }
 
 /* toast message */
@@ -404,9 +404,12 @@ a, a:focus{
 .open .dropdown-toggle.datepicker table tr td.active.disabled:hover{
 	background: #3276b1;
 }
+/* scroll to top */
 .back-to-top i{
-	background-color: #FDD835;
-	color: #333;
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+	border: 1px solid #000;
 }
 
 /* Vacancy Detail */

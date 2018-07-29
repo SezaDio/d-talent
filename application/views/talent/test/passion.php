@@ -78,7 +78,7 @@
 				<!-- pagination -->
 				<div class="pagination-wrapper">
 					<nav aria-label="Page navigation">
-					  <ul class="pagination center-block">
+					  <ul class="pagination">
 					    <li>
 					      <a href="#" aria-label="Previous" class="prev">
 					        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>

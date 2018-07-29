@@ -53,7 +53,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><img style="height: 50px;" class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt=""></a>
+            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>
@@ -61,7 +61,7 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> My CV</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> <b>My CV</b></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('JobVacancy/job_list');?>"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
@@ -74,7 +74,7 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
                   <i class="fa fa-file-alt"></i> <b>Tes Online</b> <i class="fa fa-chevron-down"></i>
                 </a>
-                <div class="dropdown-menu" style="margin-left: 20px;">
+                <div class="dropdown-menu" style="margin-left: 10px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-character'); ?>" >Tes Karakter</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('talent/test-soft-skill'); ?>" >Tes Soft Skill</a></li>

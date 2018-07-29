@@ -10,7 +10,7 @@
 			</div>
 
 			<div style="position: absolute; bottom: 15px; right: 15px;">
-				<a href="<?php echo site_url('talent');?>">My CV</a>
+				<a href="<?php echo site_url('talent');?>" style="color: #333;">My CV</a>
 			</div>
 
 			<div class="clearfix"></div>

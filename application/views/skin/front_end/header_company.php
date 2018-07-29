@@ -47,6 +47,41 @@
 				.small-slider {display: none;}
 			}
 
+      .sprite-bg{
+        width: 220px;
+        height: 62px;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
+      }
+      .menu-bg .navbar-brand{
+        margin-top: 5px;
+      }
+      .menu-bg .sprite-bg{
+        background-position: 0px -62px;
+      }
+      .navbar .nav-link{
+        color: #fff !important;
+      }
+      .navbar .nav-link.active,
+      .navbar .nav-link:hover{
+          color: #333 !important;
+          background: #fff;
+      }
+      .menu-bg.navbar .nav-link{
+        color: #333 !important;
+      }
+      .menu-bg.navbar .nav-link.active,
+      .menu-bg.navbar .nav-link:hover{
+          color: #fff !important;
+          background: #333;
+      }
+
+      .back-to-top i{
+        background-color: #fff;
+        color: #000;
+        font-weight: bold;
+        border: 1px solid #000;
+      }
 
 	</style>
 	
@@ -60,7 +95,10 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="index.html" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt=""></a>
+            <a href="index.html" class="navbar-brand">
+              <!-- <img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt=""> -->
+              <figure class="sprite-bg" style="background-image: url('<?php echo base_url('asset/img/logo-sprite.png')?>');"></figure>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>

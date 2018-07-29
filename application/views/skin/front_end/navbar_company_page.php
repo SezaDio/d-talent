@@ -15,22 +15,22 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>">Updates</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>"><i class="fa fa-newspaper"></i> <b>Updates</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>">Overview</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>"><i class="fa fa-eye"></i> <b>Overview</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Jobs</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>"><i class="fa fa-briefcase"></i> <b>Jobs</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('company/notification'); ?>">Notification</a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('company/notification'); ?>"><i class="fa fa-bell"></i> <b>Notification</b></a>
               </li>
               <li class="nav-item treeview dropdown" role="presentation" style="border-left: solid 1px black;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
-                  <strong>Admin Tools <i class="fa fa-chevron-down"></i></strong>
+                  <i class="fa fa-cog"></i> <b>Admin Tools <i class="fa fa-chevron-down"></i></b>
                 </a>
-                <div class="dropdown-menu" style="margin-left: 20px;">
+                <div class="dropdown-menu" style="margin-left: 10px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Member View</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('AccountCompany/logout_company'); ?>" style="color: black;">Log Out</a></li>

@@ -1,12 +1,11 @@
 	<br>
-	<footer style="position: inherit;">
+    <footer style="background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">          
+	<!-- <footer style="position: inherit;"> -->
 		<div class="container">
 	        <div class="row">
-	        	<div class="col-md-12" style="text-align: center;">
-					<div class="copyright">
-		              <p>&copy; D-Talent - 2018</p>
-		            </div>
-	        	</div>
+				<div class="col-lg-12" style="text-align: center; color: white;" >
+	              <p>All copyrights reserved &copy; 2018 - Designed & Developed by IT Team D-Talent</p>
+	            </div>
 			</div>
 		</div>
 	</footer>
