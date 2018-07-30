@@ -8,7 +8,7 @@
 		<br>
 		<div class="col-md-12" style="background-color: whitesmoke;">
 			
-			<div class="col-md-12">
+			<div class="col-md-12" style="min-height: 300px;">
 				<br>
 				<!--Show Job Notifications list-->
 				<div class="row">

@@ -10,7 +10,7 @@
 			<div class="row">
 				<!--Jobs Caategory section-->
 				<div class="col-md-12" style="padding-top: 13px;">
-					<div class="row">
+					<div class="row" style="min-height: 300px;">
 						<div class="col-md-2" style="text-align: center; padding: 5px;">
 							<div class="dropdown dropdown-category">
 								<button class="button button1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -129,7 +129,6 @@
 			<div class="pagination">
             	<?php echo $links ?>
             </div>
-			<br>
         <?php } ?>
             
 		</div>
@@ -137,6 +136,8 @@
 
 	<div class="col-lg-1"></div>
 </div>
+<br>
+<br>
 <br>
 
 
