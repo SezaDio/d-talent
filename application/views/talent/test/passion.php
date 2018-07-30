@@ -1,6 +1,6 @@
-<div style="padding-top: 15px; padding-bottom: 15px;">
+<div class="online-test" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
-		<h3 class="text-center">Tes Minat dan Bakat</h3>
+		<h3 class="text-center"><strong><u>Tes Minat dan Bakat</u></strong></h3>
 		<div class="card center-block">
 			<form action="<?php echo site_url('talent/test-passion/submit'); ?>" method="post">
 				<div class="card-body">
@@ -72,7 +72,7 @@
 
 				<!-- submit button -->
 				<div class="btn-submit-wrapper">
-					<input type="submit" value="Selesai" class="btn btn-default btn-submit">
+					<input type="submit" value="Selesai" class="button button1 btn-submit">
 				</div>
 
 				<!-- pagination -->
@@ -80,23 +80,25 @@
 					<nav aria-label="Page navigation">
 					  <ul class="pagination">
 					    <li>
-					      <a href="#" aria-label="Previous" class="prev">
+					      <a href="#!" aria-label="Previous" class="prev">
 					        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
 					      </a>
 					    </li>
 					<?php
 						for ($i=1; $i<=$total_page; $i++) {
 							// generate page links
-							echo '<li><a href="#!" class="page-number">'.$i.'</a></li>';
+							echo '<li class="page-number number-'.$i.'"><a href="#!">'.$i.'</a></li>';
 						}
 					?>
 						<li>
-					      <a href="#" aria-label="Next" class="next">
+					      <a href="#!" aria-label="Next" class="next">
 					        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
 					      </a>
 					    </li>
 					  </ul>
 					</nav>
+
+					<div class="page-text">Page <span id="page-text">1</span> / <?php echo $total_page; ?></div>
 				</div>
 			</form>
 

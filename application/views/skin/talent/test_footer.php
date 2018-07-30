@@ -33,6 +33,9 @@
 				else{
 					$('.btn-submit-wrapper').hide();
 				}
+
+				// show page number to user
+				$('#page-text').text(page);
 			});
 
 			// if prev clicked
@@ -46,10 +49,29 @@
 				if ($('.btn-submit-wrapper').length > 0) {
 					$('.btn-submit-wrapper').hide();
 				}
+
+				// show page number to user
+				$('#page-text').text(page);
+
+				// display only 5 page
+				var new_int;
+				var old_int = page;
+
+				if (page % 5 == 0) {
+					for (var i = 1; i <= 5; i++) {
+						$('.number-'+old_int).css('display', 'inline');
+						old_int = page - i;
+						
+						new_int = page + i;
+						$('.number-'+new_int).hide();
+					}
+				}
 			});
 
 			// if next clicked
 			$('.next').click(function() {
+				// var old_page = page;
+
 				if (page != total_page) {
 					$('.page-'+page).hide();
 					page++;
@@ -61,6 +83,23 @@
 				}
 				else{
 					$('.btn-submit-wrapper').hide();
+				}
+
+				// show page number to user
+				$('#page-text').text(page);
+
+				// display only 5 page
+				var new_int = page;
+				var old_int;
+
+				if (page % 5 == 1) {
+					for (var i = 1; i <= 5; i++) {
+						old_int = page - i;
+						$('.number-'+old_int).hide();
+
+						$('.number-'+new_int).css('display', 'inline');
+						new_int = page + i;
+					}
 				}
 			});
 

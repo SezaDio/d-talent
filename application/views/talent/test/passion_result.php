@@ -1,7 +1,7 @@
 <div class="test-result" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
 		<h3 class="text-center">Hasil Tes Minat dan Bakat</h3>
-		<div class="card center-block" style="width: 70%;">
+		<div class="card center-block">
 			<div class="card-body">
 				<div class="test">
 				<?php
@@ -30,7 +30,7 @@
 			</div>
 			
 			<div style="position: absolute; bottom: 15px; right: 15px;">
-				<a href="<?php echo site_url('talent');?>">My CV</a>
+				<a href="<?php echo site_url('talent');?>" style="color: #333;">My CV</a>
 			</div>
 
 			<div class="clearfix"></div>

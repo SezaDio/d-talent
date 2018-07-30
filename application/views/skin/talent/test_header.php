@@ -24,17 +24,27 @@
     		color: #fff;
             padding: 20px;
     	}
+        .online-test{
+            /*min-height: 400px;*/
+        }
         .card{
             width: 100%;
             height: auto;
             margin-top: 30px;
+            margin-bottom: 30px;
             border: 1px solid #ddd;
             padding: 15px;
             position: relative;
             text-align: justify;
         }
+        .page-text{
+            position: relative;
+            top: -32px;
+            left: 15px;
+            display: inline-block;
+        }
         @media screen and (min-width: 992px) {
-            header{
+            /*header{
                 min-height: 12vh;
             }
             footer{
@@ -44,6 +54,9 @@
                 right: 0px;
                 bottom: 0px;
                 padding-top: 25px;
+            }*/
+            .online-test.soft-skill{
+                min-height: 650px;
             }
             .card{
                 width: 60%;
@@ -52,7 +65,10 @@
             .access-denied .card{
                 min-height: 60vh;
             }
-
+            .soft-skill .card,
+            .work-attitude .card{
+                min-height: 500px;
+            }
             .btn-submit-wrapper{
                 position: absolute;
                 bottom: 20px;
@@ -63,6 +79,9 @@
             }
             .pagination{
                 margin: 0px;
+            }
+            .page-text{
+                top: -12px;
             }
         }
     	.test:nth-child(n+2){
@@ -97,12 +116,17 @@
     		right: 15px;
     		display: none;
     	}
-        .pagination.center-block{
+        .pagination-wrapper > nav{
             display: inline-block;
         }
     	.pagination > li > a{
     		color: #333;
     	}
+        /* hide number > 5 */
+        .pagination .page-number:nth-child(n+7){
+            display: none;
+        }
+
         .button {
             background-color: #4CAF50;
             border: none;
