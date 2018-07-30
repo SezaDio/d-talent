@@ -30,11 +30,18 @@
 				</div>
 			</div>
 			
-			<div style="position: absolute; bottom: 15px; right: 15px;">
-				<a href="<?php echo site_url('talent');?>" style="color: #333;">My CV</a>
+			<br>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div style="text-align: center;">
+						<a href="<?php echo site_url('talent');?>"><button type="button" class="button button1">Back to My CV</button></a>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
 
-			<div class="clearfix"></div>
+			<!-- <div class="clearfix"></div> -->
 		</div>
 	</div>
 </div>
