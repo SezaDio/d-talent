@@ -404,8 +404,8 @@ class TalentTest extends CI_Controller {
 			redirect('talent/test/access-denied');
 		}
 
-		$this->load->model('test_models/TestSoftSkillModel');
-		$data['test_soft_skill'] = $this->TestSoftSkillModel->get_all();
+		$this->load->model('test_models/TestSoftskillModel');
+		$data['test_soft_skill'] = $this->TestSoftskillModel->get_all();
 		$data['total_records'] = count($data['test_soft_skill']);
 
 		$this->load->view('skin/talent/test_header');
