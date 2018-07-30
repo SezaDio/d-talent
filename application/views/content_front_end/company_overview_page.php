@@ -252,7 +252,7 @@
 
 	<!-- modal Update Cover Picture -->
 	<div class="modal fade modal-cover-company" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document" style="margin-top: 250px;">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
 				<form role="form" method="POST" enctype="multipart/form-data" action="<?php echo site_url('CompanyMember/update_company_cover/');?>">
@@ -277,7 +277,7 @@
 
 	<!-- modal Update Logo Picture -->
 	<div class="modal fade modal-logo-company" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document" style="margin-top: 250px;">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
 				<form role="form" method="POST" enctype="multipart/form-data" action="<?php echo site_url('CompanyMember/update_company_logo/');?>">

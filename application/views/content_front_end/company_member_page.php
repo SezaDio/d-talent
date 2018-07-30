@@ -7,12 +7,18 @@
 
 	<div class="col-lg-10">
 		<!--COver/background picture-->
+		<?php
+			if ($dataCompany->company_cover != "") {
+		?>
 		<div class="col-md-12" style="padding: 0;">
 
 			<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_cover;?>');"></figure>
 
 		</div>
 		<br>
+		<?php
+			}
+		?>
 		<div class="col-md-12" style="background-color: whitesmoke;">
 			<div class="row">
 				<!--Company picture-->
@@ -23,7 +29,7 @@
 				<!--Nama, Bidang, dan tombol manage dan see jobs -->
 				<div class="col-md-6" style="padding: 20px;">
 					<p style="font-size: 1.8em; font-family: sans-serif;"><strong><?php echo $dataCompany->company_name ?></strong></p>
-					<p style="font-size: 1.4em; font-family: sans-serif;">Human Resource Development</p>
+					<p style="font-size: 1.4em; font-family: sans-serif;"><?php echo ($dataCompany->company_industries!="" ? $bidang_usaha[$dataCompany->company_industries] : "") ?></p>
 					<br>
 					<div class="row">
 						<div class="col-md-5">
@@ -43,7 +49,7 @@
 				<div class="col-md-12" style="padding-top: 10px">
 					<hr style="border: solid 1px lightgray">
 					<strong style="font-size: 1.2em;"><i class="fa fa-home" ></i> Office Address</strong><br>
-					<p><?php echo $dataCompany->company_address ?></p>
+					<p><?php echo ($dataCompany->company_address!="" ? $dataCompany->company_address : "") ?></p>
 					<table class="table">
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-industry"></i> Industry</strong></td>
@@ -51,9 +57,9 @@
 							<td><strong><i class="fa fa-envelope"></i> E-mail</strong></td>
 						</tr>
 						<tr>
-							<td style="padding-left: 0px;"><?php echo $bidang_usaha[$dataCompany->company_industries] ?></td>
-							<td><?php echo $dataCompany->company_website ?></td>
-							<td><?php echo $dataCompany->company_email ?></td>
+							<td style="padding-left: 0px;"><?php echo ($dataCompany->company_industries!="" ? $bidang_usaha[$dataCompany->company_industries] : "") ?></td>
+							<td><?php echo ($dataCompany->company_website!="" ? $dataCompany->company_website : "") ?></td>
+							<td><?php echo ($dataCompany->company_email!="" ? $dataCompany->company_email : "") ?></td>
 						</tr>
 						<tr style="font-size: 1.2em;">
 							<td style="padding-left: 0px;"><strong><i class="fa fa-user"></i> Company Type</strong></td>
@@ -61,20 +67,22 @@
 							<td><strong><i class="fa fa-calendar"></i> Year Founded</strong></td>
 						</tr>
 						<tr>
-							<td style="padding-left: 0px;"><?php echo $company_type[$dataCompany->company_type] ?></td>
+							<td style="padding-left: 0px;"><?php echo ($dataCompany->company_type!="" ? $company_type[$dataCompany->company_type] : "") ?></td>
 							<td>
 								<?php
-									$specialties = explode(',', $dataCompany->company_specialties);
-									$count = count($specialties);
-									for ($i=0; $i < $count; $i++) { 
-										echo $specialties[$i];
-										if ($i+1 != $count) {
-											echo ", ";
+									if ($dataCompany->company_specialties != "") {
+										$specialties = explode(',', $dataCompany->company_specialties);
+										$count = count($specialties);
+										for ($i=0; $i < $count; $i++) { 
+											echo $specialties[$i];
+											if ($i+1 != $count) {
+												echo ", ";
+											}
 										}
 									}
 								?>
 							</td>
-							<td><?php echo $dataCompany->company_year ?></td>
+							<td><?php echo ($dataCompany->company_year!="" ? $dataCompany->company_year : "") ?></td>
 						</tr>
 					</table>
 				</div>
@@ -87,21 +95,23 @@
 			<hr style="border: solid 1px lightgray">
 			<div class="row">
 				<div class="col-md-12" style="padding-bottom: 15px;">
-					<?php echo $dataCompany->company_description ?>
+					<?php echo ($dataCompany->company_description!="" ? $dataCompany->company_description : "") ?>
 				</div>
 			</div>
 		</div>
 		<br>
 
 		<!--Recent Updates perusahaan-->
+		<?php
+			if($company_updates != null) {
+		?>
 		<div class="col-md-12" style="padding-top: 10px;">
 			<strong style="font-size: 1.2em"><i class="fa fa-list"></i> Recent Updates</strong>
 			<hr style="border: solid 1px lightgray">
 			<!--Recent Updates Content-->
 			<div class="col-md-12" style="background-color: whitesmoke;">
 				<?php
-					if($company_updates != null) {
-						foreach ($company_updates as $company_update):
+					foreach ($company_updates as $company_update):
 				?>
 				<div class="col-md-12 item">
 					<div class="row">
@@ -142,8 +152,7 @@
 					</div>
 				</div>
 				<?php
-						endforeach;
-					}
+					endforeach;
 				?>
 				<div>
 					<a href="<?php echo site_url('company/updates'); ?>" class="button button1" style="width: 180px;">
@@ -153,6 +162,10 @@
 				<br>
 			</div>
 		</div>
+
+		<?php
+			}
+		?>
 		
 		<br>
 		<br>
