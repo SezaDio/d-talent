@@ -6,7 +6,7 @@
                     </h1>
 					
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>Big Slider</li>
+                        <li class="active"><i class="fa fa-dashboard"></i>Mobile Slider</li>
                     </ol>
                 </section>
 
@@ -30,7 +30,7 @@
                                         <?php }?>
 										
 										<!--Tambah Slider-->
-										<a href="<?php echo site_url('KelolaSlider/tambah_slider_check/');?>">
+										<a href="<?php echo site_url('KelolaSlider/tambah_small_slider_check/');?>">
                                             <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Slider</button>
                                         </a>
                                     </div>
@@ -49,7 +49,7 @@
 														<br><br>
 														<?php echo $item['judul_slider']; ?>
 														<br><br>
-														
+
 														<!-- Tombol Hapus -->
 														<a href="<?php echo site_url('KelolaSlider/delete_slider/'.$item['id_slider']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
 													</div>

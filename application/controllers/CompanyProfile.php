@@ -19,9 +19,17 @@ class CompanyProfile extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('pagination');
 		$this->load->model('companyprof_models/CompanyProfModels');
+      $this->load->model('dashboard_models/DashboardModels');
+
 		$data['listTestimoni'] = $this->CompanyProfModels->get_testimoni();
 		$data['listSlider'] = $this->CompanyProfModels->get_slider();
+      $data['listSliderSmall'] = $this->CompanyProfModels->get_slider_small();
 		$data['frontSlider'] = $this->db->select_max('id_slider')->get('slider')->row();
+
+      $data['jum_job_vacancy'] = $this->DashboardModels->get_jumlah_job_vacancy();
+      $data['jum_company_member'] = $this->DashboardModels->get_jumlah_company_member();
+      $data['jum_talent_member'] = $this->DashboardModels->get_jumlah_talent_member();
+
 		$this->load->view('skin/front_end/header_company');
 		$this->load->view('skin/front_end/konten',$data);
 		$this->load->view('skin/front_end/footer_company');

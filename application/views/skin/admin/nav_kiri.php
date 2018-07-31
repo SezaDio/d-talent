@@ -9,10 +9,15 @@
                             </a>
                         </li>
 
-						<li>
-                            <a href="<?php echo site_url('KelolaSlider/index'); ?>">
+						<li class="treeview">
+                            <a href="#">
                                 <i class="glyphicon glyphicon-picture"></i> <span> Kelola Slider </span>
+                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?php echo site_url('KelolaSlider/show_big_slider_page'); ?>"><i class="glyphicon glyphicon-minus"></i> Big Slider</a></li>
+                                <li><a href="<?php echo site_url('KelolaSlider/show_small_slider_page'); ?>"><i class="glyphicon glyphicon-minus"></i> Mobile Slider</a></li>
+                            </ul>
                         </li>
 
                         <li>
