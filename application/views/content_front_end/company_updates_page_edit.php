@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		
-		<div class="col-lg-10" style="background: whitesmoke; padding: 20px; width: 100%;">
+		<div class="col-lg-10" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 			<div class="row">
 				<div class="col-md-12">
 					<form role="form" enctype="multipart/form-data" action="<?php echo site_url('company/updates/update/' . $company_update->id_company_update);?>" method="POST" enctype="multipart/form-data">
@@ -13,24 +13,12 @@
 						<div class="row">
 							<div class="col-md-12">			
 								<div class="form-group">
-									<label>Judul *</label>
+									<label><strong>Judul *</strong></label>
 									<input type="text" name="title" class="form-control" value="<?php echo $company_update->title; ?>" required>
 								</div>
 
-								<div class="form-group image-updates">
-									<label>Gambar</label>
-									<div class="text-muted">Ukuran maks. 2 MB. Rasio gambar 3:2.</div>
-									<div id="image_preview" class="thumbnail" style="margin-bottom: 10px;">
-										<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>')";></figure>
-									</div>
-
-									<input type="file" name="image" accept="image/*" id="image-browse">
-
-									<input type="hidden" name="old_image" value="<?php echo $company_update->image; ?>">
-								</div>
-
 								<div class="form-group">
-									<label>Konten</label>
+									<label><strong>Konten *</strong></label>
 									<div class='box-body pad'>
 										<textarea style="padding: 20px; width: 100%;" placeholder="Artikel, Ide, atau Aktivitas . . ." required name="content" rows="5"><?php 
 				                            echo $company_update->content;
@@ -39,9 +27,21 @@
 									</div>
 				                </div>
 
-								<div class="form-group">
+								<div class="form-group image-updates">
+									<label><strong>Gambar *</strong></label>
+									<div id="image_preview" class="thumbnail" style="margin-bottom: 10px;">
+										<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company_updates/') . $company_update->image;?>')";></figure>
+									</div>
+									<label id="bb" style="border-radius: 5px; padding: 10px; background-color: black; color: white;">
+										<i class="fa fa-image"></i> Browse Picture
+										<input style="display: none;" type="file" name="image" accept="image/*" id="image-browse">
+									</label>
+									<div class="text-muted">*Ukuran maks. 2 MB. Rasio gambar 3:2.</div>
+									<input type="hidden" name="old_image" value="<?php echo $company_update->image; ?>">
+								</div>
+
+								<div class="form-group" style="visibility: hidden;">
 									<label>Publikasi</label>
-									<br>
 									<input type="checkbox" name="status" value="1" <?php echo $company_update->status==1 ? "checked" : ""; ?> >
 								</div>
 

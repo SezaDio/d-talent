@@ -70,7 +70,7 @@
           
         </div>
       </div>
-      <br><br><br><br><br><br><br>
+      <br><br><br><br>
     </header>
     <br><br>
 

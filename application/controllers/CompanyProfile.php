@@ -14,7 +14,7 @@ class CompanyProfile extends CI_Controller {
 
 	}
 
-	public function home()
+	public function index()
 	{	
 		$this->load->helper('url');
 		$this->load->library('pagination');

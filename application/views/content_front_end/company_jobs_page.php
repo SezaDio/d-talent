@@ -1,20 +1,17 @@
 <?php
 	$this->load->helper('custom');
 ?>
-<div class="row">
-	<div class="col-lg-1"></div>
-
-	<div class="col-lg-10">
-		<br>
-		<div class="col-md-12" style="background-color: whitesmoke;">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12" style="min-height: 380px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 			<div class="row">
 				<!--Jobs Caategory section-->
-				<div class="col-md-12" style="padding-top: 13px;">
-					<div class="row" style="min-height: 300px;">
-						<div class="col-md-2" style="text-align: center; padding: 5px;">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<div class="dropdown dropdown-category">
 								<button class="button button1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Job Category
+									<i class="fa fa-list"></i> Job Category
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height: 300px; overflow: auto;">
 									<a href="<?php echo site_url('company/job-vacancy')?>" class="dropdown-item">- All -</a>
@@ -35,7 +32,7 @@
 								</button>
 							</a>
 						</div>
-						<div class="col-md-5"></div>
+						<div class="col-md-4"></div>
 						<div class="col-md-3" style="text-align: center; padding: 7px;">
 							<form action="<?php echo site_url('company/job-vacancy/search'); ?>" method="post">
 								<div class="input-group">
@@ -47,9 +44,9 @@
 							</form>
 						</div>
 					</div>
+					<hr style="border: solid 1px black;">
 				</div>
 			</div>
-			<hr style="border: solid 1px lightgray;">
 
 			<?php
 				if (isset($filter_result)) {
@@ -65,7 +62,7 @@
 						foreach ($company_jobs as $job):
 				?>
 					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-						<div class="col-md-12" style="background-color: white;">
+						<div class="col-md-12" style="background-color: ghostwhite;">
 							<div style="padding-top: 10px;  padding-bottom: 10px;">
 								<a href="<?php echo site_url('company/job-vacancy/detail/') . $job->id_job;?>">
 									<strong style="padding-top: 5px; font-size: 1.3em;"><?php echo $job->job_title; ?></strong>
@@ -84,7 +81,7 @@
 									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
 										<small><b>Batas Pendaftaran</b></small>
 										<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
-										<small style="font-size: 1em;">
+										<small>
 											<?php echo displayApplyDate($job->job_date_start, $job->job_date_end); ?>
 										</small>
 									</div>
@@ -98,10 +95,11 @@
 										<?php echo $job_category[$job->job_category]; ?>
 									</span>
 								</div>
+								<!--
 								<div class="col-md-6">
 									<small>Total Applicant : </small>
 									<span class="badge badge-dark">1000</span>
-								</div>
+								</div>-->
 							</div>
 							<div class="hover-show-div" style="right: 15px; top: 12px;">
 								<a href="<?php echo site_url('company/job-vacancy/edit/') . $job->id_job;?>">
@@ -133,12 +131,10 @@
             
 		</div>
 	</div>
-
-	<div class="col-lg-1"></div>
+	<br>
+	<br>
+	<br>
 </div>
-<br>
-<br>
-<br>
 
 
 <!-- modal delete -->

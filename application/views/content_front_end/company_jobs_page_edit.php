@@ -2,9 +2,9 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 
-		<div class="col-lg-10" style="background-color: white; padding: 20px; border: solid 1px lightgray; box-shadow: 5px 10px 12px lightgrey;">
-			<p style="font-size: 1.5em; text-align: center;"><strong>Edit Job</strong></p>
-			<hr style="border: solid 1px lightgray;">
+		<div class="col-lg-10" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
+			<p style="font-size: 1.5em; text-align: center;"><strong><i class="fa fa-pen"></i> Edit Job</strong></p>
+			<hr style="border: solid 1px black;">
 			<form method="post" action="<?php echo site_url('company/job-vacancy/update/') . $company_job->id_job;?>">
 
 				<?php 
@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label for="exampleInputEmail1"><strong>Job Title</strong></label>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
                         	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_title" class="form-control" value="<?php echo $company_job->job_title; ?>">
 						</div>
 					</div> 
@@ -26,7 +26,7 @@
                 <div class="form-group">
 					<label for="exampleInputEmail1"><strong>Job Type</strong></label>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
                         	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_type" required class="form-control" id="kategori">
                                 <option value="">-- Job Type --</option>
                                 <?php
@@ -45,7 +45,7 @@
                 <div class="form-group">
 					<label for="exampleInputEmail1"><strong>Role (Posisi)</strong></label>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
                         	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo $company_job->job_role; ?>">
 						</div>
 					</div> 
@@ -55,7 +55,7 @@
                 <div class="form-group">
 					<label for="exampleInputEmail1"><strong>Job Category</strong></label>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
                         	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_category" required class="form-control" id="kategori">
                                 <option value="">-- Job Category --</option>
                                 <?php
@@ -168,7 +168,7 @@
 					
 					<div id="tambah_field"> </div>
                 </div>
-                <hr style="border: solid 1px lightgray;"><br>
+                <hr style="border: solid 1px black;"><br>
 
 				<!--Section Tombol Cancel dan Save-->
 				<div class="row">

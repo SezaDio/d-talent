@@ -38,7 +38,7 @@
 			<div id="carouselExampleIndicators2" class="carousel slide  small-slider" data-ride="carousel">
 				<ol class="carousel-indicators">
 				  <?php $i=0;
-				  foreach($listSlider as $slider){ ?>
+				  foreach($listSliderSmall as $slider){ ?>
 				  <li data-target="#carouselExampleIndicators2" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
 				  <?php $i++; } ?>
 				</ol>
@@ -524,15 +524,16 @@
                   <p class="phone">Phone: <span>(0812-3921-2006)</span></p>
                   <p class="email">E-mail: <span>(company.service@d-talent.id)</span></p>
                 </div>
+                <!--
                 <div class="social-icons">
                   <ul>
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>     
             <div class="col-lg-6 col-sm-6 col-xs-12">
