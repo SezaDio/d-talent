@@ -197,7 +197,7 @@ $route['company/job-vacancy/search/page/(:num)'] = 'CompanyMember/search_job';
 
 /* company job notification */
 $route['company/notification'] 				 = 'CompanyMember/notification_page';
-$route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';
+// $route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';
 
 
 /* job vacancy */
