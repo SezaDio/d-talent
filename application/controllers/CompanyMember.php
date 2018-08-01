@@ -914,7 +914,7 @@ class CompanyMember extends CI_Controller
 		$this->load->model('talent_models/TalentCVAchievementModel');
 		$this->load->model('talent_models/TalentCVCourseModel');
 
-		$id_talent = 5;
+		$id_talent = 3;
 
 		$data['data_id_company'] = array(
 							'id_company' => $id_company

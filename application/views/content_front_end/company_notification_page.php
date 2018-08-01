@@ -1,36 +1,32 @@
 <?php
 	$this->load->helper('custom');
 ?>
-<div class="row notification">
-	<div class="col-lg-1"></div>
+<div class="container">
+     <div class="row notification">
+     	
+		<div class="col-md-12" style="min-height: 380px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
+			<br>
+			<!--Show Job Notifications list-->
+			<div class="row" style="overflow-x: auto;">
+               <table class="table table-striped table-hover data-table">
+               	<thead>
+               		<tr>
+               			<th>No</th>
+               			<th>Foto Talent</th>
+               			<th>Nama Talent</th>
+               			<th>Kontak Talent</th>
+               			<th>Keterangan</th>
+               			<th>Status</th>
+               			<th>Tanggal</th>
+               		</tr>
+               	</thead>
 
-	<div class="col-lg-10">
-		<br>
-		<div class="col-md-12" style="background-color: whitesmoke;">
-			
-			<div class="col-md-12" style="min-height: 300px;">
-				<br>
-				<!--Show Job Notifications list-->
-				<div class="row" style="overflow-x: auto; background-color: white;">
-                    <table class="table table-striped table-hover data-table">
-                    	<thead>
-                    		<tr>
-                    			<th>No</th>
-                    			<th>Foto Talent</th>
-                    			<th>Nama Talent</th>
-                    			<th>Kontak Talent</th>
-                    			<th>Keterangan</th>
-                    			<th>Status</th>
-                    			<th>Tanggal</th>
-                    		</tr>
-                    	</thead>
-
-                    	<tbody>
+                    <tbody>
                     	<?php
                     		foreach ($job_notifications as $key => $notification) {
                     	?>
                     		<tr>
-                    			<td>1</td>
+                    			<td><?php echo $key+1; ?></td>
                     			<td>
                                    <?php
                                         if ($notification->foto_profil != "") {
@@ -60,7 +56,6 @@
                     					echo '<br>';
                     					echo countAge($notification->tanggal_lahir) . ' tahun';
                     				?>
-                    				<!-- Laki-laki <br> Belum menikah <br> 24 tahun -->
                     			</td>
                     			<td><?php echo displayNotificatioonStatus($notification->notification_status); ?></td>
                     			<td><?php echo displayDate($notification->notification_date); ?></td>
@@ -68,22 +63,18 @@
                     	<?php
                     		}
                     	?>
-                    	</tbody>
-                    </table>
-				</div>
-
-				<br>
+                    </tbody>
+               </table>
 			</div>
 
+			<br>
 		</div>
-	</div>
-
-	<div class="col-lg-1"></div>
+         
+     </div>
+     <br>
+     <br>
+     <br>
 </div>
-<br>
-<br>
-<br>
-
 <script type="text/javascript">
 	$(function () {
 		
