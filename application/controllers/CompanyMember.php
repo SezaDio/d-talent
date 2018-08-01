@@ -710,7 +710,7 @@ class CompanyMember extends CI_Controller
 		$this->load->model('account/UserModel');
 
 		$id_company = $this->session->userdata('id_company');
-
+		
 		$data['company_name'] = $this->session->userdata('company_name');
 
 		$data['company_job'] = $this->CompanyJobVacancyModel->detail($id_company, $id_job);

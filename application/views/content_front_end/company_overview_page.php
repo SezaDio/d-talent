@@ -8,7 +8,11 @@
 				<!--Section Cover Company-->
 				<div class="row">
 					<div class="col-md-12">
-						<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCoverCompany->company_cover;?>');"></figure>
+						<?php if($dataCoverCompany->company_cover != "") {?>
+						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCoverCompany->company_cover;?>');"></figure>
+						<?php } else{ ?>
+						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
+						<?php }?>
 
 						<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 0; width: 30px; height: 30px;">
 							<a href="#!" data-target=".modal-cover-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
@@ -23,7 +27,12 @@
 						<p style="font-size: 1.3em;"><strong>Company Name & Logo</strong></p>
 						<div class="row">
 							<div class="col-md-3" style="padding-top: 15px;">
-								<figure class="image-bg" style="border: solid 2px lightgray; background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<?php if($dataLogoCompany->company_logo != "") {?>
+								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<?php } else{ ?>
+								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+								<?php }?>
+
 								<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 15px; width: 30px; height: 30px;">
 									<a href="#!" data-target=".modal-logo-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
 								</div>

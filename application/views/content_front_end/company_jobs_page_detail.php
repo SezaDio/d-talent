@@ -1,12 +1,15 @@
 <?php
-	// $this->load->helper('text');
 	$this->load->helper('custom');
 ?>
 
 <div class="container" style="padding-top: 30px; padding-bottom: 50px;">
 
 	<div class="bg-company">
-		<figure class="image-bg" style="background-color: #ccc"></figure>
+		<?php if($company_job->company_cover != "") {?>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_job->company_cover;?>');"></figure>
+		<?php } else{ ?>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
+		<?php }?>
 	</div>
 	
 	<!-- konten -->
@@ -14,7 +17,11 @@
 		<div class="company-profile card">
 			<div class="card-body row">
 				<div class="fit-content col-xs-4 col-md-2">
-					<figure class="image-bg"></figure>
+					<?php if($company_job->company_logo != "") {?>
+					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_job->company_logo;?>');"></figure>
+					<?php } else{ ?>
+					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+					<?php }?>
 				</div>
 				<div class="fit-content col-xs-8 col-md-10">
 					<h3 class="vacancy-title"><?php echo $company_job->job_title; ?></h3>

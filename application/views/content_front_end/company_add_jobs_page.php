@@ -227,4 +227,19 @@
         function delete_field(z){
 			document.getElementById('field_'+z+'').remove();
 		}
+
+		// validate form
+        $('form').on('submit', function(e) {
+        	var job_date_start  = $('input[name="job_date_start"]').val();
+        	var job_date_end 	= $('input[name="job_date_end"]').val();
+        	
+        	if (job_date_end < job_date_start) {
+        		e.preventDefault();
+        		alert('Tanggal akhir tidak boleh lebih kecil dari tanggal awal');
+        		// scroll
+				$('html, body').animate({
+			        scrollTop: $("input[name=job_date_end]").offset().top - 155
+			    }, 200);
+        	}
+        });
 	</script>

@@ -10,24 +10,30 @@
 			<div class="col-md-12" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey;">
 				<!--COver/background picture-->
 				<div class="row">
+					<div class="col-md-12" style="padding: 0;">
 					<?php
 						if ($dataCompany->company_cover != "") {
 					?>
-					<div class="col-md-12" style="padding: 0;">
-
-						<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_cover;?>');"></figure>
-
-					</div>
+						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_cover;?>');"></figure>
+					<?php
+						} else{
+					?>
+						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
 					<?php
 						}
 					?>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12" style="background-color: white; padding: 30px;">
 						<div class="row">
 							<!--Company picture-->
 							<div class="col-md-3" style="padding-top: 15px;">
-								<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_logo;?>');"></figure>
+								<?php if($dataCompany->company_logo != "") {?>
+								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCompany->company_logo;?>');"></figure>
+								<?php } else{ ?>
+								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+								<?php }?>
 							</div>
 
 							<!--Nama, Bidang, dan tombol manage dan see jobs -->

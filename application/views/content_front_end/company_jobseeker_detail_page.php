@@ -12,7 +12,7 @@
 	<?php
 		} else {
 	?>
-		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-bg-default.jpg'); ?>');"></figure>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
 	<?php
 		}
 	?>
