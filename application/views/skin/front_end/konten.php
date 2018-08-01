@@ -3,20 +3,21 @@
       <div>   
         <div class="row">
           <div class="col-md-12">
+      <!-- desktop version -->
 			<div id="carouselExampleIndicators" class="carousel slide big-slider" data-ride="carousel">
 				<ol class="carousel-indicators">
 				  <?php 
             $i=0;
-  				  foreach($listSlider as $slider)
+  				  foreach($listSlider as $key => $slider)
             { ?>
-				      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
+				      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i;?>" class="<?php echo ($key==0 ? 'active' : ''); ?>"></li>
 				<?php $i++; 
             } ?>
 				</ol>
 				<div class="carousel-inner " role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
-				  <?php foreach($listSlider as $slider){ ?>
-				  <div class="carousel-item <?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
+				  <?php foreach($listSlider as $key => $slider){ ?>
+				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
 					<div class="carousel-caption d-none d-md-block">
 					  <h3><?php //echo $slider['judul_slider'];?></h3>
 					  <p><?php //echo $slider['deskripsi'];?></p>
@@ -35,17 +36,19 @@
 				  <span class="sr-only">Next</span>
 				</a>
 			</div>
+
+      <!-- mobile version -->
 			<div id="carouselExampleIndicators2" class="carousel slide  small-slider" data-ride="carousel">
 				<ol class="carousel-indicators">
 				  <?php $i=0;
-				  foreach($listSliderSmall as $slider){ ?>
-				  <li data-target="#carouselExampleIndicators2" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
+				  foreach($listSliderSmall as $key => $sliderSmall){ ?>
+				  <li data-target="#carouselExampleIndicators2" data-slide-to="<?php echo $i;?>" class="<?php echo ($key==0 ? 'active' : ''); ?>"></li>
 				  <?php $i++; } ?>
 				</ol>
 				<div class="carousel-inner" role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
-				  <?php foreach($listSliderSmall as $sliderSmall){ ?>
-				  <div class="carousel-item <?php if($sliderSmall['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$sliderSmall['path_gambar'])?>)">
+				  <?php foreach($listSliderSmall as $key => $sliderSmall){ ?>
+				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$sliderSmall['path_gambar'])?>)">
 					<div class="carousel-caption d-none d-md-block">
 					  <h3><?php //echo $slider['judul_slider'];?></h3>
 					  <p><?php //echo $slider['deskripsi'];?></p>
