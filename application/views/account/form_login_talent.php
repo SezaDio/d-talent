@@ -2,6 +2,12 @@
 <html>
 	<head>
 		<title>Talent Log In | D-Talent</title>
+
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta name="keywords" content="Bootstrap, Parallax, Template, Registration, Landing">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 		<script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.js'); ?>"></script>
 		<link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 		<link href="<?php echo base_url('asset/bootstrap/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">
@@ -50,6 +56,11 @@
 				</div>
 
 				<div class="col-lg-4" style="padding: 20px; background: white; border: solid 1px lightgray; border-radius: 5px; box-shadow: 5px 10px 12px lightgrey;">
+					<div class="row">
+						<div class="col-md-12" style="text-align: center;">
+							<img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/>
+						</div>
+					</div>
 					<div class="omb_login">	
 						<div class="row omb_loginOr">
 							<div class="col-md-12">

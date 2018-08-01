@@ -5,18 +5,21 @@
           <div class="col-md-12">
 			<div id="carouselExampleIndicators" class="carousel slide big-slider" data-ride="carousel">
 				<ol class="carousel-indicators">
-				  <?php $i=0;
-				  foreach($listSlider as $slider){ ?>
-				  <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
-				  <?php $i++; } ?>
+				  <?php 
+            $i=0;
+  				  foreach($listSlider as $slider)
+            { ?>
+				      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
+				<?php $i++; 
+            } ?>
 				</ol>
 				<div class="carousel-inner " role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
 				  <?php foreach($listSlider as $slider){ ?>
 				  <div class="carousel-item <?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
 					<div class="carousel-caption d-none d-md-block">
-					  <h3><?php echo $slider['judul_slider'];?></h3>
-					  <p><?php echo $slider['deskripsi'];?></p>
+					  <h3><?php //echo $slider['judul_slider'];?></h3>
+					  <p><?php //echo $slider['deskripsi'];?></p>
 					</div>
 				  </div>
 				  <?php } ?>
@@ -35,17 +38,17 @@
 			<div id="carouselExampleIndicators2" class="carousel slide  small-slider" data-ride="carousel">
 				<ol class="carousel-indicators">
 				  <?php $i=0;
-				  foreach($listSlider as $slider){ ?>
+				  foreach($listSliderSmall as $slider){ ?>
 				  <li data-target="#carouselExampleIndicators2" data-slide-to="<?php echo $i;?>" class="<?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>"></li>
 				  <?php $i++; } ?>
 				</ol>
 				<div class="carousel-inner" role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
-				  <?php foreach($listSlider as $slider){ ?>
-				  <div class="carousel-item <?php if($slider['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/small_'.$slider['path_gambar'])?>)">
+				  <?php foreach($listSliderSmall as $sliderSmall){ ?>
+				  <div class="carousel-item <?php if($sliderSmall['id_slider']==$frontSlider->id_slider){?>active<?php } ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$sliderSmall['path_gambar'])?>)">
 					<div class="carousel-caption d-none d-md-block">
-					  <h3><?php echo $slider['judul_slider'];?></h3>
-					  <p><?php echo $slider['deskripsi'];?></p>
+					  <h3><?php //echo $slider['judul_slider'];?></h3>
+					  <p><?php //echo $slider['deskripsi'];?></p>
 					</div>
 				  </div>
 				  <?php } ?>
@@ -437,7 +440,7 @@
                 <i class="lnr lnr-briefcase"></i>
               </div>            
               <div class="fact-count">
-                <h3><span class="counter">699</span></h3>
+                <h3><span class="counter"><?php echo $jum_company_member; ?></span></h3>
                 <h4>Company</h4>
               </div>
             </div>
@@ -448,7 +451,7 @@
                 <i class="lnr lnr-user"></i>
               </div>              
               <div class="fact-count">
-                <h3><span class="counter">203</span></h3>
+                <h3><span class="counter"><?php echo $jum_talent_member; ?></span></h3>
                 <h4>Jobseeker</h4>
               </div>
             </div>
@@ -459,7 +462,7 @@
                 <i class="lnr lnr-heart"></i>
               </div>              
               <div class="fact-count">
-                <h3><span class="counter">1689</span></h3>
+                <h3><span class="counter"><?php echo $jum_job_vacancy; ?></span></h3>
                 <h4>Vacancy</h4>
               </div>
             </div>
@@ -489,8 +492,6 @@
                               $isi=strip_tags($testimoni['deskripsi']);
                               $isi=substr($isi,0,200);
                               echo $isi." ..."; ?>
-
-                              <a href="<?php //$url = strtolower(str_replace(" ","-",$event['nama_coming'])); echo base_url('/'.$event['id_coming'].'?ev='.$url); ?>" class="readmore"><strong>Read More</strong></a>
                     <?php } 
                           else
                           {
@@ -519,19 +520,20 @@
               <div class="contact-us">
                 <h3>Contact With us</h3>
                 <div class="contact-address">
-                  <p>Centerville Road, DE 19808, US </p>
+                  <p>Ruko Mulawarman Selatan Raya No. 118 A <br>Tembalang, Semarang </p>
                   <p class="phone">Phone: <span>(0812-3921-2006)</span></p>
                   <p class="email">E-mail: <span>(company.service@d-talent.id)</span></p>
                 </div>
+                <!--
                 <div class="social-icons">
                   <ul>
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>     
             <div class="col-lg-6 col-sm-6 col-xs-12">

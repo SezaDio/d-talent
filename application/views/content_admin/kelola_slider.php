@@ -6,7 +6,7 @@
                     </h1>
 					
                     <ol class="breadcrumb">
-                        <li class="active"><i class="fa fa-dashboard"></i>Slider</li>
+                        <li class="active"><i class="fa fa-dashboard"></i>Big Slider</li>
                     </ol>
                 </section>
 
@@ -49,9 +49,6 @@
 														<br><br>
 														<?php echo $item['judul_slider']; ?>
 														<br><br>
-
-														<!-- Tombol lihat detail -->
-														<a href="<?php echo site_url('KelolaSlider/edit_slider/'.$item['id_slider']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
 														
 														<!-- Tombol Hapus -->
 														<a href="<?php echo site_url('KelolaSlider/delete_slider/'.$item['id_slider']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>

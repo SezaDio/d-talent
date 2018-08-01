@@ -14,7 +14,8 @@ class KelolaSlider extends CI_Controller {
 
 	}
 
-	public function index()
+	//Show big slider page
+	public function show_big_slider_page()
 	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('slider_models/SliderModels');
 		$data['listSlider'] = $this->SliderModels->get_slider();
@@ -24,6 +25,25 @@ class KelolaSlider extends CI_Controller {
 		$this->load->view('content_admin/kelola_slider', $data);
 		$this->load->view('skin/admin/footer_admin');
 		} else {
+			redirect(site_url('Account'));
+		}
+	}
+
+	//Show big slider page
+	public function show_small_slider_page()
+	{	
+		if($this->session->userdata('admin_logged_in'))
+		{
+			$this->load->model('slider_models/SliderModels');
+			$data['listSlider'] = $this->SliderModels->get_slider_small();
+				
+			$this->load->view('skin/admin/header_admin');
+			$this->load->view('skin/admin/nav_kiri');
+			$this->load->view('content_admin/kelola_slider_small', $data);
+			$this->load->view('skin/admin/footer_admin');
+		} 
+		else
+		{
 			redirect(site_url('Account'));
 		}
 	}
@@ -131,6 +151,7 @@ class KelolaSlider extends CI_Controller {
 						'judul_slider'=>$this->input->post('judul_slider'),
 						'deskripsi'=>$deskripsi,
 						'status'=>1,
+						'type'=>1,
 						'path_gambar'=> NULL
 					);
 					$data['dataSlider'] = $data_slider;
@@ -165,6 +186,83 @@ class KelolaSlider extends CI_Controller {
 				$this->load->view('skin/admin/header_admin');
 				$this->load->view('skin/admin/nav_kiri');
 				$this->load->view('content_admin/tambah_slider',$data);
+				$this->load->view('skin/admin/footer_admin');
+			}     
+		} 
+		else 
+		{
+			redirect(site_url('Account'));
+		}
+	}
+
+	//Function to add slider image
+	function tambah_small_slider_check() 
+	{
+		if ($this->session->userdata('admin_logged_in'))
+		{
+	        $this->load->model('slider_models/SliderModels');
+			$this->load->library('form_validation');
+			$tambah = $this->input->post('submit');
+			$data['slider'] = $this->SliderModels->get_slider_small();
+			
+			if ($tambah == 1) 
+			{
+				$this->form_validation->set_rules('judul_slider', 'Judul Slider', 'required');
+				$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+				$deskripsi = $this->input->post('deskripsi');
+
+				//Mengambil filename gambar untuk disimpan
+				$nmfile = "small_file_".time();
+				$config['upload_path'] = './asset/img/upload_img_slider/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size'] = '4000'; //kb
+				$config['file_name'] = $nmfile;
+
+				//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+				if (($this->form_validation->run() == TRUE) AND (!empty($_FILES['filefoto']['name'])))
+				{
+					$gbr = NULL;
+
+					$data_slider = array(
+						'judul_slider'=>$this->input->post('judul_slider'),
+						'deskripsi'=>$deskripsi,
+						'status'=>1,
+						'type'=>2,
+						'path_gambar'=> NULL
+					);
+					$data['dataSlider'] = $data_slider;
+
+					$this->load->library('upload', $config);
+					if($this->upload->do_upload('filefoto'))
+					{
+						$gbr = $this->upload->data();
+						$data_slider['path_gambar'] = $gbr['file_name'];
+						$this->db->insert('slider', $data_slider);
+						$this->session->set_flashdata('msg_berhasil', $data_slider['path_gambar']);
+						redirect('KelolaSlider/show_small_slider_page');
+					}
+					else
+					{
+						$this->session->set_flashdata('msg_gagal', 'Data Slider gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+						
+						$this->load->view('skin/admin/header_admin');
+						$this->load->view('skin/admin/nav_kiri');
+						$this->load->view('content_admin/tambah_slider_small', $data);
+						$this->load->view('skin/admin/footer_admin');
+					}
+				}
+				else
+				{
+					$this->session->set_flashdata('msg_gagal', 'Data Slider gagal ditambahkan');
+					$this->tambah_small_slider_check();
+				}
+			}
+			else
+			{
+				$this->load->view('skin/admin/header_admin');
+				$this->load->view('skin/admin/nav_kiri');
+				$this->load->view('content_admin/tambah_slider_small',$data);
 				$this->load->view('skin/admin/footer_admin');
 			}     
 		} 

@@ -1,8 +1,8 @@
+<div class="container">
 	<div class="row">
-		
 		<div class="col-lg-1"></div>
 		
-		<div class="col-lg-10" style="background: whitesmoke; padding: 20px; width: 100%;">
+		<div class="col-lg-10" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 			<form role="form" enctype="multipart/form-data" method="post" action="<?php echo site_url('CompanyMember/update_data_company/');?>">
 				<input type="hidden" required name="id_company" class="form-control" value="<?php echo htmlspecialchars($dataCompany->id_company); ?>">
 				<!--Section Cover Company-->
@@ -23,7 +23,7 @@
 						<p style="font-size: 1.3em;"><strong>Company Name & Logo</strong></p>
 						<div class="row">
 							<div class="col-md-3" style="padding-top: 15px;">
-								<figure class="image-bg" style="background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<figure class="image-bg" style="border: solid 2px lightgray; background-size: cover; background-position: center; width: 100%; height: 200px; background-repeat: no-repeat; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
 								<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 15px; width: 30px; height: 30px;">
 									<a href="#!" data-target=".modal-logo-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
 								</div>
@@ -248,6 +248,7 @@
 
 		<div class="col-lg-1"></div>
 	</div>
+</div>
 	<br><br>
 
 	<!-- modal Update Cover Picture -->

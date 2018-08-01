@@ -7,10 +7,26 @@
 			parent::_construct();
 		}
 
-		//Mengambil data slider
+		//Mengambil data slider (Besar)
 		function get_slider()
 		{
-			$query = $this->db->query("SELECT * FROM `slider`");
+			$query = $this->db->query("SELECT * FROM `slider` WHERE type=1");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+
+		//Mengambil data slider (Kecil)
+		function get_slider_small()
+		{
+			$query = $this->db->query("SELECT * FROM `slider` WHERE type=2");
 		
 			$indeks = 0;
 			$result = array();
