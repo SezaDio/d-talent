@@ -6,7 +6,17 @@
 <div class="container">
 
 	<div class="bg-talent">
+	<?php
+		if ($talent->foto_sampul != "") {
+	?>
 		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+	<?php
+		} else {
+	?>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-bg-default.jpg'); ?>');"></figure>
+	<?php
+		}
+	?>
 		<div class="profile-edit">
 			<a href="<?php echo site_url('talent/profile/edit/');?>">
 				<i class="fa fa-pen"></i>
@@ -16,7 +26,17 @@
 
 	<div class="profile">
 		<div class="img-talent">
+		<?php
+			if ($talent->foto_profil != "") {
+		?>
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
+		<?php
+			} else {
+		?>
+			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
+		<?php
+			}
+		?>
 		</div>
 
 		<div class="card">

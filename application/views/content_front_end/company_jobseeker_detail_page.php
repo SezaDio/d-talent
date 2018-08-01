@@ -4,14 +4,33 @@
 ?>
 
 <div class="container">
-
 	<div class="bg-talent">
+	<?php
+		if ($talent->foto_sampul != "") {
+	?>
 		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+	<?php
+		} else {
+	?>
+		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-bg-default.jpg'); ?>');"></figure>
+	<?php
+		}
+	?>
 	</div>
 
 	<div class="profile">
 		<div class="img-talent">
+		<?php
+			if ($talent->foto_profil != "") {
+		?>
 			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
+		<?php
+			} else {
+		?>
+			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
+		<?php
+			}
+		?>
 		</div>
 
 		<div class="card">
@@ -19,9 +38,9 @@
 				<div style="padding: 10px;">
 					<div class="text-center profile-attribute">
 						<!-- Name | Age | City -->
-						<span><i class="fa fa-user"></i> <?php echo $talent->nama; ?></span> |
-						<span><i class="fa fa-birthday-cake"></i> <?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
-						<span>
+						<span class="space"><i class="fa fa-user"></i> <?php echo $talent->nama; ?></span> |
+						<span class="space"><i class="fa fa-birthday-cake"></i> <?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
+						<span class="space">
 							<?php 
 								if ($talent->jenis_kelamin == 1)
 								{ ?>
@@ -34,7 +53,7 @@
 							
 								<?php echo displayGender($talent->jenis_kelamin); ?>	
 						</span> |
-						<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
+						<span class="space"><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
 						<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
 					</div>
 					<br>
@@ -55,9 +74,9 @@
 					<div class="contact-talent">
 						<hr style="border: solid 1px lightgray">
 						<div class="text-center">
-							<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
-							<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
-							<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
+							<span class="space"><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
+							<span class="space"><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
+							<span class="space"><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
 						</div>
 						<hr style="border: solid 1px lightgray">
 					</div>

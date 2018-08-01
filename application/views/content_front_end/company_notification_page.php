@@ -11,7 +11,7 @@
 			<div class="col-md-12" style="min-height: 300px;">
 				<br>
 				<!--Show Job Notifications list-->
-				<div class="row">
+				<div class="row" style="overflow-x: auto; background-color: white;">
                     <table class="table table-striped table-hover data-table">
                     	<thead>
                     		<tr>
@@ -32,7 +32,17 @@
                     		<tr>
                     			<td>1</td>
                     			<td>
-                    				<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $notification->foto_profil;?>');"></figure>
+                                   <?php
+                                        if ($notification->foto_profil != "") {
+                                   ?>
+                                        <figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $notification->foto_profil;?>');"></figure>
+                                   <?php
+                                        } else {
+                                   ?>
+                                        <figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
+                                   <?php
+                                        }
+                                   ?>
                     			</td>
                     			<td><?php echo $notification->nama; ?></td>
                     			<td>

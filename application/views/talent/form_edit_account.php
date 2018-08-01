@@ -126,7 +126,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-default" data-dismiss="modal">Cancel</button>
-					<input type="submit" value="Kirim" class="btn btn-outline-black">
+					<input type="submit" value="Simpan" class="btn btn-outline-black">
 				</div>
 			</form>
 		</div><!-- /.modal-content -->
