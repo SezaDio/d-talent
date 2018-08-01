@@ -76,5 +76,22 @@
 			$query = $this->db->get_where('result_passion', array('id_talent' => $id_talent));
 			return $query->row();
 		}
+		
+		
+		public function get_all_talent($limit_per_page, $start_index)
+		{
+			$this->db->select('talent.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+			$this->db->from('talent');
+			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = talent.id_provinsi', 'left');
+			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = talent.id_kota', 'left');
+			$this->db->limit($limit_per_page, $start_index);
+
+			return $this->db->get()->result();
+		}
+		
+		public function get_total() 
+	    {
+	        return $this->db->count_all("talent");
+	    }
 
 	}
