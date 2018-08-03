@@ -20,11 +20,7 @@
 					  	<?php
 					  		}
 						?>
-						<?php
-					    	if($this->session->has_userdata('msg_success')) 
-					    	{
-					    		unset($_SESSION['msg_success']); ?>
-								
+						
 					    		<br><br>
 								<div class="row">
 									<div class="col-md-6" style="min-height: 745px; background-color: white; border: solid 1px lightgray; box-shadow: 0px 0px 15px lightgrey;">
@@ -62,7 +58,7 @@
 								  <?php } ?>
 								 	</div>
 								</div>
-					  <?php } ?>
+					  
 						
 					</div>
 				</div>

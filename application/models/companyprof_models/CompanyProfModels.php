@@ -24,7 +24,7 @@
 		//get big slider
 		function get_slider()
 		{
-			$query = $this->db->query("SELECT * FROM `slider` WHERE tipe=1 ORDER BY id_slider DESC");
+			$query = $this->db->query("SELECT * FROM `slider` WHERE type=1 AND status=1 ORDER BY id_slider DESC");
 
 			$indeks = 0;
 			$result = array();
@@ -40,7 +40,7 @@
 		//Mengambil data slider (Kecil)
 		function get_slider_small()
 		{
-			$query = $this->db->query("SELECT * FROM `slider` WHERE tipe=2 ORDER BY id_slider DESC");
+			$query = $this->db->query("SELECT * FROM `slider` WHERE type=2 AND status=1 ORDER BY id_slider DESC");
 		
 			$indeks = 0;
 			$result = array();

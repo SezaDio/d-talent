@@ -278,7 +278,7 @@
 				    		</td>
 				    		<td>
 				    			<?php
-				    				echo "- " . $result_character_sub_title . " -<br>";
+				    				echo "- <b>" . $result_character_sub_title . "</b> -<br>";
 				    				echo $result_character_detail;
 				    			?>
 				    		</td>
@@ -306,6 +306,108 @@
 				    	</tr>
 				<?php
 					} 	//./passion
+				?>
+
+				<?php
+					if($result_work_attitude != null) {
+				?>
+						<tr>
+				    		<td class="periode">
+				    			Tes Work Attitude
+				    			<br>
+				    			<?php
+				    				echo displayDate($result_work_attitude->test_date);
+				    			?>
+				    		</td>
+				    		<td>
+				    			<?php
+				    				echo "- <b>" . $result_work_attitude_title . "</b> -<br><br>";
+				    				echo $result_work_attitude_detail;
+				    			?>
+				    		</td>
+				    	</tr>
+				<?php
+					} 	//./work attitude
+				?>
+
+				<?php
+					if($result_soft_skill != null) {
+				?>
+					<?php
+						foreach ($result_soft_skill as $item) 
+						{ ?>
+							<tr>
+					    		<td class="periode">
+					    			Tes Soft Skill
+					    			<br>
+					    			<?php
+					    				echo displayDate($item['test_date']);
+					    			?>
+					    		</td>
+					    		<td>
+					    			<?php
+					    				foreach($result_soft_skill as $item)
+					    				{ ?>
+					    					<table style="border: none;">
+						    					<tr>
+						    						<td>Pengambilan Keputusan</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['pengambilan_keputusan']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Tanggung Jawab</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['pengambilan_keputusan']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Integritas</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['integritas']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Resiliensi</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['resiliensi']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Keinginan Belajar</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['keinginan_belajar']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Komunikasi</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['komunikasi']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Sikap Positif</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['sikap_positif']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Antusiasme</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['antusiasme']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Kerja Tim</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['kerja_tim']; ?></td>
+						    					</tr>
+						    					<tr>
+						    						<td>Penyelesaian Masalah</td>
+						    						<td>:</td>
+						    						<td><?php echo $item['penyelesaian_masalah']; ?></td>
+						    					</tr>
+						    				</table>
+					    		  <?php } ?>
+					    			<a href="<?php echo site_url('Talent/show_result_soft_skill/'.$item['id_talent']);?>">
+					    				<button style="width: 200px;" type="button" class="button button1"><i class="fa fa-eye"></i> Lihat Detail</button>
+					    			</a>
+					    		</td>
+					    	</tr>	
+				  <?php } 
+					} 	//./work attitude
 				?>
 
 				    </table>

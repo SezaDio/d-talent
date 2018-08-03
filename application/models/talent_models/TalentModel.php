@@ -76,8 +76,39 @@
 			$query = $this->db->get_where('result_passion', array('id_talent' => $id_talent));
 			return $query->row();
 		}
+
+		public function findWorkAttitudeTest($id_talent)
+		{
+			$query = $this->db->get_where('result_work_attitude', array('id_talent' => $id_talent));
+			return $query->row();
+		}
+
+		function get_soft_skill($id_talent)
+		{
+			$query = $this->db->query("SELECT * FROM `result_soft_skill` WHERE id_talent=$id_talent");
 		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
 		
+			return $result;
+		}
+
+		//Select slider by id slider
+		function select_soft($id_talent)
+		{
+			$this->db->select('*');
+			$this->db->from('result_soft_skill');
+			$this->db->where('id_talent',$id_talent);
+
+			return $this->db->get();
+		}
+		
+		//Talent List filter
 		public function get_all_talent($limit_per_page, $start_index)
 		{
 			$this->db->select('talent.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');

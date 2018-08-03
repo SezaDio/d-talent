@@ -54,7 +54,7 @@ class KelolaSlider extends CI_Controller {
 		$this->load->model('slider_models/SliderModels');
 		$this->SliderModels->delete_slider($id_slider);
 
-		$this->index();
+		$this->show_big_slider_page();
 	}
 	
 	//Publish
@@ -64,21 +64,19 @@ class KelolaSlider extends CI_Controller {
 		$this->load->model('slider_models/SliderModels');
 		$this->SliderModels->publish_slider($id_slider);
 
-		$this->index();
+		$this->show_big_slider_page();
 	}
 	
 	//Unpublish
 	public function unpublish_slider()
 	{
 		$id_slider = $_POST['idSlider'];
-		//$this->load->model('slider_models/SliderModels');
-		//$this->SliderModels->unpublish_slider($id_slider);
 		$data_slider=array(
 								'status'=>2
 								);
 		$this->db->update('slider', $data_slider, array('id_slider'=>$id_slider));
 
-		$this->index();
+		$this->show_big_slider_page();
 	}
 	
 	//Publish
@@ -163,7 +161,7 @@ class KelolaSlider extends CI_Controller {
 						$data_slider['path_gambar'] = $gbr['file_name'];
 						$this->db->insert('slider', $data_slider);
 						$this->session->set_flashdata('msg_berhasil', $data_slider['path_gambar']);
-						redirect('KelolaSlider');
+						redirect('KelolaSlider/show_big_slider_page');
 					}
 					else
 					{
