@@ -201,11 +201,11 @@ class TalentTest extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		$this->form_validation->set_rules('realistis[]', '', 'required');
-		//$this->form_validation->set_rules('investigasi[]', '', 'required');
-		//$this->form_validation->set_rules('artistik[]', '', 'required');
-		//$this->form_validation->set_rules('sosial[]', '', 'required');
-		//$this->form_validation->set_rules('enterpreuner[]', '', 'required');
-		//$this->form_validation->set_rules('konvensional[]', '', 'required');
+		$this->form_validation->set_rules('investigasi[]', '', 'required');
+		$this->form_validation->set_rules('artistik[]', '', 'required');
+		$this->form_validation->set_rules('sosial[]', '', 'required');
+		$this->form_validation->set_rules('enterpreuner[]', '', 'required');
+		$this->form_validation->set_rules('konvensional[]', '', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');

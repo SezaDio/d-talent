@@ -247,6 +247,11 @@ class Talent extends CI_Controller {
 				$upload_data_sampul = $this->upload->data();
 				$foto_sampul_filename = $upload_data_sampul['file_name'];
 			}
+			else
+			{
+				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				redirect('talent/profile/edit/');
+			}
 		}
 		// upload images to path for foto_profil
 		if( !empty($_FILES['foto_profil']['name']) ) {
@@ -264,11 +269,22 @@ class Talent extends CI_Controller {
 			$this->upload->initialize($config_foto_profil);
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_profil')) {
-				if (file_exists($upload_path . $foto_profil_filename)) {
+				if (file_exists($upload_path . $foto_profil_filename)) 
+				{
+					$upload_data_profil = $this->upload->data();
+					$foto_profil_filename = $upload_data_profil['file_name'];
 					unlink($upload_path . $foto_profil_filename);
 				}
-				$upload_data_profil = $this->upload->data();
-				$foto_profil_filename = $upload_data_profil['file_name'];
+				else
+				{
+					$upload_data_profil = $this->upload->data();
+					$foto_profil_filename = $upload_data_profil['file_name'];
+				}
+			}
+			else
+			{
+				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				redirect('talent/profile/edit/');
 			}
 		}
 
