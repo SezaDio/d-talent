@@ -2,11 +2,13 @@
 	$this->load->helper('custom');
 ?>
 <div class="container">
-	<h3 class="page-title"><?php echo $page_title; ?></h3>
+	
 
 	<div class="cv col-md-8 col-md-offset-2" style="min-height: 50vh;">
-		<div class="card">
+		<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
+			<h3 class="page-title" style="margin-bottom: unset; text-align: center; padding-top: 20px;"><?php echo $page_title; ?></h3>
 			<form action="<?php echo site_url('talent/cv-course/update/' .  $cv_course->id_talent_cv_course); ?>" method="post">
+				<hr style="margin-bottom: 15px; border: solid 1px black;">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';

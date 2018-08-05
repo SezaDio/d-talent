@@ -1,7 +1,7 @@
 <div class="online-test work-attitude" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
 		<h3 class="text-center"><strong><u>Tes Work Attitude</u></strong></h3>
-		<div class="card center-block">
+		<div class="card center-block" style="box-shadow: 1px 5px 20px lightgrey;">
 			<form action="<?php echo site_url('talent/test-work-attitude/submit'); ?>" method="post">
 				<div class="card-body">
 					<div class="test page-1">
