@@ -1,7 +1,7 @@
 <div class="test-result" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
 		<h3 class="text-center">Hasil Tes Minat dan Bakat</h3>
-		<div class="card center-block">
+		<div class="card center-block" style="box-shadow: 1px 5px 20px lightgrey;">
 			<div class="card-body">
 				<div class="test">
 				<?php

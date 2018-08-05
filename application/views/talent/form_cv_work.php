@@ -2,11 +2,13 @@
 	// $this->load->library('form_validation');	==> loaded on talent header
 ?>
 <div class="container">
-	<h3 class="page-title"><?php echo $page_title; ?></h3>
+	
 
 	<div class="cv col-md-8 col-md-offset-2">
-		<div class="card">
+		<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
+			<h3 class="page-title" style="margin-bottom: unset; text-align: center; padding-top: 20px;"><?php echo $page_title; ?></h3>
 			<form action="<?php echo site_url('talent/cv-work-experience/store'); ?>" method="post">
+				<hr style="border: solid 1px black; margin-bottom: 15px;">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';

@@ -1,6 +1,6 @@
 <div class="access-denied" style="padding-top: 15px; padding-bottom: 15px; min-height: 500px;">
 	<div class="container">
-		<div class="card center-block">
+		<div class="card center-block" style="box-shadow: 1px 5px 20px lightgrey;">
 			<div class="card-body">
 				<div class="test">
 					<p class="text-center">

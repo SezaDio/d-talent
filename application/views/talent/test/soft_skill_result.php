@@ -4,7 +4,7 @@
 		<div class="row" style="padding: 10px;">
 			<div class="col-md-1"> </div>
 			
-			<div class="col-md-10"> 
+			<div class="col-md-10" style="box-shadow: 1px 5px 20px lightgrey;"> 
 				<div class="row">
 					<div class="col-md-12">
 						

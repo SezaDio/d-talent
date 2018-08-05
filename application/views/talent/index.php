@@ -4,94 +4,98 @@
 ?>
 
 <div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="bg-talent" style="box-shadow: 1px 5px 20px lightgrey;">
+			<?php
+				if ($talent->foto_sampul != "") {
+			?>
+				<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+			<?php
+				} else {
+			?>
+				<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
+			<?php
+				}
+			?>
+				<div class="profile-edit">
+					<a href="<?php echo site_url('talent/profile/edit/');?>">
+						<i class="fa fa-pen"></i>
+					</a>
+				</div>
+			</div>
 
-	<div class="bg-talent">
-	<?php
-		if ($talent->foto_sampul != "") {
-	?>
-		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
-	<?php
-		} else {
-	?>
-		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
-	<?php
-		}
-	?>
-		<div class="profile-edit">
-			<a href="<?php echo site_url('talent/profile/edit/');?>">
-				<i class="fa fa-pen"></i>
-			</a>
-		</div>
-	</div>
+			<div class="profile">
+				<div class="img-talent">
+				<?php
+					if ($talent->foto_profil != "") {
+				?>
+					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
+				<?php
+					} else {
+				?>
+					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
+				<?php
+					}
+				?>
+				</div>
 
-	<div class="profile">
-		<div class="img-talent">
-		<?php
-			if ($talent->foto_profil != "") {
-		?>
-			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
-		<?php
-			} else {
-		?>
-			<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
-		<?php
-			}
-		?>
-		</div>
+				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
+					<div class="card-body">
+						<div style="padding: 10px;">
+							<div class="text-center profile-attribute">
+								<!-- Name | Age | City -->
+								<span><?php echo $talent->nama; ?></span> |
+								<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
+								<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
+								<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
+								<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
+							</div>
+							<br>
+							<div class="text-justify">
+								<?php echo $talent->tentang_saya; ?>
+							</div>
+							<?php
+								if (!empty($talent->kemampuan)) {
+							?>
+								<div class="text-center job-interest label-colors">
+									<?php echo displaySkills($talent->kemampuan)?>
+								</div>
+							<?php
+								}
+							?>
 
-		<div class="card">
-			<div class="card-body">
-				<div style="padding: 10px;">
-					<div class="text-center profile-attribute">
-						<!-- Name | Age | City -->
-						<span><?php echo $talent->nama; ?></span> |
-						<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
-						<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
-						<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
-						<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
-					</div>
-					<br>
-					<div class="text-justify">
-						<?php echo $talent->tentang_saya; ?>
-					</div>
-					<?php
-						if (!empty($talent->kemampuan)) {
-					?>
-						<div class="text-center job-interest label-colors">
-							<?php echo displaySkills($talent->kemampuan)?>
+							<!-- contact -->
+							<div class="contact-talent">
+								<div class="text-center">
+									<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
+									<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
+									<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
+								</div>
+							</div>
+							<br>
+
+							<div class="center-block fit-content">
+								<div class="dropdown">
+								  <button class="button button2" style="border: solid 2px black;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    CV Section
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="cv">
+								    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>"><i class="fa fa-suitcase"></i> Pengalaman Kerja</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-education/create');?>"><i class="fa fa-graduation-cap"></i> Pendidikan</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>"><i class="fa fa-trophy"></i> Prestasi</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-course/create');?>"><i class="fa fa-certificate"></i> Pelatihan</a></li>
+								  </ul>
+								</div>
+							</div>
+							
 						</div>
-					<?php
-						}
-					?>
-
-					<!-- contact -->
-					<div class="contact-talent">
-						<div class="text-center">
-							<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
-							<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
-							<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
-						</div>
 					</div>
-					<br>
-
-					<div class="center-block fit-content">
-						<div class="dropdown">
-						  <button class="button button2" style="border: solid 2px black;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    CV Section
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="cv">
-						    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>">Pengalaman Kerja</a></li>
-						    <li><a href="<?php echo site_url('talent/cv-education/create');?>">Pendidikan</a></li>
-						    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>">Prestasi</a></li>
-						    <li><a href="<?php echo site_url('talent/cv-course/create');?>">Pelatihan</a></li>
-						  </ul>
-						</div>
-					</div>
-					
 				</div>
 			</div>
 		</div>
+	</div>
 		<br>
 		<br>
 		<!-- konten -->
@@ -100,9 +104,9 @@
 				<?php
 					if($cv_works != null) {
 				?>
-				<div class="card">
+				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3>Pengalaman Kerja</h3>
+				    <h3><i class="fa fa-suitcase"></i> Pengalaman Kerja</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -138,9 +142,9 @@
 				?>
 				<br>
 				<br>
-				<div class="card">
+				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3>Pendidikan</h3>
+				    <h3><i class="fa fa-graduation-cap"></i> Pendidikan</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -183,9 +187,9 @@
 				?>
 				<br>
 				<br>
-				<div class="card">
+				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3>Prestasi</h3>
+				    <h3><i class="fa fa-trophy"></i> Prestasi</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -221,9 +225,9 @@
 				?>
 				<br>
 				<br>
-				<div class="card">
+				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3>Pelatihan</h3>
+				    <h3><i class="fa fa-certificate"></i> Pelatihan</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -259,9 +263,9 @@
 				?>
 				<br>
 				<br>
-				<div class="card online-test">
+				<div class="card online-test" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3>Tes Online</h3>
+				    <h3><i class="fa fa-file"></i> Tes Online</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">

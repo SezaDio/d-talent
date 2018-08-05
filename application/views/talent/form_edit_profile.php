@@ -1,9 +1,10 @@
 <div class="container">
-	<h3 class="page-title"><?php echo $page_title; ?></h3>
 
 	<div class="cv col-md-8 col-md-offset-2">
-		<div class="card">
+		<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
+			<h3 class="page-title" style="margin-bottom: unset; text-align: center; padding-top: 20px;"><?php echo $page_title; ?></h3>
 			<form action="<?php echo site_url('talent/profile/update'); ?>" method="post" enctype="multipart/form-data">
+				<hr style="margin-bottom: 15px; border: solid 1px black;">
 				<?php
                 	if (validation_errors() != "") {
 	                	echo '<div class="alert alert-danger alert-dismissable">';
@@ -16,15 +17,18 @@
 				<div class="form-group">
 					<label>Foto Sampul</label>
 					<p class="text-muted">Ukuran maks. 2 MB. Rasio gambar 5:1.</p>
-
-					<div id="foto_sampul_preview" class="thumbnail fit-content" style="margin-bottom: 10px;">
-						<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+					<div class="row">
+						<div class="col-md-12">
+							<div id="foto_sampul_preview" class="thumbnail fit-content" style="margin-bottom: 10px;">
+								<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+							</div>
+						</div>
 					</div>
 
 					<input type="file" name="foto_sampul" accept="image/*" id="foto_sampul">
 					<input type="hidden" name="old_foto_sampul" value="<?php echo $talent->foto_sampul;?>">
 				</div>
-
+				<hr style="margin-bottom: 15px; margin-top: 15px; border: solid 1px lightgrey;">
 				<div class="form-group">
 					<label>Foto Profil</label>
 					<p class="text-muted">Ukuran maks. 2 MB. Rasio gambar 1:1.</p>
@@ -36,18 +40,18 @@
 					<input type="file" name="foto_profil" accept="image/*" id="foto_profil">
 					<input type="hidden" name="old_foto_profil" value="<?php echo $talent->foto_profil;?>">
 				</div>
-
+				<hr style="margin-bottom: 15px; margin-top: 15px; border: solid 1px lightgrey;">
 				<div class="form-group">
 					<label>Tentang Saya</label>
 					<textarea class="form-control" name="tentang_saya" rows="5"><?php echo $talent->tentang_saya; ?></textarea>
 				</div>
-
+				<hr style="margin-bottom: 15px; margin-top: 15px; border: solid 1px lightgrey;">
 				<div class="form-group">
 					<label>Kemampuan</label>
 					<p class="text-muted">Contoh: Ms. Word, Desain. Pisahkan dengan tanda koma.</p>
 					<textarea class="form-control" name="kemampuan" rows="5"><?php echo $talent->kemampuan; ?></textarea>
 				</div>
-
+				<hr style="margin-bottom: 15px; margin-top: 15px; border: solid 1px lightgrey;">
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
