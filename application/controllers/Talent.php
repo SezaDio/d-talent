@@ -271,15 +271,10 @@ class Talent extends CI_Controller {
 			if($this->upload->do_upload('foto_profil')) {
 				if (file_exists($upload_path . $foto_profil_filename)) 
 				{
-					$upload_data_profil = $this->upload->data();
-					$foto_profil_filename = $upload_data_profil['file_name'];
 					unlink($upload_path . $foto_profil_filename);
 				}
-				else
-				{
-					$upload_data_profil = $this->upload->data();
-					$foto_profil_filename = $upload_data_profil['file_name'];
-				}
+				$upload_data_profil = $this->upload->data();
+				$foto_profil_filename = $upload_data_profil['file_name'];
 			}
 			else
 			{

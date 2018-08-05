@@ -111,6 +111,7 @@ $route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
 $route['talent/signup'] = 'AccountTalent/view_signup';
 
+$route['talent'] = 'Talent/index';
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';
@@ -143,12 +144,23 @@ $route['talent/cv-course/delete/(:num)'] = 'TalentCVCourse/delete/$1';
 
 $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 
+/* test passion */
+$route['talent/test-passion'] 		 = 'TalentTest/showPassion';
+$route['talent/test-passion/submit'] = 'TalentTest/submitPassion';
+
+/* test work attitude */
+$route['talent/test-work-attitude'] 		= 'TalentTest/showWorkAttitude';
+$route['talent/test-work-attitude/submit']	= 'TalentTest/submitWorkAttitude';
+
+/* test soft skill */
+$route['talent/test-soft-skill'] 		= 'TalentTest/showSoftSkill';
+$route['talent/test-soft-skill/submit']	= 'TalentTest/submitSoftSkill';
 
 /* test character */
 $route['talent/test-character'] 		= 'TalentTest/showCharacter';
 $route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
 
-
+$route['talent/test/access-denied'] = 'TalentTest/accessDenied';
 /*================================================================================*/
 
 

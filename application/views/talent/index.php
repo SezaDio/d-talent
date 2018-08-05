@@ -52,7 +52,7 @@
 								<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
 							</div>
 							<br>
-							<div class="text-justify">
+							<div class="text-center">
 								<?php echo $talent->tentang_saya; ?>
 							</div>
 							<?php
@@ -259,7 +259,7 @@
 				?>
 
 				<?php
-					if($result_character != null || $result_passion != null) {
+					if($result_character != null || $result_passion != null || $result_work_attitude != null || $result_soft_skill != null) {
 				?>
 				<br>
 				<br>

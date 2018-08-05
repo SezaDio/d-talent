@@ -55,7 +55,11 @@
                 bottom: 0px;
                 padding-top: 25px;
             }*/
-            .online-test.soft-skill{
+            .online-test{
+                min-height: 550px;
+            }
+            .online-test.soft-skill,
+            .online-test.work-attitude{
                 min-height: 650px;
             }
             .card{
@@ -65,7 +69,9 @@
             .access-denied .card{
                 min-height: 60vh;
             }
-            .soft-skill .card,
+            .soft-skill .card{
+                min-height: 550px;
+            }
             .work-attitude .card{
                 min-height: 500px;
             }
