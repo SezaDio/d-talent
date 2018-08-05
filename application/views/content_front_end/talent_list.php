@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
 			<div class="row">
-				<div class="col-md-3" style="text-align: center; padding: 5px;">
+				<div class="col-md-2" style="text-align: center; padding: 5px;">
 					<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valGender">
 						<option value="">-- Gender --</option>
 						<?php
@@ -17,7 +17,7 @@
 							<?php } ?>
 					</select>
 				</div>
-				<div class="col-md-3" style="text-align: center; padding: 5px;">
+				<div class="col-md-2" style="text-align: center; padding: 5px;">
 					<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valMarital">
 						<option value="">-- Marital --</option>
 						<?php
@@ -37,15 +37,26 @@
 							<?php } ?>
 					</select>
 				</div>
+				<div class="col-md-2" style="text-align: center; padding: 5px;">
+					<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valEducation">
+						<option value="">-- Education --</option>
+						<option value="SMP">SMP</option>';  
+						<option value="SMA">SMA</option>';  
+						<option value="Sarjana">Sarjana</option>';  
+						<option value="Magister">Magister</option>';  
+						<option value="Doktor">Doktor</option>';  
+					</select>
+				</div>
 				<div class="col-md-3" style="text-align: center; padding: 5px;">
 					<div class="input-group">
-						<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
+						<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Instansi . . ." required id="valInstansi">
 						<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_talent()"><i class="fa fa-search"></i></span>
 					</div>
 				</div>
 			</div>
 			<hr style="border: solid 1px lightgray;">
-			<div class="row" id="talent-list">
+			<div  id="talent-list">
+			<div class="row">
 				<?php foreach ($talent_list as $talent){?>
 				<div class="col-md-4">
 					<div class="bg-talent" style="height:100px">
@@ -109,10 +120,23 @@
 					</div>
 				</div>
 				<?php } ?>
+				</div>
+				<div class="col-md-12">
+				<?php if (isset($links)) { ?>
+					<br>
+					<br>
+					<div class="pagination">
+						<?php echo $links ?>
+					</div>
+					<br>
+				<?php } ?>
+				</div>
 			</div>
 			<div id="talent-search" style="display:none">
 			
 			</div>
+			<!-- Pagination -->
+		
 		</div>
 	</div>
 </div>
@@ -130,15 +154,21 @@
 	  }
 	
 	function search_talent(){
-		//var description = document.getElementById("valDescription").value;
+		
+		
 		var gender = $('#valGender').val();
 		var marital = $('#valMarital').val();
 		var province = $('#valProvince').val();
+		var education = $('#valEducation').val();
+		var instansi = $('#valInstansi').val();
 		var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
-		
+		if((gender==-"")&&(marital==="")&&(province==="")&&(education==="")&&(instansi==="")) {
+			document.getElementById("talent-list").style.display = "block";
+			document.getElementById("talent-search").style.display = "none";
+		} else {
 		document.getElementById("talent-list").style.display = "none";
 		document.getElementById("talent-search").style.display = "block";
-		$.post('<?php echo site_url('TalentList/talent_search/'); ?>', {gender:gender,marital:marital,province:province}, function(dataTalent){
+		$.post('<?php echo site_url('TalentList/talent_search/'); ?>', {gender:gender,marital:marital,province:province,education:education,instansi:instansi}, function(dataTalent){
 			var xml = parseXml(dataTalent);
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
@@ -210,6 +240,7 @@
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
 		},"text");
+		}
 	}
 	function titleCase(str) {
 	  return str.split(' ').map(function(val){ 

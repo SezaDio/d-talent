@@ -111,7 +111,6 @@ $route['talent/login'] = 'AccountTalent/index';
 $route['talent/logout'] = 'AccountTalent/logout_member';
 $route['talent/signup'] = 'AccountTalent/view_signup';
 
-$route['talent'] = 'Talent/index';
 $route['talent/account/edit'] = 'Talent/editAccount';
 $route['talent/account/update'] = 'Talent/updateAccount';
 $route['talent/profile/edit'] = 'Talent/editProfile';
@@ -149,20 +148,6 @@ $route['talent/vacancy/detail'] = 'Talent/vacancyDetail';
 $route['talent/test-character'] 		= 'TalentTest/showCharacter';
 $route['talent/test-character/submit']	= 'TalentTest/submitCharacter';
 
-/* test passion */
-$route['talent/test-passion'] 		 = 'TalentTest/showPassion';
-$route['talent/test-passion/submit'] = 'TalentTest/submitPassion';
-
-/* test work attitude */
-$route['talent/test-work-attitude'] 		= 'TalentTest/showWorkAttitude';
-$route['talent/test-work-attitude/submit']	= 'TalentTest/submitWorkAttitude';
-
-/* test soft skill */
-$route['talent/test-soft-skill'] 		= 'TalentTest/showSoftSkill';
-$route['talent/test-soft-skill/submit']	= 'TalentTest/submitSoftSkill';
-
-$route['talent/test/access-denied'] = 'TalentTest/accessDenied';
-
 
 /*================================================================================*/
 
@@ -197,10 +182,15 @@ $route['company/job-vacancy/search/page/(:num)'] = 'CompanyMember/search_job';
 
 /* company job notification */
 $route['company/notification'] 				 = 'CompanyMember/notification_page';
-// $route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';
+$route['company/notification/detail/(:num)'] = 'CompanyMember/detail_notification/$1';
 
 
 /* job vacancy */
 $route['job-vacancy'] 				= 'JobVacancy/job_list';
 $route['job-vacancy/page'] 			= 'JobVacancy/job_list';
 $route['job-vacancy/page/(:num)'] 	= 'JobVacancy/job_list';
+
+/* job vacancy */
+$route['talent-list'] 				= 'TalentList/index';
+$route['talent-list/page'] 			= 'TalentList/index';
+$route['talent-list/page/(:num)'] 	= 'TalentList/index';
