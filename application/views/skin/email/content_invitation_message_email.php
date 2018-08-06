@@ -2,17 +2,14 @@
 	<tr>
 		<td style="width: 130px;">From</td>
 		<td>:</td>
-		<td><strong>HRD PT Dash Indo Persada</strong></td>
+		<td><strong><?php echo $kirim_email['from']; ?></strong></td>
 	</tr>
 	<tr>
 		<td colspan="3"><br></td>
 	</tr>
 	<tr>
 		<td colspan="3">
-			<small>
-				<label>Sekretariat :</label>
-				<p>Gedung PKM Lama Universitas Diponegoro<br>Jln. Prof. Soedarto, SH Kampus UNDIP Tembalang 50275<br>Semarang</p>
-			</small>
+			<?php echo $kirim_email['message']; ?>
 		</td>
 	</tr>
 	<tr>

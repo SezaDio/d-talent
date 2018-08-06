@@ -900,7 +900,7 @@ class CompanyMember extends CI_Controller
 	}
 
 	//Fungsi melakukan update data company pada database
-	public function jobseeker_detail_page() 
+	public function jobseeker_detail_page($id_talent) 
 	{
 		$id_company = $this->session->userdata('id_company');
 
@@ -914,7 +914,7 @@ class CompanyMember extends CI_Controller
 		$this->load->model('talent_models/TalentCVAchievementModel');
 		$this->load->model('talent_models/TalentCVCourseModel');
 
-		$id_talent = 3;
+		//$id_talent = 3;
 
 		$data['data_id_company'] = array(
 							'id_company' => $id_company
@@ -971,17 +971,17 @@ class CompanyMember extends CI_Controller
 		$id_talent = $this->input->post('id_talent');
 		
 		//Send Email to Talent
+		$data['link_confirm_accept'] = site_url('CompanyMember/update_notif_accept/'.$id_notification);
+		$data['link_confirm_decline'] = site_url('CompanyMember/update_notif_decline/'.$id_notification);
 		$data['subject'] = $subject;
 		$isi = $this->load->view('skin/email/content_invitation_message_email', $data, true);
 		$data['content'] = $isi;
-		$data['link_confirm_accept'] = site_url('CompanyMember/update_notif_accept/'.$id_notification);
-		$data['link_confirm_decline'] = site_url('CompanyMember/update_notif_decline/'.$id_notification);
 		$msg = $this->load->view('skin/email/template_email', $data, true); 
-		//$this->kirim_email($data['subject'], $msg, $to);
+		$this->kirim_email($data['subject'], $msg, $to);
 
-		$this->load->view('skin/email/template_email');
+		//$this->load->view('skin/email/template_email');
 		//Tampilkan halaman detail jobseeker
-		//Redirect('CompanyMember/jobseeker_detail_page/'.$id_talent); //.$id_talent
+		Redirect('CompanyMember/jobseeker_detail_page/'.$id_talent); //.$id_talent
 	}
 
 	//Function update notification status (Accept)
@@ -1033,8 +1033,8 @@ class CompanyMember extends CI_Controller
       $this->email->message($msg);
       if ($this->email->send())
       {
-         $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
-         redirect('CompanyMember/');
+         $this->session->set_flashdata('msg_success', 'Pesan balasan telah terkirim.');
+         //redirect('CompanyMember/');
       }
       else
       {

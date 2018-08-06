@@ -49,8 +49,28 @@
                                                                 <?php echo $i;?>
                                                             </td>
                                                             <td><?php echo $item['job_title'] ?></td>
-                                                            <td><?php echo $item['job_type'] ?></td>
-                                                            <td><?php echo $item['job_category'] ?></td>
+                                                            <td>
+                                                                <?php 
+                                                                    foreach ($type_list as $key => $value) 
+                                                                    {
+                                                                        if ($item['job_type'] == $key) 
+                                                                        {
+                                                                            echo $value;
+                                                                        }
+                                                                    }
+                                                                ?>    
+                                                            </td>
+                                                            <td>
+                                                                <?php 
+                                                                    foreach ($category_list as $key => $value) 
+                                                                    {
+                                                                        if ($item['job_category'] == $key) 
+                                                                        {
+                                                                            echo $value;
+                                                                        }
+                                                                    }
+                                                                ?>  
+                                                            </td>
                                                             <td><?php echo $item['job_date_start'] ?></td>
                                                             <td><?php echo $item['job_date_end'] ?></td>
                                                             <td align="center">
