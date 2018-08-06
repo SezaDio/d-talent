@@ -15,14 +15,17 @@
 
 		public function create_talent_cv_work($id_talent)
 		{
+			$work_start	= $this->input->post('work_start');
+			$work_end	= $this->input->post('work_end');
+
 			$data = array(
 				'id_talent' => $id_talent,
 				'position' => $this->input->post('position'),
 				'company' => $this->input->post('company'),
 				'id_location' => $this->input->post('id_location'),
 				// add -01 because the day is ignored
-				'work_start' => $this->input->post('work_start') . '-01',
-				'work_end' => $this->input->post('work_end') . '-01',
+				'work_start' => !empty($work_start) ? $work_start.'-01' : null,
+				'work_end' => !empty($work_end) ? $work_end.'-01' : null,
 				'description' => $this->input->post('description'),
 			);
 			
@@ -38,13 +41,16 @@
 
 		public function update_talent_cv_work($id_talent, $id_talent_cv_work)
 		{
+			$work_start	= $this->input->post('work_start');
+			$work_end	= $this->input->post('work_end');
+
 			$data = array(
 				'position' => $this->input->post('position'),
 				'company' => $this->input->post('company'),
 				'id_location' => $this->input->post('id_location'),
 				// add -01 because the day is ignored
-				'work_start' => $this->input->post('work_start') . '-01',
-				'work_end' => $this->input->post('work_end') . '-01',
+				'work_start' => !empty($work_start) ? $work_start.'-01' : null,
+				'work_end' => !empty($work_end) ? $work_end.'-01' : null,
 				'description' => $this->input->post('description'),
 			);
 			

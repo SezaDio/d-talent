@@ -42,7 +42,10 @@
 						<option value="">-- Education --</option>
 						<option value="SMP">SMP</option>';  
 						<option value="SMA">SMA</option>';  
-						<option value="Sarjana">Sarjana</option>';  
+						<option value="Diploma I">Diploma I</option>';  
+						<option value="Diploma II">Diploma II</option>';  
+						<option value="Diploma III">Diploma III</option>';  
+						<option value="Diploma IV/ Sarjana">Diploma IV/ Sarjana</option>';  
 						<option value="Magister">Magister</option>';  
 						<option value="Doktor">Doktor</option>';  
 					</select>

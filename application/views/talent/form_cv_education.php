@@ -22,8 +22,17 @@
 
 				<div class="form-group">
 					<label>Gelar/ derajat</label>
-					<p class="text-muted">Contoh: SD, SMP</p>
-					<input type="text" name="degree" class="form-control" value="<?php echo set_value('degree'); ?>">
+					<select name="degree" class="form-control" >
+						<option value="">-- Education --</option>
+						<option value="SMP" <?php echo (set_value('degree')=="SMP"? "selected":"");?> >SMP</option>';  
+						<option value="SMA" <?php echo (set_value('degree')=="SMA"? "selected":"");?> >SMA</option>';  
+						<option value="Diploma I" <?php echo (set_value('degree')=="Diploma I"? "selected":"");?> >Diploma I</option>';  
+						<option value="Diploma II" <?php echo (set_value('degree')=="Diploma II"? "selected":"");?> >Diploma II</option>';  
+						<option value="Diploma III" <?php echo (set_value('degree')=="Diploma III"? "selected":"");?> >Diploma III</option>';  
+						<option value="Diploma IV/ Sarjana" <?php echo (set_value('degree')=="Diploma IV/ Sarjana"? "selected":"");?> >Diploma IV/ Sarjana</option>';  
+						<option value="Magister" <?php echo (set_value('degree')=="Magister"? "selected":"");?> >Magister</option>';  
+						<option value="Doktor" <?php echo (set_value('degree')=="Doktor"? "selected":"");?> >Doktor</option>';  
+					</select>
 				</div>
 
 				<div class="form-group">

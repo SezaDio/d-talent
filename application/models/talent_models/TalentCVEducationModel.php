@@ -15,14 +15,17 @@
 
 		public function create($id_talent)
 		{
+			$from_year  = $this->input->post('from_year');
+			$to_year	= $this->input->post('to_year');
+
 			$data = array(
 				'id_talent'   => $id_talent,
 				'school' 	  => $this->input->post('school'),
 				'degree' 	  => $this->input->post('degree'),
 				'field_of_study' => $this->input->post('field_of_study'),
 				'activity' 	  => $this->input->post('activity'),
-				'from_year'   => $this->input->post('from_year'),
-				'to_year' 	  => $this->input->post('to_year')
+				'from_year'   => !empty($from_year) ? $from_year : null,
+				'to_year' 	  => !empty($to_year) ? $to_year : null
 			);
 			
 			return $this->db->insert('talent_cv_education', $data);
@@ -37,13 +40,16 @@
 
 		public function update($id_talent, $id_talent_cv_education)
 		{
+			$from_year  = $this->input->post('from_year');
+			$to_year	= $this->input->post('to_year');
+
 			$data = array(
 				'school' 	  => $this->input->post('school'),
 				'degree' 	  => $this->input->post('degree'),
 				'field_of_study' => $this->input->post('field_of_study'),
 				'activity' 	  => $this->input->post('activity'),
-				'from_year'   => $this->input->post('from_year'),
-				'to_year' 	  => $this->input->post('to_year')
+				'from_year'   => !empty($from_year) ? $from_year : null,
+				'to_year' 	  => !empty($to_year) ? $to_year : null
 			);
 			
 			$this->db->where('id_talent', $id_talent);
