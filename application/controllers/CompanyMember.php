@@ -823,7 +823,7 @@ class CompanyMember extends CI_Controller
 	}
 
 	// company job category list
-	private function get_job_category_list()
+	public function get_job_category_list()
 	{
 		$job_category = array(
 						  'jc-1'=>'Software Engineering',
@@ -845,7 +845,7 @@ class CompanyMember extends CI_Controller
 	}
 
 	// company job type list
-	private function get_job_type_list()
+	public function get_job_type_list()
 	{
 		$job_type = array(
 					  'jt-1'=>'Part Time',
@@ -1053,5 +1053,64 @@ class CompanyMember extends CI_Controller
 		$this->load->view('skin/front_end/navbar_company_page');
 		$this->load->view('content_front_end/company_notification_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
+	}
+
+	/* Menampilkan Halaman Ubah Password */
+	public function editPassword()
+	{
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/company_password_page');
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+
+	public function updatePassword()
+	{
+		$this->load->library('form_validation');
+		
+		$id_company = $this->session->userdata('id_company');
+
+		$this->form_validation->set_rules('old_password', '"Password Lama"', 'required');
+		$this->form_validation->set_rules('new_password', '"Password Baru"', 'required');
+
+		if($this->form_validation->run() == FALSE) {
+			return $this->editPassword();
+		}
+		else{
+			$old_password = $this->input->post('old_password', 'true');
+			$new_password = $this->input->post('new_password','true');
+			// check old password
+			$this->db->select('*');
+			$this->db->from('company');
+			$this->db->where('id_company', $id_company);
+			$this->db->where('password', md5($old_password));
+			$temp_account = $this->db->get()->row();
+
+			if ($temp_account != "") {
+				// update db
+				$password = md5($new_password);
+				$data 	  = array('password' => $password);
+				$this->db->where('id_company', $id_company);
+				$update = $this->db->update('company', $data);
+
+				if ($update) {
+					// message
+					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');
+				}
+				else{
+					// message
+					$this->session->set_flashdata('msg_error', 'Ubah password gagal');
+				}
+			}
+			else{
+				// message
+				$this->session->set_flashdata('msg_error', 'Password lama tidak valid');
+				// redirect to page ...
+				redirect('CompanyMember/editPassword');
+			}
+		}
+
+		// redirect to page ...
+		redirect('CompanyMember/index');
 	}
 }
