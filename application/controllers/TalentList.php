@@ -8,9 +8,9 @@ class TalentList extends CI_Controller {
 		
 		$this->load->helper(array('form', 'url'));
 		// check user's auth
-		$id_talent = $this->session->userdata('id_talent');
-		if ($id_talent == "") {
-			redirect( site_url('talent/login') );
+		$id_company = $this->session->userdata('id_company');
+		if ($id_company == "") {
+			redirect( site_url('AccountCompany') );
 		}
 	}
 
@@ -53,7 +53,71 @@ class TalentList extends CI_Controller {
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
+	function detail_talent($id_talent){
 		
+
+		$this->load->model('talent_models/TalentModel');
+		$this->load->model('talent_models/TalentCVWorkModel');
+		$this->load->model('talent_models/TalentCVEducationModel');
+		$this->load->model('talent_models/TalentCVAchievementModel');
+		$this->load->model('talent_models/TalentCVCourseModel');
+		$this->load->helper('custom');
+
+		$data['page_title'] = "Talent";
+
+		// get user data
+		$data['talent'] 	= $this->TalentModel->find($id_talent);
+
+		// get location name
+		$this->db->select('lokasi_nama');
+		$this->db->from('inf_lokasi');
+		$this->db->where(array('lokasi_kode' => $data['talent']->id_kota));
+		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
+
+		// cv
+		$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
+		$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
+		$data['cv_achievements'] = $this->TalentCVAchievementModel->get_all($id_talent);
+		$data['cv_courses'] = $this->TalentCVCourseModel->get_all($id_talent);
+
+		// online test
+		$data['result_character'] = $this->TalentModel->findCharacterTest($id_talent);
+		if ($data['result_character'] != null) {
+			// use function from helper
+			$response = detailCharacterResult($data['result_character']->result);
+			$data['result_character_sub_title'] = $response['sub_title'];
+			$data['result_character_detail'] = $response['result_detail'];
+		}
+		$data['result_passion'] = $this->TalentModel->findPassionTest($id_talent);
+		if ($data['result_passion'] != null) {
+			// use function from helper
+			$data['result_passion_detail'] = detailPassionResult($data['result_passion']->result);
+		}
+		$data['result_work_attitude'] = $this->TalentModel->findWorkAttitudeTest($id_talent);
+		if ($data['result_work_attitude'] != null) 
+		{
+			// use function from helper
+			$response = detailWorkAttitudeResult($data['result_work_attitude']->result);
+			$data['result_work_attitude_title'] = $response['sub_title'];
+			$data['result_work_attitude_detail'] = $response['result_detail'];
+		}
+		$data['result_soft_skill'] = $this->TalentModel->get_soft_skill($id_talent);
+		/*$data['result_soft_skill'] = $this->TalentModel->findSoftSkillTest($id_talent);
+		if ($data['result_soft_skill'] != null) 
+		{
+			// use function from helper
+			$response = detailSoftSkillResult($data['result_soft_skill']->result);
+			$data['result_soft_skill_title'] = $response['sub_title'];
+			$data['result_soft_skill_detail'] = $response['result_detail'];
+		}*/
+		
+		$this->load->view('skin/front_end/header_company_page_topbar', $data);
+		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('content_front_end/detail_talent');
+		$this->load->view('skin/front_end/footer_company_page');
+	}
+	
+	
 	private function get_gender_list()
 	{
 		$gender = array(
@@ -104,24 +168,32 @@ class TalentList extends CI_Controller {
 		
 		
 		$data = '';
-		$data .= 'jenis_kelamin LIKE "%'.$this->db->escape_like_str($gender).'%"';
-		$data .= 'AND status_pernikahan LIKE "%'.$this->db->escape_like_str($marital).'%"';
-		$data .= 'AND id_provinsi LIKE "%'.$this->db->escape_like_str($province).'%"';
-		$data .= 'AND degree LIKE "%'.$this->db->escape_like_str($education).'%"';
-		$data .= 'AND school LIKE "%'.$this->db->escape_like_str($instansi).'%"';
-		
-		$this->db->select('talent.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city, education.degree AS degree, education.school AS name_school');
+		$data .= 'jenis_kelamin LIKE "%'.$gender.'%"';
+		$data .= ' AND status_pernikahan LIKE "%'.$marital.'%"';
+		$data .= ' AND id_provinsi LIKE "%'.$province.'%"';
+		if($education != ""){
+			$data .= ' AND degree LIKE "%'.$this->db->escape_like_str($education).'%"';
+		}
+		if($instansi != ""){
+			$data .= 'AND name_school LIKE "%'.$this->db->escape_like_str($instansi).'%"';
+		}
+		$data_select = '';
+		$data_select .= 'talent.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city';
+		if(($education != "")||($instansi != "")){
+			$data_select .= ', education.degree AS degree, education.school AS name_school';
+		}
+		$this->db->select($data_select);
 		$this->db->from('talent');
-		$this->db->join('talent_cv_education education', 'education.id_talent = talent.id_talent', 'left');
+		if(($education != "")||($instansi != "")){
+			$this->db->join('talent_cv_education education', 'education.id_talent = talent.id_talent', 'left');
+		}
 		$this->db->where($data);
-		$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = talent.id_provinsi', 'left');
+		$this->db->join('inf_lokasi t_province', 't_province.lokasi_kode = talent.id_provinsi', 'left');
 		$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = talent.id_kota', 'left');
 		
 		
-		
-		
 		$get_talent=$this->db->get();
-		//print_r($get_talent);
+		//print_r($get_talent->result());
 		$this->load->helper('xml');
 		$xml_out = '<talents>';
 		if ($get_talent->num_rows()>0) {
@@ -137,8 +209,12 @@ class TalentList extends CI_Controller {
                 $xml_out .= 'email="' . xml_convert($row_talent->email) . '" ';
                 $xml_out .= 'nomor_ponsel="' . xml_convert($row_talent->nomor_ponsel) . '" ';
                 $xml_out .= 'tanggal_lahir="' . xml_convert($row_talent->tanggal_lahir) . '" ';
-                $xml_out .= 'degree="' . xml_convert($row_talent->degree) . '" ';
-                $xml_out .= 'name_school="' . xml_convert($row_talent->name_school) . '" ';
+                if($education != ""){
+					$xml_out .= 'degree="' . xml_convert($row_talent->degree) . '" ';
+				}
+				if($instansi != ""){
+					$xml_out .= 'name_school="' . xml_convert($row_talent->name_school) . '" ';
+				}
                 $xml_out .= 'jenis_kelamin="' . $gender . '" ';
                 $xml_out .= 'status_pernikahan="' . $marital . '" ';
                 $xml_out .= 'provinsi="' . xml_convert($row_talent->province) . '" ';

@@ -58,6 +58,7 @@
 					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
 						<div class="col-md-12" style="background-color: white;">
 							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">
+								<a href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><?php echo $job->job_title; ?></strong></a>
 							</div>
 							<div class="row">
 								<div class="col-md-8">

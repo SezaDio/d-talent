@@ -33,7 +33,7 @@
 						<?php
 							foreach ($lokasiProvinsi as $key=>$provinsi) 
 							{ ?>
-								<option value="<?php echo $provinsi['lokasi_ID'];?>"><?php echo $provinsi['lokasi_nama'];?></option>';   
+								<option value="<?php echo $provinsi['lokasi_propinsi'];?>"><?php echo $provinsi['lokasi_nama'];?></option>';   
 							<?php } ?>
 					</select>
 				</div>
@@ -97,12 +97,11 @@
 								<div style="padding: 10px;">
 									<div class="text-center profile-attribute">
 										<!-- Name | Age | City -->
-										<span><?php echo $talent->nama; ?></span> 
+										<a href="<?php echo base_url('TalentList/detail_talent/'.$talent->id_talent)?>"><span><?php echo $talent->nama; ?></span> </a>
 										<br>
 										<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
 										<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
 										<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
-										<!-- <span><?php echo capitalizeEachWord($talent_location_city); ?></span> -->
 									</div>
 									<br>
 									<!-- contact -->
@@ -111,7 +110,7 @@
 											<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span> | 
 											<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
 											<br>
-											<span><i class="fa fa-home"></i> <?php echo ucwords(strtolower($talent->city)) ."<br>". ucwords(strtolower($talent->province)) ?></span>
+											<span><i class="fa fa-home"></i> <?php echo ucwords(strtolower($talent->city));?></span>
 										</div>
 									</div>
 									
@@ -165,13 +164,11 @@
 		var education = $('#valEducation').val();
 		var instansi = $('#valInstansi').val();
 		var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
-		if((gender==-"")&&(marital==="")&&(province==="")&&(education==="")&&(instansi==="")) {
-			document.getElementById("talent-list").style.display = "block";
-			document.getElementById("talent-search").style.display = "none";
-		} else {
+		
 		document.getElementById("talent-list").style.display = "none";
 		document.getElementById("talent-search").style.display = "block";
 		$.post('<?php echo site_url('TalentList/talent_search/'); ?>', {gender:gender,marital:marital,province:province,education:education,instansi:instansi}, function(dataTalent){
+			
 			var xml = parseXml(dataTalent);
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
@@ -219,7 +216,7 @@
 							div_talent_search += '<div class="card-body">';
 								div_talent_search += '<div style="padding: 10px;">';
 									div_talent_search += '<div class="text-center profile-attribute">';
-										div_talent_search += '<span>'+nama+'</span>';
+										div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
 										div_talent_search += '	<br>';
 										div_talent_search += '	<span>'+umur+' Tahun</span> | ';
 										div_talent_search += '<span>'+jenis_kelamin+'</span> | ';
@@ -231,7 +228,7 @@
 											div_talent_search += '<span><i class="fa fa-envelope"></i>'+email+'</span> | ';
 											div_talent_search += '<span><i class="fa fa-phone"></i>'+nomor_ponsel+'</span>';
 											div_talent_search += '<br>';
-											div_talent_search += '<span><i class="fa fa-home"></i>'+titleCase(kota)+'<br>'+titleCase(provinsi)+'</span>';
+											div_talent_search += '<span><i class="fa fa-home"></i>'+titleCase(kota)+'</span>';
 										div_talent_search += '</div>';
 									div_talent_search += '</div>';
 								div_talent_search += '</div>';
@@ -243,7 +240,7 @@
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
 		},"text");
-		}
+		
 	}
 	function titleCase(str) {
 	  return str.split(' ').map(function(val){ 

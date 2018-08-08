@@ -72,6 +72,36 @@ class JobVacancy extends CI_Controller
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 	
+	public function detail_job($id_job)
+	{
+		$this->load->model('account/UserModel');
+		$this->load->model('job_models/JobVacancyModel');
+		$data['page_title'] = "Talent";
+		$data_job = $this->JobVacancyModel->select_by_id_job($id_job);
+		$data_company = $this->JobVacancyModel->select_by_id_company($data_job['id_company']);
+		$data['company_name'] = $data_company['company_name'];
+		$data['company_cover'] = $data_company['company_cover'];
+		$data['company_logo'] = $data_company['company_logo'];
+		$data['job_title'] = $data_job['job_title'];
+		$data['job_description'] = $data_job['job_description'];
+		$data['province'] = $data_job['province'];
+		$data['city'] = $data_job['city'];
+		$data['job_date_start'] = $data_job['job_date_start'];
+		$data['job_date_end'] = $data_job['job_date_end'];
+		$data['job_required_skill'] = $data_job['job_required_skill'];
+		
+		// get job category
+		$job_categories 	  = $this->get_job_category_list();
+		$data['job_category'] = $job_categories[$data_job['job_category']];
+		// get job type list
+		$job_types 	  	  = $this->get_job_type_list();
+		$data['job_type'] = $job_types[$data_job['job_type']];
+
+		$this->load->view('skin/talent/header',$data);
+		$this->load->view('content_front_end/jobs_page_detail', $data);
+		$this->load->view('skin/talent/footer');
+	}
+	
 	function search_job(){
 		header('Access-Control-Allow-Origin: *');
         header('Content-type: text/xml');
@@ -84,7 +114,7 @@ class JobVacancy extends CI_Controller
 		$data = '';
 		$data .= 'job_category LIKE "%'.$this->db->escape_like_str($category).'%"';
 		$data .= 'AND job_type LIKE "%'.$this->db->escape_like_str($type).'%"';
-		$data .= 'AND job_description LIKE "%'.$this->db->escape_like_str($description).'%"';
+		$data .= 'AND job_title LIKE "%'.$this->db->escape_like_str($description).'%"';
 		$data .= 'AND job_province_location_id LIKE "%'.$this->db->escape_like_str($province).'%"';
 		
 		$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
