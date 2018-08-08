@@ -54,6 +54,7 @@
 					<div class="row">
 					<?php
 						if($jobs_list != null) {
+							$i=0;
 							foreach ($jobs_list as $job){
 					?>
 						<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
@@ -63,7 +64,9 @@
 								</div>
 								<div class="row">
 									<div class="col-md-8">
-										<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
+										<small style="font-size: 1em;">
+											<?php echo $company_name[$i]; ?>
+										</small>
 										<p style="font-size: 1em;">
 										<?php
 											echo ucwords(strtolower($job->city)) .", ". $job->province
@@ -87,7 +90,7 @@
 								</div>
 							</div>
 						</div>
-						<?php } } ?>
+						<?php $i++;} } ?>
 						
 					</div>
 				</div>

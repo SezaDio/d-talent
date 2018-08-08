@@ -4,7 +4,7 @@
 
 <div class="container" style="padding-top: 30px; padding-bottom: 50px;">
 
-	<div class="bg-company">
+	<div class="bg-company" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 		<?php if($company_cover != "") {?>
 		<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_cover;?>');"></figure>
 		<?php } else{ ?>
@@ -14,7 +14,7 @@
 	
 	<!-- konten -->
 	<div class="content">
-		<div class="company-profile card">
+		<div class="company-profile card" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 			<div class="card-body row">
 				<div class="fit-content col-xs-4 col-md-2">
 					<?php if($company_logo != "") {?>
@@ -59,7 +59,7 @@
 		<br>
 		
 		<div class="job-vacancy">
-			<div class="card">
+			<div class="card" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 				<div class="card-header">
 					<h4>Deskripsi Pekerjaan</h4>
 				</div>
@@ -73,7 +73,7 @@
 			<br>
 			<br>
 
-			<div class="card">
+			<div class="card" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 				<div class="card-header">
 					<h4>Persyaratan</h4>
 				</div>

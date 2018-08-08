@@ -47,7 +47,9 @@ class JobVacancy extends CI_Controller
 		$this->load->library('pagination');
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
+		$this->load->model('dashboard_models/DashboardModels');
 		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+        $listVacancy = $this->DashboardModels->get_data_job_vacancy();
 		$data['page_title'] = "Talent | Job List";
 
 		// get job category list
@@ -64,7 +66,16 @@ class JobVacancy extends CI_Controller
         $start_index = $start_index * $limit_per_page;
 
 		$data['jobs_list'] = $this->JobVacancyModel->get_all_jobs($limit_per_page, $start_index);
+		$i=0;
+		foreach ($listVacancy as $row_vacancy) 
+		{
+			$get_name_company = $this->db->select('company_name')->where('id_company',$row_vacancy['id_company'])->get('company')->result();
+			$company_name[$i] = $get_name_company[0]->company_name;
+			$i++;
+		}
 
+		$data['company_name'] = $company_name;
+		
 		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
 		
 		

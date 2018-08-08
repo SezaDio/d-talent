@@ -24,6 +24,15 @@
 			return $this->db->get()->result();
 		}
 
+		//get data company
+		public function get_data_company()
+		{
+			$this->db->select('*');
+			$this->db->from('company');
+
+			return $this->db->get()->result();
+		}
+
 		// get total rows from filter by category
 		public function get_total_filter($id_company, $category)
 		{

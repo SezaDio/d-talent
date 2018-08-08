@@ -82,7 +82,7 @@
 		//Mengambil data company member
 		function get_data_job_vacancy()
 		{
-			$query = $this->db->query("SELECT * FROM `job_vacancy`");
+			$query = $this->db->query("SELECT * FROM `job_vacancy` ORDER BY `publish_date` DESC");
 		
 			$indeks = 0;
 			$result = array();
