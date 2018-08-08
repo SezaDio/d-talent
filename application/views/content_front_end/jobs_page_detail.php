@@ -43,13 +43,13 @@
 
 				<div class="vacancy-attribute visible-xs col-xs-12">
 					<span><i class="fa fa-map-marker-alt"></i>
-						<?php echo capitalizeEachWord($company_job->city) .", ". $company_job->province; ?>
+						<?php echo capitalizeEachWord($city) .", ". $province; ?>
 					</span>
 					<span><i class="fa fa-tag"></i>
 						<?php echo $job_category; ?>
 					</span>
 					<span><i class="fa fa-calendar-alt"></i>
-						<?php echo displayApplyDate($company_job->job_date_start, $company_job->job_date_end); ?>
+						<?php echo displayApplyDate($job_date_start, $job_date_end); ?>
 					</span>
 				</div>
 			</div>
