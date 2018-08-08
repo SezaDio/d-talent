@@ -62,7 +62,7 @@
 			<div class="row">
 				<?php foreach ($talent_list as $talent){?>
 				<div class="col-md-4">
-					<div class="bg-talent" style="height:100px">
+					<div class="bg-talent" style="height:100px background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 					<?php
 						if ($talent->foto_sampul != "") {
 					?>
@@ -92,7 +92,7 @@
 						?>
 						</div>
 
-						<div class="card">
+						<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 							<div class="card-body">
 								<div style="padding: 10px;">
 									<div class="text-center profile-attribute">
