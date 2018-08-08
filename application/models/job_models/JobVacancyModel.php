@@ -37,6 +37,20 @@
 
 			return $this->db->get()->num_rows();
 		}
+		
+		function select_by_id_job($id_job){
+			$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+			$this->db->from('job_vacancy');
+			$this->db->where('id_job',$id_job);
+			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
+			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
+			return $this->db->get()->row_array();
+		}
+		
+		function select_by_id_company($id_company){
+			$query = $this->db->where('id_company',$id_company)->get('company');
+			return $query->row_array();
+		}
 
 		// filter by category
 		public function filter($id_company, $category, $limit_per_page, $start_index)

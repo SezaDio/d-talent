@@ -57,7 +57,8 @@
 				?>
 					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
 						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;"><?php echo $job->job_title; ?></strong></div>
+							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">
+							</div>
 							<div class="row">
 								<div class="col-md-8">
 									<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
@@ -131,6 +132,7 @@
 		$.post('<?php echo site_url('JobVacancy/search_job/'); ?>', {description:description,category:category,type:type,province:province}, function(dataJob){
 			var xml = parseXml(dataJob);
 			var getJob = xml.documentElement.getElementsByTagName("job");
+			var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			var div_job_search = '';
 			div_job_search += '<div class="row">';
 			for (var i = 0; i < getJob.length; i++) {
@@ -141,7 +143,15 @@
 				var job_category = getJob[i].getAttribute("job_category");
 				var job_city_location_id = getJob[i].getAttribute("job_city_location_id");
 				var job_province_location_id = getJob[i].getAttribute("job_province_location_id");
-				
+				var date_start = new Date(""+getJob[i].getAttribute("job_date_start")+"");
+				var date_end = new Date(""+getJob[i].getAttribute("job_date_end")+"");
+				var d_start = date_start.getDate();
+				var d_end = date_end.getDate();
+				var month_start = months[date_start.getMonth()];
+				var month_end = months[date_end.getMonth()];
+				var year_start = date_start.getFullYear();
+				var year_end = date_end.getFullYear();
+						
 				div_job_search += '<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">';
 					div_job_search += '<div class="col-md-12" style="background-color: white;">';
 						div_job_search += '<div style="padding-top: 10px;  padding-bottom: 10px;">';
@@ -159,7 +169,7 @@
 									div_job_search += '<small><b>Batas Pendaftaran</b></small>';
 									div_job_search += '<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">';
 									div_job_search += '<small style="font-size: 1em;">';
-										div_job_search += '';
+										div_job_search += ''+d_start+' '+month_start+' - '+d_end+' '+month_end+' '+year_end+'';
 									div_job_search += '</small>';
 								div_job_search += '</div>';
 							div_job_search += '</div>';

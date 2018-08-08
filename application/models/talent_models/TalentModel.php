@@ -116,7 +116,7 @@
 			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = talent.id_provinsi', 'left');
 			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = talent.id_kota', 'left');
 			$this->db->limit($limit_per_page, $start_index);
-
+			
 			return $this->db->get()->result();
 		}
 		
