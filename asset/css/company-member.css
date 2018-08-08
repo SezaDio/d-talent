@@ -372,6 +372,37 @@ p{
     background-color: #E53935;
 }
 
+/* detail talent list */
+.label-colors{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.label-colors .label{
+    padding: 4px 8px;
+    border-radius: 3px;
+    display: inline-block;
+}
+.label-colors .label:nth-child(n+2){
+    margin-left: 3px;
+}
+/* select every 5 elements start with 1st element */
+.label-colors .label:nth-child(5n+1){
+    background-color: #4CE414;  /*green*/
+}
+.label-colors .label:nth-child(5n+2){
+    background-color: #039BE5;  /*blue*/
+}
+.label-colors .label:nth-child(5n+3){
+    background-color: #D81B60;  /*pink*/
+}
+.label-colors .label:nth-child(5n+4){
+    background-color: #FBC02D;  /*yellow*/
+}
+.label-colors .label:nth-child(5n+5){
+    background-color: #5E35B1;  /*purple*/
+}
+
+
 /* talent/jobseeker detail */
 .profile{
     position: relative;
