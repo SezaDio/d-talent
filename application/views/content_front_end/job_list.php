@@ -3,106 +3,108 @@
 
 	<div class="col-lg-10">
 		<br>
-		<div class="col-md-12" style="background-color: whitesmoke;">
-			<div class="row">
-				<!--Jobs Caategory section-->
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-3" style="text-align: center; padding: 5px;">
-							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valCategory">
-								<option value="">-- Job Category --</option>
-                                <?php
-                                    foreach ($job_category as $key=>$category) 
-                                    { ?>
-                                        <option value="<?php echo $key;?>"><?php echo $category;?></option>';   
-                                    <?php } ?>
-							</select>
-						</div>
-						<div class="col-md-3" style="text-align: center; padding: 5px;">
-							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valType">
-								<option value="">-- Job Type --</option>
-                                <?php
-                                    foreach ($job_type as $key=>$type) 
-                                    { ?>
-                                        <option value="<?php echo $key;?>"><?php echo $type;?></option>';   
-                                    <?php } ?>
-							</select>
-						</div>
-						<div class="col-md-3" style="text-align: center; padding: 5px;">
-							<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valProvince">
-								<option value="">-- Location Province --</option>
-                                <?php
-                                    foreach ($lokasiProvinsi as $key=>$provinsi) 
-                                    { ?>
-                                        <option value="<?php echo $provinsi['lokasi_ID'];?>"><?php echo $provinsi['lokasi_nama'];?></option>';   
-                                    <?php } ?>
-							</select>
-						</div>
-						<div class="col-md-3" style="text-align: center; padding: 5px;">
-							<div class="input-group">
-								<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
-								<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_job()"><i class="fa fa-search"></i></span>
+		<div class="row">
+			<div class="col-md-12" style="padding: 30px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+				<div class="row">
+					<!--Jobs Caategory section-->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3" style="text-align: center; padding: 5px;">
+								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valCategory">
+									<option value="">-- Job Category --</option>
+	                                <?php
+	                                    foreach ($job_category as $key=>$category) 
+	                                    { ?>
+	                                        <option value="<?php echo $key;?>"><?php echo $category;?></option>';   
+	                                    <?php } ?>
+								</select>
+							</div>
+							<div class="col-md-3" style="text-align: center; padding: 5px;">
+								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valType">
+									<option value="">-- Job Type --</option>
+	                                <?php
+	                                    foreach ($job_type as $key=>$type) 
+	                                    { ?>
+	                                        <option value="<?php echo $key;?>"><?php echo $type;?></option>';   
+	                                    <?php } ?>
+								</select>
+							</div>
+							<div class="col-md-3" style="text-align: center; padding: 5px;">
+								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valProvince">
+									<option value="">-- Location Province --</option>
+	                                <?php
+	                                    foreach ($lokasiProvinsi as $key=>$provinsi) 
+	                                    { ?>
+	                                        <option value="<?php echo $provinsi['lokasi_ID'];?>"><?php echo $provinsi['lokasi_nama'];?></option>';   
+	                                    <?php } ?>
+								</select>
+							</div>
+							<div class="col-md-3" style="text-align: center; padding: 5px;">
+								<div class="input-group">
+									<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
+									<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_job()"><i class="fa fa-search"></i></span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<hr style="border: solid 1px lightgray;">
-			<div class="col-md-12" id="job_all">
-				<!--Show Jobs list-->
-				<div class="row">
-				<?php
-					if($jobs_list != null) {
-						foreach ($jobs_list as $job){
-				?>
-					<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-						<div class="col-md-12" style="background-color: white;">
-							<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">
-								<a href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><?php echo $job->job_title; ?></strong></a>
-							</div>
-							<div class="row">
-								<div class="col-md-8">
-									<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
-									<p style="font-size: 1em;">
-									<?php
-										echo ucwords(strtolower($job->city)) .", ". $job->province
-									?>
-									</p>
+				<hr style="border: solid 1px lightgray;">
+				<div class="col-md-12" id="job_all">
+					<!--Show Jobs list-->
+					<div class="row">
+					<?php
+						if($jobs_list != null) {
+							foreach ($jobs_list as $job){
+					?>
+						<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
+							<div class="col-md-12" style="background-color: white;">
+								<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">
+									<a href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><?php echo $job->job_title; ?></strong></a>
 								</div>
-								<div class="col-md-4" style="height: 65px;">
-									<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
-										<small><b>Batas Pendaftaran</b></small>
-										<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
-										<small style="font-size: 1em;">
-											<?php echo date("j M",strtotime($job->job_date_start))." - ".date("j M Y", strtotime($job->job_date_end)); ?>
-										</small>
+								<div class="row">
+									<div class="col-md-8">
+										<small style="font-size: 1em;"><b>PT Dash Indo Persada</b></small>
+										<p style="font-size: 1em;">
+										<?php
+											echo ucwords(strtolower($job->city)) .", ". $job->province
+										?>
+										</p>
+									</div>
+									<div class="col-md-4" style="height: 65px;">
+										<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
+											<small><b>Batas Pendaftaran</b></small>
+											<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
+											<small style="font-size: 1em;">
+												<?php echo date("j M",strtotime($job->job_date_start))." - ".date("j M Y", strtotime($job->job_date_end)); ?>
+											</small>
+										</div>
 									</div>
 								</div>
-							</div>
-							<hr style="border: solid 1px lightgray;">
-							<div style="padding-bottom: 10px;">
-								<small style="font-size: 1em;">Category : </small>
-								<span class="badge badge-dark"><?php echo $job_category[$job->job_category]; ?></span>
+								<hr style="border: solid 1px lightgray;">
+								<div style="padding-bottom: 10px;">
+									<small style="font-size: 1em;">Category : </small>
+									<span class="badge badge-dark"><?php echo $job_category[$job->job_category]; ?></span>
+								</div>
 							</div>
 						</div>
+						<?php } } ?>
+						
 					</div>
-					<?php } } ?>
-					
 				</div>
+				<div class="col-md-12" id="job_search" style="display:none">
+				</div>
+				<br>
+				
+			<!-- Pagination -->
+			<?php if (isset($links)) { ?>
+				<br>
+				<br>
+				<div class="pagination">
+	            	<?php echo $links ?>
+	            </div>
+				<br>
+	        <?php } ?>
 			</div>
-			<div class="col-md-12" id="job_search" style="display:none">
-			</div>
-			<br>
-			
-		<!-- Pagination -->
-		<?php if (isset($links)) { ?>
-			<br>
-			<br>
-			<div class="pagination">
-            	<?php echo $links ?>
-            </div>
-			<br>
-        <?php } ?>
 		</div>
 	</div>
 
