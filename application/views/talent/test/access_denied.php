@@ -1,6 +1,6 @@
-<div class="access-denied" style="padding-top: 15px; padding-bottom: 15px; min-height: 500px;">
+<div class="access-denied" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
-		<div class="card center-block" style="box-shadow: 1px 5px 20px lightgrey;">
+		<div class="card center-block" style="min-height: 400px; box-shadow: 1px 5px 20px lightgrey;">
 			<div class="card-body">
 				<div class="test">
 					<p class="text-center">
@@ -21,5 +21,6 @@
 			</div>
 
 		</div>
+		<br><br>
 	</div>
 </div>

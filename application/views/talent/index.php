@@ -67,11 +67,13 @@
 
 							<!-- contact -->
 							<div class="contact-talent">
+								<hr style="border: solid 1px lightgray">
 								<div class="text-center">
 									<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
 									<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
 									<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
 								</div>
+								<hr style="border: solid 1px lightgray">
 							</div>
 							<br>
 
