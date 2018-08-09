@@ -163,7 +163,7 @@
 		var province = $('#valProvince').val();
 		var education = $('#valEducation').val();
 		var instansi = $('#valInstansi').val();
-		var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
+		var base_url = "<?php echo site_url(''); ?>";
 		
 		document.getElementById("talent-list").style.display = "none";
 		document.getElementById("talent-search").style.display = "block";

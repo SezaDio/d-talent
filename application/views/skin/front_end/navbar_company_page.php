@@ -24,7 +24,7 @@
                 <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>"><i class="fa fa-briefcase"></i> <b>Jobs</b></a>
               </li>
 			  <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent-list'); ?>"><i class="fa fa-briefcase"></i> <b>Talent</b></a>
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent-list'); ?>"><i class="fa fa-user"></i> <b>Talent</b></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('company/notification'); ?>"><i class="fa fa-bell"></i> <b>Notification</b></a>

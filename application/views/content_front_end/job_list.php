@@ -132,7 +132,7 @@
 		var category = $('#valCategory').val();
 		var type = $('#valType').val();
 		var province = $('#valProvince').val();
-		var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
+		var base_url = "<?php echo site_url(''); ?>";
 		
 		document.getElementById("job_all").style.display = "none";
 		document.getElementById("job_search").style.display = "block";

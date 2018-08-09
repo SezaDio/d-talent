@@ -95,7 +95,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="index.html" class="navbar-brand">
+            <a href="<?php echo site_url('CompanyProfile/index'); ?>" class="navbar-brand">
               <!-- <img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt=""> -->
               <figure class="sprite-bg" style="background-image: url('<?php echo base_url('asset/img/logo-sprite.png')?>');"></figure>
             </a>
