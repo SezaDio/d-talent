@@ -4,7 +4,7 @@
 		
 		<div class="col-lg-10" style="padding: 20px; width: 100%;">
 			<div class="row">
-				<div class="col-md-12 add-company-updates" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
+				<div class="col-md-12 add-company-updates" style="min-height: 423px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 				
 					<strong style="font-size: 1.3em;">Ubah Password</strong>
 					<hr style="border: solid 1px black;">

@@ -97,7 +97,7 @@
                   <i class="fa fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
                 </div>
               </a>
-              <h4>Jobseeker</h4>
+              <h4>Talent</h4>
               <!--<p>on recruitment, company only pay assessment cost</p>-->
               </div>
           </div> 

@@ -5,7 +5,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 col-xs-12">
+		<div class="col-md-12 col-xs-12" style="min-height: 510px;">
 			<div class="row">
 				<div class="col-md-2" style="text-align: center; padding: 5px;">
 					<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valGender">
@@ -62,7 +62,7 @@
 			<div class="row">
 				<?php foreach ($talent_list as $talent){?>
 				<div class="col-md-4">
-					<div class="bg-talent" style="height:100px background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+					<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 					<?php
 						if ($talent->foto_sampul != "") {
 					?>
@@ -186,6 +186,7 @@
 				var foto_sampul = getTalent[i].getAttribute("foto_sampul");
 				var foto_profil = getTalent[i].getAttribute("foto_profil");
 				var umur = ageYear(tanggal_lahir);
+
 				if(foto_sampul===""){
 					var sampul = base_url+'asset/img/bg-default.jpg';
 				} else {
@@ -197,7 +198,7 @@
 					var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
 				}
 				div_talent_search += '<div class="col-md-4">';
-					div_talent_search += '	<div class="bg-talent" style="height:100px">';
+					div_talent_search += '	<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
 					div_talent_search += '<figure class="image-bg" style="background-image: url(';
 					div_talent_search += "'";
 					div_talent_search += sampul;
@@ -212,7 +213,7 @@
 						div_talent_search += "'";
 						div_talent_search += ');"></figure>';
 						div_talent_search += '</div>';
-						div_talent_search += '<div class="card">';
+						div_talent_search += '<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
 							div_talent_search += '<div class="card-body">';
 								div_talent_search += '<div style="padding: 10px;">';
 									div_talent_search += '<div class="text-center profile-attribute">';

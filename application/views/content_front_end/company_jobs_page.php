@@ -3,7 +3,7 @@
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12" style="min-height: 400px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
+		<div class="col-md-12" style="min-height: 450px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 			<div class="row">
 				<!--Jobs Caategory section-->
 				<div class="col-md-12">

@@ -3,6 +3,19 @@
 	$this->load->helper('custom');
 ?>
 
+<style type="text/css">
+	.table .periode
+	{
+		width: 250px;
+		color: #000;
+	}
+
+	h3
+	{
+		font-size: 1.8em;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -67,11 +80,20 @@
 
 							<!-- contact -->
 							<div class="contact-talent">
+								<hr style="border: solid 1px lightgray">
 								<div class="text-center">
 									<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span>
 									<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
 									<span><i class="fa fa-home"></i> <?php echo capitalizeEachWord($talent_location_city); ?></span>
 								</div>
+								<hr style="border: solid 1px lightgray">
+							</div>
+							<div class="row">
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<a style="padding-top: 20px;" href="#!" class="button button1" data-toggle="modal" data-target=".modal-invite" data-id="<?php //echo $cv_work->id_talent_cv_work;?>" data-cv="invite"><h4><i class="fa fa-envelope"></i> INVITE</h4></a>
+								</div>
+								<div class="col-md-4"></div>
 							</div>
 							<br>
 
@@ -107,10 +129,6 @@
 					    					echo "<br>" . character_limiter($cv_work->description, 100);
 					    				}
 					    			?>
-					    		</td>
-					    		<td class="action">
-					    			<a href="<?php echo site_url('talent/cv-work-experience/edit/') . $cv_work->id_talent_cv_work;?>" class="text-primary"><i class="fa fa-edit"></i></a>
-					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_work->id_talent_cv_work;?>" data-cv="work"><i class="fa fa-trash"></i></a>
 					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
@@ -153,10 +171,6 @@
 					    				}
 					    			?>
 					    		</td>
-					    		<td class="action">
-					    			<a href="<?php echo site_url('talent/cv-education/edit/') . $cv_education->id_talent_cv_education;?>" class="text-primary"><i class="fa fa-edit"></i></a>
-					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_education->id_talent_cv_education;?>" data-cv="education"><i class="fa fa-trash"></i></a>
-					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
 
@@ -191,10 +205,6 @@
 					    				}
 					    			?>
 					    		</td>
-					    		<td class="action">
-					    			<a href="<?php echo site_url('talent/cv-achievement/edit/') . $cv_achievement->id_talent_cv_achievement;?>" class="text-primary"><i class="fa fa-edit"></i></a>
-					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_achievement->id_talent_cv_achievement;?>" data-cv="achievement"><i class="fa fa-trash"></i></a>
-					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
 
@@ -228,10 +238,6 @@
 					    					echo '<span class="space">|</span>' . $cv_course->organizer;
 					    				}
 					    			?>
-					    		</td>
-					    		<td class="action">
-					    			<a href="<?php echo site_url('talent/cv-course/edit/') . $cv_course->id_talent_cv_course;?>" class="text-primary"><i class="fa fa-edit"></i></a>
-					    			<a href="#!" class="text-danger" data-toggle="modal" data-target=".modal-delete" data-id="<?php echo $cv_course->id_talent_cv_course;?>" data-cv="course"><i class="fa fa-trash"></i></a>
 					    		</td>
 					    	</tr>
 				    	<?php endforeach;?>
@@ -416,23 +422,66 @@
 </div>
 
 <!-- modal delete -->
-<div class="modal fade modal-delete" tabindex="-1" role="dialog">
+<div class="modal fade modal-invite" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Hapus</h4>
+				<h4 class="modal-title"><i class="fa fa-envelope"></i> Invitation</h4>
 			</div>
-			<div class="modal-body">
-				<p>Apakah Anda yakin?</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-default" data-dismiss="modal">Cancel</button>
-				<a class="btn btn-outline-danger">Delete</a>
-			</div>
+			<form role="form" method="POST" enctype="multipart/form-data" action="<?php echo site_url('CompanyMember/invitation_message/');?>">
+				<div class="modal-body">
+                  	<div class="row">
+	                    <div class="col-md-12">
+	                      <div class="form-group">
+	                        <input type="text" class="form-control" id="name" name="invitation_from" placeholder="From" required data-error="Please enter your name">
+	                        <div class="help-block with-errors"></div>
+	                      </div>                                 
+	                    </div>
+
+	                    <div class="col-md-12">
+	                      <div class="form-group">
+	                        <input type="text" class="form-control" id="name" name="invitation_subject" placeholder="Subject" required data-error="Please enter your name">
+	                        <div class="help-block with-errors"></div>
+	                      </div>                                 
+	                    </div>
+
+	                    <div class="col-md-12">
+		                    <div class="form-group"> 
+	                        	<textarea class="form-control" id="message" name="invitation_message" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
+	                        	<div class="help-block with-errors"></div>
+	                    	</div>
+	                   	</div>
+                   	</div>
+                   	<div class="row">
+                   		<div class="col-md-3">
+                   			<input style="visibility: hidden;"  type="email" name="invitation_to" value="<?php echo $talent->email; ?>">
+                   		</div>
+                   		<div class="col-md-3">
+                   			<input style="visibility: hidden;"  type="text" name="id_company" value="<?php echo $data_id_company['id_company']; ?>">
+                   		</div>
+                   		<div class="col-md-3">
+                   			<input style="visibility: hidden;"  type="text" name="id_talent" value="<?php echo $talent->id_talent; ?>">
+                   		</div>
+                   	</div>
+				</div>
+				<div class="modal-footer" style="display: block; text-align: center;">
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-4">
+							<button style="width: 100%;" type="button" class="button button2" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+						</div>
+						<div class="col-md-4">
+							<button style="width: 100%;" class="button button1" type="submit"><i class="fa fa-paper-plane"></i> Send</button>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+				</div>
+			</form>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<br><br>
 
 <script type="text/javascript">
 	// delete cv work

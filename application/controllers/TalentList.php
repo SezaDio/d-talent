@@ -53,9 +53,18 @@ class TalentList extends CI_Controller {
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
-	function detail_talent($id_talent){
-		
+	function detail_talent($id_talent)
+	{	
+		$id_company = $this->session->userdata('id_company');
 
+		if ($id_company == null) {
+			return redirect('AccountCompany');
+		}
+
+		$data['data_id_company'] = array(
+							'id_company' => $id_company
+							);
+		
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('talent_models/TalentCVWorkModel');
 		$this->load->model('talent_models/TalentCVEducationModel');

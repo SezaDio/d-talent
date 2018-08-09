@@ -4,7 +4,7 @@
 	<div class="col-lg-10">
 		<br>
 		<div class="row">
-			<div class="col-md-12" style="padding: 30px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+			<div class="col-md-12" style="padding: 30px; min-height: 500px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 				<div class="row">
 					<!--Jobs Caategory section-->
 					<div class="col-md-12">
@@ -132,6 +132,7 @@
 		var category = $('#valCategory').val();
 		var type = $('#valType').val();
 		var province = $('#valProvince').val();
+		var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
 		
 		document.getElementById("job_all").style.display = "none";
 		document.getElementById("job_search").style.display = "block";
@@ -162,7 +163,7 @@
 					div_job_search += '<div class="col-md-12" style="background-color: white;">';
 						div_job_search += '<div style="padding-top: 10px;  padding-bottom: 10px;">';
 							div_job_search += '<strong style="padding-top: 5px;font-size: 1.3em;">';
-								div_job_search += ''+job_title+'';
+								div_job_search += '<a href="'+base_url+'JobVacancy/detail_job/'+id_job+'">'+job_title+'</a>';
 							div_job_search += '</strong>';
 						div_job_search += '</div>';
 						div_job_search += '<div class="row">';
