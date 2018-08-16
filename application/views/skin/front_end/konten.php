@@ -92,7 +92,7 @@
 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
-              <a href="<?php echo site_url('AccountTalent/index/'); ?>"> 
+              <a href="<?php echo site_url('AccountTalent/login/'); ?>"> 
                 <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
                 </div>
@@ -103,7 +103,7 @@
           </div> 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
-              <a href="<?php echo site_url('AccountCompany/index/'); ?>">
+              <a href="<?php echo site_url('AccountCompany/login/'); ?>">
                 <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-building" style="font-size: 30px;line-height: 80px;"></i>
                 </div>

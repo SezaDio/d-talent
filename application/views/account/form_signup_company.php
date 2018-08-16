@@ -73,10 +73,9 @@
 
 						<div class="row">
 							<div class="col-md-12">	
-							    <form class="omb_loginForm" action="<?php echo site_url('AccountCompany/add_sign_up_company_check'); ?>" autocomplete="on" method="POST">
+							    <form class="omb_loginForm" action="<?php echo site_url('AccountCompany/register'); ?>" autocomplete="on" method="POST">
 							    	<?php 
-										$this->load->library('form_validation');
-										echo validation_errors(); 
+										$this->load->library('form_validation');										
 									?>
 
 									<?php 
@@ -149,7 +148,7 @@
 										<input minlength="6" type="password" class="form-control" name="password" placeholder="Password (Min. 6 Karakter)" required value="<?php echo set_value('password'); ?>">
 									</div>
 									<br>
-
+									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="dts_reg" />
 									<div class="input-group" style="float: right;">
 										<a href="#"><p>Forgot Password?</p></a>
 									</div>

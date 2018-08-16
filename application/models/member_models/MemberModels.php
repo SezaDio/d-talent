@@ -2,6 +2,9 @@
 
 	class MemberModels extends CI_Model
 	{
+		const MEMBERS_TABLE = SRV_TBL_LOGINDATA;
+		const TALENT_TABLE = SRV_TBL_TALENTINFO;
+
 		function construct()
 		{
 			parent::_construct();
@@ -90,5 +93,180 @@
 		function add_data_member($data_member)
 		{
 			$this->db->insert('member', $data_member);
+		}
+
+		/**
+		 * Fungsi dari DTalent lama	 
+		 */
+		
+		// check ketersediaan member
+		public function get_member_by_username($userName) {
+			$this->db->from($this::MEMBERS_TABLE);
+			$this->db->where(array('username'=>$userName));
+		
+			$queryResult = $this->db->get();
+			if (!$queryResult) return null;
+			return $queryResult->row();
+		}
+
+		/**
+		 * Dapatkan data login member berdasar ID
+		 * @param int $idMember ID member
+		 * @return NULL|Object Row jika ada, NULL jika tidak ada
+		 * @author Nur Hardyanto
+		 */
+		public function get_member_by_id($idMember) {
+			$this->db->from($this::MEMBERS_TABLE);
+			$this->db->where(array('id_member'=>$idMember));
+			
+			$queryResult = $this->db->get();
+			if (!$queryResult) return null;
+			return $queryResult->row();
+		}
+
+		/**
+		 * Buat membership baru.
+		 * @param array $dataLogin Data login.
+		 * 	Field: username, password (unhashed), level, status, date_approved (optional)
+		 * @param string $memberRole Role jobseeker / employer
+		 * @param string $todayDate MySQL date yyyy-mm-dd hh:ii:ss
+		 * @return boolean TRUE jika sukses, sebaliknya FALSE
+		 */
+		private function _create_member($dataLogin, $memberRole, $todayDate) {
+			//== Conventional MD5...
+			$hashOld = md5(uniqid(rand(), true));
+			
+			//== Modern hash
+			$passwordHash = $this->_hash_password($dataLogin['password']);
+			
+			$loginData = array(					
+					'passw' => $passwordHash,
+					'role' => $memberRole,
+					'priv' => $dataLogin['level'],
+					'fullname' => $dataLogin['fullname'],
+					'status' => $dataLogin['status'],
+					'date_registered' => $todayDate,
+					'username' => $dataLogin['username']
+			);
+			
+			//-- Optionals
+			//if (!empty($dataLogin['date_approved']))
+			//	$loginData['date_approved'] = $dataLogin['date_approved'];
+			//if (!empty($dataLogin['date_activated']))
+			//	$loginData['date_activated'] = $dataLogin['date_activated'];
+			//if (!empty($dataLogin['date_expired']))
+			//	$loginData['date_expired'] = $dataLogin['date_expired'];
+				
+			$queryResult = $this->db->insert($this::MEMBERS_TABLE, $loginData);
+			return $queryResult;
+		}
+		
+		/**
+		 * Tambah record member talent
+		 * @param array $dataLogin Data login. Field: username, password (unhashed), level, status, date_approved (optional)
+		 * @param array $dataMember Data detil login. Field sesuai pada database.
+		 * @return int ID member jika sukses, NULL jika gagal.
+		 * @author Nur Hardyanto
+		 */
+		public function create_member_talent($dataLogin, $dataMember) {
+			$todayDate = date('Y-m-d H:i:s');
+						
+			$queryResult = $this->_create_member($dataLogin, 'talent', $todayDate);
+			if ($queryResult) {
+				$idMember = $this->db->insert_id();
+				
+				$dataDetil = array();
+				$dataDetil['id_member'] = $idMember;
+				foreach ($dataMember as $fieldName => $fieldVal) {
+					$dataDetil[$fieldName] = $fieldVal;
+				}				
+				$dataDetil['talent_date_join'] = $todayDate;
+
+				$queryResult = $this->db->insert($this::TALENT_TABLE, $dataDetil);
+					
+				return $idMember;				
+				
+			} else {
+				return null;
+			}
+		}
+		/**
+		 * Tambah record member talent
+		 * @param array $dataLogin Data login. Field: username, password (unhashed), level, status, date_approved (optional)
+		 * @param array $dataMember Data detil login. Field sesuai pada database.
+		 * @return int ID member jika sukses, NULL jika gagal.
+		 * @author Nur Hardyanto
+		 */
+		public function create_member_company($dataLogin, $dataMember) {
+			$todayDate = date('Y-m-d H:i:s');
+						
+			$queryResult = $this->_create_member($dataLogin, 'company', $todayDate);
+			if ($queryResult) {
+				$idMember = $this->db->insert_id();
+				
+				$dataDetil = array();
+				$dataDetil['id_member'] = $idMember;
+				foreach ($dataMember as $fieldName => $fieldVal) {
+					$dataDetil[$fieldName] = $fieldVal;
+				}				
+				$dataDetil['company_date_join'] = $todayDate;
+
+				$queryResult = $this->db->insert('company', $dataDetil);
+					
+				return $idMember;				
+				
+			} else {
+				return null;
+			}
+		}
+		/**
+		 * Hash password pada sistem UNDIP Career Center
+		 * @param string $newPassword String password
+		 * @return string String hash
+		 */
+		private function _hash_password($newPassword) {
+			// == Generate hash untuk password baru
+			$cost = 10;
+			$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+			$salt = sprintf("$2a$%02d$", $cost) . $salt;
+			$passwordHash = crypt($newPassword, $salt);
+			
+			return $passwordHash;
+		}
+
+		public function autentikasi($userName, $passWord, $updateLog = true) {
+			$this->db->from($this::MEMBERS_TABLE);
+			$this->db->where(array('username'=>$userName));
+		
+			$queryResult = $this->db->get();
+			if (!$queryResult) return null;
+			else {
+				$memberLoginData = $queryResult->row();
+				
+				if (!$memberLoginData) {
+					return null;
+				}
+				
+				// Jika password benar...
+				if ((crypt($passWord, $memberLoginData->passw)) === $memberLoginData->passw) {
+					// Valid login
+				} else {
+					return null;
+				}
+				
+				/*
+				if ($updateLog) {
+					$currentDate = date('Y-m-d H:i:s');
+					$currentIpAddr = $_SERVER['REMOTE_ADDR'];
+					
+					$this->db->where(array('username'=>$userName));
+					$this->db->update($this::MEMBERS_TABLE, array(
+							'date_last_login'=>$currentDate,
+							'ip_last_login'=>$currentIpAddr
+					));
+				}
+				*/
+				return $memberLoginData;
+			}
 		}
 	}

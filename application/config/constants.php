@@ -83,3 +83,37 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/*
+ * Application constants
+ */
+defined('WEB_LOGOFILE')			OR define('WEB_LOGOFILE', '/assets/images/logo-v1.3.png');
+defined('WEB_CONTACTEMAIL')		OR define('WEB_CONTACTEMAIL', 'hello@d-talentsolution.id');
+defined('WEB_CONTACTNUMBER')	OR define('WEB_CONTACTNUMBER', '+62-81-2222-3781');
+defined('WEB_HEADQUARTER_ADDRESS')	OR define('WEB_HEADQUARTER_ADDRESS', "Jl. Seudati IV No. E34 Perumahan P4A\nPudakpayung, Kota Semarang, 50265");
+defined('WEB_SUBMIT_TAG')			OR define('WEB_SUBMIT_TAG', 'formsubmit');
+defined('WEB_IDPLACEHOLDER_TAG')	OR define('WEB_IDPLACEHOLDER_TAG', '%%id%%');
+
+//-- Session
+defined('WEB_SESS_TYPE')		OR define('WEB_SESS_TYPE', 'sessType');
+defined('WEB_SESS_MEMBERID')	OR define('WEB_SESS_MEMBERID', 'sessMemberId');
+defined('WEB_SESS_FNAME')		OR define('WEB_SESS_FNAME', 'sessUserName');
+defined('WEB_SESS_DETAILID')	OR define('WEB_SESS_DETAILID', 'sessDetailId');
+defined('WEB_SESS_ROLE')		OR define('WEB_SESS_ROLE', 'sessUserRole');
+defined('WEB_SESS_PRIV')		OR define('WEB_SESS_PRIV', 'sessUserPriv');
+
+//-- Limits
+defined('SRV_EMAILVERIFY_SENDLIMIT')	OR define('SRV_EMAILVERIFY_SENDLIMIT', 5); // Send email once in 5 minutes each user
+
+//-- Backoffice
+defined('WEB_BACKOFFICE_BASEURL')	OR define('WEB_BACKOFFICE_BASEURL', '/members/bo');
+
+//-- Status values
+defined('SRV_STATUS_REJECTED')		OR define('SRV_STATUS_REJECTED', 0);
+defined('SRV_STATUS_ACCEPTED')		OR define('SRV_STATUS_ACCEPTED', 1);
+defined('SRV_STATUS_PENDING')		OR define('SRV_STATUS_PENDING', 99);
+
+//-- Table constants
+defined('SRV_TBL_LOGINDATA')	OR define('SRV_TBL_LOGINDATA', 'members');
+defined('SRV_TBL_TALENTINFO')	OR define('SRV_TBL_TALENTINFO', 'talent');
+defined('SRV_TBL_COURSES')      OR define('SRV_TBL_COURSES', 'courses');

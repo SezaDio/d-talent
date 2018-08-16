@@ -21,7 +21,7 @@
 		//Mengambil data dari tabel Talent
 		function get_data_talent()
 		{
-			$query = $this->db->query("SELECT * FROM `talent`");
+			$query = $this->db->query("SELECT * FROM `members` WHERE role='talent'");
 		
 			$indeks = 0;
 			$result = array();
@@ -34,6 +34,16 @@
 			return $result;
 		}
 		
+		// cek id member
+		function check_id_members($email)
+		{
+			$this->db->select("id_member");
+			$this->db->from("members");
+			$this->db->where("username", $email);
+
+			return $this->db->get();
+		}
+
 		// Cek keberadaan user di sistem
 		function check_member_account($email, $password)
 		{
@@ -112,5 +122,27 @@
 			}
 		
 			return $result;
+		}
+
+		// get data talent by idmember
+		public function get_talent_by_idmember($idMember) {
+			$this->db->from(SRV_TBL_TALENTINFO);
+			$this->db->limit(1);
+			$this->db->where(array('id_member' => $idMember));
+			
+			$queryResult = $this->db->get();
+			if (!$queryResult) return null;
+			return $queryResult->row();
+		}
+
+		// get data company by idmember
+		public function get_company_by_idmember($idMember) {
+			$this->db->from("company");
+			$this->db->limit(1);
+			$this->db->where(array('id_member' => $idMember));
+			
+			$queryResult = $this->db->get();
+			if (!$queryResult) return null;
+			return $queryResult->row();
 		}
 	}

@@ -71,24 +71,34 @@
 
 						<div class="row">
 							<div class="col-md-12">	
-							    <form class="omb_loginForm" action="<?php echo site_url('AccountCompany/login_company_member'); ?>" autocomplete="on" method="POST">
+							    <form class="omb_loginForm" action="<?php echo site_url('AccountCompany/login'); ?>" autocomplete="on" method="POST">
 							    	<?php 
 										$this->load->library('form_validation');
 										echo validation_errors(); 
 									?>
 
 									<p style="color:red;"><?php echo $this->session->flashdata('notification'); ?></p>
+									<?php 
+										if($this->session->flashdata('msg_berhasil')!='')
+										{?>
+	                                        <div class="alert alert-success alert-dismissable">
+	                                            <i class="glyphicon glyphicon-ok"></i>
+	                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                                            <?php echo $this->session->flashdata('msg_berhasil');?> 
+	                                        </div>
+                                  	<?php } ?>
 									
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-										<input type="email" class="form-control" name="company_email" placeholder="E-Mail" required value="<?php echo set_value('email'); ?>">
+										<input type="email" class="form-control" name="company_email" placeholder="E-Mail" required value="<?php echo set_value('company_email'); ?>">
 									</div>
 									<span class="help-block"></span>
 														
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-										<input  type="password" class="form-control" name="company_password" placeholder="Password" required value="<?php echo set_value('password'); ?>">
+										<input  type="password" class="form-control" name="company_password" placeholder="Password" required value="<?php echo set_value('company_password'); ?>">
 									</div>
+									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
 									<br>
 									<div class="input-group" style="float: right;">
 										<a href="#"><p>Forgot Password?</p></a>
@@ -98,7 +108,7 @@
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center;">Belum Jadi Member? <a href="<?php echo site_url('AccountCompany/view_signup'); ?>">Sign Up</a></p>
+									<p style="text-align: center;">Belum Jadi Member? <a href="<?php echo site_url('AccountCompany/register'); ?>">Sign Up</a></p>
 									<br>
 								</form>
 							</div>
