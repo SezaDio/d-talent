@@ -53,7 +53,7 @@
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a href="<?php echo site_url('CompanyProfile'); ?>" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt=""></a>
+            <a href="<?php //echo site_url('CompanyProfile'); ?>" class="navbar-brand"><img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
               <i class="lnr lnr-menu"></i>
             </button>
@@ -69,7 +69,9 @@
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
               </li>
-
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-certified"></i> <b>My Course</b></a>
+              </li>
               <li class="nav-item treeview dropdown" role="presentation">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
                   <i class="fa fa-file-alt"></i> <b>Tes Online</b> <i class="fa fa-chevron-down"></i>
