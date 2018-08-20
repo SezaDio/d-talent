@@ -5,7 +5,7 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header" style="height: 85px;">
             <!--Gambar Logo Company-->
-            <a href="<?php echo site_url('CompanyProfile'); ?>" class="navbar-brand">
+            <a href="<?php //echo site_url('CompanyProfile'); ?>" class="navbar-brand">
               <img style="margin-top: 5px;" class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
