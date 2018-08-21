@@ -3,13 +3,13 @@
   "use strict";
 
   // Sticky Nav
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 200) {
-            $('.scrolling-navbar').addClass('top-nav-collapse');
-        } else {
-            $('.scrolling-navbar').removeClass('top-nav-collapse');
-        }
-    });
+    // $(window).on('scroll', function() {
+    //     if ($(window).scrollTop() > 200) {
+    //         $('.scrolling-navbar').addClass('top-nav-collapse');
+    //     } else {
+    //         $('.scrolling-navbar').removeClass('top-nav-collapse');
+    //     }
+    // });
 
     /* 
    One Page Navigation & wow js
@@ -29,13 +29,13 @@
             offset: 195
         });
 
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() > 200) {
-                $('.fixed-top').addClass('menu-bg');
-            } else {
-                $('.fixed-top').removeClass('menu-bg');
-            }
-        });
+        // $(window).on('scroll', function() {
+        //     if ($(window).scrollTop() > 200) {
+        //         $('.fixed-top').addClass('menu-bg');
+        //     } else {
+        //         $('.fixed-top').removeClass('menu-bg');
+        //     }
+        // });
 
     });
 
