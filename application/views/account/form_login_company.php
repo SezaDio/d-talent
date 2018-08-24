@@ -58,7 +58,7 @@
 				<div class="col-lg-4" style="padding: 20px; background: white; border: solid 1px lightgray; border-radius: 5px; box-shadow: 5px 10px 12px lightgrey;">
 					<div class="row">
 						<div class="col-md-12" style="text-align: center;">
-							<img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/>
+							<a href="<?php echo site_url('/CompanyProfile')?>"><img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/></a>
 						</div>
 					</div>
 					<div class="omb_login">
@@ -99,10 +99,10 @@
 										<input  type="password" class="form-control" name="company_password" placeholder="Password" required value="<?php echo set_value('company_password'); ?>">
 									</div>
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
-									<br>
+									<!-- <br>
 									<div class="input-group" style="float: right;">
 										<a href="#"><p>Forgot Password?</p></a>
-									</div>
+									</div> -->
 				                    
 									<br><br>
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
