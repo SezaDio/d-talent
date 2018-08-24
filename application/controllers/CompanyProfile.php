@@ -60,7 +60,7 @@ class CompanyProfile extends CI_Controller {
             $this->db->insert('hubungi_kami', $data_pesan);
 
             $this->session->set_flashdata('msg_berhasil', 'Pesan telah terkirim.');
-            redirect(site_url('CompanyProfile/home'));
+            redirect(site_url('/CompanyProfile'));
          }
          else
          {
@@ -70,7 +70,7 @@ class CompanyProfile extends CI_Controller {
       }
       else
       {
-         redirect(site_url('home'));
+         redirect(site_url('/CompanyProfile'));
       }
    }	
 	
