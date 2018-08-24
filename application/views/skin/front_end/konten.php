@@ -239,7 +239,7 @@
     <!-- blog Section End -->
 
     <!-- Start Video promo Section -->
-    <section class="video-promo section">
+    <!-- <section class="video-promo section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
@@ -251,7 +251,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- End Video Promo Section -->
 
     <!-- Start Pricing Table Section -->
