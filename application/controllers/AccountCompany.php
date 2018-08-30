@@ -426,6 +426,7 @@ class AccountCompany extends CI_Controller
 				//Jika akun ditemukan, set session
 				$array_items = array(
 										'role' => $loginResult->role,
+										'id_member' => $loginResult->id_member,
     									'id_company' => $companyData->id_company,
     									'company_name' => $companyData->company_name,
     									'company_email' => $companyData->company_email,

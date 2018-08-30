@@ -1080,18 +1080,15 @@ class CompanyMember extends CI_Controller
 			$old_password = $this->input->post('old_password', 'true');
 			$new_password = $this->input->post('new_password','true');
 			// check old password
-			$this->db->select('*');
-			$this->db->from('company');
-			$this->db->where('id_company', $id_company);
-			$this->db->where('password', md5($old_password));
-			$temp_account = $this->db->get()->row();
+			$this->load->model('member_models/MemberModels');
+			$idMember = $this->session->userdata('id_member');
+			$loginData = $this->MemberModels->get_member_by_id($idMember);
 
-			if ($temp_account != "") {
+			$checkData = $this->MemberModels->autentikasi($loginData->username, $old_password, false);
+
+			if ($checkData) {
 				// update db
-				$password = md5($new_password);
-				$data 	  = array('password' => $password);
-				$this->db->where('id_company', $id_company);
-				$update = $this->db->update('company', $data);
+				$update = $this->MemberModels->change_password($loginData->id_member, $new_password);
 
 				if ($update) {
 					// message

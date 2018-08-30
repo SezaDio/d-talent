@@ -176,11 +176,17 @@ class Talent extends CI_Controller {
 			$old_password = $this->input->post('old_password', 'true');
 			$new_password = $this->input->post('new_password','true');
 			// check old password
-			$temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+			$this->load->model('member_models/MemberModels');
+			$idMember = $this->session->userdata('id_member');
+			$loginData = $this->MemberModels->get_member_by_id($idMember);
 
-			if ($temp_account != "") {
+			$checkData = $this->MemberModels->autentikasi($loginData->username, $old_password, false);
+			// $temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+
+			if ($checkData) {
 				// update db
-				$update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				// $update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				$update = $this->MemberModels->change_password($loginData->id_member, $new_password);
 				if ($update) {
 					// message
 					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');

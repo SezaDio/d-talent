@@ -474,6 +474,7 @@ class AccountTalent extends CI_Controller
 				//Jika akun ditemukan, set session
 				$array_items = array(
 									'role' => $loginResult->role,
+									'id_member' => $loginResult->id_member,
 									'id_talent' => $talentData->id_talent,
 									'nama' => $talentData->nama,
 									'email' => $talentData->email,
