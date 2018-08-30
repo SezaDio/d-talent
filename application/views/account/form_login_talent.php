@@ -46,6 +46,10 @@
 			    background-color: white;
 			    color: black;
 			}
+			.omb_login .omb_loginOr .omb_spanOr{
+				left: 38%;
+				width: 8em;
+			}
 		</style>
 	</head>
 	<body style="background: whitesmoke;">
@@ -65,7 +69,7 @@
 						<div class="row omb_loginOr">
 							<div class="col-md-12">
 								<hr class="omb_hrOr">
-								<span class="omb_spanOr"><b>Login</b></span>
+								<span class="omb_spanOr"><b>Login as Talent</b></span>
 							</div>
 						</div>
 
@@ -100,9 +104,9 @@
 									</div>
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
 									<!-- <br> -->
-									<!-- <div class="input-group" style="float: right;">
+									<div class="input-group" style="float: right;">
 										<a href="#"><p>Forgot Password?</p></a>
-									</div> -->
+									</div>
 				                    
 									<br><br>
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>

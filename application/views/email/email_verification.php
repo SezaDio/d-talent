@@ -10,7 +10,7 @@
 <p>Yth. <?php if (!empty($namaLengkap)) echo htmlspecialchars($namaLengkap);
 				else echo "member"; ?>,</p>
 	
-<p>Terima kasih telah mendaftar akun di website d-talentsolution.id. Agar dapat memanfaatkan layanan, mohon verifikasikan alamat e-mail Anda
+<p>Terima kasih telah mendaftar akun di website d-talent.id. Agar dapat memanfaatkan layanan, mohon verifikasikan alamat e-mail Anda
 	(<?php echo htmlspecialchars($loginEmail)?>) terlebih dahulu dengan klik link berikut:
 </p>
 
@@ -23,4 +23,4 @@
 <p>Kami hanya ingin memastikan kepemilikan e-mail. Jika Anda menerima e-mail ini karena kesalahan,
 	silakan abaikan e-mail ini. Terima kasih.</p>
 	
-<p>Regards,<br /> <strong>D-Talentsolution.id</strong></p>
+<p>Regards,<br /> <strong>D-Talent.id</strong></p>

@@ -361,36 +361,36 @@ class AccountTalent extends CI_Controller
 				//-- Send registration email // di comment, nunggu setting password email //
 				
 				// Proses kirim e-mail notifikasi...
-				// $this->load->model('email_model');
-				// $emailSubject = "[D-Talent] Registrasi Member D-Talentsolution.id";
+				$this->load->model('email_model');
+				$emailSubject = "[D-Talent] Registrasi Member dtalent.id";
 				
-				// $encEmail = base64_encode($emailDest);
-				// $accessLink = site_url('/auth/verify/'.$emailToken.'?em='.$encEmail);
+				$encEmail = base64_encode($emailDest);
+				$accessLink = site_url('/AccountTalent/verify/'.$emailToken.'?em='.$encEmail);
 				
-				// $loginSecretCensor = srv_censor_password($userSecretWord);
-				// $contentFields = array(
-				// 		'pageTitle' => $emailSubject,
-				// 		'pageContent' => '',
-				// 		'namaLengkap' => $submittedData['nama'],
-				// 		'loginUserName' => $submittedData['email'], // Username is their email
-				// 		'loginSecret' => $loginSecretCensor,
-				// 		'loginEmail' => $emailDest,
-				// 		'verifyLink' => $accessLink
-				// );
-				// $bodyContent = $this->load->view('email/email_register_talent', $contentFields, true);
-				// $contentFields['pageContent'] = $bodyContent;
-				// $emailContent = $this->load->view('skin/email/template_default', $contentFields, true);
+				$loginSecretCensor = srv_censor_password($userSecretWord);
+				$contentFields = array(
+						'pageTitle' => $emailSubject,
+						'pageContent' => '',
+						'namaLengkap' => $submittedData['nama'],
+						'loginUserName' => $submittedData['email'], // Username is their email
+						'loginSecret' => $loginSecretCensor,
+						'loginEmail' => $emailDest,
+						'verifyLink' => $accessLink
+				);
+				$bodyContent = $this->load->view('email/email_register_talent', $contentFields, true);
+				$contentFields['pageContent'] = $bodyContent;
+				$emailContent = $this->load->view('skin/email/template_default', $contentFields, true);
 				
-				// $this->email_model->set_config( 0 ); // Kirim pakai e-mail default				
+				$this->email_model->set_config( 0 ); // Kirim pakai e-mail default				
 
-				// $sendResult = $this->email_model->web_send_email($emailDest, $emailSubject, $emailContent, 'REGISTER-MEMBER-PREMIUM');
+				$sendResult = $this->email_model->web_send_email($emailDest, $emailSubject, $emailContent, 'REGISTER-MEMBER-PREMIUM');
 				
-				// if (!$sendResult) {
-				// 	$this->db->trans_rollback();
-				// 	$this->email_model->save_email_log();
-				// 	$errorMessages = "Internal error: Cannot send e-mail. Please try again or contact administrator.";
-				// 	return false;
-				// }
+				if (!$sendResult) {
+					$this->db->trans_rollback();
+					$this->email_model->save_email_log();
+					$errorMessages = "Internal error: Cannot send e-mail. Please try again or contact administrator.";
+					return false;
+				}
 				
 				//-- Flush the queries
 				$this->db->trans_commit();
@@ -519,16 +519,16 @@ class AccountTalent extends CI_Controller
 	
 		if ($emailData) {
 			//-- Ambil info member
-			$this->load->model("member_model");
-			$userData = $this->member_model->get_member_by_id($emailData->id_member);
+			$this->load->model("member_models/MemberModels");
+			$userData = $this->MemberModels->get_member_by_id($emailData->id_member);
 			if (!$userData) {
 				die("Database error happened. Please contact administrator."); return;
 			}
 	
 			//-- Ambil info member
 			if ($userData->role == 'talent') {
-				$this->load->model('talent_model');
-	
+				$this->load->model('account/UserModel');
+				$this->data['role'] = $userData->role;
 				//-- TODO: Update flag session jika user ybs sedang login...
 	
 			} else {
@@ -572,7 +572,7 @@ class AccountTalent extends CI_Controller
 		
 		$this->data['showScrollTopNav'] = false;
 		$this->data['pageTitle'] = "E-mail Verification";
-		$this->load->template('member/email_verification', $this->data);
+		$this->load->view('account/email_verification', $this->data);
 	}
 
 	public function resend() {
@@ -595,8 +595,8 @@ class AccountTalent extends CI_Controller
 			
 			$errorMessage = null;
 			// comment fungsi resend, setting pass email
-			// $submitResult = $this->_resend_verification($emailAddr, $errorMessage);
-			$submitResult=TRUE;
+			$submitResult = $this->_resend_verification($emailAddr, $errorMessage);
+			// $submitResult=TRUE;
 			
 			if ($submitResult) {
 				$this->data['successMessages'][] = "E-mail verifikasi telah dikirimkan. Silakan cek folder inbox/spam/junk e-mail Anda.";

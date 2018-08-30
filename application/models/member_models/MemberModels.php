@@ -227,7 +227,7 @@
 		private function _hash_password($newPassword) {
 			// == Generate hash untuk password baru
 			$cost = 10;
-			$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+			$salt = strtr(base64_encode(random_bytes (16)), '+', '.');
 			$salt = sprintf("$2a$%02d$", $cost) . $salt;
 			$passwordHash = crypt($newPassword, $salt);
 			

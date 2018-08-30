@@ -10,8 +10,8 @@
 ?>
 <p>Dear <?php echo htmlspecialchars($namaLengkap); ?>,</p>
 
-<p>Terima kasih atas ketertarikan Anda untuk bergabung bersama D-Talentsolution.id. Berikut adalah informasi login yang Anda gunakan
-	untuk login ke website <a href="https://d-talentsolution.id/auth/login?ref=email" target="_blank">d-talentsolution.id</a>:<br />
+<p>Terima kasih atas ketertarikan Anda untuk bergabung bersama dtalent.id. Berikut adalah informasi login yang Anda gunakan
+	untuk login ke website <a href="https://dtalent.id/talent/login?ref=email" target="_blank">dtalent.id</a>:<br />
 	
 <b>Username</b>: <?php echo htmlspecialchars($loginUserName); ?><br />
 <b>Password</b>: <?php echo htmlspecialchars($loginSecret); ?>
@@ -26,5 +26,5 @@
 
 <p>Apabila ada pertanyaan atau kesulitan, silakan hubungi kami.</p>
 <p>
-	Regards,<br /> <strong>D-Talentsolution.id</strong>
+	Regards,<br /> <strong>dtalent.id</strong>
 </p>
