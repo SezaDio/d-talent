@@ -16,6 +16,8 @@ class TalentList extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 3;
+
 		$this->load->library('pagination');
 		$id_talent = $this->session->userdata('id_talent');
 
@@ -48,13 +50,15 @@ class TalentList extends CI_Controller {
 		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
 		
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/talent_list',$data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	function detail_talent($id_talent)
 	{	
+		$data['active'] = 3;
+
 		$id_company = $this->session->userdata('id_company');
 
 		if ($id_company == null) {
@@ -121,7 +125,7 @@ class TalentList extends CI_Controller {
 		}*/
 		
 		$this->load->view('skin/front_end/header_company_page_topbar', $data);
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/detail_talent');
 		$this->load->view('skin/front_end/footer_company_page');
 	}

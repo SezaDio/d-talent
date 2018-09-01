@@ -61,7 +61,7 @@
 		<div class="job-vacancy">
 			<div class="card">
 				<div class="card-header">
-					<h4>Deskripsi Pekerjaan</h4>
+					<h4>Job Description</h4>
 				</div>
 				<div class="card-body">
 					<p>
@@ -75,7 +75,7 @@
 
 			<div class="card">
 				<div class="card-header">
-					<h4>Persyaratan</h4>
+					<h4>Requirement</h4>
 				</div>
 				<div class="card-body">
 					<ol class="requirement">
@@ -90,7 +90,7 @@
 		<br>
 
 		<div>
-			<a href="<?php echo site_url('company/job-vacancy'); ?>" class="button button1" style="width: 130px;">Kembali</a>
+			<a href="<?php echo site_url('company/job-vacancy'); ?>" class="button button1" style="width: 130px;">Back</a>
 		</div>
 
 		<br>

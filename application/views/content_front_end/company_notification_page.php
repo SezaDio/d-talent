@@ -12,12 +12,12 @@
                	<thead>
                		<tr>
                			<th>No</th>
-               			<th>Foto Talent</th>
-               			<th>Nama Talent</th>
-               			<th>Kontak Talent</th>
-               			<th>Keterangan</th>
+               			<th>Talent Photo</th>
+               			<th>Talent Name</th>
+               			<th>Talent Phone</th>
+               			<th>Description</th>
                			<th>Status</th>
-               			<th>Tanggal</th>
+               			<th>Date</th>
                		</tr>
                	</thead>
 
@@ -71,6 +71,9 @@
 		</div>
          
      </div>
+     <br>
+     <br>
+     <br>
      <br>
      <br>
      <br>

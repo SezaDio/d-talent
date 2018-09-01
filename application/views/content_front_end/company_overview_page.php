@@ -8,13 +8,14 @@
 				<!--Section Cover Company-->
 				<div class="row">
 					<div class="col-md-12">
+						<p style="font-size: 1.3em;"><strong>Company Background Picture</strong></p>
 						<?php if($dataCoverCompany->company_cover != "") {?>
 						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCoverCompany->company_cover;?>');"></figure>
 						<?php } else{ ?>
 						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
 						<?php }?>
 
-						<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 0; width: 30px; height: 30px;">
+						<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 34px; width: 30px; height: 30px;">
 							<a href="#!" data-target=".modal-cover-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
 						</div>
 					</div>
@@ -103,7 +104,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_industries" required class="form-control" id="kategori">
-	                                                <option value="">--Pilih Kategori--</option>
+	                                                <option value="">--Choose Your Industries--</option>
 	                                                <?php
 	                                                    foreach ($bidang_usaha as $key=>$bu) 
 	                                                    {

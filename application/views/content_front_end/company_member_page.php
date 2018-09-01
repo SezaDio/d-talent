@@ -47,7 +47,7 @@
 									</div>
 									<div class="col-md-5">
 										<a href="<?php echo site_url('CompanyMember/jobs_page'); ?>">
-											<button type="button" class="button button2"><i class="fa fa-suitcase"></i> See Jobs</button>
+											<button type="button" class="button button2"><i class="fa fa-suitcase"></i> See Vacancy</button>
 										</a>
 									</div>
 								</div>
