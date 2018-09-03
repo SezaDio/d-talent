@@ -73,10 +73,10 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-						<label>Tahun</label>
+						<label>Tahun *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control yearpicker" name="year" value="<?php echo $cv_course->year; ?>">
+							<input type="text" class="form-control yearpicker" name="year" value="<?php echo $cv_course->year; ?>" required>
 						</div>
 					</div>
 				</div>

@@ -40,6 +40,8 @@ class TalentCVAchievement extends CI_Controller {
 		$data['page_title'] = "Tambah Prestasi";
 
 		$this->form_validation->set_rules('title', '"Judul Prestasi"', 'required');
+		$this->form_validation->set_rules('month', '"Bulan"', 'required');
+		$this->form_validation->set_rules('year', '"Tahun"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get data for select
@@ -85,6 +87,8 @@ class TalentCVAchievement extends CI_Controller {
 		$data['page_title'] = "Edit Prestasi";
 
 		$this->form_validation->set_rules('title', '"Judul Prestasi"', 'required');
+		$this->form_validation->set_rules('month', '"Bulan"', 'required');
+		$this->form_validation->set_rules('year', '"Tahun"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function

@@ -42,6 +42,8 @@ class TalentCVWork extends CI_Controller {
 
 		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
 		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
+		$this->form_validation->set_rules('work_start', '"Dari"', 'required');
+		$this->form_validation->set_rules('work_end', '"Hingga"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get location's name
@@ -99,6 +101,8 @@ class TalentCVWork extends CI_Controller {
 
 		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
 		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
+		$this->form_validation->set_rules('work_start', '"Dari"', 'required');
+		$this->form_validation->set_rules('work_end', '"Hingga"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function

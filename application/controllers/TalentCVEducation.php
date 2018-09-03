@@ -33,6 +33,8 @@ class TalentCVEducation extends CI_Controller {
 		$data['page_title'] = "Tambah Pendidikan";
 
 		$this->form_validation->set_rules('school', '"Sekolah"', 'required');
+		$this->form_validation->set_rules('from_year', '"Dari"', 'required');
+		$this->form_validation->set_rules('to_year', '"Hingga"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->load->view('skin/talent/header', $data);
@@ -70,6 +72,8 @@ class TalentCVEducation extends CI_Controller {
 		$data['page_title'] = "Edit Pendidikan";
 
 		$this->form_validation->set_rules('school', '"Sekolah"', 'required');
+		$this->form_validation->set_rules('from_year', '"Dari"', 'required');
+		$this->form_validation->set_rules('to_year', '"Hingga"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function

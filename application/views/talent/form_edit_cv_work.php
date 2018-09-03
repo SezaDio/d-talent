@@ -59,19 +59,19 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-							<label>Dari</label>
+							<label>Dari *</label>
 							<p class="text-muted"><i>Format: tahun-bulan</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo displayMonthYear($cv_work->work_start); ?>">
+								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo displayMonthYear($cv_work->work_start); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-6">
-							<label>Hingga</label>
+							<label>Hingga *</label>
 							<p class="text-muted"><i>Format: tahun-bulan</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo displayMonthYear($cv_work->work_end); ?>">
+								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo displayMonthYear($cv_work->work_end); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-12">

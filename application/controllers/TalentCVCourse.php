@@ -40,6 +40,7 @@ class TalentCVCourse extends CI_Controller {
 		$data['page_title'] = "Tambah Pelatihan";
 
 		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
+		$this->form_validation->set_rules('year', '"Tahun"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get data for select
@@ -85,6 +86,7 @@ class TalentCVCourse extends CI_Controller {
 		$data['page_title'] = "Edit Pelatihan";
 
 		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
+		$this->form_validation->set_rules('year', '"Tahun"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function

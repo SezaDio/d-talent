@@ -48,17 +48,17 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-						<label>Dari</label>
+						<label>Dari *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>">
+							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>" required>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label>Hingga</label>
+						<label>Hingga *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>">
+							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>" required>
 						</div>
 					</div>
 					<div class="col-md-12">

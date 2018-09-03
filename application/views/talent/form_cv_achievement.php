@@ -65,17 +65,17 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-						<label>Bulan</label>
+						<label>Bulan *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control monthpicker" name="month" value="<?php echo set_value('month'); ?>">
+							<input type="text" class="form-control monthpicker" name="month" value="<?php echo set_value('month'); ?>" required>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label>Tahun</label>
+						<label>Tahun *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control yearpicker" name="year" value="<?php echo set_value('year'); ?>">
+							<input type="text" class="form-control yearpicker" name="year" value="<?php echo set_value('year'); ?>" required>
 						</div>
 					</div>
 				</div>
