@@ -173,70 +173,78 @@
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
 			div_talent_search += '<div class="row">';
-			for (var i = 0; i < getTalent.length; i++) {
-				var id_talent = getTalent[i].getAttribute("id_talent");
-				var nama = getTalent[i].getAttribute("nama");
-				var email = getTalent[i].getAttribute("email");
-				var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
-				var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
-				var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
-				var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
-				var provinsi = getTalent[i].getAttribute("provinsi");
-				var kota = getTalent[i].getAttribute("kota");
-				var foto_sampul = getTalent[i].getAttribute("foto_sampul");
-				var foto_profil = getTalent[i].getAttribute("foto_profil");
-				var umur = ageYear(tanggal_lahir);
+			if(getTalent.length==0){
+				div_talent_search += '<div class="col-md-2"></div>';
+				div_talent_search += '<div class="col-md-8">';
+					div_talent_search += '<h5 style=" text-align: center;">Data tidak ditemukan !</h5>';
+				div_talent_search += '</div>';
+				div_talent_search += '<div class="col-md-2"></div>';
+			} else {
+				for (var i = 0; i < getTalent.length; i++) {
+					var id_talent = getTalent[i].getAttribute("id_talent");
+					var nama = getTalent[i].getAttribute("nama");
+					var email = getTalent[i].getAttribute("email");
+					var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
+					var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
+					var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
+					var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
+					var provinsi = getTalent[i].getAttribute("provinsi");
+					var kota = getTalent[i].getAttribute("kota");
+					var foto_sampul = getTalent[i].getAttribute("foto_sampul");
+					var foto_profil = getTalent[i].getAttribute("foto_profil");
+					var umur = ageYear(tanggal_lahir);
 
-				if(foto_sampul===""){
-					var sampul = base_url+'asset/img/bg-default.jpg';
-				} else {
-					var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
-				}
-				if(foto_profil===""){
-					var profil = base_url+'asset/img/talent-default.png';
-				} else {
-					var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
-				}
-				div_talent_search += '<div class="col-md-4">';
-					div_talent_search += '	<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
-					div_talent_search += '<figure class="image-bg" style="background-image: url(';
-					div_talent_search += "'";
-					div_talent_search += sampul;
-					div_talent_search += "'";
-					div_talent_search += ');"></figure>';
-					div_talent_search += '</div>';
-					div_talent_search += '<div class="profile">';
-						div_talent_search += '<div class="img-talent">';
+					if(foto_sampul===""){
+						var sampul = base_url+'asset/img/bg-default.jpg';
+					} else {
+						var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
+					}
+					if(foto_profil===""){
+						var profil = base_url+'asset/img/talent-default.png';
+					} else {
+						var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
+					}
+					div_talent_search += '<div class="col-md-4">';
+						div_talent_search += '	<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
 						div_talent_search += '<figure class="image-bg" style="background-image: url(';
 						div_talent_search += "'";
-						div_talent_search += profil;
+						div_talent_search += sampul;
 						div_talent_search += "'";
 						div_talent_search += ');"></figure>';
 						div_talent_search += '</div>';
-						div_talent_search += '<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
-							div_talent_search += '<div class="card-body">';
-								div_talent_search += '<div style="padding: 10px;">';
-									div_talent_search += '<div class="text-center profile-attribute">';
-										div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
-										div_talent_search += '	<br>';
-										div_talent_search += '	<span>'+umur+' Tahun</span> | ';
-										div_talent_search += '<span>'+jenis_kelamin+'</span> | ';
-										div_talent_search += '<span>'+status_pernikahan+'</span>';
-									div_talent_search += '</div>';
-									div_talent_search += '<br>';
-									div_talent_search += '<div class="contact-talent">';
-										div_talent_search += '<div class="text-center">';
-											div_talent_search += '<span><i class="fa fa-envelope"></i>'+email+'</span> | ';
-											div_talent_search += '<span><i class="fa fa-phone"></i>'+nomor_ponsel+'</span>';
-											div_talent_search += '<br>';
-											div_talent_search += '<span><i class="fa fa-home"></i>'+titleCase(kota)+'</span>';
+						div_talent_search += '<div class="profile">';
+							div_talent_search += '<div class="img-talent">';
+							div_talent_search += '<figure class="image-bg" style="background-image: url(';
+							div_talent_search += "'";
+							div_talent_search += profil;
+							div_talent_search += "'";
+							div_talent_search += ');"></figure>';
+							div_talent_search += '</div>';
+							div_talent_search += '<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
+								div_talent_search += '<div class="card-body">';
+									div_talent_search += '<div style="padding: 10px;">';
+										div_talent_search += '<div class="text-center profile-attribute">';
+											div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
+											div_talent_search += '	<br>';
+											div_talent_search += '	<span>'+umur+' Tahun</span> | ';
+											div_talent_search += '<span>'+jenis_kelamin+'</span> | ';
+											div_talent_search += '<span>'+status_pernikahan+'</span>';
+										div_talent_search += '</div>';
+										div_talent_search += '<br>';
+										div_talent_search += '<div class="contact-talent">';
+											div_talent_search += '<div class="text-center">';
+												div_talent_search += '<span><i class="fa fa-envelope"></i>'+email+'</span> | ';
+												div_talent_search += '<span><i class="fa fa-phone"></i>'+nomor_ponsel+'</span>';
+												div_talent_search += '<br>';
+												div_talent_search += '<span><i class="fa fa-home"></i>'+titleCase(kota)+'</span>';
+											div_talent_search += '</div>';
 										div_talent_search += '</div>';
 									div_talent_search += '</div>';
 								div_talent_search += '</div>';
 							div_talent_search += '</div>';
 						div_talent_search += '</div>';
 					div_talent_search += '</div>';
-				div_talent_search += '</div>';
+				}
 			}
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
