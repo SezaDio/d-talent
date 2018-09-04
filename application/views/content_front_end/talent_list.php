@@ -52,7 +52,7 @@
 				</div>
 				<div class="col-md-3" style="text-align: center; padding: 5px;">
 					<div class="input-group">
-						<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Instansi . . ." required id="valInstansi">
+						<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search education institution . . ." required id="valInstansi">
 						<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_talent()"><i class="fa fa-search"></i></span>
 					</div>
 				</div>

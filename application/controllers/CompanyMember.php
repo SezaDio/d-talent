@@ -677,7 +677,7 @@ class CompanyMember extends CI_Controller
 		$data['active'] = 2;
 
 		$this->load->model('account/UserModel');
-		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi_job();
 
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
@@ -1141,5 +1141,37 @@ class CompanyMember extends CI_Controller
 
 		// redirect to page ...
 		redirect('CompanyMember/index');
+	}
+
+	//show result test soft skill page
+	public function show_result_soft_skill($id_talent)
+	{
+		$this->load->model('talent_models/TalentModel');
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		$test_data = array(
+				1 => $data['result_soft_skill']->pengambilan_keputusan,
+				2 => $data['result_soft_skill']->tanggung_jawab,
+				3 => $data['result_soft_skill']->integritas,
+				4 => $data['result_soft_skill']->resiliensi,
+				5 => $data['result_soft_skill']->keinginan_belajar,
+				6 => $data['result_soft_skill']->komunikasi,
+				7 => $data['result_soft_skill']->sikap_positif,
+				8 => $data['result_soft_skill']->antusiasme,
+				9 => $data['result_soft_skill']->kerja_tim,
+				10 => $data['result_soft_skill']->penyelesaian_masalah
+			);
+
+		$this->load->helper('custom');
+		// use function from helper
+		$response = detailSoftSkillResult($test_data);
+
+		$data['sub_title'] = $response['sub_title'];
+		$data['result'] = $response['result_detail'];
+		
+		// redirect to page result soft skill
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/soft_skill_result', $data);
+		$this->load->view('skin/talent/test_footer');
 	}
 }
