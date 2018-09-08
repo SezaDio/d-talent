@@ -50,7 +50,7 @@ class TalentTest extends CI_Controller {
 		$this->form_validation->set_rules('answer[]', '', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showCharacter();
 		}
@@ -77,11 +77,11 @@ class TalentTest extends CI_Controller {
 	  			$data['result_detail'] = $response['result_detail'];
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else {
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
@@ -208,7 +208,7 @@ class TalentTest extends CI_Controller {
 		$this->form_validation->set_rules('konvensional[]', '', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showPassion();
 		}
@@ -246,11 +246,11 @@ class TalentTest extends CI_Controller {
 	  			$data['result_detail'] = detailPassionResult($test_result);
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else {
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
@@ -287,7 +287,7 @@ class TalentTest extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE) 
 		{
-			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showWorkAttitude();
 		}
@@ -315,12 +315,12 @@ class TalentTest extends CI_Controller {
 	  			$data['result_detail'] = $response['result_detail'];
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else 
 			{
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
@@ -442,7 +442,7 @@ class TalentTest extends CI_Controller {
 
 		if($this->form_validation->run() === FALSE) 
 		{
-			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showPassion();
 		}
@@ -802,12 +802,12 @@ class TalentTest extends CI_Controller {
 	  			$data['result'] = $response['result_detail'];
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else 
 			{
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...

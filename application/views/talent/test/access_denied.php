@@ -4,7 +4,7 @@
 			<div class="card-body">
 				<div class="test">
 					<p class="text-center">
-						Anda tidak dapat mengakses tes online karena telah mengerjakan tes ini
+						Sorry, You can't take this test because you have took this
 					</p>
 				</div>
 			</div>
