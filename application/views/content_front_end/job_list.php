@@ -75,7 +75,7 @@
 									</div>
 									<div class="col-md-4" style="height: 65px;">
 										<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
-											<small><b>Batas Pendaftaran</b></small>
+											<small><b>Apply Date</b></small>
 											<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
 											<small style="font-size: 1em;">
 												<?php echo date("j M",strtotime($job->job_date_start))." - ".date("j M Y", strtotime($job->job_date_end)); ?>
