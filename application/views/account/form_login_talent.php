@@ -112,7 +112,7 @@
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center;">Belum Jadi Member? <a href="<?php echo site_url('AccountTalent/register'); ?>">Sign Up</a></p>
+									<p style="text-align: center;">Not Member? <a href="<?php echo site_url('AccountTalent/register'); ?>">Sign Up</a></p>
 									<br>
 								</form>
 							</div>

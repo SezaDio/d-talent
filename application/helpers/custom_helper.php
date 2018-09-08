@@ -146,30 +146,30 @@ function displaySkills($string)
 function displayGender($gender)
 {
     if ($gender == 0) {
-        return "Perempuan";
+        return "Female";
     }
     else{
-        return "Laki-laki";
+        return "Male";
     }
 }
 
 function displayMaritalStatus($status)
 {
     if ($status == 0) {
-        return "Belum menikah";
+        return "Unmarried";
     }
     else{
-        return "Sudah menikah";
+        return "Married";
     }
 }
 
 function displayCompanyUpdateStatus($status)
 {
     if ($status == 0) {
-        return "Konsep";
+        return "Draft";
     }
     else{
-        return "Terbit";
+        return "Published";
     }
 }
 
@@ -202,16 +202,16 @@ function displayNotificatioonStatus($status)
     //  1 accept, 2 decline, 3 expired, 0 menunggu
     switch ($status) {
         case 0:           
-            return '<span class="label label-info">Menunggu</span>';
+            return '<span class="label label-info">Pending</span>';
             break;
         case 1:           
-            return '<span class="label label-success">Menerima</span>';
+            return '<span class="label label-success">Accept</span>';
             break;
         case 2:           
-            return '<span class="label label-danger">Menolak</span>';
+            return '<span class="label label-danger">Decline</span>';
             break;
         case 3:           
-            return '<span class="label label-warning">Kadaluarsa</span>';
+            return '<span class="label label-warning">Expired</span>';
             break;
         
         default:
