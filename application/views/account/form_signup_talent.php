@@ -101,7 +101,7 @@
 									<!--Nama-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-										<input type="text" class="form-control" name="nama" placeholder="Nama Beserta Gelar (ex. John Doe, S.Kom)" required value="<?php echo set_value('nama'); ?>">
+										<input type="text" class="form-control" name="nama" placeholder="Name and Degree (ex. John Doe, S.Kom)" required value="<?php echo set_value('nama'); ?>">
 									</div>
 									<br>
 
@@ -115,7 +115,7 @@
 									<!--Telepon-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" class="form-control" name="nomor_ponsel" placeholder="Nomor Ponsel" required value="<?php echo set_value('nomor_ponsel'); ?>">
+										<input type="text" class="form-control" name="nomor_ponsel" placeholder="Phone Number" required value="<?php echo set_value('nomor_ponsel'); ?>">
 									</div>
 									<br>
 
@@ -123,8 +123,8 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
 										<select class="form-control" name="jenis_kelamin" required>
-											<option value="1">Laki-laki</option>
-											<option value="0">Perempuan</option>
+											<option value="1">Male</option>
+											<option value="0">Female</option>
 										</select>
 									</div>
 									<br>
@@ -132,15 +132,15 @@
 									<!--Tanggal Lahir-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="text" class="form-control" id="datetimepicker4" name="tanggal_lahir" placeholder="Tanggal Lahir" required value="<?php echo set_value('tanggal_lahir'); ?>">
+										<input type="text" class="form-control" id="datetimepicker4" name="tanggal_lahir" placeholder="Birth of Date" required value="<?php echo set_value('tanggal_lahir'); ?>">
 									</div>
 									<br>
 
 									<!--Provinsi-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-										<select name="provinsi" onchange="ajax_post();" placeholder="Provinsi" required class="form-control" id="lokasi_provinsi" required>
-				                            <option value="All">--Pilih Lokasi Provinsi--</option>
+										<select name="provinsi" onchange="ajax_post();" required class="form-control" id="lokasi_provinsi" required>
+				                            <option value="All">--Select Province--</option>
 				                            <?php
 				                                foreach ($lokasiProvinsi as $key=>$provinsi) 
 				                                {
@@ -156,7 +156,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-pushpin"></i></span>
 										<select name="kota" placeholder="Kota" required class="form-control" id="lokasi_kota" required>
-				                            <option value="All">--Pilih Lokasi Kota--</option>
+				                            <option value="All">--Select City--</option>
 				                            <?php
 				                                foreach ($lokasiKabupatenKota as $key=>$kota) 
 				                                {
@@ -172,8 +172,8 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
 										<select class="form-control" name="status_pernikahan" required>
-											<option value="0">Belum menikah</option>
-											<option value="1">Sudah menikah</option>
+											<option value="0">Unmarried</option>
+											<option value="1">Married</option>
 										</select>
 									</div>
 									<br>
@@ -181,7 +181,7 @@
 									<!--Password-->
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-										<input minlength="6" type="password" class="form-control" name="password" placeholder="Password (Min. 6 Karakter)" required value="<?php echo set_value('password'); ?>">
+										<input minlength="6" type="password" class="form-control" name="password" placeholder="Password (Min. 6 Character)" required value="<?php echo set_value('password'); ?>">
 									</div>
 									<br>
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="dts_reg" />
@@ -194,7 +194,7 @@
 									<button class="button button5" type="submit" name="submit" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Join D-Talent </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center;">Sudah Punya Akun? <a href="<?php echo site_url('AccountTalent/index'); ?>">Log In </a></p>
+									<p style="text-align: center;">Already have account? <a href="<?php echo site_url('AccountTalent/index'); ?>">Log In </a></p>
 									<br>
 								</form>
 							</div>
@@ -227,7 +227,7 @@
 								var ctr;
 
 								// clear options
-								$('#lokasi_kota').html('<option value="All">--Pilih Lokasi Kota--</option>');
+								$('#lokasi_kota').html('<option value="All">--Select City--</option>');
 								for ( ctr = 0; ctr < cTotal; ctr++) 
 								{
 									$('#lokasi_kota').append('<option value="'+respData.kota[ctr].id+'">'+respData.kota[ctr].name+'</option>');
