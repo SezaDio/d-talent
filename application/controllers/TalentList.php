@@ -134,8 +134,8 @@ class TalentList extends CI_Controller {
 	private function get_gender_list()
 	{
 		$gender = array(
-						  '0'=>'Perempuan',
-	                      '1'=>'Laki-laki'
+						  '0'=>'Female',
+	                      '1'=>'Male'
 	                      );
 		return $gender;
 	}	
@@ -153,8 +153,8 @@ class TalentList extends CI_Controller {
 	private function get_marital_list()
 	{
 		$marital = array(
-						  '0'=>'Belum Menikah',
-	                      '1'=>'Sudah Menikah'
+						  '0'=>'Unmarried',
+	                      '1'=>'Married'
 	                      );
 		return $marital;
 	}	

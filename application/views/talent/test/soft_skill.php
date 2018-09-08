@@ -1,6 +1,6 @@
 <div class="online-test soft-skill" style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
-		<h3 class="text-center"><strong><u>Tes Soft Skill</u></strong></h3>
+		<h3 class="text-center"><strong><u>Soft Skill Test</u></strong></h3>
 		<div class="card center-block" style="box-shadow: 1px 5px 20px lightgrey;">
 			<form action="<?php echo site_url('talent/test-soft-skill/submit'); ?>" method="post">
 				<div class="card-body">
@@ -18,7 +18,7 @@
 						?>
 						<br>
 						<p class="text-center">
-							<b>Instruksi Tes</b>
+							<b>Test Instruction</b>
 						</p>
 						<br>
 						<p>
@@ -117,7 +117,7 @@
 				
 				<!-- submit button -->
 				<div class="btn-submit-wrapper">
-					<input type="submit" value="Selesai" class="button button1 btn-submit">
+					<input type="submit" value="Submit" class="button button1 btn-submit">
 				</div>
 
 				<!-- pagination -->

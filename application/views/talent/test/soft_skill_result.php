@@ -1,6 +1,6 @@
 <div style="padding-top: 15px; padding-bottom: 15px;">
 	<div class="container">
-		<h3 class="text-center"><strong><u>Hasil Tes Soft Skill</u></strong></h3><br>
+		<h3 class="text-center"><strong><u>Soft Skill Test Result</u></strong></h3><br>
 		<div class="row" style="padding: 10px;">
 			<div class="col-md-1"> </div>
 			
