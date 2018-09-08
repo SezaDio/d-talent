@@ -22,8 +22,11 @@
 				'id_talent'   => $id_talent,
 				'title' 	  => $this->input->post('title'),
 				// give null if field is empty
-				'associated_education' => !empty($associated_education) ? $associated_education : null,
-				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				// 'associated_education' => !empty($associated_education) ? $associated_education : null,
+				// 'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'associated_education' => null,
+				'associated_work' 	   => null,
+
 				'organizer' 	  	   => $this->input->post('organizer'),
 				'year' 	  			   => $this->input->post('year'),
 			);
@@ -46,8 +49,11 @@
 			$data = array(
 				'title' 	  => $this->input->post('title'),
 				// give null if field is empty
-				'associated_education' => !empty($associated_education) ? $associated_education : null,
-				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				// 'associated_education' => !empty($associated_education) ? $associated_education : null,
+				// 'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'associated_education' => null,
+				'associated_work' 	   => null,
+				
 				'organizer' 	  	   => $this->input->post('organizer'),
 				'year' 	  			   => $this->input->post('year'),
 			);

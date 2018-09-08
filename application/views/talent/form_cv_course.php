@@ -20,12 +20,11 @@
 					<input type="text" name="title" class="form-control" required value="<?php echo set_value('title'); ?>">
 				</div>
 
-				<div class="form-group">
+				<!-- (Pendidikan & Pengalaman Kerja) -->
+				<!-- <div class="form-group">
 					<label>Berkaitan dengan</label>
-					<!-- (Pendidikan & Pengalaman Kerja) -->
 					<select name="associated_with" id="associated_with" class="form-control">
 						<option value="">-</option>
-						<!-- cv_educations -->
 						<?php
 							foreach ($cv_educations as $key => $cv_education) {
 						?>
@@ -42,7 +41,6 @@
 							}
 						?>
 
-						<!-- cv_works -->
 						<?php
 							foreach ($cv_works as $key => $cv_work) {
 						?>
@@ -57,7 +55,7 @@
 					</select>
 					<input type="hidden" name="associated_education" id="associated_education" value="<?php echo set_value('associated_education'); ?>">
 					<input type="hidden" name="associated_work" id="associated_work" value="<?php echo set_value('associated_work'); ?>">
-				</div>
+				</div> -->
 
 				<div class="form-group">
 					<label>Penyelenggara</label>

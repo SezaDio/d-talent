@@ -22,8 +22,10 @@
 				'id_talent'   => $id_talent,
 				'title' 	  => $this->input->post('title'),
 				// give null if form is empty
-				'associated_education' => !empty($associated_education) ? $associated_education : null,
-				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				// 'associated_education' => !empty($associated_education) ? $associated_education : null,
+				// 'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'associated_education' => null,
+				'associated_work' 	   => null,
 
 				'issuer' 	  => $this->input->post('issuer'),
 				'month'   	  => $this->input->post('month'),
@@ -49,8 +51,10 @@
 			$data = array(
 				'title' 	  => $this->input->post('title'),
 				// give null if form is empty
-				'associated_education' => !empty($associated_education) ? $associated_education : null,
-				'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				// 'associated_education' => !empty($associated_education) ? $associated_education : null,
+				// 'associated_work' 	   => !empty($associated_work) ? $associated_work : null,
+				'associated_education' => null,
+				'associated_work' 	   => null,
 
 				'issuer' 	  => $this->input->post('issuer'),
 				'month'   	  => $this->input->post('month'),
