@@ -8,10 +8,10 @@ class TalentTest extends CI_Controller {
 		parent::__construct();
 		
 		// check user auth
-		$id_talent = $this->session->userdata('id_talent');
+		/*$id_talent = $this->session->userdata('id_talent');
 		if ($id_talent == "") {
 			redirect( site_url('talent/login') );
-		}
+		}*/
 
 		$this->load->library('form_validation');
 	}
