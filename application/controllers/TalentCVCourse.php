@@ -20,7 +20,7 @@ class TalentCVCourse extends CI_Controller {
 
 	public function index()
 	{
-		$data['page_title'] = "Tambah Pelatihan";
+		$data['page_title'] = "Add Course";
 		
 		// get data for select
 		$id_talent = $this->session->userdata('id_talent');
@@ -37,10 +37,10 @@ class TalentCVCourse extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Tambah Pelatihan";
+		$data['page_title'] = "Add Course";
 
-		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
-		$this->form_validation->set_rules('year', '"Tahun"', 'required');
+		$this->form_validation->set_rules('title', '"Course Title"', 'required');
+		$this->form_validation->set_rules('year', '"Year"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get data for select
@@ -55,7 +55,7 @@ class TalentCVCourse extends CI_Controller {
 			// save data to db
 			$this->TalentCVCourseModel->create($id_talent);
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Tambah pelatihan berhasil');
+			$this->session->set_flashdata('msg_success', 'Add course success');
 
 			// redirect to page ...
 			redirect('talent');
@@ -66,7 +66,7 @@ class TalentCVCourse extends CI_Controller {
 	{
 		$id_talent = $this->session->userdata('id_talent');
 		
-		$data['page_title'] = "Edit Pelatihan";
+		$data['page_title'] = "Edit Course";
 		$data['cv_course'] = $this->TalentCVCourseModel->edit($id_talent, $id_talent_cv_course);
 
 		// get data for select
@@ -83,10 +83,10 @@ class TalentCVCourse extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Edit Pelatihan";
+		$data['page_title'] = "Edit Course";
 
-		$this->form_validation->set_rules('title', '"Nama Pelatihan"', 'required');
-		$this->form_validation->set_rules('year', '"Tahun"', 'required');
+		$this->form_validation->set_rules('title', '"Course Title"', 'required');
+		$this->form_validation->set_rules('year', '"Year"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function
@@ -98,11 +98,11 @@ class TalentCVCourse extends CI_Controller {
 			
 			if ($affected) {
 				// add message to session
-				$this->session->set_flashdata('msg_success', 'Edit pelatihan berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit course success');
 			}
 			else {
 				// add message to session
-				$this->session->set_flashdata('msg_error', 'Edit pelatihan gagal');
+				$this->session->set_flashdata('msg_error', 'Edit course failed');
 			}
 			// redirect to page ...
 			redirect('talent');
@@ -117,11 +117,11 @@ class TalentCVCourse extends CI_Controller {
 
 		if ($query) {
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Hapus pelatihan berhasil');
+			$this->session->set_flashdata('msg_success', 'Delete course success');
 		}
 		else {
 			// add message to session
-			$this->session->set_flashdata('msg_error', 'Hapus pelatihan gagal');
+			$this->session->set_flashdata('msg_error', 'Delete course failed');
 		}
 		// redirect to page ...
 		redirect('talent');

@@ -16,12 +16,12 @@
                	?>
 
 				<div class="form-group">
-					<label>Sekolah *</label>
+					<label>School *</label>
 					<input type="text" name="school" class="form-control" required value="<?php echo set_value('school'); ?>">
 				</div>
 
 				<div class="form-group">
-					<label>Gelar/ derajat</label>
+					<label>Degree</label>
 					<select name="degree" class="form-control" >
 						<option value="">-- Education --</option>
 						<option value="SMP" <?php echo (set_value('degree')=="SMP"? "selected":"");?> >SMP</option>';  
@@ -36,26 +36,26 @@
 				</div>
 
 				<div class="form-group">
-					<label>Bidang studi</label>
+					<label>Field of Study</label>
 					<input type="text" name="field_of_study" class="form-control" value="<?php echo set_value('field_of_study'); ?>">
 				</div>
 
 				<div class="form-group">
-					<label>Aktivitas dan sosial</label>
-					<p class="text-muted">Contoh: Pengurus OSIS, Anggota ekskul voli</p>
+					<label>Activities and Socials</label>
+					<p class="text-muted">Example: Volley, Computer</p>
 					<textarea name="activity" class="form-control"><?php echo set_value('activity'); ?></textarea>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-6">
-						<label>Dari *</label>
+						<label>From *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 							<input type="text" class="form-control datepicker" name="from_year" value="<?php echo set_value('from_year'); ?>" required>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label>Hingga *</label>
+						<label>To *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 							<input type="text" class="form-control datepicker" name="to_year" value="<?php echo set_value('to_year'); ?>" required>
@@ -69,10 +69,10 @@
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<input type="submit" value="Simpan" class="button button1">
+						<input type="submit" value="Save" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Back to My CV</a>
 					</div>
 				</div>
 
@@ -101,7 +101,7 @@
         	$('#date-error').text('');	// delete message
         	if (to_year != '' && to_year < from_year) {
         		e.preventDefault();
-        		$('#date-error').text('Tahun akhir tidak boleh lebih kecil dari tahun awal');
+        		$('#date-error').text('End year should not less than start year');
         		// scroll
 				$('html, body').animate({
 			        scrollTop: $("input[name=to_year]").offset().top - 35
