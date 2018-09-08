@@ -1,14 +1,8 @@
-	<br>
-    <footer style="background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">          
-	<!-- <footer style="position: inherit;"> -->
-		<div class="container">
-	        <div class="row">
-				<div class="col-lg-12" style="text-align: center; color: white;" >
-	              <p>All copyrights reserved &copy; 2018 - Designed & Developed by IT Team D-Talent</p>
-	            </div>
 			</div>
+			<!-- ./ card-body -->
 		</div>
-	</footer>
+		<!-- ./ card -->
+	</div>
 
 	<script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
@@ -19,10 +13,11 @@
 			var page = 1;
 			
 			// 2 item per page + 1 instruction page
-			var total_page = <?php echo (1 + ($total_records / 2)); ?>
+			var total_page = "<?php echo ($total_records / 2) ?>";
+			// var total_page = "<?php echo (1 + ($total_records / 2)) ?>";
 
 			// if number page clicked
-			$('.pagination .page-number').click(function() {
+			/*$('.pagination .page-number').click(function() {
 				$('.page-'+page).hide();
 				page = $(this).text();
 				$('.page-'+page).show();
@@ -36,7 +31,7 @@
 
 				// show page number to user
 				$('#page-text').text(page);
-			});
+			});*/
 
 			// if prev clicked
 			$('.prev').click(function() {
@@ -45,7 +40,7 @@
 					page--;
 					$('.page-'+page).show();
 				}
-				// submit btn
+				// hide submit btn
 				if ($('.btn-submit-wrapper').length > 0) {
 					$('.btn-submit-wrapper').hide();
 				}
@@ -54,10 +49,10 @@
 				$('#page-text').text(page);
 
 				// display only 5 page
-				var new_int;
-				var old_int = page;
+				// var new_int;
+				// var old_int = page;
 
-				if (page % 5 == 0) {
+				/*if (page % 5 == 0) {
 					for (var i = 1; i <= 5; i++) {
 						$('.number-'+old_int).css('display', 'inline');
 						old_int = page - i;
@@ -65,7 +60,7 @@
 						new_int = page + i;
 						$('.number-'+new_int).hide();
 					}
-				}
+				}*/
 			});
 
 			// if next clicked
@@ -81,15 +76,15 @@
 				if (page == total_page) {
 					$('.btn-submit-wrapper').show();
 				}
-				else{
+				/*else{
 					$('.btn-submit-wrapper').hide();
-				}
+				}*/
 
 				// show page number to user
 				$('#page-text').text(page);
 
 				// display only 5 page
-				var new_int = page;
+				/*var new_int = page;
 				var old_int;
 
 				if (page % 5 == 1) {
@@ -100,7 +95,7 @@
 						$('.number-'+new_int).css('display', 'inline');
 						new_int = page + i;
 					}
-				}
+				}*/
 			});
 
 			// check radio buttons
