@@ -16,7 +16,7 @@
                	?>
 
 				<div class="form-group">
-					<label>Nama *</label>
+					<label>Name *</label>
 					<input type="text" name="nama" class="form-control" required value="<?php echo $talent->nama;?>">
 				</div>
 
@@ -26,20 +26,20 @@
 				</div>
 
 				<div class="form-group">
-					<label>Telepon *</label>
+					<label>Phone *</label>
 					<input type="text" name="nomor_ponsel" class="form-control" required  value="<?php echo $talent->nomor_ponsel;?>">
 				</div>
 
 				<div class="form-group">
-					<label>Jenis Kelamin *</label>
+					<label>Gender *</label>
 					<select class="form-control" name="jenis_kelamin" required>
-						<option value="1" <?php echo $talent->jenis_kelamin==1 ? 'selected' : ''; ?> >Laki-laki</option>
-						<option value="0" <?php echo $talent->jenis_kelamin==0 ? 'selected' : ''; ?> >Perempuan</option>
+						<option value="1" <?php echo $talent->jenis_kelamin==1 ? 'selected' : ''; ?> >Male</option>
+						<option value="0" <?php echo $talent->jenis_kelamin==0 ? 'selected' : ''; ?> >Female</option>
 					</select>
 				</div>
 
 				<div class="form-group">
-					<label>Tanggal Lahir *</label>
+					<label>Birth of Date *</label>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 						<input type="text" class="form-control datepicker" name="tanggal_lahir" required value="<?php echo $talent->tanggal_lahir;?>">
@@ -47,9 +47,9 @@
 				</div>
 
 				<div class="form-group">
-					<label>Lokasi Provinsi *</label>
+					<label>Province *</label>
 					<select name="id_provinsi" onchange="ajax_post();" placeholder="Provinsi" class="form-control" id="lokasi_provinsi" required>
-                        <option value="All">--Pilih Lokasi Provinsi--</option>
+                        <option value="All">--Select Province--</option>
                         <?php
                             foreach ($lokasiProvinsi as $key=>$provinsi) 
                             {
@@ -64,9 +64,9 @@
 				</div>
 
 				<div class="form-group">
-					<label>Lokasi Kota *</label>
+					<label>City *</label>
 					<select name="id_kota" placeholder="Kota" required class="form-control" id="lokasi_kota" required>
-                        <option value="All">--Pilih Lokasi Kota--</option>
+                        <option value="All">--Select City--</option>
                         <?php
                             foreach ($lokasiKabupatenKota as $key=>$kota) 
                             {
@@ -77,25 +77,25 @@
 				</div>
 
 				<div class="form-group">
-					<label>Status Pernikahan *</label>
+					<label>Marital Status *</label>
 					<select class="form-control" name="status_pernikahan" required>
-						<option value="0" <?php echo $talent->status_pernikahan==0 ? 'selected' : ''; ?> >Belum menikah</option>
-						<option value="1" <?php echo $talent->status_pernikahan==1 ? 'selected' : ''; ?> >Sudah menikah</option>
+						<option value="0" <?php echo $talent->status_pernikahan==0 ? 'selected' : ''; ?> >Married</option>
+						<option value="1" <?php echo $talent->status_pernikahan==1 ? 'selected' : ''; ?> >Unmarried</option>
 					</select>
 				</div>
 
 				<br>
 				<a href="#!" class="text-link" data-toggle="modal" data-target=".modal-form">
-					<label>Ubah Password</label>
+					<label>Change Password</label>
 				</a>
 				<br>
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<input type="submit" value="Simpan" class="button button1">
+						<input type="submit" value="Save" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Back to My CV</a>
 					</div>
 				</div>
 
@@ -112,16 +112,16 @@
 			<form action="<?php echo site_url('talent/password/update'); ?>" method="post">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Ubah Password</h4>
+					<h4 class="modal-title">Change Password</h4>
 				</div>
 				<div class="modal-body">
 						<div class="form-group">
-							<label>Password Lama *</label>
+							<label>Old Password *</label>
 							<input type="password" name="old_password" class="form-control" required>
 						</div>
 
 						<div class="form-group">
-							<label>Password Baru *</label>
+							<label>New Password *</label>
 							<input type="text" name="new_password" class="form-control" required>
 						</div>
 

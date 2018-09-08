@@ -117,11 +117,11 @@ class Talent extends CI_Controller {
 			$update = $this->TalentModel->updateAccount($id_talent);
 			if ($update) {
 				// message
-				$this->session->set_flashdata('msg_success', 'Edit akun berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit account success');
 			}
 			else{
 				// message
-				$this->session->set_flashdata('msg_error', 'Edit akun gagal');
+				$this->session->set_flashdata('msg_error', 'Edit account failed');
 			}
 		}
 
@@ -136,8 +136,8 @@ class Talent extends CI_Controller {
 		
 		$id_talent = $this->session->userdata('id_talent');
 
-		$this->form_validation->set_rules('old_password', '"Password Lama"', 'required');
-		$this->form_validation->set_rules('new_password', '"Password Baru"', 'required');
+		$this->form_validation->set_rules('old_password', '"Old Password"', 'required');
+		$this->form_validation->set_rules('new_password', '"New Password"', 'required');
 
 		if($this->form_validation->run() != FALSE) {
 
@@ -157,16 +157,16 @@ class Talent extends CI_Controller {
 				$update = $this->MemberModels->change_password($loginData->id_member, $new_password);
 				if ($update) {
 					// message
-					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');
+					$this->session->set_flashdata('msg_success', 'Change password success');
 				}
 				else{
 					// message
-					$this->session->set_flashdata('msg_error', 'Ubah password gagal');
+					$this->session->set_flashdata('msg_error', 'Change password failed');
 				}
 			}
 			else{
 				// message
-				$this->session->set_flashdata('msg_error', 'Password lama tidak valid');
+				$this->session->set_flashdata('msg_error', 'Old Password is not valid');
 			}
 		}
 
@@ -180,7 +180,7 @@ class Talent extends CI_Controller {
 
 		$id_talent = $this->session->userdata('id_talent');
 
-		$data['page_title'] = "Edit Profil";
+		$data['page_title'] = "Edit Profile";
 		$data['talent'] 	= $this->TalentModel->find($id_talent);
 
 		$this->load->view('skin/talent/header', $data);
@@ -223,7 +223,7 @@ class Talent extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				$this->session->set_flashdata('msg_error', 'Change profile failed, please check file type and file size');
 				redirect('talent/profile/edit/');
 			}
 		}
@@ -252,7 +252,7 @@ class Talent extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				$this->session->set_flashdata('msg_error', 'Change profile failed, please check file type and file size');
 				redirect('talent/profile/edit/');
 			}
 		}
@@ -261,11 +261,11 @@ class Talent extends CI_Controller {
 		$update = $this->TalentModel->updateProfile($id_talent, $foto_sampul_filename, $foto_profil_filename);
 		if ($update) {
 			// message
-			$this->session->set_flashdata('msg_success', 'Edit profil berhasil');
+			$this->session->set_flashdata('msg_success', 'Edit profile success');
 		}
 		else{
 			// message
-			$this->session->set_flashdata('msg_error', 'Edit profil gagal');
+			$this->session->set_flashdata('msg_error', 'Edit profile failed');
 		}
 
 		// redirect to page ...
@@ -274,7 +274,7 @@ class Talent extends CI_Controller {
 
 	public function vacancyDetail()
 	{
-		$data['page_title'] = "Detail Lowongan";
+		$data['page_title'] = "Vacancy Job Detail";
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/vacancy-detail');
