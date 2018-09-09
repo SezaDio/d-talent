@@ -18,6 +18,7 @@
 </p>
 <p>Sebelum Anda dapat login dan menggunakan akun Anda, mohon verifikasikan alamat e-mail Anda (<?php echo htmlspecialchars($loginEmail)?>)
 	terlebih dahulu dengan klik link berikut:</p>
+<img class="img-fulid" src="<?php echo base_url('asset/img/logo1.png'); ?>" alt="">
 <div style="font-size:16px;margin:30px 0;">
 	<a href="<?php echo ($verifyLink); ?>" style="background-color: #000000;color:#fff;padding:12px;text-decoration:none;border-radius:2px;"
 		target="_blank" title="Verify e-mail address">

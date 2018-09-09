@@ -13,10 +13,17 @@ class Email_model extends CI_Model {
 	var $emailAttachments = array();
 	
 	var $emailConfig = array(
-		0 => array(
+		1 => array(
 			'host' => 'mail.d-talentsolution.id',
 			'from' => 'hello@d-talentsolution.id',
 			'user' => 'hello@d-talentsolution.id',
+			'pass' => 'd-TalentInfo',
+			'port' => 587
+		),
+		0 => array(
+			'host' => 'mail.dtalent.id',
+			'from' => 'hello@dtalent.id',
+			'user' => 'hello@dtalent.id',
 			'pass' => 'd-TalentInfo',
 			'port' => 587
 		),
