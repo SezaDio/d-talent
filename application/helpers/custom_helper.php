@@ -770,3 +770,44 @@ function detailSoftSkillResult($test_result)
 
     return $response;
 }
+
+function displayTestHint($test)
+{
+    // display hint by test type
+    switch ($test) {
+        case 'character':
+            return '
+            Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang 
+            paling menggambarkan kondisi Anda.
+            <br>
+            <b>Tidak ada jawaban yang benar dan salah</b>';
+            break;
+        case 'passion':
+            return '
+            Di dalam lembar soal terdapat pernyataan dan dua pilihan jawaban: <b>Sesuai</b> dan
+            <b>Tidak Sesuai</b>. Pilih jawaban yang paling menggambarkan kondisi Anda.
+            <b>Tidak ada jawaban yang benar dan salah</b>.
+            ';
+            break;
+        case 'soft_skill':
+            return '
+            Anda akan mendapatkan 40 pernyataan yang terdiri dari 20 pernyataan
+            <b>Tes Intrapersonal Skill</b> dan 20 pernyataan <b>Tes Interpersonal Skill</b>.
+            Terdapat 5 pilihan jawaban pada setiap soal yaitu <b>Sangat Sesuai</b>,
+            <b>Sesuai</b>, <b>Netral</b>, <b>Tidak Sesuai</b>, dan <b>Sangat Tidak Sesuai</b>.
+            Pilihlah jawaban yang paling mendekati diri Anda. Tidak ada pilihan yang benar dan salah.
+            ';
+            break;
+        case 'work_attitude':
+            return '
+            Soal psikotes sikap kerja terdapat 30 soal menggunakan skala likert dengan
+            lima pilihan jawaban, <b>sangat sesuai</b>, <b>sesuai</b>, <b>netral</b>,
+            <b>tidak sesuai</b>, dan <b>sangat tidak sesuai</b>.
+            ';
+            break;
+        
+        default:
+            return '';
+            break;
+    }
+}

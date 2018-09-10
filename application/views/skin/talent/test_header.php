@@ -4,6 +4,7 @@
 	<title>D-Talent Test</title>
 
 	<link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
 
     <style type="text/css">
     	@import url('https://fonts.googleapis.com/css?family=Poppins');
@@ -65,10 +66,12 @@
             margin-top: 5px;
         } 
         @media screen and (min-width: 992px) {
-            .online-test,
-            .hint-page{
-                min-height: 450px;
+            .online-test{
+                min-height: 400px;
                 /*min-height: 550px;*/
+            }
+            .hint-page{
+                min-height: 500px;
             }
             .online-test.soft-skill,
             .online-test.work-attitude{
@@ -102,13 +105,13 @@
                 position: absolute;
                 right: 50px;
                 left: 50px;
-                bottom: 100px;
+                bottom: 85px;
             }
             .test-footer{
                 position: absolute;
                 left: 50px;
                 right: 50px;
-                bottom: 50px;
+                bottom: 40px;
             }
         }
         /* hide other page */
@@ -131,6 +134,9 @@
     		top: -2px;
     		left: 10px;
     	}
+        .online-test hr{
+            border-top-color: #ccc;
+        }
         
         .modal-hint{
             margin-top: 5%;
@@ -144,8 +150,7 @@
         }
         .hint-icon{
             margin-top: 15px;
-            margin-bottom: 15px;
-            font-size: 55px;
+            margin-bottom: 30px;
         }
 
         .test-result ol{
@@ -207,74 +212,90 @@
             background-color: #333;
             color: #fff;
         }
-
         .btn-submit{
             min-width: 76px;
             display: none;
             font-weight: bold;
         }
+
+        .btn-default:active:focus,
+        .btn-default:hover{
+            background: #fff;
+            border-color: #333;
+        }
     </style>
 </head>
 
 <body>
-    <!-- modal hint -->
-    <div class="modal fade modal-hint" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h3 class="modal-title text-center">Test Instruction</h3>
-                    
-                    <div class="hint-icon text-center">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
+    <?php
+        $this->load->helper('custom');
+        $testHint = displayTestHint($test_type);
+        if ($testHint != '') {
+            // display hint
+    ?>
+        <!-- modal hint -->
+        <div class="modal fade modal-hint" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3 class="modal-title text-center">Test Instruction</h3>
+                        
+                        <div class="hint-icon text-center">
+                            <img src="<?php echo site_url('asset/img/warning-icon.png') ?>" alt="">
+                        </div>
+
+                        <p class="text-center">
+                            <?php echo $testHint ?>
+                        </p>
                     </div>
 
-                    <p class="text-justified">
-                        Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang paling menggambarkan kondisi Anda, <b>tidak ada jawaban yang benar dan salah
-                    </p>
-                </div>
+                    <div class="modal-footer">
+                        <hr>
+                        <button type="button" class="btn button1" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-                <div class="modal-footer">
-                    <hr>
-                    <button type="button" class="btn button1" data-dismiss="modal">Tutup</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="card-wrapper hint-wrapper">
-        <div class="card center-block">
-            <div class="hint-page">
+        <div class="card-wrapper hint-wrapper">
+            <div class="card center-block">
+                <div class="hint-page">
                     <div class="test-title">
                         <h3 class="text-center">Test Instruction</h3>
                     </div>
                     
                     <div class="hint-icon text-center">
-                    <span class="glyphicon glyphicon-warning-sign"></span>
-                </div>
-                <p class="text-justified" style="margin-left: 50px; margin-right: 50px;">
-                    Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang paling menggambarkan kondisi Anda, <b>tidak ada jawaban yang benar dan salah</b>.
-                </p>
-                <br>
-                <br>
-                <div class="test-footer">
-                    <a href="#!" class="btn btn-default pull-left">
-                        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-                        Cancel
-                    </a>
-                    <a href="#!" class="btn button1 pull-right btn-start">
-                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
-                        Start Test
-                    </a>
+                        <!-- <i class="fa fa-exclamation-triangle"></i> -->
+                        <img src="<?php echo site_url('asset/img/warning-icon.png') ?>" alt="">
+                    </div>
+                    <p class="text-center" style="margin-left: 50px; margin-right: 50px;">
+                        <?php echo $testHint ?>
+                    </p>
+
+                    <br>
+                    <br>
+                    <div class="test-footer">
+                        <a href="<?php echo site_url('talent');?>" class="btn btn-default pull-left">
+                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                            Cancel
+                        </a>
+                        <a href="#!" class="btn button1 pull-right btn-start">
+                            <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                            Start Test
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php
+        }
+    ?>
             
     <div class="card-wrapper test-wrapper">
         <div class="card center-block">
         	<div class="card-header">
         		<img src="<?php echo base_url('asset/img/Logo D-Talent putih.png'); ?>" height="46">
-                <button class="pull-right btn btn-hint" data-toggle="modal" data-target=".modal-hint"><span class="ghlypicon ghlypicon-question-mark"></span> Test Instruction</button>
+                <button class="pull-right btn btn-hint" data-toggle="modal" data-target=".modal-hint"><i class="fa fa-question-circle"></i> Test Instruction</button>
         	</div>
 
             <div class="card-body">
