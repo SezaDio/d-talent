@@ -23,7 +23,6 @@
 				$no = 0;	// question number, start from 0 (array's index)
 				$test = $test_character;
 				$total_page = ceil($total_records / 2);	// 2 item per page
-				// $total_page = 1 + ($total_records / 2);	// 2 item per page + 1 instruction page
 
 				for ($i=0; $i<$total_records; $i++) {
 					if ($i % 2 == 1) {	// if $i is odd => new page (pagination)
@@ -81,29 +80,5 @@
 		    <div class="page-text text-center">Page <span id="page-text">1</span> from <?php echo $total_page; ?></div>
 		</div>
 
-		<!-- submit button -->
-		<!-- <div class="btn-submit-wrapper">
-			<input type="submit" value="Submit" class="button button1 btn-submit">
-		</div> -->
-
-		<!-- pagination -->
-		<!-- <div class="pagination-wrapper">
-			<nav aria-label="Page navigation">
-			  <ul class="pagination">
-			    <li>
-			      <a href="#!" aria-label="Previous" class="prev">
-			        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-			      </a>
-			    </li>
-				<li>
-			      <a href="#!" aria-label="Next" class="next">
-			        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		
-			<div class="page-text">Page <span id="page-text">1</span> / <?php echo $total_page; ?></div>
-		</div> -->
 	</form>
 </div>
