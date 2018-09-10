@@ -22,7 +22,7 @@
 				$page = 0;	// page number
 				$no = 0;	// question number, start from 0 (array's index)
 				$test = $test_character;
-				$total_page = ($total_records / 2);	// 2 item per page
+				$total_page = ceil($total_records / 2);	// 2 item per page
 				// $total_page = 1 + ($total_records / 2);	// 2 item per page + 1 instruction page
 
 				for ($i=0; $i<$total_records; $i++) {
@@ -64,7 +64,7 @@
 		<hr class="bottom-line">
 
 		<!-- page button -->
-		<div class="test-footer clearfix">
+		<div class="test-footer">
 			<a href="#!" aria-label="Previous" class="prev btn btn-default pull-left">
 		        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
 		        Back
@@ -74,11 +74,11 @@
 		        Next
 		        <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
 		    </a>
-		    
-		    <div class="page-text text-center">Page <span id="page-text">1</span> from <?php echo $total_page; ?></div>
 
 			<!-- submit button -->
-			<input type="submit" value="Submit" class="button button1 btn-submit">
+			<input type="submit" value="Submit" class="btn btn-submit button1 pull-right">
+		    
+		    <div class="page-text text-center">Page <span id="page-text">1</span> from <?php echo $total_page; ?></div>
 		</div>
 
 		<!-- submit button -->

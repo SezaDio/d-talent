@@ -14,6 +14,12 @@
 			flex-direction: column;
 			/*max-height: 100vh;*/
     	}
+        .card-wrapper{
+            padding: 60px 90px
+        }
+        .test-wrapper{
+            display: none;
+        }
         .card{
             width: 100%;
             height: auto;
@@ -30,7 +36,8 @@
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
-        .card-body{
+        .card-body,
+        .hint-page{
             padding: 50px;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -58,7 +65,8 @@
             margin-top: 5px;
         } 
         @media screen and (min-width: 992px) {
-            .online-test{
+            .online-test,
+            .hint-page{
                 min-height: 450px;
                 /*min-height: 550px;*/
             }
@@ -107,7 +115,7 @@
     	.test:nth-child(n+2){
     		display: none;
     	}
-        /* question space */
+        /* question margin */
     	.test > div{
     		margin-bottom: 20px;
     	}
@@ -123,6 +131,23 @@
     		top: -2px;
     		left: 10px;
     	}
+        
+        .modal-hint{
+            margin-top: 5%;
+        }
+        .modal-hint .modal-title{
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .modal-hint .modal-footer{
+            border-top: none;
+        }
+        .hint-icon{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 55px;
+        }
+
         .test-result ol{
             padding-left: 15px;
         }
@@ -144,7 +169,7 @@
             color: #333;
         } */
 
-        .button {
+        /* .button {
             background-color: #4CAF50;
             border: none;
             border-radius: 5px;
@@ -155,12 +180,12 @@
             -webkit-transition-duration: 0.4s;
             transition-duration: 0.4s;
             cursor: pointer;
-        }
+        } */
 
-        .button1 {
+        .button1{
             background-color: black;
             color: white;
-            border: 2px solid black;
+            border: 1px solid black;
         }
         .btn-hint{
             background-color: #333;
@@ -170,32 +195,86 @@
             margin-top: 7px;
         }
         .button1:hover,
-        .btn-hint:hover {
+        .btn-hint:hover{
             background-color: white;
             color: black;
         }
+        .btn.button1:focus{
+            background-color: #000;
+            color: #fff;
+        }
+        .btn.btn-hint:focus{
+            background-color: #333;
+            color: #fff;
+        }
 
         .btn-submit{
+            min-width: 76px;
             display: none;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <div style="padding: 60px 90px">
-        <div class="card center-block">
-            <!-- Hint
-                <div class="text-center" style="margin-top: 15px; margin-bottom: 15px;">
-                    <span class="glyphicon glyphicon-warning-sign" style="font-size: 55px;"></span>
+    <!-- modal hint -->
+    <div class="modal fade modal-hint" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3 class="modal-title text-center">Test Instruction</h3>
+                    
+                    <div class="hint-icon text-center">
+                        <span class="glyphicon glyphicon-warning-sign"></span>
+                    </div>
+
+                    <p class="text-justified">
+                        Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang paling menggambarkan kondisi Anda, <b>tidak ada jawaban yang benar dan salah
+                    </p>
                 </div>
-                <p>
+
+                <div class="modal-footer">
+                    <hr>
+                    <button type="button" class="btn button1" data-dismiss="modal">Tutup</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="card-wrapper hint-wrapper">
+        <div class="card center-block">
+            <div class="hint-page">
+                    <div class="test-title">
+                        <h3 class="text-center">Test Instruction</h3>
+                    </div>
+                    
+                    <div class="hint-icon text-center">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                </div>
+                <p class="text-justified" style="margin-left: 50px; margin-right: 50px;">
                     Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang paling menggambarkan kondisi Anda, <b>tidak ada jawaban yang benar dan salah</b>.
                 </p>
-             -->
+                <br>
+                <br>
+                <div class="test-footer">
+                    <a href="#!" class="btn btn-default pull-left">
+                        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                        Cancel
+                    </a>
+                    <a href="#!" class="btn button1 pull-right btn-start">
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                        Start Test
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
             
+    <div class="card-wrapper test-wrapper">
+        <div class="card center-block">
         	<div class="card-header">
         		<img src="<?php echo base_url('asset/img/Logo D-Talent putih.png'); ?>" height="46">
-                <button class="pull-right btn btn-hint"><span class="ghlypicon ghlypicon-question-mark"></span> Test Instruction</button>
+                <button class="pull-right btn btn-hint" data-toggle="modal" data-target=".modal-hint"><span class="ghlypicon ghlypicon-question-mark"></span> Test Instruction</button>
         	</div>
 
             <div class="card-body">
