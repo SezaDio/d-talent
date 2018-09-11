@@ -243,7 +243,7 @@
 			if(getJob.length==0){
 				div_job_search += '<div class="col-md-2"></div>';
 				div_job_search += '<div class="col-md-8">';
-					div_job_search += '<h5 style=" text-align: center;">Data not found</h5>';
+					div_job_search += '<h5 style=" text-align: center;">Job Vacancy Not Available</h5>';
 				div_job_search += '</div>';
 				div_job_search += '<div class="col-md-2"></div>';
 			} else {
