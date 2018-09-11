@@ -800,9 +800,14 @@ function displayTestHint($test)
             break;
         case 'work_attitude':
             return '
-            Soal psikotes sikap kerja terdapat 30 soal menggunakan skala likert dengan
-            lima pilihan jawaban, <b>sangat sesuai</b>, <b>sesuai</b>, <b>netral</b>,
-            <b>tidak sesuai</b>, dan <b>sangat tidak sesuai</b>.
+            <p>
+                Soal psikotes sikap kerja terdapat 30 soal menggunakan skala likert dengan
+                lima pilihan jawaban, <b>sangat sesuai</b>, <b>sesuai</b>, <b>netral</b>,
+                <b>tidak sesuai</b>, dan <b>sangat tidak sesuai</b>.
+            </p>
+            <p>
+                Psikotes ini bertujuan untuk melihat sikap kerja Anda di perusahaan tempat Anda bekerja. <b>Bacalah setiap kalimat pernyataan dengan teliti</b>. Tugas Anda adalah memilih salah satu jawaban yang paling sesuai dengan keadaan diri Anda. Tidak ada jawaban yang benar dan salah.
+            </p>
             ';
             break;
         

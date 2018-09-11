@@ -20,7 +20,7 @@ class TalentTest extends CI_Controller {
 	public function accessDenied()
 	{
 		$data['test_type'] = 'access_denied';
-
+		
 		$this->load->view('skin/talent/test_header', $data);
 		$this->load->view('talent/test/access_denied');
 		$this->load->view('skin/talent/test_footer');
@@ -280,8 +280,8 @@ class TalentTest extends CI_Controller {
 		$data['total_records'] = count($data['test_work_attitude']);
 		$data['test_type'] = 'work_attitude';
 
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/work_attitude', $data);
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/work_attitude');
 		$this->load->view('skin/talent/test_footer');
 	}
 
