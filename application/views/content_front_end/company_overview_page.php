@@ -29,9 +29,9 @@
 						<div class="row">
 							<div class="col-md-3" style="padding-top: 15px;">
 								<?php if($dataLogoCompany->company_logo != "") {?>
-								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<figure class="image-bg" style="height: 170px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
 								<?php } else{ ?>
-								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+								<figure class="image-bg" style="height: 170px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
 								<?php }?>
 
 								<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 15px; width: 30px; height: 30px;">

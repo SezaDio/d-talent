@@ -1,16 +1,81 @@
+<style type="text/css">
+	.image-bg{
+		background-size: contain;
+	}
+	.company-name{
+		font-size: 25px;
+	}
+	.job-category{
+		color: #777;
+	}
+	.job-title{
+		font-size: 20px;
+	}
+	.apply-date > div:first-child{
+		background-color: #000;
+		color: #fff;
+		font-weight: bold;
+		padding: 7px 10px;
+	}
+	.apply-date > div:last-child{
+		font-size: 14px;
+		font-weight: bold;
+		border-left: 1px solid lightgray;
+		border-right: 1px solid lightgray;
+		border-bottom: 1px solid lightgray;
+		padding: 20px 10px;
+	}
+	.apply-date span{
+		font-size: 20px;
+	}
+	.vacancy{
+		padding-top: 30px;
+		padding-bottom: 30px;
+		border-bottom: 1px solid lightgray;
+	}
+
+	#job_search h5{
+		font-size: 20px;
+	}
+
+	/* Pagination */
+	.pagination{
+		margin-top: 50px;
+		padding-right: 20px;
+	}
+	.pagination li{
+	    border: 1px solid lightgray;
+	    background-color: #fff;
+	    float: left;
+	}
+	.pagination li:nth-child(n+2){
+		margin-left: -1px;
+	}
+	.pagination li a{
+	    padding: 5px 15px;
+	    color: #000;
+	    display: inline-block;
+	}
+	.pagination .curlink{
+	    padding: 5px 15px;
+	    color: #fff;
+	    background-color: #000;
+	}
+
+</style>
 <div class="row">
 	<div class="col-lg-1"></div>
 
 	<div class="col-lg-10">
 		<br>
 		<div class="row">
-			<div class="col-md-12" style="padding: 30px; min-height: 500px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+			<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding: 30px; background-color: white; box-shadow: 1px 3px 10px lightgrey;">
 				<div class="row">
-					<!--Jobs Caategory section-->
+					<!--Jobs Category section-->
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-3" style="text-align: center; padding: 5px;">
-								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valCategory">
+								<select style="width: 100%; height: 50px; border: 1px solid black; background-color: white; color: black;" id="valCategory">
 									<option value="">-- Job Category --</option>
 	                                <?php
 	                                    foreach ($job_category as $key=>$category) 
@@ -20,7 +85,7 @@
 								</select>
 							</div>
 							<div class="col-md-3" style="text-align: center; padding: 5px;">
-								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valType">
+								<select style="width: 100%; height: 50px; border: 1px solid black; background-color: white; color: black;" id="valType">
 									<option value="">-- Job Type --</option>
 	                                <?php
 	                                    foreach ($job_type as $key=>$type) 
@@ -30,7 +95,7 @@
 								</select>
 							</div>
 							<div class="col-md-3" style="text-align: center; padding: 5px;">
-								<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;border-radius:5px" id="valProvince">
+								<select style="width: 100%; height: 50px; border: 1px solid black; background-color: white; color: black;" id="valProvince">
 									<option value="">-- Location Province --</option>
 	                                <?php
 	                                    foreach ($lokasiProvinsi as $key=>$provinsi) 
@@ -41,72 +106,76 @@
 							</div>
 							<div class="col-md-3" style="text-align: center; padding: 5px;">
 								<div class="input-group">
-									<input style="height: 100%; border-color: black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
+									<input style="height: 100%; border: 1px solid black; background-color: white; color: black;" type="text" class="form-control" name="text" placeholder="Search Job . . ." required id="valDescription">
 									<span class="input-group-addon" style="background-color: black; color: white;" onclick="search_job()"><i class="fa fa-search"></i></span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<hr style="border: solid 1px lightgray;">
+			</div>
+
+
+			<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding: 30px; min-height: 500px; background-color: white; box-shadow: 1px 3px 10px lightgrey; margin-top: 20px;">
+				<div style="font-size: 25px; margin-bottom: 20px; color: #5f5f5f;">List Vacancy</div>
+				
+				<hr style="border-top-color: lightgray;">
+
 				<div class="col-md-12" id="job_all">
 					<!--Show Jobs list-->
-					<div class="row">
 					<?php
 						if($jobs_list != null) {
 							$i=0;
 							foreach ($jobs_list as $job){
 					?>
-						<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">
-							<div class="col-md-12" style="background-color: white;">
-								<div style="padding-top: 10px;  padding-bottom: 10px;"><strong style="padding-top: 5px; font-size: 1.3em;">
-									<a href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><?php echo $job->job_title; ?></strong></a>
-								</div>
-								<div class="row">
-									<div class="col-md-8">
-										<small style="font-size: 1em;">
-											<?php echo $company_name[$i]; ?>
-										</small>
-										<p style="font-size: 1em;">
+						<div class="row vacancy">
+							<div class="col-md-3">
+								<?php if($job->company_logo != "") {?>
+								<figure class="image-bg" style="height: 130px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$job->company_logo;?>');"></figure>
+								<?php } else{ ?>
+								<figure class="image-bg" style="height: 130px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+								<?php }?>
+							</div>
+							<div class="col-md-6" style="padding-left: 35px; padding-right: 35px;">
+								<h3 class="company-name"><?php echo $job->company_name; ?></h3>
+								<div class="job-category">Category: <?php echo $job_category[$job->job_category]; ?></div>
+								<br>
+								<a class="job-title" href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><b><?php echo $job->job_title; ?></b></a>
+							</div>
+							<div class="col-md-3">
+								<div class="text-center apply-date">
+									<div>Apply Date</div>
+									<div>
 										<?php
-											echo ucwords(strtolower($job->city)) .", ". $job->province
+										echo "<span>".date("j",strtotime($job->job_date_start))."</span> ".
+										date("F", strtotime($job->job_date_end))." - ".
+										"<span>".date("j", strtotime($job->job_date_end))."</span> ".
+										date("F", strtotime($job->job_date_end));
 										?>
-										</p>
 									</div>
-									<div class="col-md-4" style="height: 65px;">
-										<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">
-											<small><b>Apply Date</b></small>
-											<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">
-											<small style="font-size: 1em;">
-												<?php echo date("j M",strtotime($job->job_date_start))." - ".date("j M Y", strtotime($job->job_date_end)); ?>
-											</small>
-										</div>
-									</div>
-								</div>
-								<hr style="border: solid 1px lightgray;">
-								<div style="padding-bottom: 10px;">
-									<small style="font-size: 1em;">Category : </small>
-									<span class="badge badge-dark"><?php echo $job_category[$job->job_category]; ?></span>
 								</div>
 							</div>
 						</div>
+
 						<?php $i++;} } ?>
 						
-					</div>
 				</div>
-				<div class="col-md-12" id="job_search" style="display:none">
+				<div class="col-md-12" id="job_search" style="display:none; margin-top: 30px;">
 				</div>
-				<br>
+
+				<div class="clearfix"></div>
 				
 			<!-- Pagination -->
 			<?php if (isset($links)) { ?>
-				<br>
-				<br>
-				<div class="pagination">
-	            	<?php echo $links ?>
+
+				<div class="clearfix">
+					<div class="pagination pull-right">
+		            	<?php echo $links ?>
+		            </div>
 	            </div>
-				<br>
+
 	        <?php } ?>
+
 			</div>
 		</div>
 	</div>
