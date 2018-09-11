@@ -68,7 +68,7 @@
             <li>
               <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Profile View</a>
             </li>
-            <li class="dropdown-item">
+            <li>
               <a class="page-scroll" href="<?php echo site_url('CompanyMember/editPassword'); ?>">Change Password</a>
             </li>
             <li>

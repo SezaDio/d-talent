@@ -1091,6 +1091,7 @@ class CompanyMember extends CI_Controller
 	public function editPassword()
 	{
 		$data['active'] = 9;
+
 		$this->load->view('skin/front_end/header_company_page_topbar');
 		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_password_page');
