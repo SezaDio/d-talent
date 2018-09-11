@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-md-12 add-company-updates" style="min-height: 423px; background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
 				
-					<strong style="font-size: 1.3em;">Ubah Password</strong>
+					<strong style="font-size: 1.3em;">Change Password</strong>
 					<hr style="border: solid 1px black;">
 					<br>
 
@@ -24,11 +24,11 @@
 						<div class="row">
 							<div class="col-md-12">			
 								<div class="form-group">
-									<input type="password" placeholder="Password Lama" name="old_password" class="form-control" required>
+									<input type="password" placeholder="Previous Password" name="old_password" class="form-control" required>
 								</div>
 
 								<div class="form-group">
-									<input type="text" placeholder="Password Baru" name="new_password" class="form-control" required>
+									<input type="text" placeholder="New Password" name="new_password" class="form-control" required>
 				                </div>
 
 							</div>
@@ -37,7 +37,7 @@
 						<!--Button Post-->
 						<div class="row">
 							<div class="col-md-3">
-								<button type="submit" class="button button1"><i class="fa fa-paper-plane"></i> Simpan</button>
+								<button type="submit" class="button button1"><i class="fa fa-paper-plane"></i> Save</button>
 							</div>
 						</div>
 					</form>

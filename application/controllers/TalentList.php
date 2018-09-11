@@ -40,7 +40,7 @@ class TalentList extends CI_Controller {
 		//////////////////////////////////////////////////
 		$base_url = site_url('talent-list/page');
 		$uri_segment = 3;
-		$limit_per_page = 12;
+		$limit_per_page = 10;
         $total_rows = $this->TalentModel->get_total();
         $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
         $start_index = $start_index * $limit_per_page;

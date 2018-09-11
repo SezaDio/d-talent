@@ -1090,8 +1090,9 @@ class CompanyMember extends CI_Controller
 	/* Menampilkan Halaman Ubah Password */
 	public function editPassword()
 	{
+		$data['active'] = 9;
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_password_page');
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -1172,6 +1173,37 @@ class CompanyMember extends CI_Controller
 		// redirect to page result soft skill
 		$this->load->view('skin/talent/test_header');
 		$this->load->view('talent/test/soft_skill_result', $data);
+		$this->load->view('skin/talent/test_footer');
+	}
+
+	public function show_result_soft_skill_company_view($id_talent)
+	{
+		$this->load->model('talent_models/TalentModel');
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		$test_data = array(
+				1 => $data['result_soft_skill']->pengambilan_keputusan,
+				2 => $data['result_soft_skill']->tanggung_jawab,
+				3 => $data['result_soft_skill']->integritas,
+				4 => $data['result_soft_skill']->resiliensi,
+				5 => $data['result_soft_skill']->keinginan_belajar,
+				6 => $data['result_soft_skill']->komunikasi,
+				7 => $data['result_soft_skill']->sikap_positif,
+				8 => $data['result_soft_skill']->antusiasme,
+				9 => $data['result_soft_skill']->kerja_tim,
+				10 => $data['result_soft_skill']->penyelesaian_masalah
+			);
+
+		$this->load->helper('custom');
+		// use function from helper
+		$response = detailSoftSkillResult($test_data);
+
+		$data['sub_title'] = $response['sub_title'];
+		$data['result'] = $response['result_detail'];
+		
+		// redirect to page result soft skill
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/soft_skill_result_company_view', $data);
 		$this->load->view('skin/talent/test_footer');
 	}
 }
