@@ -1,4 +1,19 @@
 <style type="text/css">
+	.page-title{
+		padding-left: 15px;
+		padding-right: 15px;
+		font-size: 25px;
+		margin-bottom: 10px;
+		color: #5f5f5f;
+	}
+	.page-title .list-line{
+		margin-top: 20px;
+	}
+	.list-line{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		border-top-color: lightgray;
+	}
 	.image-bg{
 		background-size: contain;
 	}
@@ -23,6 +38,8 @@
 		border-left: 1px solid lightgray;
 		border-right: 1px solid lightgray;
 		border-bottom: 1px solid lightgray;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
 		padding: 20px 10px;
 	}
 	.apply-date span{
@@ -31,7 +48,6 @@
 	.vacancy{
 		padding-top: 30px;
 		padding-bottom: 30px;
-		border-bottom: 1px solid lightgray;
 	}
 
 	#job_search h5{
@@ -40,8 +56,8 @@
 
 	/* Pagination */
 	.pagination{
-		margin-top: 50px;
-		padding-right: 20px;
+		margin-top: 70px;
+		padding-right: 15px;
 	}
 	.pagination li{
 	    border: 1px solid lightgray;
@@ -60,6 +76,15 @@
 	    padding: 5px 15px;
 	    color: #fff;
 	    background-color: #000;
+	    border-color: #000;
+	}
+	.pagination li:first-child{
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+	.pagination li:last-child{
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
 	}
 
 </style>
@@ -117,9 +142,11 @@
 
 
 			<div class="col-sm-12 col-md-10 col-md-offset-1" style="padding: 30px; min-height: 500px; background-color: white; box-shadow: 1px 3px 10px lightgrey; margin-top: 20px;">
-				<div style="font-size: 25px; margin-bottom: 20px; color: #5f5f5f;">List Vacancy</div>
+				<div class="page-title">
+					List Vacancy
+					<hr class="list-line">
+				</div>
 				
-				<hr style="border-top-color: lightgray;">
 
 				<div class="col-md-12" id="job_all">
 					<!--Show Jobs list-->
@@ -155,7 +182,9 @@
 									</div>
 								</div>
 							</div>
+
 						</div>
+						<hr class="list-line">
 
 						<?php $i++;} } ?>
 						
@@ -214,7 +243,7 @@
 			if(getJob.length==0){
 				div_job_search += '<div class="col-md-2"></div>';
 				div_job_search += '<div class="col-md-8">';
-					div_job_search += '<h5 style=" text-align: center;">Data tidak ditemukan !</h5>';
+					div_job_search += '<h5 style=" text-align: center;">Data not found</h5>';
 				div_job_search += '</div>';
 				div_job_search += '<div class="col-md-2"></div>';
 			} else {
