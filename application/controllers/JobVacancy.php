@@ -60,7 +60,7 @@ class JobVacancy extends CI_Controller
 		
 		$base_url = site_url('job-vacancy/page');
 		$uri_segment = 3;
-		$limit_per_page = 3;
+		$limit_per_page = 10;
         $total_rows = $this->JobVacancyModel->get_total();
         $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
         $start_index = $start_index * $limit_per_page;
