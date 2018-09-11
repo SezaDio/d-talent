@@ -44,6 +44,8 @@ class JobVacancy extends CI_Controller
 	
 	public function job_list()
 	{
+		$data['active'] = 2;
+
 		$this->load->library('pagination');
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
