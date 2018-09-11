@@ -161,31 +161,30 @@
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
 			div_talent_search += '<div class="row">';
-			for (var i = 0; i < getTalent.length; i++) 
+			if(getTalent.length==0)
+			{	
+				div_talent_search += '<div class="col-md-12" style="background-color: white; box-shadow: 1px 5px 20px lightgrey; padding: 20px;">';
+					div_talent_search += '<p style="font-size: 1.5em; text-align: center;"><b>Talent not found !</b></p>';
+				div_talent_search += '</div>';
+			}
+			else
 			{
-				var id_talent = getTalent[i].getAttribute("id_talent");
-				var nama = getTalent[i].getAttribute("nama");
-				var email = getTalent[i].getAttribute("email");
-				var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
-				var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
-				var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
-				var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
-				var provinsi = getTalent[i].getAttribute("provinsi");
-				var kota = getTalent[i].getAttribute("kota");
-				var foto_sampul = getTalent[i].getAttribute("foto_sampul");
-				var foto_profil = getTalent[i].getAttribute("foto_profil");
-				var umur = ageYear(tanggal_lahir);
+				for (var i = 0; i < getTalent.length; i++) 
+				{
+					var id_talent = getTalent[i].getAttribute("id_talent");
+					var nama = getTalent[i].getAttribute("nama");
+					var email = getTalent[i].getAttribute("email");
+					var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
+					var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
+					var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
+					var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
+					var provinsi = getTalent[i].getAttribute("provinsi");
+					var kota = getTalent[i].getAttribute("kota");
+					var foto_sampul = getTalent[i].getAttribute("foto_sampul");
+					var foto_profil = getTalent[i].getAttribute("foto_profil");
+					var umur = ageYear(tanggal_lahir);
 
-				if(getTalent.length==0)
-				{
-					div_talent_search += '<div class="col-md-2"></div>';
-					div_talent_search += '<div class="col-md-8">';
-						div_talent_search += '<h5 style=" text-align: center;">Talent not found !</h5>';
-					div_talent_search += '</div>';
-					div_talent_search += '<div class="col-md-2"></div>';
-				}
-				else
-				{
+					
 					if(foto_sampul===""){
 						var sampul = base_url+'asset/img/bg-default.jpg';
 					} else {
@@ -245,7 +244,7 @@
 							div_talent_search += '</div>';
 						div_talent_search += '</div>';
 					div_talent_search += '</div>';
-				} 
+				}
 			}
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
