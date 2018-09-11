@@ -25,7 +25,7 @@
 				$total_page = ceil($total_records / 2);	// 2 item per page
 
 				for ($i=0; $i<$total_records; $i++) {
-					if ($i % 2 == 1) {	// if $i is odd => new page (pagination)
+					if ($i % 2 == 0) {	// if $no is odd => new page (pagination)
 						$page++;
 						echo '<div class="test page-'. $page .'">';
 						
@@ -41,6 +41,7 @@
 								'</label></div>'.
 							'</div>';
 						$no++;
+						if (isset($test[$no])) {
 						echo '<div class="radio-validation">'.
 								'<p><span class="number">'.($no+1).' .</span>'. $test[$no]->question .'</p>'.
 								'<div><label>'.
@@ -53,8 +54,9 @@
 								'</label></div>'.
 							'</div>';
 						$no++;
+						}
 
-						echo '</div>';	// ./div (pagination)
+						echo '</div>';	// ./div (page test-)
 					}
 				}
 			?>
@@ -63,7 +65,7 @@
 		<hr class="bottom-line">
 
 		<!-- page button -->
-		<div class="test-footer">
+		<div class="test-footer clearfix">
 			<a href="#!" aria-label="Previous" class="prev btn btn-default pull-left">
 		        <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
 		        Back
