@@ -161,7 +161,8 @@
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
 			div_talent_search += '<div class="row">';
-			for (var i = 0; i < getTalent.length; i++) {
+			for (var i = 0; i < getTalent.length; i++) 
+			{
 				var id_talent = getTalent[i].getAttribute("id_talent");
 				var nama = getTalent[i].getAttribute("nama");
 				var email = getTalent[i].getAttribute("email");
@@ -175,65 +176,76 @@
 				var foto_profil = getTalent[i].getAttribute("foto_profil");
 				var umur = ageYear(tanggal_lahir);
 
-				if(foto_sampul===""){
-					var sampul = base_url+'asset/img/bg-default.jpg';
-				} else {
-					var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
+				if(getTalent.length==0)
+				{
+					div_talent_search += '<div class="col-md-2"></div>';
+					div_talent_search += '<div class="col-md-8">';
+						div_talent_search += '<h5 style=" text-align: center;">Talent not found !</h5>';
+					div_talent_search += '</div>';
+					div_talent_search += '<div class="col-md-2"></div>';
 				}
-				if(foto_profil===""){
-					var profil = base_url+'asset/img/talent-default.png';
-				} else {
-					var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
-				}
-				div_talent_search += '<div class="col-md-12" style="padding-left: 30px; padding-right: 30px;">';
-					div_talent_search += '<div class="profile">';
-						div_talent_search += '<div class="row" style="background-color: white; box-shadow: 1px 5px 20px lightgrey; padding: 20px;">';
-							
-							div_talent_search += '<div class="col-md-2" style="text-align: -webkit-center;">';
-								div_talent_search += '<div class="img-talent" style="width: 100px; height: 100px; border: 1px solid #ccc; border-radius: 55px; background-color: #fefefe; position: unset; transform: none; z-index: 10; overflow: hidden;">';
-									div_talent_search += '<figure class="image-bg" style="background-image: url(';
-										div_talent_search += "'";
-										div_talent_search += profil;
-										div_talent_search += "'";
-									div_talent_search += ');"></figure>';
+				else
+				{
+					if(foto_sampul===""){
+						var sampul = base_url+'asset/img/bg-default.jpg';
+					} else {
+						var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
+					}
+					if(foto_profil===""){
+						var profil = base_url+'asset/img/talent-default.png';
+					} else {
+						var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
+					}
+					div_talent_search += '<div class="col-md-12" style="padding-left: 30px; padding-right: 30px;">';
+						div_talent_search += '<div class="profile">';
+							div_talent_search += '<div class="row" style="background-color: white; box-shadow: 1px 5px 20px lightgrey; padding: 20px;">';
+								
+								div_talent_search += '<div class="col-md-2" style="text-align: -webkit-center;">';
+									div_talent_search += '<div class="img-talent" style="width: 100px; height: 100px; border: 1px solid #ccc; border-radius: 55px; background-color: #fefefe; position: unset; transform: none; z-index: 10; overflow: hidden;">';
+										div_talent_search += '<figure class="image-bg" style="background-image: url(';
+											div_talent_search += "'";
+											div_talent_search += profil;
+											div_talent_search += "'";
+										div_talent_search += ');"></figure>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
-							div_talent_search += '<div class="col-md-3">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
+								div_talent_search += '<div class="col-md-3">';
+									div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
+										div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
-							div_talent_search += '<div class="col-md-1">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+jenis_kelamin+'</span>';
+								div_talent_search += '<div class="col-md-1">';
+									div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
+										div_talent_search += '<span>'+jenis_kelamin+'</span>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+status_pernikahan+'</span>';
+								div_talent_search += '<div class="col-md-2">';
+									div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
+										div_talent_search += '<span>'+status_pernikahan+'</span>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+titleCase(kota)+'</span>';
+								div_talent_search += '<div class="col-md-2">';
+									div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
+										div_talent_search += '<span>'+titleCase(kota)+'</span>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div style="margin-top: 25px; text-align: center;">';
-									div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'">';
-										div_talent_search += '<button type="button" class="button button1"><i class="fa fa-eye"></i> View</button>';
-									div_talent_search += '</a>';
+								div_talent_search += '<div class="col-md-2">';
+									div_talent_search += '<div style="margin-top: 25px; text-align: center;">';
+										div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'">';
+											div_talent_search += '<button type="button" class="button button1"><i class="fa fa-eye"></i> View</button>';
+										div_talent_search += '</a>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
-							div_talent_search += '</div>';
 
+							div_talent_search += '</div>';
 						div_talent_search += '</div>';
 					div_talent_search += '</div>';
-				div_talent_search += '</div>';
+				} 
 			}
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
