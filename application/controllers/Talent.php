@@ -17,6 +17,8 @@ class Talent extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$id_talent = $this->session->userdata('id_talent');
 
 		$this->load->model('talent_models/TalentModel');
@@ -81,6 +83,8 @@ class Talent extends CI_Controller {
 
 	public function editAccount()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('account/UserModel');
 
@@ -176,6 +180,8 @@ class Talent extends CI_Controller {
 
 	public function editProfile()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 
 		$id_talent = $this->session->userdata('id_talent');
@@ -274,6 +280,8 @@ class Talent extends CI_Controller {
 
 	public function vacancyDetail()
 	{
+		$data['active'] = 2;
+
 		$data['page_title'] = "Vacancy Job Detail";
 
 		$this->load->view('skin/talent/header', $data);
