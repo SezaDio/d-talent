@@ -61,52 +61,64 @@
 			<div  id="talent-list">
 			<div class="row">
 				<?php foreach ($talent_list as $talent){?>
-				<div class="col-md-12" style="padding-left: 30px; padding-right: 30px;">
+				<div class="col-md-4">
+					<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+					<?php
+						if ($talent->foto_sampul != "") {
+					?>
+						<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_bg_profile/') . $talent->foto_sampul;?>');"></figure>
+					<?php
+						} else {
+					?>
+						<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
+					<?php
+						}
+					?>
+						
+					</div>
+
 					<div class="profile">
-						<div class="row" style="background-color: white; box-shadow: 1px 5px 20px lightgrey; padding: 20px;">
-							<div class="col-md-2" style="text-align: -webkit-center;">
-								<div class="img-talent" style="width: 100px; height: 100px; border: 1px solid #ccc; border-radius: 55px; background-color: #fefefe; position: unset; transform: none; z-index: 10; overflow: hidden;">
-								<?php
-									if ($talent->foto_profil != "") {
-								?>
-									<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
-								<?php
-									} else {
-								?>
-									<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
-								<?php
-									}
-								?>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="profile-attribute" style="text-align: center;">
-									<a href="<?php echo base_url('TalentList/detail_talent/'.$talent->id_talent)?>"><span><strong><?php echo $talent->nama; ?></strong></span> </a>
-								</div>
-							</div>
-							<div class="col-md-1">
-								<div class="profile-attribute" style="text-align: center;">
-									<span><?php echo displayGender($talent->jenis_kelamin); ?></span>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="profile-attribute" style="text-align: center;">
-									<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="profile-attribute" style="text-align: center;">
-									<span><?php echo ucwords(strtolower($talent->city));?></span>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div style="margin-top: 25px; text-align: center;">
-									<a href="<?php echo base_url('TalentList/detail_talent/'.$talent->id_talent)?>">
-										<button type="button" class="button button1"><i class="fa fa-eye"></i> View</button>
-									</a>
+						<div class="img-talent">
+						<?php
+							if ($talent->foto_profil != "") {
+						?>
+							<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_talent_profile/') . $talent->foto_profil;?>');"></figure>
+						<?php
+							} else {
+						?>
+							<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/talent-default.png'); ?>');"></figure>
+						<?php
+							}
+						?>
+						</div>
+
+						<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">
+							<div class="card-body">
+								<div style="padding: 10px;">
+									<div class="text-center profile-attribute">
+										<!-- Name | Age | City -->
+										<a href="<?php echo base_url('TalentList/detail_talent/'.$talent->id_talent)?>"><span><?php echo $talent->nama; ?></span> </a>
+										<br>
+										<span><?php echo countAge($talent->tanggal_lahir); ?> Tahun</span> |
+										<span><?php echo displayGender($talent->jenis_kelamin); ?></span> |
+										<span><?php echo displayMaritalStatus($talent->status_pernikahan); ?></span>
+									</div>
+									<br>
+									<!-- contact -->
+									<div class="contact-talent">
+										<div class="text-center">
+											<span><i class="fa fa-envelope"></i> <?php echo $talent->email; ?></span> | 
+											<span><i class="fa fa-phone"></i> <?php echo $talent->nomor_ponsel; ?></span>
+											<br>
+											<span><i class="fa fa-home"></i> <?php echo ucwords(strtolower($talent->city));?></span>
+										</div>
+									</div>
+									
+									
 								</div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 				<?php } ?>
@@ -161,79 +173,78 @@
 			var getTalent = xml.documentElement.getElementsByTagName("talent");
 			var div_talent_search = '';
 			div_talent_search += '<div class="row">';
-			for (var i = 0; i < getTalent.length; i++) {
-				var id_talent = getTalent[i].getAttribute("id_talent");
-				var nama = getTalent[i].getAttribute("nama");
-				var email = getTalent[i].getAttribute("email");
-				var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
-				var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
-				var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
-				var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
-				var provinsi = getTalent[i].getAttribute("provinsi");
-				var kota = getTalent[i].getAttribute("kota");
-				var foto_sampul = getTalent[i].getAttribute("foto_sampul");
-				var foto_profil = getTalent[i].getAttribute("foto_profil");
-				var umur = ageYear(tanggal_lahir);
+			if(getTalent.length==0){
+				div_talent_search += '<div class="col-md-2"></div>';
+				div_talent_search += '<div class="col-md-8">';
+					div_talent_search += '<h5 style=" text-align: center;">Data tidak ditemukan !</h5>';
+				div_talent_search += '</div>';
+				div_talent_search += '<div class="col-md-2"></div>';
+			} else {
+				for (var i = 0; i < getTalent.length; i++) {
+					var id_talent = getTalent[i].getAttribute("id_talent");
+					var nama = getTalent[i].getAttribute("nama");
+					var email = getTalent[i].getAttribute("email");
+					var nomor_ponsel = getTalent[i].getAttribute("nomor_ponsel");
+					var tanggal_lahir = getTalent[i].getAttribute("tanggal_lahir");
+					var jenis_kelamin = getTalent[i].getAttribute("jenis_kelamin");
+					var status_pernikahan = getTalent[i].getAttribute("status_pernikahan");
+					var provinsi = getTalent[i].getAttribute("provinsi");
+					var kota = getTalent[i].getAttribute("kota");
+					var foto_sampul = getTalent[i].getAttribute("foto_sampul");
+					var foto_profil = getTalent[i].getAttribute("foto_profil");
+					var umur = ageYear(tanggal_lahir);
 
-				if(foto_sampul===""){
-					var sampul = base_url+'asset/img/bg-default.jpg';
-				} else {
-					var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
-				}
-				if(foto_profil===""){
-					var profil = base_url+'asset/img/talent-default.png';
-				} else {
-					var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
-				}
-				div_talent_search += '<div class="col-md-12" style="padding-left: 30px; padding-right: 30px;">';
-					div_talent_search += '<div class="profile">';
-						div_talent_search += '<div class="row" style="background-color: white; box-shadow: 1px 5px 20px lightgrey; padding: 20px;">';
-							
-							div_talent_search += '<div class="col-md-2" style="text-align: -webkit-center;">';
-								div_talent_search += '<div class="img-talent" style="width: 100px; height: 100px; border: 1px solid #ccc; border-radius: 55px; background-color: #fefefe; position: unset; transform: none; z-index: 10; overflow: hidden;">';
-									div_talent_search += '<figure class="image-bg" style="background-image: url(';
-										div_talent_search += "'";
-										div_talent_search += profil;
-										div_talent_search += "'";
-									div_talent_search += ');"></figure>';
+					if(foto_sampul===""){
+						var sampul = base_url+'asset/img/bg-default.jpg';
+					} else {
+						var sampul = base_url+'asset/img/upload_img_talent_bg_profile/'+foto_sampul;
+					}
+					if(foto_profil===""){
+						var profil = base_url+'asset/img/talent-default.png';
+					} else {
+						var profil = base_url+'asset/img/upload_img_talent_profile/'+foto_profil;
+					}
+					div_talent_search += '<div class="col-md-4">';
+						div_talent_search += '	<div class="bg-talent" style="height:150px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
+						div_talent_search += '<figure class="image-bg" style="background-image: url(';
+						div_talent_search += "'";
+						div_talent_search += sampul;
+						div_talent_search += "'";
+						div_talent_search += ');"></figure>';
+						div_talent_search += '</div>';
+						div_talent_search += '<div class="profile">';
+							div_talent_search += '<div class="img-talent">';
+							div_talent_search += '<figure class="image-bg" style="background-image: url(';
+							div_talent_search += "'";
+							div_talent_search += profil;
+							div_talent_search += "'";
+							div_talent_search += ');"></figure>';
+							div_talent_search += '</div>';
+							div_talent_search += '<div class="card" style="height: 270px; background-color: white; box-shadow: 1px 5px 20px lightgrey;">';
+								div_talent_search += '<div class="card-body">';
+									div_talent_search += '<div style="padding: 10px;">';
+										div_talent_search += '<div class="text-center profile-attribute">';
+											div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
+											div_talent_search += '	<br>';
+											div_talent_search += '	<span>'+umur+' Tahun</span> | ';
+											div_talent_search += '<span>'+jenis_kelamin+'</span> | ';
+											div_talent_search += '<span>'+status_pernikahan+'</span>';
+										div_talent_search += '</div>';
+										div_talent_search += '<br>';
+										div_talent_search += '<div class="contact-talent">';
+											div_talent_search += '<div class="text-center">';
+												div_talent_search += '<span><i class="fa fa-envelope"></i>'+email+'</span> | ';
+												div_talent_search += '<span><i class="fa fa-phone"></i>'+nomor_ponsel+'</span>';
+												div_talent_search += '<br>';
+												div_talent_search += '<span><i class="fa fa-home"></i>'+titleCase(kota)+'</span>';
+											div_talent_search += '</div>';
+										div_talent_search += '</div>';
+									div_talent_search += '</div>';
 								div_talent_search += '</div>';
 							div_talent_search += '</div>';
-
-							div_talent_search += '<div class="col-md-3">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'"><span>'+nama+'</span></a>';
-								div_talent_search += '</div>';
-							div_talent_search += '</div>';
-
-							div_talent_search += '<div class="col-md-1">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+jenis_kelamin+'</span>';
-								div_talent_search += '</div>';
-							div_talent_search += '</div>';
-
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+status_pernikahan+'</span>';
-								div_talent_search += '</div>';
-							div_talent_search += '</div>';
-
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div class="profile-attribute" style="text-align: center;">';
-									div_talent_search += '<span>'+titleCase(kota)+'</span>';
-								div_talent_search += '</div>';
-							div_talent_search += '</div>';
-
-							div_talent_search += '<div class="col-md-2">';
-								div_talent_search += '<div style="margin-top: 25px; text-align: center;">';
-									div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'">';
-										div_talent_search += '<button type="button" class="button button1"><i class="fa fa-eye"></i> View</button>';
-									div_talent_search += '</a>';
-								div_talent_search += '</div>';
-							div_talent_search += '</div>';
-
 						div_talent_search += '</div>';
 					div_talent_search += '</div>';
-				div_talent_search += '</div>';
+				}
 			}
 			div_talent_search += '</div>';
 			document.getElementById("talent-search").innerHTML = div_talent_search;
