@@ -292,12 +292,6 @@ class Talent extends CI_Controller {
 	//show result test soft skill page
 	public function show_result_soft_skill($id_talent)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-		
 		$this->load->model('talent_models/TalentModel');
 
 		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
