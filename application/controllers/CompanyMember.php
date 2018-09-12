@@ -1317,7 +1317,7 @@ class CompanyMember extends CI_Controller
 		
 		// redirect to page result soft skill
 		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/soft_skill_result', $data);
+		$this->load->view('talent/test/soft_skill_result_company_view', $data);
 		$this->load->view('skin/talent/test_footer');
 	}
 
