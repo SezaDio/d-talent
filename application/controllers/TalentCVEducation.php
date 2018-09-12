@@ -18,6 +18,8 @@ class TalentCVEducation extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$data['page_title'] = "Add Education";
 
 		$this->load->view('skin/talent/header', $data);
@@ -54,6 +56,8 @@ class TalentCVEducation extends CI_Controller {
 
 	public function edit($id_talent_cv_education)
 	{
+		$data['active'] = 1;
+
 		$id_talent = $this->session->userdata('id_talent');
 
 		$data['page_title'] = "Edit Education";

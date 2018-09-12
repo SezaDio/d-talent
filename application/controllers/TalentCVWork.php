@@ -18,6 +18,8 @@ class TalentCVWork extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$data['page_title'] = "Add Work Experience";
 
 		// get location's name
@@ -73,6 +75,8 @@ class TalentCVWork extends CI_Controller {
 
 	public function edit($id_talent_cv_work)
 	{
+		$data['active'] = 1;
+		
 		$id_talent = $this->session->userdata('id_talent');
 
 		$data['page_title'] = "Edit Add Experience";

@@ -20,6 +20,8 @@ class TalentCVAchievement extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$data['page_title'] = "Add Achievement";
 		
 		// get data for select
@@ -65,6 +67,8 @@ class TalentCVAchievement extends CI_Controller {
 
 	public function edit($id_talent_cv_achievement)
 	{
+		$data['active'] = 1;
+		
 		$id_talent = $this->session->userdata('id_talent');
 		
 		$data['page_title'] = "Edit Achievement";
