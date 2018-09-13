@@ -18,9 +18,9 @@
 			<div class="card-body row">
 				<div class="fit-content col-xs-4 col-md-2">
 					<?php if($company_logo != "") {?>
-					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_logo;?>');"></figure>
+					<figure class="image-bg" style="background-color: white; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_logo;?>');"></figure>
 					<?php } else{ ?>
-					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+					<figure class="image-bg" style="background-color: white; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
 					<?php }?>
 				</div>
 				<div class="fit-content col-xs-8 col-md-10">

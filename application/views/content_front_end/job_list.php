@@ -165,7 +165,9 @@
 							</div>
 							<div class="col-md-6" style="padding-left: 35px; padding-right: 35px;">
 								<a class="job-title" href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><b><?php echo $job->job_title; ?></b></a>
-								<div class="job-category">Category: <?php echo $job_category[$job->job_category]; ?></div>
+								<div class="job-category">
+									Category: <span class="badge badge-dark"> <?php echo $job_category[$job->job_category]; ?> </span>
+								</div>
 								<br>
 								<p class="company-name"><?php echo $job->company_name; ?></p>
 								
@@ -176,14 +178,13 @@
 									<div>
 										<?php
 										echo "<span>".date("j",strtotime($job->job_date_start))."</span> ".
-										date("F", strtotime($job->job_date_end))." - ".
+										date("F", strtotime($job->job_date_start))." - ".
 										"<span>".date("j", strtotime($job->job_date_end))."</span> ".
 										date("F", strtotime($job->job_date_end));
 										?>
 									</div>
 								</div>
 							</div>
-
 						</div>
 						<hr class="list-line">
 
@@ -238,7 +239,7 @@
 		$.post('<?php echo site_url('JobVacancy/search_job/'); ?>', {description:description,category:category,type:type,province:province}, function(dataJob){
 			var xml = parseXml(dataJob);
 			var getJob = xml.documentElement.getElementsByTagName("job");
-			var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			var months = ["January", "February", "March", "April", "May", "Juny", "July", "August", "September", "October", "November", "December"];
 			var div_job_search = '';
 			div_job_search += '<div class="row">';
 			if(getJob.length==0){
@@ -252,6 +253,7 @@
 					var id_job = getJob[i].getAttribute("id_job");
 					var id_company = getJob[i].getAttribute("id_company");
 					var company_name = getJob[i].getAttribute("company_name");
+					var company_logo = getJob[i].getAttribute("company_logo");
 					var job_title = getJob[i].getAttribute("job_title");
 					var job_category = getJob[i].getAttribute("job_category");
 					var job_city_location_id = getJob[i].getAttribute("job_city_location_id");
@@ -264,35 +266,47 @@
 					var month_end = months[date_end.getMonth()];
 					var year_start = date_start.getFullYear();
 					var year_end = date_end.getFullYear();
-							
-					div_job_search += '<div class="col-md-6" style="border-left: solid 4px black; margin-bottom: 15px; padding-left: 0">';
-						div_job_search += '<div class="col-md-12" style="background-color: white;">';
-							div_job_search += '<div style="padding-top: 10px;  padding-bottom: 10px;">';
-								div_job_search += '<strong style="padding-top: 5px;font-size: 1.3em;">';
-									div_job_search += '<a href="'+base_url+'JobVacancy/detail_job/'+id_job+'">'+job_title+'</a>';
-								div_job_search += '</strong>';
+					
+					if(company_logo==="")
+					{
+						var logo = base_url+'asset/img/company-default.png';
+					} 
+					else 
+					{
+						var logo = base_url+'asset/img/upload_img_company/'+company_logo;
+					}
+
+					div_job_search += '<div class="col-md-12" id="job_all">';
+						div_job_search += '<div class="row vacancy">';
+
+							div_job_search += '<div class="col-md-3">';
+								div_job_search += '<figure class="image-bg" style="height: 130px; background-image: url(';
+									div_job_search += "'";
+									div_job_search += logo;
+									div_job_search += "'";
+								div_job_search += ');"></figure>';
 							div_job_search += '</div>';
-							div_job_search += '<div class="row">';
-								div_job_search += '<div class="col-md-8">';
-									div_job_search += '<small style="font-size: 1em;"><b>'+company_name+'</b></small>';
-									div_job_search += '<p style="font-size: 1em;">'+titleCase(job_city_location_id)+', '+job_province_location_id+'</p>';
-								div_job_search += '</div>';
-								div_job_search += '<div class="col-md-4" style="height: 65px;">';
-									div_job_search += '<div style="padding: 5px; text-align: center; border-radius: 5px; border: solid 1px black; background-color: black; opacity: 0.8; color: white;">';
-										div_job_search += '<small><b>Batas Pendaftaran</b></small>';
-										div_job_search += '<hr style="border: solid 1px lightgray; margin-top: 0px; margin-bottom: 0px;">';
-										div_job_search += '<small style="font-size: 1em;">';
-											div_job_search += ''+d_start+' '+month_start+' - '+d_end+' '+month_end+' '+year_end+'';
-										div_job_search += '</small>';
+
+							div_job_search += '<div class="col-md-6" style="padding-left: 35px; padding-right: 35px;">';
+									div_job_search += '<a class="job-title" href="'+base_url+'JobVacancy/detail_job/'+id_job+'">'+job_title+'</a>';
+									div_job_search += '<div class="job-category">';
+										div_job_search += 'Category: <span class="badge badge-dark">' +job_category+ '</span><br>';
+									div_job_search += '</div>';
+									div_job_search += '<br>';
+									div_job_search += '<p class="company-name">'+company_name+'</p>';
+							div_job_search += '</div>';
+
+							div_job_search += '<div class="col-md-3">';
+								div_job_search += '<div class="text-center apply-date">';
+									div_job_search += '<div>Apply Date</div>';
+									div_job_search += '<div>';
+										div_job_search += '<span>'+d_start+'</span> '+month_start+' - <span>' +d_end+'</span> '+month_end+'';
 									div_job_search += '</div>';
 								div_job_search += '</div>';
 							div_job_search += '</div>';
-							div_job_search += '<hr style="border: solid 1px lightgray;">';
-							div_job_search += '<div style="padding-bottom: 10px;">';
-								div_job_search += '<small style="font-size: 1em;">Category : </small>';
-								div_job_search += '<span class="badge badge-dark">'+job_category+'</span>';
-							div_job_search += '</div>';
+
 						div_job_search += '</div>';
+						div_job_search += '<hr class="list-line">';
 					div_job_search += '</div>';
 				}
 			}

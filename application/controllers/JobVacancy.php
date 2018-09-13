@@ -140,11 +140,12 @@ class JobVacancy extends CI_Controller
 		$data .= 'AND job_title LIKE "%'.$this->db->escape_like_str($description).'%"';
 		$data .= 'AND job_province_location_id LIKE "%'.$this->db->escape_like_str($province).'%"';
 		
-		$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+		$this->db->select('job_vacancy.*, company.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
 		$this->db->from('job_vacancy');
 		$this->db->where($data);
 		$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
 		$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
+		$this->db->join('company', 'company.id_company = job_vacancy.id_company', 'left');
 		$this->db->order_by('publish_date', 'DESC');
 		
 		
@@ -155,11 +156,13 @@ class JobVacancy extends CI_Controller
             foreach ($get_job->result() as $row_job) {
 				
 				$get_name_company=$this->db->select('company_name')->where('id_company',$row_job->id_company)->get('company')->result();
+				$get_logo_company=$this->db->select('company_logo')->where('id_company',$row_job->id_company)->get('company')->result();
 				$job_category = $this->get_job_category_search($row_job->job_category);
                 $xml_out .= '<job ';
                 $xml_out .= 'id_job="' . xml_convert($row_job->id_job) . '" ';
                 $xml_out .= 'id_company="' . xml_convert($row_job->id_company) . '" ';
                 $xml_out .= 'company_name="' . $get_name_company[0]->company_name . '" ';
+                $xml_out .= 'company_logo="' . $get_logo_company[0]->company_logo . '" ';
                 $xml_out .= 'job_title="' . xml_convert($row_job->job_title) . '" ';
                 $xml_out .= 'job_type="' . xml_convert($row_job->job_type) . '" ';
                 $xml_out .= 'job_category="'.$job_category.'" ';
