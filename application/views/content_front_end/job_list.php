@@ -164,10 +164,11 @@
 								<?php }?>
 							</div>
 							<div class="col-md-6" style="padding-left: 35px; padding-right: 35px;">
-								<h3 class="company-name"><?php echo $job->company_name; ?></h3>
+								<a class="job-title" href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><b><?php echo $job->job_title; ?></b></a>
 								<div class="job-category">Category: <?php echo $job_category[$job->job_category]; ?></div>
 								<br>
-								<a class="job-title" href="<?php echo site_url('JobVacancy/detail_job/'. $job->id_job);?>"><b><?php echo $job->job_title; ?></b></a>
+								<p class="company-name"><?php echo $job->company_name; ?></p>
+								
 							</div>
 							<div class="col-md-3">
 								<div class="text-center apply-date">
@@ -243,7 +244,7 @@
 			if(getJob.length==0){
 				div_job_search += '<div class="col-md-2"></div>';
 				div_job_search += '<div class="col-md-8">';
-					div_job_search += '<h5 style=" text-align: center;">Data not found</h5>';
+					div_job_search += '<h5 style=" text-align: center;">Job Vacancy Not Available</h5>';
 				div_job_search += '</div>';
 				div_job_search += '<div class="col-md-2"></div>';
 			} else {

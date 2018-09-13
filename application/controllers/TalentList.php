@@ -40,7 +40,7 @@ class TalentList extends CI_Controller {
 		//////////////////////////////////////////////////
 		$base_url = site_url('talent-list/page');
 		$uri_segment = 3;
-		$limit_per_page = 12;
+		$limit_per_page = 10;
         $total_rows = $this->TalentModel->get_total();
         $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
         $start_index = $start_index * $limit_per_page;
@@ -188,12 +188,12 @@ class TalentList extends CI_Controller {
 			$data .= ' AND degree LIKE "%'.$this->db->escape_like_str($education).'%"';
 		}
 		if($instansi != ""){
-			$data .= 'AND name_school LIKE "%'.$this->db->escape_like_str($instansi).'%"';
+			$data .= 'AND school LIKE "%'.$this->db->escape_like_str($instansi).'%"';
 		}
 		$data_select = '';
 		$data_select .= 'talent.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city';
 		if(($education != "")||($instansi != "")){
-			$data_select .= ', education.degree AS degree, education.school AS name_school';
+			$data_select .= ', education.degree AS degree, education.school AS school';
 		}
 		$this->db->select($data_select);
 		$this->db->from('talent');
@@ -226,7 +226,7 @@ class TalentList extends CI_Controller {
 					$xml_out .= 'degree="' . xml_convert($row_talent->degree) . '" ';
 				}
 				if($instansi != ""){
-					$xml_out .= 'name_school="' . xml_convert($row_talent->name_school) . '" ';
+					$xml_out .= 'school="' . xml_convert($row_talent->school) . '" ';
 				}
                 $xml_out .= 'jenis_kelamin="' . $gender . '" ';
                 $xml_out .= 'status_pernikahan="' . $marital . '" ';

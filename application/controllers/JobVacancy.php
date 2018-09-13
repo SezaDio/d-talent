@@ -44,6 +44,8 @@ class JobVacancy extends CI_Controller
 	
 	public function job_list()
 	{
+		$data['active'] = 2;
+
 		$this->load->library('pagination');
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
@@ -93,6 +95,8 @@ class JobVacancy extends CI_Controller
 	
 	public function detail_job($id_job)
 	{
+		$data['active'] = 2;
+		
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
 		$data['page_title'] = "Talent";

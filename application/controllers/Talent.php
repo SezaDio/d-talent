@@ -17,6 +17,8 @@ class Talent extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$id_talent = $this->session->userdata('id_talent');
 
 		$this->load->model('talent_models/TalentModel');
@@ -81,6 +83,8 @@ class Talent extends CI_Controller {
 
 	public function editAccount()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('account/UserModel');
 
@@ -176,6 +180,8 @@ class Talent extends CI_Controller {
 
 	public function editProfile()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 
 		$id_talent = $this->session->userdata('id_talent');
@@ -274,10 +280,44 @@ class Talent extends CI_Controller {
 
 	public function vacancyDetail()
 	{
+		$data['active'] = 2;
+
 		$data['page_title'] = "Vacancy Job Detail";
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/vacancy-detail');
 		$this->load->view('skin/talent/footer');
+	}
+
+	//show result test soft skill page
+	public function show_result_soft_skill($id_talent)
+	{
+		$this->load->model('talent_models/TalentModel');
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		$test_data = array(
+				1 => $data['result_soft_skill']->pengambilan_keputusan,
+				2 => $data['result_soft_skill']->tanggung_jawab,
+				3 => $data['result_soft_skill']->integritas,
+				4 => $data['result_soft_skill']->resiliensi,
+				5 => $data['result_soft_skill']->keinginan_belajar,
+				6 => $data['result_soft_skill']->komunikasi,
+				7 => $data['result_soft_skill']->sikap_positif,
+				8 => $data['result_soft_skill']->antusiasme,
+				9 => $data['result_soft_skill']->kerja_tim,
+				10 => $data['result_soft_skill']->penyelesaian_masalah
+			);
+
+		$this->load->helper('custom');
+		// use function from helper
+		$response = detailSoftSkillResult($test_data);
+
+		$data['sub_title'] = $response['sub_title'];
+		$data['result'] = $response['result_detail'];
+		
+		// redirect to page result soft skill
+		$this->load->view('skin/talent/test_header');
+		$this->load->view('talent/test/soft_skill_result', $data);
+		$this->load->view('skin/talent/test_footer');
 	}
 }

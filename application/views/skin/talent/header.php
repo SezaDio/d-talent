@@ -44,6 +44,28 @@
 	<script type="text/javascript" src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('asset/js/bootstrap-select.min.js'); ?>"></script>
 
+  <style type="text/css">
+      .navbar .nav-link{
+        color: black !important;
+      }
+
+      .navbar .nav-link.active,
+      .navbar .nav-link:hover{
+          color: white !important;
+          background: black;
+      }
+
+      .menu-bg.navbar .nav-link{
+        color: black !important;
+      }
+
+      .menu-bg.navbar .nav-link.active,
+      .menu-bg.navbar .nav-link:hover{
+          color: black !important;
+          background: white;
+      }
+    </style>
+
 </head>
 <body>
     <!-- Header Section Start -->
@@ -61,16 +83,16 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> <b>My CV</b></a>
+                <a class="nav-link <?php if ($active==1){echo "active";} ?>" href="<?php echo site_url('talent');?>"><i class="fa fa-clipboard-check"></i> <b>My CV</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('JobVacancy/job_list');?>"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
+                <a class="nav-link <?php if ($active==2){echo "active";} ?>" href="<?php echo site_url('JobVacancy/job_list');?>"><i class="fa fa-list-ul"></i> <b>Job List</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
+                <a class="nav-link <?php if ($active==3){echo "active";} ?>" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-user"></i> <b>My Account</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-certified"></i> <b>My Course</b></a>
+                <a class="nav-link <?php if ($active==4){echo "active";} ?>" href="<?php echo site_url('talent/account/edit');?>"><i class="fa fa-certified"></i> <b>My Course</b></a>
               </li>
               <li class="nav-item treeview dropdown" role="presentation">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">

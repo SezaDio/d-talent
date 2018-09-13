@@ -38,7 +38,7 @@
                 <div class="dropdown-menu" style="margin-left: 10px;">
                   <ul>
                     <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Profile View</a></li>
-                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/editPassword'); ?>" style="color: black;">Ubah Password</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/editPassword'); ?>" style="color: black;">Change Password</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('AccountCompany/logout_company'); ?>" style="color: black;">Log Out</a></li>
                   </ul>
                 </div>
@@ -67,6 +67,9 @@
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Profile View</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/editPassword'); ?>">Change Password</a>
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('AccountCompany/logout_company'); ?>">Log Out</a>
