@@ -214,7 +214,7 @@ class Talent extends CI_Controller {
 
 			$this->upload->initialize($config_foto_sampul);
 			// if uploaded, delete old file & use new file name
-			if($this->upload->do_upload('foto_sampul')) {
+			if($this->upload->do_upload('foto_sampul') && $foto_sampul_filename!="") {
 				if (file_exists($upload_path . $foto_sampul_filename)) {
 					unlink($upload_path . $foto_sampul_filename);
 				}
@@ -242,7 +242,7 @@ class Talent extends CI_Controller {
 
 			$this->upload->initialize($config_foto_profil);
 			// if uploaded, delete old file & use new file name
-			if($this->upload->do_upload('foto_profil')) {
+			if($this->upload->do_upload('foto_profil') && $foto_profil_filename!="") {
 				if (file_exists($upload_path . $foto_profil_filename)) 
 				{
 					unlink($upload_path . $foto_profil_filename);
