@@ -1286,6 +1286,8 @@ class CompanyMember extends CI_Controller
 	//show result test soft skill page
 	public function show_result_soft_skill($id_talent)
 	{
+		$data['active'] = 3;
+
 		// check user's auth
 		$id_company = $this->session->userdata('id_company');
 		if ($id_company == "") {
@@ -1316,8 +1318,9 @@ class CompanyMember extends CI_Controller
 		$data['result'] = $response['result_detail'];
 		
 		// redirect to page result soft skill
-		$this->load->view('skin/talent/test_header');
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('talent/test/soft_skill_result_company_view', $data);
-		$this->load->view('skin/talent/test_footer');
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 }
