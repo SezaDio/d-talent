@@ -1316,6 +1316,7 @@ class CompanyMember extends CI_Controller
 
 		$data['sub_title'] = $response['sub_title'];
 		$data['result'] = $response['result_detail'];
+		$data['test_type'] = 'result';
 		
 		// redirect to page result soft skill
 		$this->load->view('skin/front_end/header_company_page_topbar');
