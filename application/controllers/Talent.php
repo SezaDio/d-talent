@@ -318,9 +318,13 @@ class Talent extends CI_Controller {
 
 		$data['sub_title'] = $response['sub_title'];
 		$data['result'] = $response['result_detail'];
-		
+		$data['test_type'] = 'result';
+
+		//var_dump($data['sub_title']);
+		//exit();
+
 		// redirect to page result soft skill
-		$this->load->view('skin/talent/test_header');
+		$this->load->view('skin/talent/test_header', $data);
 		$this->load->view('talent/test/soft_skill_result', $data);
 		$this->load->view('skin/talent/test_footer');
 	}

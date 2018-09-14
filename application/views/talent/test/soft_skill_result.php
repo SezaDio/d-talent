@@ -19,7 +19,7 @@
 		
 		<?php
 	    	if($this->session->has_userdata('msg_success')) {
-	    		unset($_SESSION['msg_success']);
+	    		unset($_SESSION['msg_success']); }
 		?>				
 			<br><br>
 			<div class="row">
@@ -59,9 +59,6 @@
 			 	</div>
 			</div>
 			<br>
-		<?php
-	    	}
-		?>	
 	</div>
 
 	<hr>
