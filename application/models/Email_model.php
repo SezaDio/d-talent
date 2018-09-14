@@ -14,9 +14,9 @@ class Email_model extends CI_Model {
 	
 	var $emailConfig = array(
 		0 => array(
-			'host' => 'mail.d-talentsolution.id',
-			'from' => 'hello@d-talentsolution.id',
-			'user' => 'hello@d-talentsolution.id',
+			'host' => 'mail.dtalent.id',
+			'from' => 'hello@dtalent.id',
+			'user' => 'hello@dtalent.id',
 			'pass' => 'd-TalentInfo',
 			'port' => 587
 		),

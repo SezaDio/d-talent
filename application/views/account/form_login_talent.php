@@ -105,7 +105,7 @@
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
 									<!-- <br> -->
 									<div class="input-group" style="float: right;">
-										<a href="#"><p>Forgot Password?</p></a>
+										<a href="<?php echo site_url('AccountTalent/forgot_password')?>"><p>Forgot Password?</p></a>
 									</div>
 				                    
 									<br><br>

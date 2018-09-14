@@ -644,4 +644,136 @@ class AccountTalent extends CI_Controller
 		$sendResult = srv_send_verification_email($loginData->id_member, $emailAddress, $errorMessage, false);
 		return $sendResult;
 	}
+
+	public function forgot_password(){
+		$this->data['errorMessages'] = [];
+		$this->data['successMessages'] = [];
+		
+		// $failedEmailLogin = $this->session->flashdata($this::FLDATA_RESENDVERIFICATION);
+		// if (!empty($failedEmailLogin)) {
+		// 	$this->data['acc_email'] = $failedEmailLogin;
+		// 	$this->data['errorMessages'][] = "E-mail '".$failedEmailLogin."' belum diverifikasi.";
+		// 	$this->data['errorMessages'][] = "Silakan verifikasikan alamat e-mail terlebih dahulu dengan ".
+		// 		"mengikuti link yang Anda terima melalui e-mail Anda. Untuk mengirimkan ulang, silakan isi form berikut.";
+		// }
+		
+		$submitTag = $this->input->post(WEB_SUBMIT_TAG);
+		if (!empty($submitTag)) {
+			$emailAddr = trim($this->input->post('acc_email'));
+			
+			$this->data['acc_email'] = $emailAddr;
+			
+			$errorMessage = null;
+			// comment fungsi resend, setting pass email
+			$submitResult = $this->_forgot_password($emailAddr, $errorMessage);
+			// $submitResult=TRUE;
+			
+			if ($submitResult) {
+				$this->data['successMessages'][] = "Instruksi untuk reset password telah dikirimkan ke ".$emailAddr.". Silakan cek folder inbox/spam/junk e-mail Anda.";
+				$this->data['hideForm'] = true;
+			} else {
+				$this->data['errorMessages'][] = $errorMessage;
+			}
+		}
+		
+		$this->load->view('account/forgot_password', $this->data);
+	}
+
+	private function _forgot_password($emailAddress, &$errorMessage){
+		$errorMessage = null;
+		
+		$this->load->helper('srv_validation');
+		
+		//-- Get e-mail owner
+		if (empty($emailAddress)) {
+			$errorMessage = "The e-mail field cannot be empty.";
+			return false;
+		} else if (!srv_validate_email($emailAddress)) {
+			$errorMessage = "Invalid e-mail address format.";
+			return false;
+		}
+		
+		//-- Member username is their email
+		$this->load->model('member_models/MemberModels');
+		$loginData = $this->MemberModels->get_member_by_username($emailAddress);
+		if (!$loginData) {
+			$errorMessage = "Specified e-mail or username cannot be found. Please recheck or contact support.";
+			return false;
+		}
+		
+		//-- Call the routine function
+		$this->load->helper('srv_password');
+		$sendResult = srv_send_changePassword_email($loginData->id_member, $emailAddress, $errorMessage, false);
+		return $sendResult;
+	}
+
+	public function changePass($emailToken = null){
+		$data['fatalError'] = null;
+		$this->data['errorMessages'] = [];
+		$this->data['successMessages'] = [];
+		$this->data['email'] =[];
+
+		if ($emailToken == null) {
+			$data['errorMessages'] = "Invalid URL. Mohon periksa alamat URL, pastikan lengkap.";
+		}
+		$base64code = $this->input->get('em');
+		$decodedEmail = base64_decode($base64code);
+	
+		if (!$decodedEmail) {
+			$data['errorMessages'] = "Invalid URL. Mohon periksa alamat URL, pastikan lengkap.";
+		}
+
+		$this->data['email'] = $decodedEmail;		
+		$submitTag = $this->input->post(WEB_SUBMIT_TAG);
+		if (!empty($submitTag)) {
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('acc_password', 'New Password', 'required|min_length[8]');
+			$this->form_validation->set_rules('acc_password2', 'Confirm Password', 'required|matches[acc_password]');
+			if ($this->form_validation->run()){
+				$password = $this->input->post('acc_password');
+				$password2 = $this->input->post('acc_password2');
+				
+				$this->data['acc_password'] = $password;
+				$this->data['acc_password2'] = $password2;
+
+				$errorMessage = null;
+				// comment fungsi resend, setting pass email
+				$submitResult = $this->_changePass($decodedEmail, $password,  $errorMessage);
+				
+				if ($submitResult) {
+					$this->data['successMessages'][] = "Change Password Success!";
+					$this->data['hideForm'] = true;
+				} else {
+					$this->data['errorMessages'][] = $errorMessage;
+				}
+			}else{
+				$this->data['acc_password'] = $this->input->post('acc_password');
+				$this->data['acc_password2'] = $this->input->post('acc_password2');
+				// $this->data['errorMessages'][] = "Confirm Password not match!";
+			}
+			
+		}
+		
+		$this->load->view('account/form_change_password', $this->data);
+	}
+
+	private function _changePass($email, $newPass, &$errorMessages){
+		$errorMessage = null;
+		
+		$this->load->model('member_models/MemberModels');
+		
+		$user = $this->MemberModels->get_member_by_username($email);
+		// update db
+		// $update = $this->TalentModel->updatePassword($id_talent, $new_password);
+		$update = $this->MemberModels->change_password($user->id_member, $newPass);
+		if ($update) {
+			// message
+			$success = True;
+		}
+		else{
+			// message
+			$success = False;
+		}
+		return $success;
+	}
 }

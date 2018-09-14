@@ -120,7 +120,7 @@
               <a class="page-scroll" href="<?php echo site_url('talent');?>">My CV</a>
             </li>
             <li>
-              <a class="page-scroll" href="#services">Job List</a>
+              <a class="page-scroll" href="<?php echo site_url('JobVacancy/job_list');?>">Job List</a>
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('talent/account/edit');?>">My Account</a>
