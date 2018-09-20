@@ -242,7 +242,7 @@ class AccountTalent extends CI_Controller
 				$this->data[$dataKey] = $dataValue;
 			}
 			if ($submitResult) {				
-				$this->session->set_flashdata('msg_berhasil', "Registrasi berhasil. Silakan cek folder inbox/spam/junk ". "e-mail Anda (".$this->data['formData']['email'].") untuk verifikasi alamat e-mail Anda.");
+				$this->session->set_flashdata('msg_berhasil', "Registrasi berhasil. Silakan cek folder <strong>inbox/spam/junk </strong>". "E-mail Anda (".$this->data['formData']['email'].") untuk verifikasi alamat E-mail Anda.");
 				redirect(site_url('talent/login'));
 			}
 		}
@@ -669,7 +669,7 @@ class AccountTalent extends CI_Controller
 			// $submitResult=TRUE;
 			
 			if ($submitResult) {
-				$this->data['successMessages'][] = "Instruksi untuk reset password telah dikirimkan ke ".$emailAddr.". Silakan cek folder inbox/spam/junk e-mail Anda.";
+				$this->data['successMessages'][] = "Instruksi untuk reset password telah dikirimkan ke ".$emailAddr.". Silakan cek folder <strong>inbox/spam/junk</strong> e-mail Anda.";
 				$this->data['hideForm'] = true;
 			} else {
 				$this->data['errorMessages'][] = $errorMessage;
@@ -708,6 +708,7 @@ class AccountTalent extends CI_Controller
 	}
 
 	public function changePass($emailToken = null){
+		$this->load->library('form_validation');
 		$data['fatalError'] = null;
 		$this->data['errorMessages'] = [];
 		$this->data['successMessages'] = [];
@@ -726,7 +727,7 @@ class AccountTalent extends CI_Controller
 		$this->data['email'] = $decodedEmail;		
 		$submitTag = $this->input->post(WEB_SUBMIT_TAG);
 		if (!empty($submitTag)) {
-			$this->load->library('form_validation');
+			
 			$this->form_validation->set_rules('acc_password', 'New Password', 'required|min_length[8]');
 			$this->form_validation->set_rules('acc_password2', 'Confirm Password', 'required|matches[acc_password]');
 			if ($this->form_validation->run()){

@@ -72,7 +72,7 @@
 										<td><?php echo ($dataCompany->company_email!="" ? $dataCompany->company_email : "") ?></td>
 									</tr>
 									<tr style="font-size: 1.2em;">
-										<td style="padding-left: 0px;"><strong><i class="fa fa-user"></i> Company Type</strong></td>
+										<td style="padding-left: 0px;"><strong><i class="fa fa-user"></i> Company Field</strong></td>
 										<td><strong><i class="fa fa-list"></i> Specialties</strong></td>
 										<td><strong><i class="fa fa-calendar"></i> Year Founded</strong></td>
 									</tr>

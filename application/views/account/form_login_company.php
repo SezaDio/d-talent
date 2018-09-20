@@ -46,6 +46,10 @@
 			    background-color: white;
 			    color: black;
 			}
+			.omb_login .omb_loginOr .omb_spanOr{
+				left: 33%;
+				width: 10em;	
+			}
 		</style>
 	</head>
 	<body style="background: whitesmoke;">
@@ -65,7 +69,7 @@
 						<div class="row omb_loginOr">
 							<div class="col-md-12">
 								<hr class="omb_hrOr">
-								<span class="omb_spanOr"><b>Login</b></span>
+								<span class="omb_spanOr"><b>Login as Company</b></span>
 							</div>
 						</div>
 
@@ -99,10 +103,10 @@
 										<input  type="password" class="form-control" name="company_password" placeholder="Password" required value="<?php echo set_value('company_password'); ?>">
 									</div>
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
-									<!-- <br>
+									<br>
 									<div class="input-group" style="float: right;">
-										<a href="#"><p>Forgot Password?</p></a>
-									</div> -->
+										<a href="<?php echo site_url('AccountCompany/forgot_password')?>"><p>Forgot Password?</p></a>
+									</div>
 				                    
 									<br><br>
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>

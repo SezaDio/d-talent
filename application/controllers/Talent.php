@@ -220,11 +220,12 @@ class Talent extends CI_Controller {
 
 			$this->upload->initialize($config_foto_sampul);
 
-			//var_dump($foto_sampul_filename_new);
-			//exit();
-
+			// var_dump($foto_sampul_filename_new);
+			// exit();
+						
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_sampul') && $foto_sampul_filename_new!="") {
+				
 				if (file_exists($upload_path . $foto_sampul_filename)) {
 					unlink($upload_path . $foto_sampul_filename);
 				}
@@ -251,8 +252,9 @@ class Talent extends CI_Controller {
 			);
 
 			$this->upload->initialize($config_foto_profil);
+
 			// if uploaded, delete old file & use new file name
-			if($this->upload->do_upload('foto_profil') && $foto_profil_filename!="") {
+			if($this->upload->do_upload('foto_profil') && $foto_profil_filename_new!="") {				
 				if (file_exists($upload_path . $foto_profil_filename)) 
 				{
 					unlink($upload_path . $foto_profil_filename);
@@ -327,5 +329,23 @@ class Talent extends CI_Controller {
 		$this->load->view('skin/talent/test_header', $data);
 		$this->load->view('talent/test/soft_skill_result', $data);
 		$this->load->view('skin/talent/test_footer');
+	}
+
+	public function printTO(){
+		$data = [];
+        //load the view and saved it into $html variable
+        $html=$this->load->view('welcome_message', $data, true);
+ 
+        //this the the PDF filename that user will get to download
+        $pdfFilePath = "output_pdf_name.pdf";
+ 
+        //load mPDF library
+        $this->load->library('m_pdf');
+ 
+       //generate the PDF from the given html
+        $this->m_pdf->pdf->WriteHTML($html);
+ 
+        //download it.
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");
 	}
 }

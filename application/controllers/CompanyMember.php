@@ -8,9 +8,13 @@ class CompanyMember extends CI_Controller
 		parent::__construct();
 
 		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
+		$method = $this->router->fetch_method();  
+
+		if ($method!="update_notif_accept" && $method !="update_notif_decline") {			
+			$id_company = $this->session->userdata('id_company');
+			if ($id_company == "") {
+				redirect( site_url('AccountCompany') );
+			}
 		}
 
 		$this->load->helper('url');
@@ -29,11 +33,6 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman Company Member awal setelah company login
 	public function index()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 0;
 
@@ -57,13 +56,7 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Update)
 	public function updates_page()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
-		//$data['active'] = 2;
+		// $data['active'] = 0;
 
 		$id_company = $this->session->userdata('id_company');
 
@@ -92,12 +85,6 @@ class CompanyMember extends CI_Controller
 	// Menyimpan artikel
 	public function store_updates()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
 		$this->load->library('upload');
 	
 		$id_company = $this->session->userdata('id_company');
@@ -144,12 +131,6 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail artikel
 	public function detail_updates($id_company_update)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
 		//$data['active'] = 2;
 
 		$id_company = $this->session->userdata('id_company');
@@ -167,11 +148,6 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit artikel
 	public function edit_updates($id_company_update)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		//$data['active'] = 2;
 
@@ -187,11 +163,6 @@ class CompanyMember extends CI_Controller
 	// Meng-update artikel
 	public function update_updates($id_company_update)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$this->load->library('upload');
 	
@@ -243,11 +214,6 @@ class CompanyMember extends CI_Controller
 	// Manghapus artikel
 	public function delete_updates($id_company_update)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$id_company = $this->session->userdata('id_company');
 		$company_update = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
@@ -275,12 +241,7 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Update)
 	public function overview_page()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
+		
 		$data['active'] = 1;
 
 		$this->load->model('company_member_models/CompanyOverviewModel');
@@ -342,12 +303,7 @@ class CompanyMember extends CI_Controller
 
 	//Fungsi melakukan update data company pada database
 	public function update_data_company() 
-	{	
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
+	{		
 
 		$data['active'] = 1;
 
@@ -449,11 +405,6 @@ class CompanyMember extends CI_Controller
 	// menyimpan update data company cover picture
 	public function update_company_cover()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 			$data['active'] = 1;
 
@@ -536,11 +487,6 @@ class CompanyMember extends CI_Controller
 	// menyimpan update data company cover picture
 	public function update_company_logo()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 			$data['active'] = 1;
 
@@ -623,11 +569,6 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs)
 	public function jobs_page()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 2;
 
@@ -697,11 +638,6 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan search
 	public function search_job()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 2;
 
@@ -752,12 +688,6 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Add Jobs)
 	public function add_jobs_page()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
 		$data['active'] = 2;
 
 		$this->load->model('account/UserModel');
@@ -814,11 +744,6 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail lowongan kerja
 	public function detail_job($id_job)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 2;
 
@@ -846,11 +771,6 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit lowongan kerja
 	public function edit_job($id_job)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 2;
 
@@ -895,12 +815,6 @@ class CompanyMember extends CI_Controller
 	public function update_job($id_job)
 	{
 
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
-
 		$id_company = $this->session->userdata('id_company');
 
 		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
@@ -937,11 +851,6 @@ class CompanyMember extends CI_Controller
 	// Manghapus lowongan kerja
 	public function delete_job($id_job)
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$id_company = $this->session->userdata('id_company');
 		$query = $this->CompanyJobVacancyModel->delete($id_company, $id_job);
@@ -1038,11 +947,6 @@ class CompanyMember extends CI_Controller
 	//Fungsi melakukan update data company pada database
 	public function jobseeker_detail_page($id_talent) 
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 3;
 
@@ -1087,11 +991,6 @@ class CompanyMember extends CI_Controller
 	//Function Send Invitation Message
 	function invitation_message ()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data_job_notification = array(
 						   'id_talent'=>$this->input->post('id_talent'),
@@ -1166,18 +1065,18 @@ class CompanyMember extends CI_Controller
    	function kirim_email($sub, $msg, $email) 
    	{
       $config['protocol'] = 'smtp';
-      $config['smtp_host'] = 'mail.d-talentsolution.id'; //change this
-      $config['smtp_port'] = '465';
-      $config['smtp_user'] = 'hello@d-talentsolution.id'; //change this
+      $config['smtp_host'] = 'mail.dtalent.id'; //change this
+      $config['smtp_port'] = '587';
+      $config['smtp_user'] = 'hello@dtalent.id'; //change this
       $config['smtp_pass'] = 'd-TalentInfo'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
-      $config['smtp_crypto'] = 'ssl';
+      $config['smtp_crypto'] = 'tls';
       $config['wordwrap'] = TRUE;
       $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
       $this->load->library('email'); // load email library
       $this->email->initialize($config);
-      $this->email->from('hello@d-talentsolution.id', 'd-talentsolution.id');
+      $this->email->from('hello@dtalent.id', 'dtalent.id');
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
@@ -1195,11 +1094,6 @@ class CompanyMember extends CI_Controller
 	/* Job Notification */
 	public function notification_page()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
 
 		$data['active'] = 4;
 
@@ -1216,11 +1110,7 @@ class CompanyMember extends CI_Controller
 	/* Menampilkan Halaman Ubah Password */
 	public function editPassword()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
+		
 
 		$data['active'] = 9;
 
@@ -1232,11 +1122,7 @@ class CompanyMember extends CI_Controller
 
 	public function updatePassword()
 	{
-		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
-		}
+		
 
 		$this->load->library('form_validation');
 		

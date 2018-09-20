@@ -10,7 +10,7 @@
 <p>Yth. <?php if (!empty($namaLengkap)) echo htmlspecialchars($namaLengkap);
 				else echo "member"; ?>,</p>
 	
-<p>Anda menerima e-mail ini karena sistem menerima permintaan reset password atas akun dengan username <?php echo htmlspecialchars($loginEmail)?>. Silakan ikuti link di bawah untuk set ulang password akun UCC Anda:	
+<p>Anda menerima e-mail ini karena sistem menerima permintaan reset password atas akun dengan E-mail <?php echo htmlspecialchars($loginEmail)?>. Silakan ikuti link di bawah untuk set ulang password akun Dtalent Anda:	
 </p>
 
 <div style="font-size:16px;margin:30px 0;">

@@ -16,7 +16,7 @@
                	?>
 
 				<div class="form-group">
-					<label>School *</label>
+					<label>Institution *</label>
 					<input type="text" name="school" class="form-control" required value="<?php echo set_value('school'); ?>">
 				</div>
 
@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="form-group">
-					<label>Field of Study</label>
+					<label>Major</label>
 					<input type="text" name="field_of_study" class="form-control" value="<?php echo set_value('field_of_study'); ?>">
 				</div>
 

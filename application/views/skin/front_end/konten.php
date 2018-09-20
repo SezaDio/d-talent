@@ -185,7 +185,7 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-md-4" style="text-align: center; padding-bottom: 20px;">
-                <img class="img-fulid" src="<?php echo base_url('asset/img/Company.png'); ?>" alt="">
+                <img class="img-fulid" src="<?php echo base_url('asset/img/IconCompany.png'); ?>" alt="">
               </div>
               <div class="col-md-8">
                 <ul style="list-style-type: square;">
@@ -208,7 +208,7 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-md-4" style="text-align: center; padding-bottom: 20px;">
-                <img class="img-fulid" src="<?php echo base_url('asset/img/Talent.png'); ?>" alt="">
+                <img class="img-fulid" src="<?php echo base_url('asset/img/IconTalent.png'); ?>" alt="">
               </div>
               <div class="col-md-8">
                 <ul>

@@ -267,7 +267,18 @@
 				<br>
 				<div class="card online-test" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-file"></i> Online Test</h3>
+				  	<div class="row">
+				  		<div class="col-md-6">
+				  			<h3 style="margin-top: 8px;"><i class="fa fa-file"></i> Online Test</h3>		
+				  		</div>
+				  		<div class="col-md-6">
+				  			<a href="<?php echo site_url('Talent/printTO');?>">
+			    				<button style="width: 150px; padding: 5px;" type="button" class="button button1 pull-right"> Print Online Test</button>
+			    			</a>
+				  		</div>				  		
+				  	</div>
+				    
+				    
 				  </div>
 				  <div class="card-body">
 				    <table class="table">

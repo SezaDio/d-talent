@@ -138,11 +138,11 @@
 
 				                <div class="col-md-6">
 				                    <div class="form-group">
-										<label for="exampleInputEmail1">Company Type</label>
+										<label for="exampleInputEmail1">Field</label>
 										<div class="row">
 											<div class="col-md-12">
 												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_type" required class="form-control" id="kategori">
-	                                                <option value="">--Company Type--</option>
+	                                                <option value="">--Company Field--</option>
 	                                                <?php
 	                                                    foreach ($company_type as $key=>$ct) 
 	                                                    {
@@ -246,7 +246,7 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-2">
-						<a href="<?php echo site_url('CompanyMember/updates_page'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
+						<a href="<?php echo site_url('CompanyMember/index'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
 					</div>
 					<div class="col-md-2">
 						<button value="1" name="save" class="button button1" type="submit"><i class="fa fa-save"></i> Save</button>

@@ -85,7 +85,7 @@
 									<?php 
 										if($this->session->flashdata('msg_berhasil')!='')
 										{?>
-	                                        <div class="alert alert-success alert-dismissable">
+	                                        <div class="alert alert-success">
 	                                            <i class="glyphicon glyphicon-ok"></i>
 	                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                                            <?php echo $this->session->flashdata('msg_berhasil');?> 

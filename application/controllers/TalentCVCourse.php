@@ -48,7 +48,8 @@ class TalentCVCourse extends CI_Controller {
 			// get data for select
 			$data['cv_works'] = $this->TalentCVWorkModel->get_talent_cv_work($id_talent);
 			$data['cv_educations'] = $this->TalentCVEducationModel->get_all($id_talent);
-
+			$data['active'] = 1;
+			
 			$this->load->view('skin/talent/header', $data);
 			$this->load->view('talent/form_cv_course');
 			$this->load->view('skin/talent/footer');

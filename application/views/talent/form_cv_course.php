@@ -58,7 +58,7 @@
 				</div> -->
 
 				<div class="form-group">
-					<label>Organizer</label>
+					<label>Institution</label>
 					<input type="text" name="organizer" class="form-control" value="<?php echo set_value('organizer'); ?>">
 				</div>
 
