@@ -156,7 +156,7 @@ function displayGender($gender)
 function displayMaritalStatus($status)
 {
     if ($status == 0) {
-        return "Unmarried";
+        return "Single";
     }
     else{
         return "Married";

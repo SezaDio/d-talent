@@ -180,6 +180,28 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   -webkit-transition: all .50s ease-in-out;
 }
 
+.btn-slider{
+  border: 1px solid white;
+  background: white;
+  position: relative;
+  color: #000;
+  z-index: 1;
+  border-radius: 30px;
+  font-weight: bold;
+  margin: 0px 10px;
+  width: 200px;
+  padding: 11px 0px;
+}
+
+.btn-slider:hover{
+  color: black; /*#fff*/
+  background: #f3efef; /*#33b391*/
+  border-color: white; /*#33b391*/
+  transition: all .50s ease-in-out;
+  -moz-transition: all .50s ease-in-out;
+  -webkit-transition: all .50s ease-in-out; 
+}
+
 .btn-border {
   color: #fff;
   background-color: transparent;

@@ -225,10 +225,11 @@ class Talent extends CI_Controller {
 						
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_sampul') && $foto_sampul_filename_new!="") {
-				
-				if (file_exists($upload_path . $foto_sampul_filename)) {
-					unlink($upload_path . $foto_sampul_filename);
-				}
+				if ($foto_sampul_filename!="") {
+					if (file_exists($upload_path . $foto_sampul_filename)) {
+						unlink($upload_path . $foto_sampul_filename);
+					}
+				}				
 				$upload_data_sampul = $this->upload->data();
 				$foto_sampul_filename = $upload_data_sampul['file_name'];
 			}
@@ -255,10 +256,12 @@ class Talent extends CI_Controller {
 
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_profil') && $foto_profil_filename_new!="") {				
-				if (file_exists($upload_path . $foto_profil_filename)) 
-				{
-					unlink($upload_path . $foto_profil_filename);
-				}
+				if ($foto_profil_filename!="") {
+					if (file_exists($upload_path . $foto_profil_filename)) 
+					{
+						unlink($upload_path . $foto_profil_filename);
+					}
+				}			
 				$upload_data_profil = $this->upload->data();
 				$foto_profil_filename = $upload_data_profil['file_name'];
 			}
@@ -333,17 +336,86 @@ class Talent extends CI_Controller {
 
 	public function printTO(){
 		$data = [];
+
+		$this->load->model('talent_models/TalentModel');
+		$id_talent = $this->session->userdata('id_talent');
+		$data['nama'] = $this->session->userdata('nama');
+		$data['email'] = $this->session->userdata('email');
+		$data['nomor_ponsel'] = $this->session->userdata('nomor_ponsel');
+
+		
+		$this->load->helper('custom');
+		$data['result_character'] = $this->TalentModel->findCharacterTest($id_talent);
+		if ($data['result_character'] != null) {
+			// use function from helper
+			$response = detailCharacterResult($data['result_character']->result);
+			$data['result_character_sub_title'] = $response['sub_title'];
+			$data['result_character_detail'] = $response['result_detail'];
+		}
+		$data['result_passion'] = $this->TalentModel->findPassionTest($id_talent);
+		if ($data['result_passion'] != null) {
+			// use function from helper
+			$data['result_passion_detail'] = detailPassionResult($data['result_passion']->result);
+		}
+		$data['result_work_attitude'] = $this->TalentModel->findWorkAttitudeTest($id_talent);
+		if ($data['result_work_attitude'] != null) 
+		{
+			// use function from helper
+			$response = detailWorkAttitudeResult($data['result_work_attitude']->result);
+			$data['result_work_attitude_title'] = $response['sub_title'];
+			$data['result_work_attitude_detail'] = $response['result_detail'];
+		}
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		if ($data['result_soft_skill']!=null) {		
+			$test_data = array(
+					1 => $data['result_soft_skill']->pengambilan_keputusan,
+					2 => $data['result_soft_skill']->tanggung_jawab,
+					3 => $data['result_soft_skill']->integritas,
+					4 => $data['result_soft_skill']->resiliensi,
+					5 => $data['result_soft_skill']->keinginan_belajar,
+					6 => $data['result_soft_skill']->komunikasi,
+					7 => $data['result_soft_skill']->sikap_positif,
+					8 => $data['result_soft_skill']->antusiasme,
+					9 => $data['result_soft_skill']->kerja_tim,
+					10 => $data['result_soft_skill']->penyelesaian_masalah
+				);
+
+			// use function from helper
+			$response = detailSoftSkillResult($test_data);
+
+			$data['sub_title'] = $response['sub_title'];
+			$data['result'] = $response['result_detail'];
+			$data['test_type'] = 'result';		
+		}
+
         //load the view and saved it into $html variable
-        $html=$this->load->view('welcome_message', $data, true);
+        $html=$this->load->view('talent/printTest/konten', $data, true);
  
         //this the the PDF filename that user will get to download
-        $pdfFilePath = "output_pdf_name.pdf";
- 
+        $pdfFilePath = "ResultTest_".$data['nama'].".pdf"; 		
+
         //load mPDF library
         $this->load->library('m_pdf');
- 
-       //generate the PDF from the given html
-        $this->m_pdf->pdf->WriteHTML($html);
+       	$this->m_pdf->pdf->useOddEven = 1;
+ 		$this->m_pdf->pdf->setHTMLFooter('<footer style="z-index:-1;background-color: #e6e6e6;width: 100%;height: 80px;"></footer>');
+       	//generate the PDF from the given html       	
+       	$this->m_pdf->pdf->SetWatermarkImage(
+		   	base_url('asset/img/hasil_cetak/PNG')."/Body.png", 
+		    1,
+		    '' 
+		);
+		$this->m_pdf->pdf->showWatermarkImage = true;		
+        // $this->m_pdf->pdf->WriteHTML();
+        // $this->m_pdf->pdf->AddPage('', // L - landscape, P - portrait 
+        // '', '', '', '',
+        // 0, // margin_left
+        // 0, // margin right
+       	// 0, // margin top
+       	// 30, // margin bottom
+        // 0, // margin header
+        // 0); // margin footer
+    	$this->m_pdf->pdf->WriteHTML($html);
  
         //download it.
         $this->m_pdf->pdf->Output($pdfFilePath, "D");

@@ -14,9 +14,9 @@ class Email_model extends CI_Model {
 	
 	var $emailConfig = array(
 		0 => array(
-			'host' => 'mail.dtalent.id',
-			'from' => 'hello@dtalent.id',
-			'user' => 'hello@dtalent.id',
+			'host' => 'mail.d-talentsolution.id',
+			'from' => 'hello@d-talentsolution.id',
+			'user' => 'hello@d-talentsolution.id',
 			'pass' => 'd-TalentInfo',
 			'port' => 587
 		),
@@ -115,7 +115,7 @@ class Email_model extends CI_Model {
 			'crlf' => "\r\n",
 			'newline' => "\r\n",
 			'mailtype' => 'html',
-			'smtp_crypto' => 'tls',
+			// 'smtp_crypto' => 'tls',
 			'charset' => 'iso-8859-1' 
 		) );
 		

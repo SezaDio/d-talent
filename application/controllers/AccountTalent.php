@@ -223,7 +223,7 @@ class AccountTalent extends CI_Controller
 	
 	function logout_member(){
 		$this->session->sess_destroy();
-		redirect(site_url('talent/login'));
+		redirect(site_url('CompanyProfile'));
 	}
 
 	/**

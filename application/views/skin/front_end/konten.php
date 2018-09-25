@@ -17,11 +17,10 @@
 				<div class="carousel-inner " role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
 				  <?php foreach($listSlider as $key => $slider){ ?>
-				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
-					<div class="carousel-caption d-none d-md-block">
-					  <h3><?php //echo $slider['judul_slider'];?></h3>
-					  <p><?php //echo $slider['deskripsi'];?></p>
-					</div>
+				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>); height: 100vh;">
+  					<?php if ($slider['extradata']!=""): ?>
+              <?php echo $slider['extradata']; ?>
+            <?php endif ?>
 				  </div>
 				  <?php } ?>
 				  
@@ -239,7 +238,7 @@
     <!-- blog Section End -->
 
     <!-- Start Video promo Section -->
-    <!-- <section class="video-promo section">
+    <section class="video-promo section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
@@ -251,7 +250,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
     <!-- End Video Promo Section -->
 
     <!-- Start Pricing Table Section -->
@@ -435,6 +434,7 @@
     <!-- End Pricing Table Section -->
 
     <!-- Counter Section Start -->
+    <!--
     <div class="counters section" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row"> 
@@ -485,6 +485,7 @@
         </div>
       </div>
     </div>
+    -->
     <!-- Counter Section End -->
 
     <!-- testimonial Section Start -->
@@ -533,22 +534,21 @@
           <div class="row">     
             <div class="col-lg-6 col-sm-6 col-xs-12">
               <div class="contact-us">
-                <h3>Contact With us</h3>
+                <h3>Contact us</h3>
                 <div class="contact-address">
                   <p>Ruko Mulawarman Selatan Raya No. 118 A <br>Tembalang, Semarang </p>
-                  <p class="phone">Phone: <span>(0812-3921-2006)</span></p>
+                  <p class="phone">Phone: <span>(081-2222-3781)</span></p>
                   <p class="email">E-mail: <span>(company.service@d-talent.id)</span></p>
                 </div>
-                <!--
-                <div class="social-icons">
+                
+                <div class="social-icons" style="margin-top: 15px;">
                   <ul>
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li class=""><a href="#" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/facebook.png"></a></li>
+                    <li class=""><a href="https://twitter.com/dtalent_id" target="_blank" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/twitter.png"></a></li>                                        
+                    <li class=""><a href="https://instagram.com/dtalent.id" target="_blank" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/instagram.png"></a></li>
+                    <li class=""><a href="#" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/line.png"></a></li>
                   </ul>
-                </div> -->
+                </div> 
               </div>
             </div>     
             <div class="col-lg-6 col-sm-6 col-xs-12">

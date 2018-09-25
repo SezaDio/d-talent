@@ -448,3 +448,24 @@ p{
     margin-left: 7px;
     margin-right: 7px;
 }
+
+/*navbar login landing page*/
+/*.navbar-expand-lg .navbar-nav li a:hover, .navbar-expand-lg .navbar-nav li .active > a, .navbar-expand-lg .navbar-nav li a:focus {
+    color: white;    
+    cursor: pointer;
+}*/
+.dropdown-menu{
+    padding: 0px;
+}
+.dropdown-menu li{    
+    color: black; 
+}
+.dropdown-menu li{
+    padding: 10px;
+}
+.dropdown-menu li:hover{
+    background-color: black;
+    cursor: pointer;}
+.dropdown-menu li a:hover{
+    color: white !important;
+}
