@@ -149,6 +149,7 @@ h4{
 	padding: 4px 8px;
 	border-radius: 3px;
 	display: inline-block;
+	font-size: 85%;
 }
 .label-colors .label:nth-child(n+2){
 	margin-left: 3px;
@@ -455,4 +456,25 @@ a, a:focus{
 }
 .card-body .table > tbody > tr:first-child > td{
 	border-top: none;
+}
+/*===================New======================
+Farid
+*/
+.choose-color li{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	/*background-color: black;*/
+	border-radius: 100%;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.choose-color li:first-child{
+	margin-right: 7px;
+}
+.choose-color .black{
+	background-color: black;
+}
+.choose-color .white{
+	background-color: white;
 }

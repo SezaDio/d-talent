@@ -225,7 +225,7 @@ class Talent extends CI_Controller {
 						
 			// if uploaded, delete old file & use new file name
 			if($this->upload->do_upload('foto_sampul') && $foto_sampul_filename_new!="") {
-				if ($foto_sampul_filename!="") {
+				if ($foto_sampul_filename!="" AND $foto_sampul_filename!="black.jpg" AND $foto_sampul_filename!="white.jpg") {
 					if (file_exists($upload_path . $foto_sampul_filename)) {
 						unlink($upload_path . $foto_sampul_filename);
 					}
@@ -238,6 +238,8 @@ class Talent extends CI_Controller {
 				$this->session->set_flashdata('msg_error', 'Change profile failed, please check file type and file size');
 				redirect('talent/profile/edit/');
 			}
+		}else if($this->input->post('def_foto_sampul')!=""){			
+			$foto_sampul_filename=$this->input->post('def_foto_sampul');
 		}
 		// upload images to path for foto_profil
 		if( !empty($_FILES['foto_profil']['name']) ) {

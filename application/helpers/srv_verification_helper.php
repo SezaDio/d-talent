@@ -74,7 +74,18 @@ function srv_send_verification_email($idMember, $emailAddr, &$errorMessage, $cre
 		$errorMessage = "E-mail has been verified."; return false;
 		
 	} else {
-		$accessKey = $emailRecord->token;
+		if (empty($emailRecord->token)) {
+			$CI->load->helper('srv_misc');
+			$emailToken = srv_generate_unique_token(32, null);
+			$token=array('token'=>$emailToken);
+			$updateToken = $CI->preferences_model->create_email_token($emailRecord->id_email, $token);
+			if ($updateToken) {
+				$emailRecord = $CI->preferences_model->get_email_data($idMember, $emailAddr);
+				$accessKey = $emailRecord->token;
+			}			
+		}else{
+			$accessKey = $emailRecord->token;		
+		}		
 	}
 	 
 	//-- Request verifikasi hanya dapat dilakukan 5 menit sekali.

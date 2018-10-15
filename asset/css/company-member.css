@@ -396,19 +396,19 @@ p{
 }
 /* select every 5 elements start with 1st element */
 .label-colors .label:nth-child(5n+1){
-    background-color: #4CE414;  /*green*/
+    background-color: #0E3047;  
 }
 .label-colors .label:nth-child(5n+2){
-    background-color: #039BE5;  /*blue*/
+    background-color: #10828C;  
 }
 .label-colors .label:nth-child(5n+3){
-    background-color: #D81B60;  /*pink*/
+    background-color: #F97300;  
 }
 .label-colors .label:nth-child(5n+4){
-    background-color: #FBC02D;  /*yellow*/
+    background-color: #8559A5;  
 }
 .label-colors .label:nth-child(5n+5){
-    background-color: #5E35B1;  /*purple*/
+    background-color: #343434;  
 }
 
 

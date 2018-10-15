@@ -26,6 +26,12 @@
 					</div>
 
 					<input type="file" name="foto_sampul" accept="image/*" id="foto_sampul">
+					<p style="margin-bottom: 0px;"><strong>Atau</strong> pilih salah satu warna background berikut</p>
+					<ul class="choose-color">
+						<li class="black"></li>
+						<li class="white"></li>
+					</ul>
+					<input type="hidden" name="def_foto_sampul" value="" id="def_foto_sampul">
 					<input type="hidden" name="old_foto_sampul" value="<?php echo $talent->foto_sampul;?>">
 				</div>
 				<hr style="margin-bottom: 15px; margin-top: 15px; border: solid 1px lightgrey;">
@@ -84,13 +90,14 @@
 		// preview image before upload
 		function readURL(input, id_preview) {
 			if (input.files && input.files[0]) {
+				$('#def_foto_sampul').val('');
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
+					console.log(e.target.result);
 					$(id_preview + ' figure').css('background-image', 'url('+e.target.result +')');
 					$(id_preview).show();
 				}
-
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
@@ -101,6 +108,21 @@
 
 		$("#foto_profil").change(function() {
 			readURL(this, "#foto_profil_preview");
+		});
+
+		$(".black").click(function(){			
+			$('#foto_sampul_preview figure').css('background-image', 'url(../../../asset/img/upload_img_talent_bg_profile/black.jpg)');
+			$('#def_foto_sampul').val('black.jpg');
+			var el = $('#foto_sampul');
+			el.wrap('<form>').closest('form').get(0).reset();
+   			el.unwrap();
+		});
+		$(".white").click(function(){			
+			$('#foto_sampul_preview figure').css('background-image', 'url(../../../asset/img/upload_img_talent_bg_profile/white.jpg)');
+			$('#def_foto_sampul').val('white.jpg');
+			var el = $('#foto_sampul');
+			el.wrap('<form>').closest('form').get(0).reset();
+   			el.unwrap();
 		});
     });
 </script>
