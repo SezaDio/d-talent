@@ -28,8 +28,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/main.css?v='.rand().'')?>">    
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">    
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>
-	   
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/datepicker/datepicker3.css'); ?>"/>	   
+
     <!-- DataTables CSS --> 
     <link href="<?php echo base_url('asset/css/jquery.dataTables.css'); ?>" rel="stylesheet" type="text/css" />
 

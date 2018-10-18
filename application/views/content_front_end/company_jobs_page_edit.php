@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
+<!-- summernote -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugins/summernote/dist/summernote-bs4.css')?>">
 <div class="container">
 	<div class="row">
 		<div class="col-lg-1"></div>
@@ -132,7 +135,8 @@
 					<label for="exampleInputEmail1"><strong>Job Description</strong></label>
 					<div class="row">
 						<div class="col-md-12">
-                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo $company_job->job_description; ?></textarea>
+							<textarea  id="summernote" name="job_description" required><?php echo $company_job->job_description; ?></textarea>
+                        	<!-- <textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo $company_job->job_description; ?></textarea> -->
 						</div>
 					</div> 
                 </div>
