@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Talent extends CI_Controller {
-
+	var $data;
+	
 	function __construct(){
 		parent::__construct();
 		
@@ -13,6 +14,8 @@ class Talent extends CI_Controller {
 		if ($id_talent == "") {
 			redirect( site_url('talent/login') );
 		}
+		
+		$this->load->get_session_data($this->data);
 	}
 
 	public function index()
@@ -305,5 +308,18 @@ class Talent extends CI_Controller {
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/vacancy-detail');
 		$this->load->view('skin/talent/footer');
+	}
+	
+	public function courses() {
+		$this->load->model('training_models/enrollment_model');
+		
+		$this->data['enrolledCourses'] = $this->enrollment_model->get_courses_by_member($this->data[WEB_SESS_MEMBERID]);
+		
+		$this->data['pageTitle'] = 'My Courses';
+		$this->data['selectedMenuId'] = 3;
+		
+		$this->load->view('skin/talent/header', $this->data);
+		$this->load->view('talent/courses/my_courses', $this->data);
+		$this->load->view('skin/talent/footer', $this->data);
 	}
 }

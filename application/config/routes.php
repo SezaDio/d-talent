@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'FrontControl_Home/home';
+$route['default_controller'] = 'home'; //FrontControl_Home/home';
 $route['event_page'] = 'FrontControl_Event/event_page';
 $route['event_page/(:num)'] = 'FrontControl_Event/event_page/$1';
 $route['(:num)'] = 'FrontControl_Event/event_click/$1';

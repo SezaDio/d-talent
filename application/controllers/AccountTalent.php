@@ -472,19 +472,22 @@ class AccountTalent extends CI_Controller
 				$this->session->set_userdata(MY_Loader::SESS_TYPE, $sessionType);
 				
 				//Jika akun ditemukan, set session
-				$array_items = array(
-									'role' => $loginResult->role,
-									'id_talent' => $talentData->id_talent,
-									'nama' => $talentData->nama,
-									'email' => $talentData->email,
-									'nomor_ponsel' => $talentData->nomor_ponsel,
-									'tanggal_lahir' => $talentData->tanggal_lahir,
-									'id_kota' => $talentData->id_kota,
-									'id_provinsi' => $talentData->id_provinsi,
-									'membership' => $talentData->membership,
-									'is_logged_in' => true
-								);
-				$this->session->set_userdata($array_items);
+				$sessData = array(
+					MY_Loader::SESS_ID_ROLE => $loginResult->role,
+					MY_Loader::SESS_ID_MEMBERID => $loginResult->id_member,
+					'id_talent' => $talentData->id_talent,
+					MY_Loader::SESS_ID_DETAILID => $talentData->id_talent,
+					MY_Loader::SESS_ID_FULLNAME => $talentData->nama,
+					'email' => $talentData->email,
+					'nomor_ponsel' => $talentData->nomor_ponsel,
+					'tanggal_lahir' => $talentData->tanggal_lahir,
+					'id_kota' => $talentData->id_kota,
+					'id_provinsi' => $talentData->id_provinsi,
+					'membership' => $talentData->membership,
+					MY_Loader::SESS_ID_PRIV => $talentData->membership,
+					'is_logged_in' => true
+				);
+				$this->session->set_userdata( $sessData );
 				
 				redirect(site_url('talent'));
 

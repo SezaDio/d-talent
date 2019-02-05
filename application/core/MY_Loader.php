@@ -14,11 +14,11 @@ class MY_Loader extends CI_Loader {
 	const SESS_TYPE_COMPANY = "company";
 	const SESS_TYPE_BO		= "backoffice";
 	
-	const SESS_ID_MEMBERID	= "sess_uid";
-	const SESS_ID_DETAILID	= "sess_udetailid";
-	const SESS_ID_FULLNAME	= "sess_ufullname";
-	const SESS_ID_ROLE		= "sess_urole";
-	const SESS_ID_PRIV		= "sess_upriv";
+	const SESS_ID_MEMBERID	= "id_member";
+	const SESS_ID_DETAILID	= "id_ref";
+	const SESS_ID_FULLNAME	= "nama";
+	const SESS_ID_ROLE		= "role";
+	const SESS_ID_PRIV		= "priv";
 	
 	/**
 	 * Mengubah tanggal menjadi format Indonesia

@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,9 +11,6 @@
   
     <title>D-Talent Beta</title>
 
-	<!-- Favicon -->
-	<link href="<?php echo base_url('/favicon.ico?v='.MY_Loader::APP_VERSION_STR); ?>" rel="shortcut icon" type="image/x-icon"/>
-	
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/font-awesome.min.css')?>">
@@ -26,7 +25,8 @@
     <link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/responsive.css')?>">
   	<link rel="stylesheet"  href="<?php echo base_url('asset/Template Company Profile/css/full-slider.css?v='.rand().'')?>">
     <link href="<?php echo base_url('asset/css/company-member.css'); ?>" rel="stylesheet" type="text/css" />
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+  		integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    
 	
 	<style>
       @media only screen and (max-width: 340px) {

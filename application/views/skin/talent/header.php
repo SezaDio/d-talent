@@ -84,6 +84,9 @@
                 </div>
               </li>
               <li class="nav-item">
+                <a class="nav-link page-scroll" href="<?php echo site_url('talent/courses');?>"><i class="fa fa-user"></i> <b>My Courses</b></a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link page-scroll" href="<?php echo site_url('talent/logout');?>"><i class="fa fa-sign-out-alt"></i> <b>Logout</b></a>
               </li>
             </ul>
@@ -112,6 +115,9 @@
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('talent/test-passion');?>">Tes Minat dan Bakat</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('talent/courses');?>">My Courses</a>
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('talent/logout');?>">Logout</a>
