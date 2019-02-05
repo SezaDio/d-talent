@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<label>Marital Status *</label>
 					<select class="form-control" name="status_pernikahan" required>
-						<option value="0" <?php echo $talent->status_pernikahan==0 ? 'selected' : ''; ?> >Single</option>
+						<option value="0" <?php echo $talent->status_pernikahan==0 ? 'selected' : ''; ?> >Unmarried</option>
 						<option value="1" <?php echo $talent->status_pernikahan==1 ? 'selected' : ''; ?> >Married</option>
 					</select>
 				</div>

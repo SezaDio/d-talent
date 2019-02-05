@@ -172,7 +172,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
 										<select class="form-control" name="status_pernikahan" required>
-											<option value="0">Single</option>
+											<option value="0">Unmarried</option>
 											<option value="1">Married</option>
 										</select>
 									</div>

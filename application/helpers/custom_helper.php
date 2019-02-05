@@ -156,7 +156,7 @@ function displayGender($gender)
 function displayMaritalStatus($status)
 {
     if ($status == 0) {
-        return "Single";
+        return "Unmarried";
     }
     else{
         return "Married";
@@ -341,8 +341,8 @@ function detailCharacterResult($test_result)
     switch ($test_result) {
         case 'ISTJ':
             $sub_title = "Pengawas";
-            $result_detail = '“Melakukan apa yang seharusnya dilakukan”<br>
-            <p>Organisator yang baik – kompulsif – prifasi – dapat dipercaya – praktis – memegang aturan</p>
+            $result_detail = 'â€œMelakukan apa yang seharusnya dilakukanâ€�<br>
+            <p>Organisator yang baik â€“ kompulsif â€“ prifasi â€“ dapat dipercaya â€“ praktis â€“ memegang aturan</p>
             <p><b>Paling bertanggung jawab</b></p>
             <b>Ciri kepribadian:</b>
             <p>
@@ -352,8 +352,8 @@ function detailCharacterResult($test_result)
             
         case 'ISFJ':
             $sub_title = "Penjaga";
-            $result_detail = '“Tanggung jawab pada tugas”<br>
-            <p>Bekerja di belakang layar – siap berkorban – bertanggung jawab – lebih menyukai tindakan – ramah dan cepat menyesuaikan diri dengan aturan yang berlaku</p>
+            $result_detail = 'â€œTanggung jawab pada tugasâ€�<br>
+            <p>Bekerja di belakang layar â€“ siap berkorban â€“ bertanggung jawab â€“ lebih menyukai tindakan â€“ ramah dan cepat menyesuaikan diri dengan aturan yang berlaku</p>
             <p><b>Paling Loyal</b></p>
             <b>Ciri kepribadian:</b>
             <p>
@@ -363,7 +363,7 @@ function detailCharacterResult($test_result)
             
         case 'ESTJ':
             $sub_title = "Supervisor";
-            $result_detail = '“Administrator kehidupan”<br>
+            $result_detail = 'â€œAdministrator kehidupanâ€�<br>
             <p>Teratur dan terstruktur - tradisional - pandai bergaul - orientasi hasil - produser</p>
             <p><b>Paling Sulit Digerakkan</b></p>
             <b>Ciri kepribadian:</b>
@@ -378,7 +378,7 @@ function detailCharacterResult($test_result)
 
         case 'ESFJ':
             $sub_title = "Penyedia";
-            $result_detail = '“Pelayan bagi dunia”<br>
+            $result_detail = 'â€œPelayan bagi duniaâ€�<br>
             <p>Terampil bergaul - penuh pemikiran - ingin menyenangkan orang lain - ramah - pada tempatnya</p>
             <p><b>Penyelaras</b></p>
             <b>Ciri kepribadian:</b>
@@ -393,7 +393,7 @@ function detailCharacterResult($test_result)
 
         case 'ESTP':
             $sub_title = "Promotor";
-            $result_detail = '“Realis”<br>
+            $result_detail = 'â€œRealisâ€�<br>
             <p>Pendekatan yang "tidak biasa" - lucu - hidup untuk saat ini dan disini - pemecah masalah</p>
             <p><b>Paling Spontan</b></p>
             <b>Ciri kepribadian:</b>
@@ -404,7 +404,7 @@ function detailCharacterResult($test_result)
 
         case 'ISTP':
             $sub_title = "Perajin";
-            $result_detail = '“Selalu siap mencoba hal baru”<br>
+            $result_detail = 'â€œSelalu siap mencoba hal baruâ€�<br>
             <p>Pengamat - bertindak pada hal-hal yang praktis - selalu siap dengan apapun yang akan terjadi - sederhana - menyendiri dan dingin</p>
             <p><b>Paling Pragmatis</b></p>
             <b>Ciri kepribadian:</b>
@@ -415,7 +415,7 @@ function detailCharacterResult($test_result)
 
         case 'ESFP':
             $sub_title = "Penampil";
-            $result_detail = '“Berprinsip hidup hanya sekali”<br>
+            $result_detail = 'â€œBerprinsip hidup hanya sekaliâ€�<br>
             <p>Spontan - pandai bergaul - suka kejutan - penyulap situasi</p>
             <p><b>Paling Murah Hati</b></p>
             <b>Ciri kepribadian:</b>
@@ -426,7 +426,7 @@ function detailCharacterResult($test_result)
 
         case 'ISFP':
             $sub_title = "Composer";
-            $result_detail = '“Tahu banyak tapi membagikan ilmu secukupnya”<br>
+            $result_detail = 'â€œTahu banyak tapi membagikan ilmu secukupnyaâ€�<br>
             <p>Hangat - sensitif - tidak cepat berasumsi - perencana jangka pendek - anggota tim yang baik - peduli dengan hidup dan dirinya</p>
             <p><b>Paling Narsistik</b></p>
             <b>Ciri kepribadian:</b>
@@ -437,7 +437,7 @@ function detailCharacterResult($test_result)
 
         case 'ENFJ':
             $sub_title = "Guru";
-            $result_detail = '“Ahli persuasi”<br>
+            $result_detail = 'â€œAhli persuasiâ€�<br>
             <p>Karismatik - idealis - penuh belas kasihan membukakan kemungkinan bagi orang lain - toleransi ketidaknyamanan</p>
             <p><b>Persuasif</b></p>
             <b>Ciri kepribadian:</b>
@@ -448,7 +448,7 @@ function detailCharacterResult($test_result)
 
         case 'INFJ':
             $sub_title = "Konselor";
-            $result_detail = '“Sumber inspirasi orang lain”<br>
+            $result_detail = 'â€œSumber inspirasi orang lainâ€�<br>
             <p>Reflektif/instropektif - peduli pada orang lain - kreatif - memiliki bakat dalam berbahasa - psychic</p>
             <p><b>Paling kontemplatif</b></p>
             <b>Ciri kepribadian:</b>
@@ -459,7 +459,7 @@ function detailCharacterResult($test_result)
 
         case 'ENFP':
             $sub_title = "Pembela";
-            $result_detail = '“Memberi makna lebih pada hidup”<br>
+            $result_detail = 'â€œMemberi makna lebih pada hidupâ€�<br>
             <p>Orientasi pada orang - kreatif - mengusahakan keselarasan - memulai tanpa menyelesaikan - menikmati hidup</p>
             <p><b>Paling Optimis</b></p>
             <b>Ciri kepribadian:</b>
@@ -470,7 +470,7 @@ function detailCharacterResult($test_result)
 
         case 'INFP':
             $sub_title = "Penyembuh";
-            $result_detail = '“Melayani sebaik mungkin demi komunitas”<br>
+            $result_detail = 'â€œMelayani sebaik mungkin demi komunitasâ€�<br>
             <p>Memegang teguh nilai-nilai pribadi - kreatif - tidak directive - mencari ketenangan/keteraturan diri - hati-hati</p>
             <p><b>Paling Idealis</b></p>
             <b>Ciri kepribadian:</b>
@@ -481,7 +481,7 @@ function detailCharacterResult($test_result)
 
         case 'INTP':
             $sub_title = "Arsitek";
-            $result_detail = '“Jago dalam memecahkan masalah”<br>
+            $result_detail = 'â€œJago dalam memecahkan masalahâ€�<br>
             <p>Memamcing orang lain untuk berpikir - mengejar kompetensi - pemikir ulung yanh sering "absen" - hati-hati dalam hubungan</p>
             <p><b>Paling Konseptual</b></p>
             <b>Ciri kepribadian:</b>
@@ -492,7 +492,7 @@ function detailCharacterResult($test_result)
 
         case 'INTJ':
             $sub_title = "Perencana";
-            $result_detail = '“Semua hal bisa berkembang”<br>
+            $result_detail = 'â€œSemua hal bisa berkembangâ€�<br>
             <p>Mengagungkan kompetensi - melakukan dengan cara sendiri - berbasis teori - skeptis - melihat kemungkinan</p>
             <p><b>Paling Mandiri</b></p>
             <b>Ciri kepribadian:</b>
@@ -503,7 +503,7 @@ function detailCharacterResult($test_result)
 
         case 'ENTJ':
             $sub_title = "Pemimpin Komando";
-            $result_detail = '“Pemimpin kehidupan”<br>
+            $result_detail = 'â€œPemimpin kehidupanâ€�<br>
             <p>Argumentatif - suka berkelompok - visioner - perencana - penggerak - benci ketidakberdayaan</p>
             <p><b>Paling Komando</b></p>
             <b>Ciri kepribadian:</b>
@@ -514,7 +514,7 @@ function detailCharacterResult($test_result)
 
         case 'ENTP':
             $sub_title = "Penemu";
-            $result_detail = '“Selalu ada yang menantang”<br>
+            $result_detail = 'â€œSelalu ada yang menantangâ€�<br>
             <p>Antusias - ide-ide baru - melihat dari sudut pandang yang lengkap - melihat batas kekuatan</p>
             <p><b>Paling Senang Mencaritahu</b></p>
             <b>Ciri kepribadian:</b>

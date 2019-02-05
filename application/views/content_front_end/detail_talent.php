@@ -396,7 +396,7 @@
 						    					</tr>
 						    				</table>
 					    		  <?php } ?>
-					    			<a href="<?php echo site_url('CompanyMember/show_result_soft_skill/'.$item['id_talent']);?>">
+					    			<a href="<?php echo site_url('CompanyMember/show_result_soft_skill_company_view/'.$item['id_talent']);?>">
 					    				<button style="width: 200px;" type="button" class="button button1"><i class="fa fa-eye"></i> Lihat Detail</button>
 					    			</a>
 					    		</td>

@@ -59,11 +59,11 @@
         color: black !important;
       }
 
-      /*.menu-bg.navbar .nav-link.active,
+      .menu-bg.navbar .nav-link.active,
       .menu-bg.navbar .nav-link:hover{
           color: black !important;
           background: white;
-      }*/
+      }
     </style>
 
 </head>

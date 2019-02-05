@@ -438,4 +438,5 @@ class Talent extends CI_Controller {
         //download it.
         $this->m_pdf->pdf->Output($pdfFilePath, "D");
 	}
+
 }

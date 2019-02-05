@@ -242,6 +242,15 @@
 								div_talent_search += '</div>';
 
 							div_talent_search += '</div>';
+
+							div_talent_search += '<div class="col-md-2">';
+								div_talent_search += '<div style="margin-top: 25px; text-align: center;">';
+									div_talent_search += '<a href="'+base_url+'TalentList/detail_talent/'+id_talent+'">';
+										div_talent_search += '<button type="button" class="button button1"><i class="fa fa-eye"></i> View</button>';
+									div_talent_search += '</a>';
+								div_talent_search += '</div>';
+							div_talent_search += '</div>';
+
 						div_talent_search += '</div>';
 					div_talent_search += '</div>';
 				}

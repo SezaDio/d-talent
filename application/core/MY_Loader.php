@@ -82,7 +82,7 @@ class MY_Loader extends CI_Loader {
      * @param string $template_name File konten yang akan ditampilkan
      * @param array $vars Array nilai
      * @param boolean $return Minta return output?
-     * @return Output &lt;string&gt;
+     * @return String &lt;string&gt;
      */
     public function template($template_name, $vars = array(), $return = FALSE)
     {
