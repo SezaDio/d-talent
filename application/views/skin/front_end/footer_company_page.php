@@ -43,10 +43,20 @@
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/js/main.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
+    <!-- summernote -->
+    <script type="text/javascript" src="<?php echo base_url('asset/plugins/summernote/dist/summernote-bs4.js')?>"></script>
     <!-- DataTables --> 
     <script src="<?php echo base_url('asset/js/jquery.dataTables.js?ver=b1.0'); ?>" type="text/javascript"></script>
   
     <script type="text/javascript">
+    //summernote init
+
+    $('#summernote').summernote({
+        placeholder: 'Describe the job description, requirement, etc . . .',
+        tabsize: 2,
+        height: 150
+    });
+
       $(function () {
         /* toast */
         // display notification if message not null
@@ -86,7 +96,7 @@
         // data table
         $('.data-table').DataTable();
 
-      });
+      });      
     </script>
 
   </body>

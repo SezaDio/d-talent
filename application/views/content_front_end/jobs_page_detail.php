@@ -18,9 +18,9 @@
 			<div class="card-body row">
 				<div class="fit-content col-xs-4 col-md-2">
 					<?php if($company_logo != "") {?>
-					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_logo;?>');"></figure>
+					<figure class="image-bg" style="background-color: white; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$company_logo;?>');"></figure>
 					<?php } else{ ?>
-					<figure class="image-bg" style="background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+					<figure class="image-bg" style="background-color: white; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
 					<?php }?>
 				</div>
 				<div class="fit-content col-xs-8 col-md-10">
@@ -61,7 +61,7 @@
 		<div class="job-vacancy">
 			<div class="card" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 				<div class="card-header">
-					<h4>Deskripsi Pekerjaan</h4>
+					<h4>Job Description</h4>
 				</div>
 				<div class="card-body">
 					<p>
@@ -75,7 +75,7 @@
 
 			<div class="card" style="background-color: white; box-shadow: 1px 5px 20px lightgrey;">
 				<div class="card-header">
-					<h4>Persyaratan</h4>
+					<h4>Requirement</h4>
 				</div>
 				<div class="card-body">
 					<ol class="requirement">
@@ -90,7 +90,7 @@
 		<br>
 
 		<div>
-			<a href="<?php echo site_url('JobVacancy/job_list'); ?>" class="button button1" style="width: 130px;color:white">Kembali</a>
+			<a href="<?php echo site_url('JobVacancy/job_list'); ?>" class="button button1" style="width: 130px;color:white">Back</a>
 		</div>
 
 		<br>

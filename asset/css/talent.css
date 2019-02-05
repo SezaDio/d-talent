@@ -149,25 +149,29 @@ h4{
 	padding: 4px 8px;
 	border-radius: 3px;
 	display: inline-block;
+	font-size: 85%;
 }
 .label-colors .label:nth-child(n+2){
 	margin-left: 3px;
 }
 /* select every 5 elements start with 1st element */
+/*.label-colors .label{
+	background-color: grey;
+}*/
 .label-colors .label:nth-child(5n+1){
-	background-color: #4CE414;	/*green*/
+	background-color: #0E3047;	
 }
 .label-colors .label:nth-child(5n+2){
-	background-color: #039BE5;	/*blue*/
+	background-color: #10828C;	
 }
 .label-colors .label:nth-child(5n+3){
-	background-color: #D81B60;	/*pink*/
+	background-color: #F97300;	
 }
 .label-colors .label:nth-child(5n+4){
-	background-color: #FBC02D;	/*yellow*/
+	background-color: #8559A5;	
 }
 .label-colors .label:nth-child(5n+5){
-	background-color: #5E35B1;	/*purple*/
+	background-color: #343434;	
 }
 
 .img-talent{
@@ -452,4 +456,25 @@ a, a:focus{
 }
 .card-body .table > tbody > tr:first-child > td{
 	border-top: none;
+}
+/*===================New======================
+Farid
+*/
+.choose-color li{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	/*background-color: black;*/
+	border-radius: 100%;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.choose-color li:first-child{
+	margin-right: 7px;
+}
+.choose-color .black{
+	background-color: black;
+}
+.choose-color .white{
+	background-color: white;
 }

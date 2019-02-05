@@ -223,7 +223,7 @@ class AccountTalent extends CI_Controller
 	
 	function logout_member(){
 		$this->session->sess_destroy();
-		redirect(site_url('talent/login'));
+		redirect(site_url('CompanyProfile'));
 	}
 
 	/**
@@ -242,7 +242,7 @@ class AccountTalent extends CI_Controller
 				$this->data[$dataKey] = $dataValue;
 			}
 			if ($submitResult) {				
-				$this->session->set_flashdata('msg_berhasil', "Registrasi berhasil. Silakan cek folder inbox/spam/junk ". "e-mail Anda (".$this->data['formData']['email'].") untuk verifikasi alamat e-mail Anda.");
+				$this->session->set_flashdata('msg_berhasil', "Registrasi berhasil. Silakan cek folder <strong>inbox/spam/junk </strong>". "E-mail Anda (".$this->data['formData']['email'].") untuk verifikasi alamat E-mail Anda.");
 				redirect(site_url('talent/login'));
 			}
 		}
@@ -361,36 +361,36 @@ class AccountTalent extends CI_Controller
 				//-- Send registration email // di comment, nunggu setting password email //
 				
 				// Proses kirim e-mail notifikasi...
-				// $this->load->model('email_model');
-				// $emailSubject = "[D-Talent] Registrasi Member D-Talentsolution.id";
+				$this->load->model('email_model');
+				$emailSubject = "[D-Talent] Registrasi Member dtalent.id";
 				
-				// $encEmail = base64_encode($emailDest);
-				// $accessLink = site_url('/auth/verify/'.$emailToken.'?em='.$encEmail);
+				$encEmail = base64_encode($emailDest);
+				$accessLink = site_url('/AccountTalent/verify/'.$emailToken.'?em='.$encEmail);
 				
-				// $loginSecretCensor = srv_censor_password($userSecretWord);
-				// $contentFields = array(
-				// 		'pageTitle' => $emailSubject,
-				// 		'pageContent' => '',
-				// 		'namaLengkap' => $submittedData['nama'],
-				// 		'loginUserName' => $submittedData['email'], // Username is their email
-				// 		'loginSecret' => $loginSecretCensor,
-				// 		'loginEmail' => $emailDest,
-				// 		'verifyLink' => $accessLink
-				// );
-				// $bodyContent = $this->load->view('email/email_register_talent', $contentFields, true);
-				// $contentFields['pageContent'] = $bodyContent;
-				// $emailContent = $this->load->view('skin/email/template_default', $contentFields, true);
+				$loginSecretCensor = srv_censor_password($userSecretWord);
+				$contentFields = array(
+						'pageTitle' => $emailSubject,
+						'pageContent' => '',
+						'namaLengkap' => $submittedData['nama'],
+						'loginUserName' => $submittedData['email'], // Username is their email
+						'loginSecret' => $loginSecretCensor,
+						'loginEmail' => $emailDest,
+						'verifyLink' => $accessLink
+				);
+				$bodyContent = $this->load->view('email/email_register_talent', $contentFields, true);
+				$contentFields['pageContent'] = $bodyContent;
+				$emailContent = $this->load->view('skin/email/template_default', $contentFields, true);
 				
-				// $this->email_model->set_config( 0 ); // Kirim pakai e-mail default				
+				$this->email_model->set_config( 0 ); // Kirim pakai e-mail default				
 
-				// $sendResult = $this->email_model->web_send_email($emailDest, $emailSubject, $emailContent, 'REGISTER-MEMBER-PREMIUM');
+				$sendResult = $this->email_model->web_send_email($emailDest, $emailSubject, $emailContent, 'REGISTER-MEMBER-PREMIUM');
 				
-				// if (!$sendResult) {
-				// 	$this->db->trans_rollback();
-				// 	$this->email_model->save_email_log();
-				// 	$errorMessages = "Internal error: Cannot send e-mail. Please try again or contact administrator.";
-				// 	return false;
-				// }
+				if (!$sendResult) {
+					$this->db->trans_rollback();
+					$this->email_model->save_email_log();
+					$errorMessages = "Internal error: Cannot send e-mail. Please try again or contact administrator.";
+					return false;
+				}
 				
 				//-- Flush the queries
 				$this->db->trans_commit();
@@ -522,16 +522,16 @@ class AccountTalent extends CI_Controller
 	
 		if ($emailData) {
 			//-- Ambil info member
-			$this->load->model("member_model");
-			$userData = $this->member_model->get_member_by_id($emailData->id_member);
+			$this->load->model("member_models/MemberModels");
+			$userData = $this->MemberModels->get_member_by_id($emailData->id_member);
 			if (!$userData) {
 				die("Database error happened. Please contact administrator."); return;
 			}
 	
 			//-- Ambil info member
 			if ($userData->role == 'talent') {
-				$this->load->model('talent_model');
-	
+				$this->load->model('account/UserModel');
+				$this->data['role'] = $userData->role;
 				//-- TODO: Update flag session jika user ybs sedang login...
 	
 			} else {
@@ -575,7 +575,7 @@ class AccountTalent extends CI_Controller
 		
 		$this->data['showScrollTopNav'] = false;
 		$this->data['pageTitle'] = "E-mail Verification";
-		$this->load->template('member/email_verification', $this->data);
+		$this->load->view('account/email_verification', $this->data);
 	}
 
 	public function resend() {
@@ -598,8 +598,8 @@ class AccountTalent extends CI_Controller
 			
 			$errorMessage = null;
 			// comment fungsi resend, setting pass email
-			// $submitResult = $this->_resend_verification($emailAddr, $errorMessage);
-			$submitResult=TRUE;
+			$submitResult = $this->_resend_verification($emailAddr, $errorMessage);
+			// $submitResult=TRUE;
 			
 			if ($submitResult) {
 				$this->data['successMessages'][] = "E-mail verifikasi telah dikirimkan. Silakan cek folder inbox/spam/junk e-mail Anda.";
@@ -645,5 +645,138 @@ class AccountTalent extends CI_Controller
 		$this->load->helper('srv_verification');
 		$sendResult = srv_send_verification_email($loginData->id_member, $emailAddress, $errorMessage, false);
 		return $sendResult;
+	}
+
+	public function forgot_password(){
+		$this->data['errorMessages'] = [];
+		$this->data['successMessages'] = [];
+		
+		// $failedEmailLogin = $this->session->flashdata($this::FLDATA_RESENDVERIFICATION);
+		// if (!empty($failedEmailLogin)) {
+		// 	$this->data['acc_email'] = $failedEmailLogin;
+		// 	$this->data['errorMessages'][] = "E-mail '".$failedEmailLogin."' belum diverifikasi.";
+		// 	$this->data['errorMessages'][] = "Silakan verifikasikan alamat e-mail terlebih dahulu dengan ".
+		// 		"mengikuti link yang Anda terima melalui e-mail Anda. Untuk mengirimkan ulang, silakan isi form berikut.";
+		// }
+		
+		$submitTag = $this->input->post(WEB_SUBMIT_TAG);
+		if (!empty($submitTag)) {
+			$emailAddr = trim($this->input->post('acc_email'));
+			
+			$this->data['acc_email'] = $emailAddr;
+			
+			$errorMessage = null;
+			// comment fungsi resend, setting pass email
+			$submitResult = $this->_forgot_password($emailAddr, $errorMessage);
+			// $submitResult=TRUE;
+			
+			if ($submitResult) {
+				$this->data['successMessages'][] = "Instruksi untuk reset password telah dikirimkan ke ".$emailAddr.". Silakan cek folder <strong>inbox/spam/junk</strong> e-mail Anda.";
+				$this->data['hideForm'] = true;
+			} else {
+				$this->data['errorMessages'][] = $errorMessage;
+			}
+		}
+		
+		$this->load->view('account/forgot_password', $this->data);
+	}
+
+	private function _forgot_password($emailAddress, &$errorMessage){
+		$errorMessage = null;
+		
+		$this->load->helper('srv_validation');
+		
+		//-- Get e-mail owner
+		if (empty($emailAddress)) {
+			$errorMessage = "The e-mail field cannot be empty.";
+			return false;
+		} else if (!srv_validate_email($emailAddress)) {
+			$errorMessage = "Invalid e-mail address format.";
+			return false;
+		}
+		
+		//-- Member username is their email
+		$this->load->model('member_models/MemberModels');
+		$loginData = $this->MemberModels->get_member_by_username($emailAddress);
+		if (!$loginData) {
+			$errorMessage = "Specified e-mail or username cannot be found. Please recheck or contact support.";
+			return false;
+		}
+		
+		//-- Call the routine function
+		$this->load->helper('srv_password');
+		$sendResult = srv_send_changePassword_email($loginData->id_member, $emailAddress, $errorMessage, false);
+		return $sendResult;
+	}
+
+	public function changePass($emailToken = null){
+		$this->load->library('form_validation');
+		$data['fatalError'] = null;
+		$this->data['errorMessages'] = [];
+		$this->data['successMessages'] = [];
+		$this->data['email'] =[];
+
+		if ($emailToken == null) {
+			$data['errorMessages'] = "Invalid URL. Mohon periksa alamat URL, pastikan lengkap.";
+		}
+		$base64code = $this->input->get('em');
+		$decodedEmail = base64_decode($base64code);
+	
+		if (!$decodedEmail) {
+			$data['errorMessages'] = "Invalid URL. Mohon periksa alamat URL, pastikan lengkap.";
+		}
+
+		$this->data['email'] = $decodedEmail;		
+		$submitTag = $this->input->post(WEB_SUBMIT_TAG);
+		if (!empty($submitTag)) {
+			
+			$this->form_validation->set_rules('acc_password', 'New Password', 'required|min_length[8]');
+			$this->form_validation->set_rules('acc_password2', 'Confirm Password', 'required|matches[acc_password]');
+			if ($this->form_validation->run()){
+				$password = $this->input->post('acc_password');
+				$password2 = $this->input->post('acc_password2');
+				
+				$this->data['acc_password'] = $password;
+				$this->data['acc_password2'] = $password2;
+
+				$errorMessage = null;
+				// comment fungsi resend, setting pass email
+				$submitResult = $this->_changePass($decodedEmail, $password,  $errorMessage);
+				
+				if ($submitResult) {
+					$this->data['successMessages'][] = "Change Password Success!";
+					$this->data['hideForm'] = true;
+				} else {
+					$this->data['errorMessages'][] = $errorMessage;
+				}
+			}else{
+				$this->data['acc_password'] = $this->input->post('acc_password');
+				$this->data['acc_password2'] = $this->input->post('acc_password2');
+				// $this->data['errorMessages'][] = "Confirm Password not match!";
+			}
+			
+		}
+		
+		$this->load->view('account/form_change_password', $this->data);
+	}
+
+	private function _changePass($email, $newPass, &$errorMessages){
+		$errorMessage = null;
+		
+		$this->load->model('member_models/MemberModels');
+		
+		$user = $this->MemberModels->get_member_by_username($email);
+		// update db
+		// $update = $this->TalentModel->updatePassword($id_talent, $new_password);
+		$update = $this->MemberModels->change_password($user->id_member, $newPass);
+		if ($update) {
+			// message
+			$success = True;
+		}
+		else{
+			// message
+			$success = False;
+		}
+		return $success;
 	}
 }

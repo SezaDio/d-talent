@@ -17,7 +17,7 @@ class Email_model extends CI_Model {
 			'host' => 'mail.d-talentsolution.id',
 			'from' => 'hello@d-talentsolution.id',
 			'user' => 'hello@d-talentsolution.id',
-			'pass' => 'pass',
+			'pass' => 'd-TalentInfo',
 			'port' => 587
 		),
 		3 => array(
@@ -115,7 +115,7 @@ class Email_model extends CI_Model {
 			'crlf' => "\r\n",
 			'newline' => "\r\n",
 			'mailtype' => 'html',
-			'smtp_crypto' => 'tls',
+			// 'smtp_crypto' => 'tls',
 			'charset' => 'iso-8859-1' 
 		) );
 		
@@ -140,8 +140,7 @@ class Email_model extends CI_Model {
 			$this->emailError = $this->email->print_debugger();
 			$processResult = null;
 			$this->logData['status'] = 0;
-			$this->logData['extradata'] = "Error. Debug Info: ".$this->emailError;
-			var_dump($this->emailError);
+			$this->logData['extradata'] = "Error. Debug Info: ".$this->emailError;			
 		}
 		if ($logEmail) {
 			$this->save_email_log();

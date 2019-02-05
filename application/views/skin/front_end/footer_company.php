@@ -50,6 +50,19 @@
     <script src="<?php echo base_url('asset/Template Company Profile/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
     <script type="text/javascript">
+      $(".dropdown").mouseenter(function(){
+          $("#Menu").fadeIn("fast", function(){
+            document.getElementById("Menu").classList.toggle("show");
+          });          
+      });
+      $(".dropdown").mouseleave(function(){
+          $("#Menu").fadeOut("fast", function(){
+            document.getElementById("Menu").classList.toggle("hide");
+          });          
+      })
+    </script>
+
+    <script type="text/javascript">
 
           $("#jobseeker-membership-content").hide();
 

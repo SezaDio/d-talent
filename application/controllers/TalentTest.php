@@ -19,7 +19,9 @@ class TalentTest extends CI_Controller {
 	// display access denied view
 	public function accessDenied()
 	{
-		$this->load->view('skin/talent/test_header');
+		$data['test_type'] = 'access_denied';
+		
+		$this->load->view('skin/talent/test_header', $data);
 		$this->load->view('talent/test/access_denied');
 		$this->load->view('skin/talent/test_footer');
 	}
@@ -36,9 +38,10 @@ class TalentTest extends CI_Controller {
 		$this->load->model('test_models/TestCharacterModel');
 		$data['test_character'] = $this->TestCharacterModel->get_all();
 		$data['total_records'] = count($data['test_character']);
+		$data['test_type'] = 'character';
 
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/character', $data);
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/character');
 		$this->load->view('skin/talent/test_footer');
 	}
 
@@ -50,7 +53,7 @@ class TalentTest extends CI_Controller {
 		$this->form_validation->set_rules('answer[]', '', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showCharacter();
 		}
@@ -75,18 +78,19 @@ class TalentTest extends CI_Controller {
 	  			$data['sub_title'] = $response['sub_title'];
 				// get result detail
 	  			$data['result_detail'] = $response['result_detail'];
+				$data['test_type'] = 'result';
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else {
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
-			$this->load->view('skin/talent/test_header');
-			$this->load->view('talent/test/character_result', $data);
+			$this->load->view('skin/talent/test_header', $data);
+			$this->load->view('talent/test/character_result');
 			$this->load->view('skin/talent/test_footer');
 		}
 	}
@@ -189,9 +193,10 @@ class TalentTest extends CI_Controller {
 		$this->load->model('test_models/TestPassionModel');
 		$data['test_passion'] = $this->TestPassionModel->get_all();
 		$data['total_records'] = count($data['test_passion']);
+		$data['test_type'] = 'passion';
 
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/passion', $data);
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/passion');
 		$this->load->view('skin/talent/test_footer');
 	}
 
@@ -208,7 +213,7 @@ class TalentTest extends CI_Controller {
 		$this->form_validation->set_rules('konvensional[]', '', 'required');
 
 		if($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('msg_error', 'Terdapat pertanyaan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showPassion();
 		}
@@ -244,18 +249,19 @@ class TalentTest extends CI_Controller {
 				$this->load->helper('custom');
 				// use function from helper
 	  			$data['result_detail'] = detailPassionResult($test_result);
+				$data['test_type'] = 'result';
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else {
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
-			$this->load->view('skin/talent/test_header');
-			$this->load->view('talent/test/passion_result', $data);
+			$this->load->view('skin/talent/test_header', $data);
+			$this->load->view('talent/test/passion_result');
 			$this->load->view('skin/talent/test_footer');
 		}
 	}
@@ -272,9 +278,10 @@ class TalentTest extends CI_Controller {
 		$this->load->model('test_models/TestWorkAttitudeModel');
 		$data['test_work_attitude'] = $this->TestWorkAttitudeModel->get_all();
 		$data['total_records'] = count($data['test_work_attitude']);
+		$data['test_type'] = 'work_attitude';
 
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/work_attitude', $data);
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/work_attitude');
 		$this->load->view('skin/talent/test_footer');
 	}
 
@@ -287,7 +294,7 @@ class TalentTest extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE) 
 		{
-			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showWorkAttitude();
 		}
@@ -313,19 +320,20 @@ class TalentTest extends CI_Controller {
 	  			$data['sub_title'] = $response['sub_title'];
 				// get result detail
 	  			$data['result_detail'] = $response['result_detail'];
+				$data['test_type'] = 'result';
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else 
 			{
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
-			$this->load->view('skin/talent/test_header');
-			$this->load->view('talent/test/work_attitude_result', $data);
+			$this->load->view('skin/talent/test_header', $data);
+			$this->load->view('talent/test/work_attitude_result');
 			$this->load->view('skin/talent/test_footer');
 		}
 	}
@@ -407,9 +415,10 @@ class TalentTest extends CI_Controller {
 		$this->load->model('test_models/TestSoftskillModel');
 		$data['test_soft_skill'] = $this->TestSoftskillModel->get_all();
 		$data['total_records'] = count($data['test_soft_skill']);
+		$data['test_type'] = 'soft_skill';
 
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/soft_skill', $data);
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/soft_skill');
 		$this->load->view('skin/talent/test_footer');
 	}
 
@@ -442,7 +451,7 @@ class TalentTest extends CI_Controller {
 
 		if($this->form_validation->run() === FALSE) 
 		{
-			$this->session->set_flashdata('msg_error', 'Terdapat pernyataan yang belum dijawab');
+			$this->session->set_flashdata('msg_error', 'All questions are required');
 			// redirect to function
 			$this->showPassion();
 		}
@@ -800,19 +809,20 @@ class TalentTest extends CI_Controller {
 
 	  			$data['sub_title'] = $response['sub_title'];
 	  			$data['result'] = $response['result_detail'];
+				$data['test_type'] = 'result';
 
 				// add success message to session
-				$this->session->set_flashdata('msg_success', 'Kirim tes berhasil');
+				$this->session->set_flashdata('msg_success', 'Submit test success');
 			}
 			else 
 			{
 				// add failed message to session
-				$this->session->set_flashdata('msg_error', 'Kirim tes gagal');
+				$this->session->set_flashdata('msg_error', 'Submit test failed');
 			}
 
 			// redirect to index ...
-			$this->load->view('skin/talent/test_header');
-			$this->load->view('talent/test/soft_skill_result', $data);
+			$this->load->view('skin/talent/test_header', $data);
+			$this->load->view('talent/test/soft_skill_result');
 			$this->load->view('skin/talent/test_footer');
 		}
 	}

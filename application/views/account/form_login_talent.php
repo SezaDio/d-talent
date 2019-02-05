@@ -46,6 +46,10 @@
 			    background-color: white;
 			    color: black;
 			}
+			.omb_login .omb_loginOr .omb_spanOr{
+				left: 38%;
+				width: 8em;
+			}
 		</style>
 	</head>
 	<body style="background: whitesmoke;">
@@ -58,14 +62,14 @@
 				<div class="col-lg-4" style="padding: 20px; background: white; border: solid 1px lightgray; border-radius: 5px; box-shadow: 5px 10px 12px lightgrey;">
 					<div class="row">
 						<div class="col-md-12" style="text-align: center;">
-							<img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/>
+							<a href="<?php echo site_url('/CompanyProfile')?>"><img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/></a>
 						</div>
 					</div>
 					<div class="omb_login">	
 						<div class="row omb_loginOr">
 							<div class="col-md-12">
 								<hr class="omb_hrOr">
-								<span class="omb_spanOr"><b>Login</b></span>
+								<span class="omb_spanOr"><b>Login as Talent</b></span>
 							</div>
 						</div>
 
@@ -81,7 +85,7 @@
 									<?php 
 										if($this->session->flashdata('msg_berhasil')!='')
 										{?>
-	                                        <div class="alert alert-success alert-dismissable">
+	                                        <div class="alert alert-success">
 	                                            <i class="glyphicon glyphicon-ok"></i>
 	                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                                            <?php echo $this->session->flashdata('msg_berhasil');?> 
@@ -99,16 +103,16 @@
 										<input  type="password" class="form-control" name="password" placeholder="Password" required value="<?php echo set_value('password'); ?>">
 									</div>
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
-									<br>
+									<!-- <br> -->
 									<div class="input-group" style="float: right;">
-										<a href="#"><p>Forgot Password?</p></a>
+										<a href="<?php echo site_url('AccountTalent/forgot_password')?>"><p>Forgot Password?</p></a>
 									</div>
 				                    
 									<br><br>
 									<button class="button button5" type="submit" name="login" value="1"><span class="glyphicon glyphicon-log-in"></span><strong> Log In </strong> </button>
 									<br><br>
 									<hr style="border: solid 1px lightgray">
-									<p style="text-align: center;">Belum Jadi Member? <a href="<?php echo site_url('AccountTalent/register'); ?>">Sign Up</a></p>
+									<p style="text-align: center;">Not Member? <a href="<?php echo site_url('AccountTalent/register'); ?>">Sign Up</a></p>
 									<br>
 								</form>
 							</div>

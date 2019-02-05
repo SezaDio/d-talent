@@ -7,7 +7,7 @@
     <meta name="keywords" content="Bootstrap, Parallax, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <title>D-Talent Beta</title>
+    <title>D-Talent</title>
 
 	<!-- Favicon -->
 	<link href="<?php echo base_url('/favicon.ico?v='.MY_Loader::APP_VERSION_STR); ?>" rel="shortcut icon" type="image/x-icon"/>
@@ -129,6 +129,31 @@
               <li class="nav-item">
                 <a class="nav-link page-scroll" href="#contact"><i class="fa fa-envelope"></i> <b>Contact</b></a>
               </li>
+              <?php 
+                if ($this->session->userdata('id_member')!=null) {
+              ?>
+              <li class="nav-item dropdown">
+                <p class="nav-link page-scroll" style="cursor: pointer;"><i class="fa fa-user"></i></p>
+                <ul class="dropdown-menu" id="Menu">
+                  <li>
+                    <?php if($this->session->userdata('role')=='talent'){?>
+                      <a href="<?php echo site_url('talent')?>">Profile</a>
+                    <?php }elseif($this->session->userdata('role')=='company'){?>
+                      <a href="<?php echo site_url('CompanyMember')?>">Profile</a>
+                    <?php }?>
+                  </li>
+                  <li>
+                    <?php if($this->session->userdata('role')=='talent'){?>
+                      <a href="<?php echo site_url('talent/logout')?>">Logout</a>
+                    <?php }elseif($this->session->userdata('role')=='company'){?>
+                      <a href="<?php echo site_url('AccountCompany/logout_company')?>">Logout</a>
+                    <?php }?>
+                  </li>
+                </ul>
+              </li>
+              <?php
+                }
+              ?>
             </ul>
           </div>
         </div>

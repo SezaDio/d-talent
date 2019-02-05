@@ -35,6 +35,12 @@ function srv_send_verification_email($idMember, $emailAddr, &$errorMessage, $cre
 		$emailMember = $userDetail->email;
 		$userFullname = $userData->fullname;
 			
+	} else if($userData->role == 'company'){
+		$memberRoleId = MY_Loader::SESS_TYPE_COMPANY;
+		$CI->load->model('account/UserModel');
+		$userDetail = $CI->UserModel->get_company_by_idmember($userData->id_member);
+		$emailMember = $userDetail->company_email;
+		$userFullname = $userData->fullname;
 	} else {
 		$errorMessage = "Akun tidak dikenali. Silakan hubungi customer service."; return false;
 	}
@@ -68,7 +74,18 @@ function srv_send_verification_email($idMember, $emailAddr, &$errorMessage, $cre
 		$errorMessage = "E-mail has been verified."; return false;
 		
 	} else {
-		$accessKey = $emailRecord->token;
+		if (empty($emailRecord->token)) {
+			$CI->load->helper('srv_misc');
+			$emailToken = srv_generate_unique_token(32, null);
+			$token=array('token'=>$emailToken);
+			$updateToken = $CI->preferences_model->create_email_token($emailRecord->id_email, $token);
+			if ($updateToken) {
+				$emailRecord = $CI->preferences_model->get_email_data($idMember, $emailAddr);
+				$accessKey = $emailRecord->token;
+			}			
+		}else{
+			$accessKey = $emailRecord->token;		
+		}		
 	}
 	 
 	//-- Request verifikasi hanya dapat dilakukan 5 menit sekali.
@@ -87,7 +104,12 @@ function srv_send_verification_email($idMember, $emailAddr, &$errorMessage, $cre
 	$CI->load->model('email_model');
 	 
 	$encEmail = base64_encode($emailAddr);
-	$accessLink = site_url('/auth/verify/'.$accessKey.'?em='.$encEmail);
+	if ($userData->role == 'talent') {
+		$accessLink = site_url('/AccountTalent/verify/'.$accessKey.'?em='.$encEmail);
+	}else if($userData->role == 'company'){
+		$accessLink = site_url('/AccountCompany/verify/'.$accessKey.'?em='.$encEmail);
+	}
+	
 	$emailSubject = "[D-Talent] Verifikasi dan Konfirmasi E-mail";
 
 	$contentFields = array(
@@ -95,7 +117,8 @@ function srv_send_verification_email($idMember, $emailAddr, &$errorMessage, $cre
 			'pageContent' => '',
 			'namaLengkap' => $userFullname,
 			'loginEmail' => $emailAddr,
-			'verifyLink' => $accessLink
+			'verifyLink' => $accessLink,
+			''
 	);
 	$bodyContent = $CI->load->view('email/email_verification', $contentFields, true);
 	$contentFields['pageContent'] = $bodyContent;

@@ -18,7 +18,9 @@ class TalentCVEducation extends CI_Controller {
 
 	public function index()
 	{
-		$data['page_title'] = "Tambah Pendidikan";
+		$data['active'] = 1;
+
+		$data['page_title'] = "Add Education";
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/form_cv_education');
@@ -30,9 +32,11 @@ class TalentCVEducation extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Tambah Pendidikan";
+		$data['page_title'] = "Add Education";
 
-		$this->form_validation->set_rules('school', '"Sekolah"', 'required');
+		$this->form_validation->set_rules('school', '"School"', 'required');
+		$this->form_validation->set_rules('from_year', '"From"', 'required');
+		$this->form_validation->set_rules('to_year', '"To"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->load->view('skin/talent/header', $data);
@@ -43,7 +47,7 @@ class TalentCVEducation extends CI_Controller {
 			// save data to db
 			$this->TalentCVEducationModel->create($id_talent);
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Tambah pendidikan berhasil');
+			$this->session->set_flashdata('msg_success', 'Add education success');
 
 			// redirect to page ...
 			redirect('talent');
@@ -52,9 +56,11 @@ class TalentCVEducation extends CI_Controller {
 
 	public function edit($id_talent_cv_education)
 	{
+		$data['active'] = 1;
+
 		$id_talent = $this->session->userdata('id_talent');
 
-		$data['page_title'] = "Edit Pendidikan";
+		$data['page_title'] = "Edit Education";
 		$data['cv_education'] 	= $this->TalentCVEducationModel->edit($id_talent, $id_talent_cv_education);
 
 		$this->load->view('skin/talent/header', $data);
@@ -67,9 +73,11 @@ class TalentCVEducation extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 	
 		// used for if form not valid
-		$data['page_title'] = "Edit Pendidikan";
+		$data['page_title'] = "Edit Education";
 
-		$this->form_validation->set_rules('school', '"Sekolah"', 'required');
+		$this->form_validation->set_rules('school', '"School"', 'required');
+		$this->form_validation->set_rules('from_year', '"From"', 'required');
+		$this->form_validation->set_rules('to_year', '"To"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function
@@ -81,11 +89,11 @@ class TalentCVEducation extends CI_Controller {
 			
 			if ($affected) {
 				// add message to session
-				$this->session->set_flashdata('msg_success', 'Edit pendidikan berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit education success');
 			}
 			else {
 				// add message to session
-				$this->session->set_flashdata('msg_error', 'Edit pendidikan gagal');
+				$this->session->set_flashdata('msg_error', 'Edit education failed');
 			}
 			// redirect to page ...
 			redirect('talent');
@@ -100,11 +108,11 @@ class TalentCVEducation extends CI_Controller {
 
 		if ($query) {
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Hapus pendidikan berhasil');
+			$this->session->set_flashdata('msg_success', 'Delete education success');
 		}
 		else {
 			// add message to session
-			$this->session->set_flashdata('msg_error', 'Hapus pendidikan gagal');
+			$this->session->set_flashdata('msg_error', 'Delete education failed');
 		}
 		// redirect to page ...
 		redirect('talent');

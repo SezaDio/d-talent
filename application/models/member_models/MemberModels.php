@@ -269,4 +269,26 @@
 				return $memberLoginData;
 			}
 		}
+		/**
+		 * Ganti password member UCC
+		 * @param int $memberId Member ID
+		 * @param string $newPassword Password baru
+		 * @return boolean TRUE jika berhasil, FALSE jika gagal
+		 * @author Nur Hardyanto
+		 */
+		public function change_password($memberId, $newPassword) {
+			//== Conventional MD5, randomized
+			$hashPass = md5(uniqid(rand(), true));
+			
+			//== Modern hash
+			$passwordHash = $this->_hash_password($newPassword);
+		
+			$this->db->where('id_member', $memberId);
+			$qResult = $this->db->update($this::MEMBERS_TABLE, array(
+					'passw' => $passwordHash
+			));
+		
+			if ($this->db->affected_rows() == 0) return false;
+			return true;
+		}
 	}

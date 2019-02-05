@@ -12,7 +12,21 @@
 	        return $this->db->count_all("job_vacancy");
 	    }
 
+	    // get job and company
 		public function get_all_jobs($limit_per_page, $start_index)
+		{
+			$this->db->select('job_vacancy.*, company.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+			$this->db->from('job_vacancy');
+			$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
+			$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
+			$this->db->join('company', 'company.id_company = job_vacancy.id_company', 'left');
+			$this->db->order_by('publish_date', 'DESC');
+			$this->db->limit($limit_per_page, $start_index);
+
+			return $this->db->get()->result();
+		}
+
+		/*public function get_all_jobs($limit_per_page, $start_index)
 		{
 			$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
 			$this->db->from('job_vacancy');
@@ -22,7 +36,7 @@
 			$this->db->limit($limit_per_page, $start_index);
 
 			return $this->db->get()->result();
-		}
+		}*/
 
 		//get data company
 		public function get_data_company()

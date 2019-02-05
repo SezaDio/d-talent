@@ -19,7 +19,7 @@
 						<hr style="border: solid 1px black">
 						<div class="row">
 							<div class="col-md-12" style="text-align: center; font-family: monospace;">
-								<h2><strong><u>TERIMA KASIH</u></strong></h2>
+								<h2><strong><u>THANK YOU</u></strong></h2>
 							</div>
 						</div>
 						<div class="row">

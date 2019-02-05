@@ -32,17 +32,17 @@
 				?>
 
 				<div class="form-group">
-					<label>Jabatan *</label>
+					<label>Position *</label>
 					<input type="text" name="position" class="form-control" value="<?php echo $cv_work->position; ?>" required>
 				</div>
 
 				<div class="form-group">
-					<label>Perusahaan *</label>
+					<label>Company *</label>
 					<input type="text" name="company" class="form-control" value="<?php echo $cv_work->company; ?>" required>
 				</div>
 
 				<div class="form-group">
-					<label>Lokasi</label>
+					<label>Location</label>
 					<div class="clearfix">
 						<select name="id_location" class="form-control selectpicker" data-live-search="true" data-size="7">
 							<option value="">-</option>
@@ -59,19 +59,19 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-							<label>Dari</label>
-							<p class="text-muted"><i>Format: tahun-bulan</i></p>
+							<label>From *</label>
+							<p class="text-muted"><i>Format: yyyy-mm</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo displayMonthYear($cv_work->work_start); ?>">
+								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo displayMonthYear($cv_work->work_start); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-6">
-							<label>Hingga</label>
-							<p class="text-muted"><i>Format: tahun-bulan</i></p>
+							<label>To *</label>
+							<p class="text-muted"><i>Format: yyyy-mm</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo displayMonthYear($cv_work->work_end); ?>">
+								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo displayMonthYear($cv_work->work_end); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-12">
@@ -87,10 +87,10 @@
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<input type="submit" value="Simpan" class="button button1">
+						<input type="submit" value="Save" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Back to My CV</a>
 					</div>
 				</div>
 

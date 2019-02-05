@@ -31,17 +31,17 @@
 				?>
 
 				<div class="form-group">
-					<label>Jabatan *</label>
+					<label>Position *</label>
 					<input type="text" name="position" class="form-control" value="<?php echo set_value('position'); ?>" required>
 				</div>
 
 				<div class="form-group">
-					<label>Perusahaan *</label>
+					<label>Company *</label>
 					<input type="text" name="company" class="form-control" value="<?php echo set_value('company'); ?>" required>
 				</div>
 
 				<div class="form-group">
-					<label>Lokasi</label>
+					<label>Location</label>
 					<div class="clearfix">
 						<select name="id_location" class="form-control selectpicker" data-live-search="true" data-size="7">
 							<option value="">-</option>
@@ -60,19 +60,19 @@
 
 				<div class="row form-group">
 					<div class="col-md-6">
-							<label>Dari</label>
-							<p class="text-muted"><i>Format: tahun-bulan</i></p>
+							<label>From *</label>
+							<p class="text-muted"><i>Format: yyyy-mm</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo set_value('work_start'); ?>">
+								<input type="text" class="form-control datepicker" name="work_start" value="<?php echo set_value('work_start'); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-6">
-							<label>Hingga</label>
-							<p class="text-muted"><i>Format: tahun-bulan</i></p>
+							<label>To *</label>
+							<p class="text-muted"><i>Format: yyyy-mm</i></p>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo set_value('work_end'); ?>">
+								<input type="text" class="form-control datepicker" name="work_end" value="<?php echo set_value('work_end'); ?>" required>
 							</div>
 					</div>
 					<div class="col-md-12">
@@ -81,17 +81,17 @@
 				</div>
 				
 				<div class="form-group">
-					<label>Deskripsi</label>
+					<label>Description</label>
 					<textarea name="description" rows="5" class="form-control"><?php echo set_value('description'); ?></textarea>
 				</div>
 
 				<br>
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<input type="submit" value="Simpan" class="button button1">
+						<input type="submit" value="Save" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Back to My CV</a>
 					</div>
 				</div>
 
@@ -120,7 +120,7 @@
         	$('#date-error').text('');	// delete message
         	if (work_end != '' && work_end < work_start) {
         		e.preventDefault();
-        		$('#date-error').text('Tanggal akhir tidak boleh lebih kecil dari tanggal awal');
+        		$('#date-error').text('End date should not less than start date');
         		// scroll
 				$('html, body').animate({
 			        scrollTop: $("input[name=work_end]").offset().top - 35

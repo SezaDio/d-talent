@@ -46,6 +46,10 @@
 			    background-color: white;
 			    color: black;
 			}
+			.omb_login .omb_loginOr .omb_spanOr{
+				left: 33%;
+				width: 10em;	
+			}
 		</style>
 	</head>
 	<body style="background: whitesmoke;">
@@ -58,14 +62,14 @@
 				<div class="col-lg-4" style="padding: 20px; background: white; border: solid 1px lightgray; border-radius: 5px; box-shadow: 5px 10px 12px lightgrey;">
 					<div class="row">
 						<div class="col-md-12" style="text-align: center;">
-							<img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/>
+							<a href="<?php echo site_url('/CompanyProfile')?>"><img src="<?php echo base_url('asset/img/logo1.png');?>" style="background-size: cover; background-position: center; width: 220px; height: 62px; background-repeat: no-repeat;"/></a>
 						</div>
 					</div>
 					<div class="omb_login">
 						<div class="row omb_loginOr">
 							<div class="col-md-12">
 								<hr class="omb_hrOr">
-								<span class="omb_spanOr"><b>Login</b></span>
+								<span class="omb_spanOr"><b>Login as Company</b></span>
 							</div>
 						</div>
 
@@ -101,7 +105,7 @@
 									<input type="hidden" name="<?php echo WEB_SUBMIT_TAG; ?>" value="<?php echo "submit-".date("Ymd-His"); ?>" />
 									<br>
 									<div class="input-group" style="float: right;">
-										<a href="#"><p>Forgot Password?</p></a>
+										<a href="<?php echo site_url('AccountCompany/forgot_password')?>"><p>Forgot Password?</p></a>
 									</div>
 				                    
 									<br><br>

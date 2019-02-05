@@ -15,16 +15,15 @@
                	?>
 
 				<div class="form-group">
-					<label>Judul Prestasi *</label>
+					<label>Achievement Title *</label>
 					<input type="text" name="title" class="form-control" value="<?php echo set_value('title'); ?>">
 				</div>
-
-				<div class="form-group">
+				
+				<!-- (Pendidikan & Pengalaman Kerja) -->
+				<!-- <div class="form-group">
 					<label>Berkaitan dengan</label>
-					<!-- (Pendidikan & Pengalaman Kerja) -->
 					<select name="associated_with" id="associated_with" class="form-control">
 						<option value="">-</option>
-						<!-- cv_educations -->
 						<?php
 							foreach ($cv_educations as $key => $cv_education) {
 						?>
@@ -41,7 +40,6 @@
 							}
 						?>
 
-						<!-- cv_works -->
 						<?php
 							foreach ($cv_works as $key => $cv_work) {
 						?>
@@ -56,32 +54,32 @@
 					</select>
 					<input type="hidden" name="associated_education" id="associated_education" value="<?php echo set_value('associated_education'); ?>">
 					<input type="hidden" name="associated_work" id="associated_work" value="<?php echo set_value('associated_work'); ?>">
-				</div>
+				</div> -->
 
 				<div class="form-group">
-					<label>Pemberi penghargaan</label>
+					<label>Appreciator</label>
 					<input type="text" name="issuer" class="form-control" value="<?php echo set_value('issuer'); ?>">
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-6">
-						<label>Bulan</label>
+						<label>Month *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control monthpicker" name="month" value="<?php echo set_value('month'); ?>">
+							<input type="text" class="form-control monthpicker" name="month" value="<?php echo set_value('month'); ?>" required>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label>Tahun</label>
+						<label>Year *</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="text" class="form-control yearpicker" name="year" value="<?php echo set_value('year'); ?>">
+							<input type="text" class="form-control yearpicker" name="year" value="<?php echo set_value('year'); ?>" required>
 						</div>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label>Deskripsi</label>
+					<label>Description</label>
 					<textarea name="description" rows="5" class="form-control"><?php echo set_value('description'); ?></textarea>
 				</div>
 
@@ -89,10 +87,10 @@
 
 				<div class="form-group">
 					<div class="col-md-4 col-md-offset-2">
-						<input type="submit" value="Simpan" class="button button1">
+						<input type="submit" value="Save" class="button button1">
 					</div>
 					<div class="col-md-4">
-						<a href="<?php echo site_url('talent'); ?>" class="button button2">Kembali</a>
+						<a href="<?php echo site_url('talent'); ?>" class="button button2">Back to My CV</a>
 					</div>
 				</div>
 
@@ -117,7 +115,7 @@
         });
 
         // select associated
-        $('#associated_with').change(function() {
+        /*$('#associated_with').change(function() {
         	var id = $(this).val();
         	var cv = $(this).find(':selected').data('cv');
         	if (cv == "education") {
@@ -132,6 +130,6 @@
         		$('#associated_education').val("");
         		$('#associated_work').val("");
         	}
-        });
+        });*/
     });
 </script>

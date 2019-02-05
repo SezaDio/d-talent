@@ -202,7 +202,7 @@ $route['job-vacancy'] 				= 'JobVacancy/job_list';
 $route['job-vacancy/page'] 			= 'JobVacancy/job_list';
 $route['job-vacancy/page/(:num)'] 	= 'JobVacancy/job_list';
 
-/* job vacancy */
+/* talent list */
 $route['talent-list'] 				= 'TalentList/index';
 $route['talent-list/page'] 			= 'TalentList/index';
 $route['talent-list/page/(:num)'] 	= 'TalentList/index';

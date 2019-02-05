@@ -109,6 +109,22 @@
 			return $result;
 		}
 
+		//Ambiil Data lokasi provinsi dari database untuk job vacancy
+		function lokasi_provinsi_job()
+		{
+			$query = $this->db->query("SELECT * FROM `inf_lokasi` WHERE lokasi_propinsi!=0 AND lokasi_kabupatenkota=0 AND lokasi_kecamatan=0 AND lokasi_kelurahan=0 ORDER BY lokasi_nama ASC");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$row['lokasi_propinsi']] = $row;
+			}
+		
+			return $result;
+		}
+
 		//Ambil Data lokasi kota dari database
 		function lokasi_kabupaten_kota($id_provinsi)
 		{

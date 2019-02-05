@@ -1,42 +1,26 @@
-	<br>
-    <footer style="background-image: url(<?php echo base_url('asset/img/footer-bg-2.png')?>)">          
-	<!-- <footer style="position: inherit;"> -->
-		<div class="container">
-	        <div class="row">
-				<div class="col-lg-12" style="text-align: center; color: white;" >
-	              <p>All copyrights reserved &copy; 2018 - Designed & Developed by IT Team D-Talent</p>
-	            </div>
 			</div>
+			<!-- ./ card-body -->
 		</div>
-	</footer>
+		<!-- ./ card -->
+	</div>
+
 
 	<script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
 	<script type="text/javascript">
 		$(function () {
+			// hide hint page
+			$('.btn-start').click(function() {
+				$('.hint-wrapper').hide();
+				$('.test-wrapper').show();
+			});
+			
 			// pagination
 			var page = 1;
 			
 			// 2 item per page + 1 instruction page
-			var total_page = <?php echo (1 + ($total_records / 2)); ?>
-
-			// if number page clicked
-			$('.pagination .page-number').click(function() {
-				$('.page-'+page).hide();
-				page = $(this).text();
-				$('.page-'+page).show();
-				// submit btn
-				if (page == total_page) {
-					$('.btn-submit-wrapper').show();
-				}
-				else{
-					$('.btn-submit-wrapper').hide();
-				}
-
-				// show page number to user
-				$('#page-text').text(page);
-			});
+			var total_page = "<?php echo ceil($total_records / 2) ?>";
 
 			// if prev clicked
 			$('.prev').click(function() {
@@ -45,27 +29,20 @@
 					page--;
 					$('.page-'+page).show();
 				}
-				// submit btn
-				if ($('.btn-submit-wrapper').length > 0) {
-					$('.btn-submit-wrapper').hide();
+				else{
+					// show hint page
+					$('.test-wrapper').hide();
+					$('.hint-wrapper').show();
+				}
+				// hide submit btn
+				if ($('.btn-submit').length > 0) {
+					$('.btn-submit').hide();
+					$('.next').show();
 				}
 
 				// show page number to user
 				$('#page-text').text(page);
 
-				// display only 5 page
-				var new_int;
-				var old_int = page;
-
-				if (page % 5 == 0) {
-					for (var i = 1; i <= 5; i++) {
-						$('.number-'+old_int).css('display', 'inline');
-						old_int = page - i;
-						
-						new_int = page + i;
-						$('.number-'+new_int).hide();
-					}
-				}
 			});
 
 			// if next clicked
@@ -79,36 +56,26 @@
 				}
 				// submit btn
 				if (page == total_page) {
-					$('.btn-submit-wrapper').show();
-				}
-				else{
-					$('.btn-submit-wrapper').hide();
+					$('.next').hide();
+					$('.btn-submit').show();
 				}
 
 				// show page number to user
 				$('#page-text').text(page);
 
-				// display only 5 page
-				var new_int = page;
-				var old_int;
-
-				if (page % 5 == 1) {
-					for (var i = 1; i <= 5; i++) {
-						old_int = page - i;
-						$('.number-'+old_int).hide();
-
-						$('.number-'+new_int).css('display', 'inline');
-						new_int = page + i;
-					}
-				}
 			});
 
 			// check radio buttons
 			$('.btn-submit').click(function(e) {
+				var question_no = 0;
+				var page = 1;
 				$('.radio-validation').each(function(){
+					question_no++;
+					// define page if 2 question per page
+					page = Math.ceil(question_no / 2);
 					if($(this).find('input[type="radio"]:checked').length == 0) {
 						e.preventDefault();
-				    	alert("Semua pertanyaan harus diisi");
+				    	alert("Question number "+ question_no +" on Page "+ page +" is not filled");
 				    	return false;
 					}
 				});

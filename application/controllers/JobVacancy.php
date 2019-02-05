@@ -44,6 +44,8 @@ class JobVacancy extends CI_Controller
 	
 	public function job_list()
 	{
+		$data['active'] = 2;
+
 		$this->load->library('pagination');
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
@@ -65,14 +67,21 @@ class JobVacancy extends CI_Controller
         $start_index = ($this->uri->segment($uri_segment) ? $this->uri->segment($uri_segment) : 1) - 1;
         $start_index = $start_index * $limit_per_page;
 
+        // get job & company
 		$data['jobs_list'] = $this->JobVacancyModel->get_all_jobs($limit_per_page, $start_index);
 		$i=0;
-		foreach ($listVacancy as $row_vacancy) 
+		// get company name
+		foreach ($data['jobs_list'] as $row_vacancy) 
+		{
+			$company_name[$i] = $row_vacancy->company_name;
+			$i++;
+		}
+		/*foreach ($listVacancy as $row_vacancy) 
 		{
 			$get_name_company = $this->db->select('company_name')->where('id_company',$row_vacancy['id_company'])->get('company')->result();
 			$company_name[$i] = $get_name_company[0]->company_name;
 			$i++;
-		}
+		}*/
 
 		$data['company_name'] = $company_name;
 		
@@ -86,6 +95,8 @@ class JobVacancy extends CI_Controller
 	
 	public function detail_job($id_job)
 	{
+		$data['active'] = 2;
+		
 		$this->load->model('account/UserModel');
 		$this->load->model('job_models/JobVacancyModel');
 		$data['page_title'] = "Talent";
@@ -129,11 +140,12 @@ class JobVacancy extends CI_Controller
 		$data .= 'AND job_title LIKE "%'.$this->db->escape_like_str($description).'%"';
 		$data .= 'AND job_province_location_id LIKE "%'.$this->db->escape_like_str($province).'%"';
 		
-		$this->db->select('job_vacancy.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
+		$this->db->select('job_vacancy.*, company.*, t_province.lokasi_nama AS province, t_city.lokasi_nama AS city');
 		$this->db->from('job_vacancy');
 		$this->db->where($data);
 		$this->db->join('inf_lokasi t_province', 't_province.lokasi_ID = job_vacancy.job_province_location_id', 'left');
 		$this->db->join('inf_lokasi t_city', 't_city.lokasi_kode = job_vacancy.job_city_location_id', 'left');
+		$this->db->join('company', 'company.id_company = job_vacancy.id_company', 'left');
 		$this->db->order_by('publish_date', 'DESC');
 		
 		
@@ -144,11 +156,13 @@ class JobVacancy extends CI_Controller
             foreach ($get_job->result() as $row_job) {
 				
 				$get_name_company=$this->db->select('company_name')->where('id_company',$row_job->id_company)->get('company')->result();
+				$get_logo_company=$this->db->select('company_logo')->where('id_company',$row_job->id_company)->get('company')->result();
 				$job_category = $this->get_job_category_search($row_job->job_category);
                 $xml_out .= '<job ';
                 $xml_out .= 'id_job="' . xml_convert($row_job->id_job) . '" ';
                 $xml_out .= 'id_company="' . xml_convert($row_job->id_company) . '" ';
                 $xml_out .= 'company_name="' . $get_name_company[0]->company_name . '" ';
+                $xml_out .= 'company_logo="' . $get_logo_company[0]->company_logo . '" ';
                 $xml_out .= 'job_title="' . xml_convert($row_job->job_title) . '" ';
                 $xml_out .= 'job_type="' . xml_convert($row_job->job_type) . '" ';
                 $xml_out .= 'job_category="'.$job_category.'" ';
@@ -225,22 +239,18 @@ class JobVacancy extends CI_Controller
         $config['use_page_numbers'] = TRUE;
         $config['reuse_query_string'] = TRUE;
          
-        $config['full_tag_open'] = '<nav class="fit-content">';
+        $config['full_tag_open'] = '<nav>';
         $config['full_tag_close'] = '</nav>';
          
-        $config['first_link'] = 'First Page';
-        $config['first_tag_open'] = '<li class="firstlink">';
-        $config['first_tag_close'] = '</li>';
+        $config['first_link'] = FALSE;
          
-        $config['last_link'] = 'Last Page';
-        $config['last_tag_open'] = '<li class="lastlink">';
-        $config['last_tag_close'] = '</li>';
+        $config['last_link'] = FALSE;
          
-        $config['prev_link'] = 'Prev Page';
+        $config['prev_link'] = '<span class="glyphicon glyphicon-chevron-left"></span>';
         $config['prev_tag_open'] = '<li class="prevlink">';
         $config['prev_tag_close'] = '</li>';
 
-        $config['next_link'] = 'Next Page';
+        $config['next_link'] = '<span class="glyphicon glyphicon-chevron-right"></span>';
         $config['next_tag_open'] = '<li class="nextlink">';
         $config['next_tag_close'] = '</li>';
 

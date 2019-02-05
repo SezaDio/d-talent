@@ -20,7 +20,9 @@ class TalentCVAchievement extends CI_Controller {
 
 	public function index()
 	{
-		$data['page_title'] = "Tambah Prestasi";
+		$data['active'] = 1;
+
+		$data['page_title'] = "Add Achievement";
 		
 		// get data for select
 		$id_talent = $this->session->userdata('id_talent');
@@ -37,9 +39,11 @@ class TalentCVAchievement extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Tambah Prestasi";
+		$data['page_title'] = "Add Achievement";
 
-		$this->form_validation->set_rules('title', '"Judul Prestasi"', 'required');
+		$this->form_validation->set_rules('title', '"Achievement Title"', 'required');
+		$this->form_validation->set_rules('month', '"Month"', 'required');
+		$this->form_validation->set_rules('year', '"Year"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get data for select
@@ -54,7 +58,7 @@ class TalentCVAchievement extends CI_Controller {
 			// save data to db
 			$this->TalentCVAchievementModel->create($id_talent);
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Tambah prestasi berhasil');
+			$this->session->set_flashdata('msg_success', 'Add achievement success');
 
 			// redirect to page ...
 			redirect('talent');
@@ -63,9 +67,11 @@ class TalentCVAchievement extends CI_Controller {
 
 	public function edit($id_talent_cv_achievement)
 	{
+		$data['active'] = 1;
+		
 		$id_talent = $this->session->userdata('id_talent');
 		
-		$data['page_title'] = "Edit Prestasi";
+		$data['page_title'] = "Edit Achievement";
 		$data['cv_achievement'] = $this->TalentCVAchievementModel->edit($id_talent, $id_talent_cv_achievement);
 
 		// get data for select
@@ -82,9 +88,11 @@ class TalentCVAchievement extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Edit Prestasi";
+		$data['page_title'] = "Edit Achievement";
 
-		$this->form_validation->set_rules('title', '"Judul Prestasi"', 'required');
+		$this->form_validation->set_rules('title', '"Achievement Title"', 'required');
+		$this->form_validation->set_rules('month', '"Month"', 'required');
+		$this->form_validation->set_rules('year', '"Year"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function
@@ -96,11 +104,11 @@ class TalentCVAchievement extends CI_Controller {
 			
 			if ($affected) {
 				// add message to session
-				$this->session->set_flashdata('msg_success', 'Edit prestasi berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit achievement success');
 			}
 			else {
 				// add message to session
-				$this->session->set_flashdata('msg_error', 'Edit prestasi gagal');
+				$this->session->set_flashdata('msg_error', 'Edit achievement failed');
 			}
 			// redirect to page ...
 			redirect('talent');
@@ -115,11 +123,11 @@ class TalentCVAchievement extends CI_Controller {
 
 		if ($query) {
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Hapus prestasi berhasil');
+			$this->session->set_flashdata('msg_success', 'Delete achievement success');
 		}
 		else {
 			// add message to session
-			$this->session->set_flashdata('msg_error', 'Hapus prestasi gagal');
+			$this->session->set_flashdata('msg_error', 'Delete achievement failed');
 		}
 		// redirect to page ...
 		redirect('talent');

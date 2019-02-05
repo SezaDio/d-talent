@@ -1,9 +1,12 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/Template Company Profile/css/bootstrap.min.css')?>">
+<!-- summernote -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/plugins/summernote/dist/summernote-bs4.css')?>">
 <div class="container">
 	<div class="row">
 		<div class="col-lg-1"></div>
 
 		<div class="col-lg-10" style="background-color: white; border: solid 1px lightgray; box-shadow: 1px 6px 15px lightgrey; padding: 30px;">
-			<p style="font-size: 1.5em; text-align: center;"><strong><i class="fa fa-plus"></i> Add Job</strong></p>
+			<p style="font-size: 1.5em; text-align: center;"><strong><i class="fa fa-plus"></i> Add Vacancy</strong></p>
 			<hr style="border: solid 1px black;">
 			<form method="post" action="<?php echo site_url('company/job-vacancy/store');?>">
 
@@ -43,10 +46,10 @@
 
                 <!--Role (Posisi)-->
                 <div class="form-group">
-					<label for="exampleInputEmail1"><strong>Role (Posisi)</strong></label>
+					<label for="exampleInputEmail1"><strong>Role (Position)</strong></label>
 					<div class="row">
 						<div class="col-md-12">
-                        	<input placeholder="" style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo set_value('job_role'); ?>">
+                        	<input placeholder="Example : Staff, Manager, etc . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_role" class="form-control" value="<?php echo set_value('job_role'); ?>">
 						</div>
 					</div> 
                 </div>
@@ -72,12 +75,12 @@
 
                 <!--Job Location-->
                 <div class="form-group">
-					<label for="exampleInputEmail1"><strong>Job Location</strong></label>
+					<label for="exampleInputEmail1"><strong>Job Placement</strong></label>
 					<div class="row">
 						<div class="col-md-6">
-							<label>Provinsi</label>
+							<label>Province</label>
                         	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_province_location_id" onchange="ajax_post();" id="lokasi_provinsi" required class="form-control">
-                                <option value="All">--Pilih Lokasi Provinsi--</option>
+                                <option value="All">--Choose Province--</option>
 	                            <?php
 	                                foreach ($lokasiProvinsi as $key=>$provinsi) 
 	                                {
@@ -87,9 +90,9 @@
                             </select>
 						</div>
 						<div class="col-md-6">
-							<label>Kabupaten/Kota</label>
+							<label>City</label>
                         	<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="job_city_location_id" id="lokasi_kota" required class="form-control">
-                                <option value="All">--Pilih Lokasi Kota--</option>
+                                <option value="All">--Choose City--</option>
 	                            <?php
 	                                foreach ($lokasiKabupatenKota as $key=>$kota) 
 	                                {
@@ -103,24 +106,24 @@
                 </div>
 
                 <!--Waktu Pendaftaran-->
-                <label for="exampleInputEmail1"><strong>Waktu Pendaftaran</strong></label>
+                <label for="exampleInputEmail1"><strong>Registration Periode</strong></label>
                 <div class="row">
                 	<div class="col-md-6">
                 		<div class="form-group">
-							<label for="exampleInputEmail1">Mulai</label>
+							<label for="exampleInputEmail1">Start</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker4" placeholder="Tanggal Mulai . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_start" class="form-control" value="<?php echo set_value('job_date_start'); ?>">
+		                        	<input id="datetimepicker4" placeholder="Start Date . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_start" class="form-control" value="<?php echo set_value('job_date_start'); ?>">
 								</div>
 							</div> 
 		                </div>
                 	</div>
                 	<div class="col-md-6">
                 		<div class="form-group">
-							<label for="exampleInputEmail1">Tutup</label>
+							<label for="exampleInputEmail1">End</label>
 							<div class="row">
 								<div class="col-md-8">
-		                        	<input id="datetimepicker5" placeholder="Tanggal Tutup . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_end" class="form-control" value="<?php echo set_value('job_date_end'); ?>">
+		                        	<input id="datetimepicker5" placeholder="End Date . . ." style="width: 100%; border-color: black; background-color: white; color: black;" type="text" required name="job_date_end" class="form-control" value="<?php echo set_value('job_date_end'); ?>">
 								</div>
 							</div> 
 		                </div>
@@ -132,7 +135,7 @@
 					<label for="exampleInputEmail1"><strong>Job Description</strong></label>
 					<div class="row">
 						<div class="col-md-12">
-                        	<textarea style="border-color: black; background-color: white; color: black;" class="form-control" id="about_us" name="job_description" placeholder="Describe the job description, requirement, etc . . ." rows="8" data-error="Write your message" required><?php echo set_value('job_description'); ?></textarea>
+                        	<textarea  id="summernote" name="job_description" required><?php echo set_value('job_description'); ?></textarea>
 						</div>
 					</div> 
                 </div>

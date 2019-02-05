@@ -12,8 +12,8 @@
 
 				<!--Nama, Bidang, dan tombol manage dan see jobs -->
 				<div class="col-md-6" style="padding: 20px;">
-					<p style="font-size: 1.8em; font-family: sans-serif;"><strong>PT Dash Indo Persada</strong></p>
-					<p style="font-size: 1.4em; font-family: sans-serif;">Human Resource Development</p>
+					<p style="font-size: 1.8em; font-family: sans-serif;"><strong>PT Name</strong></p>
+					<p style="font-size: 1.4em; font-family: sans-serif;">HRD Belum dinamis</p>
 				</div>
 			</div>
 			<hr style="border: solid 1px lightgray;">

@@ -20,6 +20,8 @@ class Talent extends CI_Controller {
 
 	public function index()
 	{
+		$data['active'] = 1;
+
 		$id_talent = $this->session->userdata('id_talent');
 
 		$this->load->model('talent_models/TalentModel');
@@ -82,40 +84,10 @@ class Talent extends CI_Controller {
 		$this->load->view('skin/talent/footer');
 	}
 
-	//show result test soft skill page
-	public function show_result_soft_skill($id_talent)
-	{
-		$this->load->model('talent_models/TalentModel');
-
-		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
-		$test_data = array(
-				1 => $data['result_soft_skill']->pengambilan_keputusan,
-				2 => $data['result_soft_skill']->tanggung_jawab,
-				3 => $data['result_soft_skill']->integritas,
-				4 => $data['result_soft_skill']->resiliensi,
-				5 => $data['result_soft_skill']->keinginan_belajar,
-				6 => $data['result_soft_skill']->komunikasi,
-				7 => $data['result_soft_skill']->sikap_positif,
-				8 => $data['result_soft_skill']->antusiasme,
-				9 => $data['result_soft_skill']->kerja_tim,
-				10 => $data['result_soft_skill']->penyelesaian_masalah
-			);
-
-		$this->load->helper('custom');
-		// use function from helper
-		$response = detailSoftSkillResult($test_data);
-
-		$data['sub_title'] = $response['sub_title'];
-		$data['result'] = $response['result_detail'];
-		
-		// redirect to page result soft skill
-		$this->load->view('skin/talent/test_header');
-		$this->load->view('talent/test/soft_skill_result', $data);
-		$this->load->view('skin/talent/test_footer');
-	}
-
 	public function editAccount()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 		$this->load->model('account/UserModel');
 
@@ -152,11 +124,11 @@ class Talent extends CI_Controller {
 			$update = $this->TalentModel->updateAccount($id_talent);
 			if ($update) {
 				// message
-				$this->session->set_flashdata('msg_success', 'Edit akun berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit account success');
 			}
 			else{
 				// message
-				$this->session->set_flashdata('msg_error', 'Edit akun gagal');
+				$this->session->set_flashdata('msg_error', 'Edit account failed');
 			}
 		}
 
@@ -171,31 +143,37 @@ class Talent extends CI_Controller {
 		
 		$id_talent = $this->session->userdata('id_talent');
 
-		$this->form_validation->set_rules('old_password', '"Password Lama"', 'required');
-		$this->form_validation->set_rules('new_password', '"Password Baru"', 'required');
+		$this->form_validation->set_rules('old_password', '"Old Password"', 'required');
+		$this->form_validation->set_rules('new_password', '"New Password"', 'required');
 
 		if($this->form_validation->run() != FALSE) {
 
 			$old_password = $this->input->post('old_password', 'true');
 			$new_password = $this->input->post('new_password','true');
 			// check old password
-			$temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+			$this->load->model('member_models/MemberModels');
+			$idMember = $this->session->userdata('id_member');
+			$loginData = $this->MemberModels->get_member_by_id($idMember);
 
-			if ($temp_account != "") {
+			$checkData = $this->MemberModels->autentikasi($loginData->username, $old_password, false);
+			// $temp_account = $this->TalentModel->checkPassword($id_talent, $old_password)->row();
+
+			if ($checkData) {
 				// update db
-				$update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				// $update = $this->TalentModel->updatePassword($id_talent, $new_password);
+				$update = $this->MemberModels->change_password($loginData->id_member, $new_password);
 				if ($update) {
 					// message
-					$this->session->set_flashdata('msg_success', 'Ubah password berhasil');
+					$this->session->set_flashdata('msg_success', 'Change password success');
 				}
 				else{
 					// message
-					$this->session->set_flashdata('msg_error', 'Ubah password gagal');
+					$this->session->set_flashdata('msg_error', 'Change password failed');
 				}
 			}
 			else{
 				// message
-				$this->session->set_flashdata('msg_error', 'Password lama tidak valid');
+				$this->session->set_flashdata('msg_error', 'Old Password is not valid');
 			}
 		}
 
@@ -205,11 +183,13 @@ class Talent extends CI_Controller {
 
 	public function editProfile()
 	{
+		$data['active'] = 3;
+
 		$this->load->model('talent_models/TalentModel');
 
 		$id_talent = $this->session->userdata('id_talent');
 
-		$data['page_title'] = "Edit Profil";
+		$data['page_title'] = "Edit Profile";
 		$data['talent'] 	= $this->TalentModel->find($id_talent);
 
 		$this->load->view('skin/talent/header', $data);
@@ -242,19 +222,27 @@ class Talent extends CI_Controller {
 			);
 
 			$this->upload->initialize($config_foto_sampul);
+
+			// var_dump($foto_sampul_filename_new);
+			// exit();
+						
 			// if uploaded, delete old file & use new file name
-			if($this->upload->do_upload('foto_sampul')) {
-				if (file_exists($upload_path . $foto_sampul_filename)) {
-					unlink($upload_path . $foto_sampul_filename);
-				}
+			if($this->upload->do_upload('foto_sampul') && $foto_sampul_filename_new!="") {
+				if ($foto_sampul_filename!="" AND $foto_sampul_filename!="black.jpg" AND $foto_sampul_filename!="white.jpg") {
+					if (file_exists($upload_path . $foto_sampul_filename)) {
+						unlink($upload_path . $foto_sampul_filename);
+					}
+				}				
 				$upload_data_sampul = $this->upload->data();
 				$foto_sampul_filename = $upload_data_sampul['file_name'];
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				$this->session->set_flashdata('msg_error', 'Change profile failed, please check file type and file size');
 				redirect('talent/profile/edit/');
 			}
+		}else if($this->input->post('def_foto_sampul')!=""){			
+			$foto_sampul_filename=$this->input->post('def_foto_sampul');
 		}
 		// upload images to path for foto_profil
 		if( !empty($_FILES['foto_profil']['name']) ) {
@@ -270,18 +258,21 @@ class Talent extends CI_Controller {
 			);
 
 			$this->upload->initialize($config_foto_profil);
+
 			// if uploaded, delete old file & use new file name
-			if($this->upload->do_upload('foto_profil')) {
-				if (file_exists($upload_path . $foto_profil_filename)) 
-				{
-					unlink($upload_path . $foto_profil_filename);
-				}
+			if($this->upload->do_upload('foto_profil') && $foto_profil_filename_new!="") {				
+				if ($foto_profil_filename!="") {
+					if (file_exists($upload_path . $foto_profil_filename)) 
+					{
+						unlink($upload_path . $foto_profil_filename);
+					}
+				}			
 				$upload_data_profil = $this->upload->data();
 				$foto_profil_filename = $upload_data_profil['file_name'];
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_error', 'Data profil gagal diubah, cek type file dan ukuran file yang anda upload');
+				$this->session->set_flashdata('msg_error', 'Change profile failed, please check file type and file size');
 				redirect('talent/profile/edit/');
 			}
 		}
@@ -290,11 +281,11 @@ class Talent extends CI_Controller {
 		$update = $this->TalentModel->updateProfile($id_talent, $foto_sampul_filename, $foto_profil_filename);
 		if ($update) {
 			// message
-			$this->session->set_flashdata('msg_success', 'Edit profil berhasil');
+			$this->session->set_flashdata('msg_success', 'Edit profile success');
 		}
 		else{
 			// message
-			$this->session->set_flashdata('msg_error', 'Edit profil gagal');
+			$this->session->set_flashdata('msg_error', 'Edit profile failed');
 		}
 
 		// redirect to page ...
@@ -303,7 +294,9 @@ class Talent extends CI_Controller {
 
 	public function vacancyDetail()
 	{
-		$data['page_title'] = "Detail Lowongan";
+		$data['active'] = 2;
+
+		$data['page_title'] = "Vacancy Job Detail";
 
 		$this->load->view('skin/talent/header', $data);
 		$this->load->view('talent/vacancy-detail');
@@ -321,5 +314,128 @@ class Talent extends CI_Controller {
 		$this->load->view('skin/talent/header', $this->data);
 		$this->load->view('talent/courses/my_courses', $this->data);
 		$this->load->view('skin/talent/footer', $this->data);
+    }
+    
+	//show result test soft skill page
+	public function show_result_soft_skill($id_talent)
+	{
+		$this->load->model('talent_models/TalentModel');
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		$test_data = array(
+				1 => $data['result_soft_skill']->pengambilan_keputusan,
+				2 => $data['result_soft_skill']->tanggung_jawab,
+				3 => $data['result_soft_skill']->integritas,
+				4 => $data['result_soft_skill']->resiliensi,
+				5 => $data['result_soft_skill']->keinginan_belajar,
+				6 => $data['result_soft_skill']->komunikasi,
+				7 => $data['result_soft_skill']->sikap_positif,
+				8 => $data['result_soft_skill']->antusiasme,
+				9 => $data['result_soft_skill']->kerja_tim,
+				10 => $data['result_soft_skill']->penyelesaian_masalah
+			);
+
+		$this->load->helper('custom');
+		// use function from helper
+		$response = detailSoftSkillResult($test_data);
+
+		$data['sub_title'] = $response['sub_title'];
+		$data['result'] = $response['result_detail'];
+		$data['test_type'] = 'result';
+
+		//var_dump($data['sub_title']);
+		//exit();
+
+		// redirect to page result soft skill
+		$this->load->view('skin/talent/test_header', $data);
+		$this->load->view('talent/test/soft_skill_result', $data);
+		$this->load->view('skin/talent/test_footer');
+	}
+
+	public function printTO(){
+		$data = [];
+
+		$this->load->model('talent_models/TalentModel');
+		$id_talent = $this->session->userdata('id_talent');
+		$data['nama'] = $this->session->userdata('nama');
+		$data['email'] = $this->session->userdata('email');
+		$data['nomor_ponsel'] = $this->session->userdata('nomor_ponsel');
+
+		
+		$this->load->helper('custom');
+		$data['result_character'] = $this->TalentModel->findCharacterTest($id_talent);
+		if ($data['result_character'] != null) {
+			// use function from helper
+			$response = detailCharacterResult($data['result_character']->result);
+			$data['result_character_sub_title'] = $response['sub_title'];
+			$data['result_character_detail'] = $response['result_detail'];
+		}
+		$data['result_passion'] = $this->TalentModel->findPassionTest($id_talent);
+		if ($data['result_passion'] != null) {
+			// use function from helper
+			$data['result_passion_detail'] = detailPassionResult($data['result_passion']->result);
+		}
+		$data['result_work_attitude'] = $this->TalentModel->findWorkAttitudeTest($id_talent);
+		if ($data['result_work_attitude'] != null) 
+		{
+			// use function from helper
+			$response = detailWorkAttitudeResult($data['result_work_attitude']->result);
+			$data['result_work_attitude_title'] = $response['sub_title'];
+			$data['result_work_attitude_detail'] = $response['result_detail'];
+		}
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		if ($data['result_soft_skill']!=null) {		
+			$test_data = array(
+					1 => $data['result_soft_skill']->pengambilan_keputusan,
+					2 => $data['result_soft_skill']->tanggung_jawab,
+					3 => $data['result_soft_skill']->integritas,
+					4 => $data['result_soft_skill']->resiliensi,
+					5 => $data['result_soft_skill']->keinginan_belajar,
+					6 => $data['result_soft_skill']->komunikasi,
+					7 => $data['result_soft_skill']->sikap_positif,
+					8 => $data['result_soft_skill']->antusiasme,
+					9 => $data['result_soft_skill']->kerja_tim,
+					10 => $data['result_soft_skill']->penyelesaian_masalah
+				);
+
+			// use function from helper
+			$response = detailSoftSkillResult($test_data);
+
+			$data['sub_title'] = $response['sub_title'];
+			$data['result'] = $response['result_detail'];
+			$data['test_type'] = 'result';		
+		}
+
+        //load the view and saved it into $html variable
+        $html=$this->load->view('talent/printTest/konten', $data, true);
+ 
+        //this the the PDF filename that user will get to download
+        $pdfFilePath = "ResultTest_".$data['nama'].".pdf"; 		
+
+        //load mPDF library
+        $this->load->library('m_pdf');
+       	$this->m_pdf->pdf->useOddEven = 1;
+ 		$this->m_pdf->pdf->setHTMLFooter('<footer style="z-index:-1;background-color: #e6e6e6;width: 100%;height: 80px;"></footer>');
+       	//generate the PDF from the given html       	
+       	$this->m_pdf->pdf->SetWatermarkImage(
+		   	base_url('asset/img/hasil_cetak/PNG')."/Body.png", 
+		    1,
+		    '' 
+		);
+		$this->m_pdf->pdf->showWatermarkImage = true;		
+        // $this->m_pdf->pdf->WriteHTML();
+        // $this->m_pdf->pdf->AddPage('', // L - landscape, P - portrait 
+        // '', '', '', '',
+        // 0, // margin_left
+        // 0, // margin right
+       	// 0, // margin top
+       	// 30, // margin bottom
+        // 0, // margin header
+        // 0); // margin footer
+    	$this->m_pdf->pdf->WriteHTML($html);
+ 
+        //download it.
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");
 	}
 }

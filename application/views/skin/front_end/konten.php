@@ -17,11 +17,10 @@
 				<div class="carousel-inner " role="listbox" >
 				  <!-- Slide One - Set the background image for this slide in the line below -->
 				  <?php foreach($listSlider as $key => $slider){ ?>
-				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>)">
-					<div class="carousel-caption d-none d-md-block">
-					  <h3><?php //echo $slider['judul_slider'];?></h3>
-					  <p><?php //echo $slider['deskripsi'];?></p>
-					</div>
+				  <div class="carousel-item <?php echo ($key==0 ? 'active' : ''); ?>" style="background-image: url(<?php echo base_url('asset/img/upload_img_slider/'.$slider['path_gambar'])?>); height: 100vh;">
+  					<?php if ($slider['extradata']!=""): ?>
+              <?php echo $slider['extradata']; ?>
+            <?php endif ?>
 				  </div>
 				  <?php } ?>
 				  
@@ -88,27 +87,35 @@
         </div>
 
         <div class="row">
+          <div class="col-md-12" style="text-align: center; margin-bottom: 20px;">
+            <h5 data-wow-duration="1000ms" data-wow-delay="0.3s" style="font-size: 25px;">Sign in as:</h5>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-md-1"></div>
 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
-              <a href="<?php echo site_url('AccountTalent/login/'); ?>"> 
-                <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+              <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-user-tie" style="font-size: 30px;line-height: 80px;"></i>
-                </div>
+              </div>
+              <a href="<?php echo site_url('AccountTalent/login/'); ?>" style="display: block;">
+                <h4 class="btn btn-common">Talent</h4>
               </a>
-              <h4>Talent</h4>
+              
               <!--<p>on recruitment, company only pay assessment cost</p>-->
               </div>
           </div> 
           <div class="col-md-5 col-sm-6 col-xs-6">
             <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
-              <a href="<?php echo site_url('AccountCompany/login/'); ?>">
-                <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
+              <div class="icon" style="margin-bottom: 12px;width: 80px;height: 80px;border-radius:40px">
                   <i class="fa fa-building" style="font-size: 30px;line-height: 80px;"></i>
-                </div>
+              </div>
+              <a href="<?php echo site_url('AccountCompany/login/'); ?>" style="display: block;">
+                <h4 class="btn btn-common">Company</h4>
               </a>
-              <h4>Company</h4>
+              
               <!--<p>due to data base availability</p>-->
             </div>
           </div>
@@ -177,7 +184,7 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-md-4" style="text-align: center; padding-bottom: 20px;">
-                <img class="img-fulid" src="<?php echo base_url('asset/img/Company.png'); ?>" alt="">
+                <img class="img-fulid" src="<?php echo base_url('asset/img/IconCompany.png'); ?>" alt="">
               </div>
               <div class="col-md-8">
                 <ul style="list-style-type: square;">
@@ -200,7 +207,7 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-md-4" style="text-align: center; padding-bottom: 20px;">
-                <img class="img-fulid" src="<?php echo base_url('asset/img/Talent.png'); ?>" alt="">
+                <img class="img-fulid" src="<?php echo base_url('asset/img/IconTalent.png'); ?>" alt="">
               </div>
               <div class="col-md-8">
                 <ul>
@@ -255,13 +262,14 @@
           <div class="row">
             <div class="col-md-12">
               <a id="company-button" href="javascript:void(0)" class="btn btn-common">COMPANY</a>
-              <a id="jobseeker-button" href="javascript:void(0)" class="btn btn-common">JOBSEEKER</a>
+              <a id="jobseeker-button" href="javascript:void(0)" class="btn btn-common">TALENT</a>
             </div>
           </div>
         </div>
 
         <!--Harga membership company-->
         <div class="row pricing-tables" id="company-membership-content">
+          <div class="col-md-4"></div>
           <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 10px;">
             <div class="pricing-table" style="height: 100%;">
               <div class="pricing-details">
@@ -274,6 +282,8 @@
               </div>
             </div>
           </div>
+          <div class="col-md-4"></div>
+          <!--
           <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 10px;">
             <div class="pricing-table" style="height: 100%;">
               <div class="pricing-details">
@@ -287,7 +297,7 @@
               <div class="col-md-12">
                 <div class="plan-button">
                   <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                </div>
+                <!--</div>
               </div>
             </div>
           </div>
@@ -304,10 +314,10 @@
               <div class="col-md-12">
                 <div class="plan-button">
                   <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                </div>
+               <!-- </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!--Harga membership jobseeker-->
@@ -337,7 +347,8 @@
             </div>
             <div class="col-md-2"></div>
           </div>
-
+         
+         <!--
           <div class="row pricing-tables">
             <div class="col-md-3 col-sm-6 col-xs-12" style="padding-top: 10px;">
               <div class="pricing-table" style="height: 100%;">
@@ -355,7 +366,7 @@
                 <div class="col-md-12">
                   <div class="plan-button">
                     <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                  </div>
+                  <!--</div>
                 </div>
               </div>
             </div>
@@ -375,7 +386,7 @@
                 </div>
                 <div class="plan-button">
                   <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                </div>
+                <!--</div>
               </div>
             </div>
   		  
@@ -394,7 +405,7 @@
                 </div>
                 <div class="plan-button">
                   <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                </div>
+                <!--</div>
               </div>
             </div>
   		  
@@ -413,16 +424,17 @@
                 
                 <div class="plan-button">
                   <!--<a href="#" class="btn btn-common">Buy Now</a>-->
-                </div>
+                <!--</div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
     <!-- End Pricing Table Section -->
 
     <!-- Counter Section Start -->
+    <!--
     <div class="counters section" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row"> 
@@ -473,6 +485,7 @@
         </div>
       </div>
     </div>
+    -->
     <!-- Counter Section End -->
 
     <!-- testimonial Section Start -->
@@ -521,22 +534,21 @@
           <div class="row">     
             <div class="col-lg-6 col-sm-6 col-xs-12">
               <div class="contact-us">
-                <h3>Contact With us</h3>
+                <h3>Contact us</h3>
                 <div class="contact-address">
                   <p>Ruko Mulawarman Selatan Raya No. 118 A <br>Tembalang, Semarang </p>
-                  <p class="phone">Phone: <span>(0812-3921-2006)</span></p>
+                  <p class="phone">Phone: <span>(081-2222-3781)</span></p>
                   <p class="email">E-mail: <span>(company.service@d-talent.id)</span></p>
                 </div>
-                <!--
-                <div class="social-icons">
+                
+                <div class="social-icons" style="margin-top: 15px;">
                   <ul>
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li class=""><a href="#" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/facebook.png"></a></li>
+                    <li class=""><a href="https://twitter.com/dtalent_id" target="_blank" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/twitter.png"></a></li>                                        
+                    <li class=""><a href="https://instagram.com/dtalent.id" target="_blank" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/instagram.png"></a></li>
+                    <li class=""><a href="#" style="background-color: unset;"><img style="width: 30px;" src="<?php echo base_url('asset/img/sosmed');?>/line.png"></a></li>
                   </ul>
-                </div> -->
+                </div> 
               </div>
             </div>     
             <div class="col-lg-6 col-sm-6 col-xs-12">

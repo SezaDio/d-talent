@@ -8,9 +8,13 @@ class CompanyMember extends CI_Controller
 		parent::__construct();
 
 		// check user's auth
-		$id_company = $this->session->userdata('id_company');
-		if ($id_company == "") {
-			redirect( site_url('AccountCompany') );
+		$method = $this->router->fetch_method();  
+
+		if ($method!="update_notif_accept" && $method !="update_notif_decline") {			
+			$id_company = $this->session->userdata('id_company');
+			if ($id_company == "") {
+				redirect( site_url('AccountCompany') );
+			}
 		}
 
 		$this->load->helper('url');
@@ -29,6 +33,9 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman Company Member awal setelah company login
 	public function index()
 	{
+
+		$data['active'] = 0;
+
 		$id_company = $this->session->userdata('id_company');
 		$this->load->model('company_member_models/CompanyOverviewModel');
 
@@ -41,7 +48,7 @@ class CompanyMember extends CI_Controller
 		$data['company_updates'] = $this->CompanyUpdatesModel->get_limit($id_company, 5);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_member_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -49,6 +56,8 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Update)
 	public function updates_page()
 	{
+		// $data['active'] = 0;
+
 		$id_company = $this->session->userdata('id_company');
 
 		$company_name = $this->session->userdata('company_name');
@@ -122,6 +131,8 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail artikel
 	public function detail_updates($id_company_update)
 	{
+		//$data['active'] = 2;
+
 		$id_company = $this->session->userdata('id_company');
 		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
@@ -129,7 +140,7 @@ class CompanyMember extends CI_Controller
 		$data['company_name'] = $company_name;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_updates_page_detail', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -137,11 +148,14 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit artikel
 	public function edit_updates($id_company_update)
 	{
+
+		//$data['active'] = 2;
+
 		$id_company = $this->session->userdata('id_company');
 		$data['company_update'] = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_updates_page_edit', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -149,6 +163,7 @@ class CompanyMember extends CI_Controller
 	// Meng-update artikel
 	public function update_updates($id_company_update)
 	{
+
 		$this->load->library('upload');
 	
 		$id_company = $this->session->userdata('id_company');
@@ -199,6 +214,7 @@ class CompanyMember extends CI_Controller
 	// Manghapus artikel
 	public function delete_updates($id_company_update)
 	{
+
 		$id_company = $this->session->userdata('id_company');
 		$company_update = $this->CompanyUpdatesModel->edit($id_company, $id_company_update);
 		$query = $this->CompanyUpdatesModel->delete($id_company, $id_company_update);
@@ -225,6 +241,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Update)
 	public function overview_page()
 	{
+		
+		$data['active'] = 1;
+
 		$this->load->model('company_member_models/CompanyOverviewModel');
 		$id_company = $this->session->userdata('id_company');
 
@@ -237,7 +256,7 @@ class CompanyMember extends CI_Controller
 		$data['bidang_usaha']= $this->get_business_field();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_overview_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -284,7 +303,10 @@ class CompanyMember extends CI_Controller
 
 	//Fungsi melakukan update data company pada database
 	public function update_data_company() 
-	{	
+	{		
+
+		$data['active'] = 1;
+
 		$id_company = $this->input->post('id_company');
 
 		$data['company_type']= $this->get_company_type();
@@ -370,7 +392,7 @@ class CompanyMember extends CI_Controller
 
 			$data['idCompany'] = $id_company;
 			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('skin/front_end/navbar_company_page', $data);
 			$this->load->view('content_front_end/company_overview_page', $data);
 			$this->load->view('skin/front_end/footer_company_page');
 		//} 
@@ -383,6 +405,9 @@ class CompanyMember extends CI_Controller
 	// menyimpan update data company cover picture
 	public function update_company_cover()
 	{
+
+			$data['active'] = 1;
+
 			$this->load->model('company_member_models/CompanyUpdatesModel');
 			$this->load->library('form_validation');
 
@@ -453,7 +478,7 @@ class CompanyMember extends CI_Controller
 
 			$data['idCompany'] = $id_company;
 			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('skin/front_end/navbar_company_page', $data);
 			$this->load->view('content_front_end/company_overview_page', $data);
 			$this->load->view('skin/front_end/footer_company_page');
 		
@@ -462,7 +487,9 @@ class CompanyMember extends CI_Controller
 	// menyimpan update data company cover picture
 	public function update_company_logo()
 	{
-			
+
+			$data['active'] = 1;
+
 			$this->load->model('company_member_models/CompanyUpdatesModel');
 			$this->load->library('form_validation');
 
@@ -533,7 +560,7 @@ class CompanyMember extends CI_Controller
 
 			$data['idCompany'] = $id_company;
 			$this->load->view('skin/front_end/header_company_page_topbar');
-			$this->load->view('skin/front_end/navbar_company_page');
+			$this->load->view('skin/front_end/navbar_company_page', $data);
 			$this->load->view('content_front_end/company_overview_page', $data);
 			$this->load->view('skin/front_end/footer_company_page');
 		
@@ -542,6 +569,9 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Menu Jobs)
 	public function jobs_page()
 	{
+
+		$data['active'] = 2;
+
 		$id_company = $this->session->userdata('id_company');
 
 		$data['company_name'] = $this->session->userdata('company_name');
@@ -562,13 +592,15 @@ class CompanyMember extends CI_Controller
 		$data['links'] = $this->custom_pagination($base_url, $uri_segment, $limit_per_page, $total_rows);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobs_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan category
 	public function filter_job($category)
 	{
+		$data['active'] = 2;
+
 		$id_company = $this->session->userdata('id_company');
 
 		$data['company_name'] = $this->session->userdata('company_name');
@@ -599,13 +631,16 @@ class CompanyMember extends CI_Controller
 		}
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobs_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 	//Menampilkan halaman Company Member (Menu Jobs) berdasarkan search
 	public function search_job()
 	{
+
+		$data['active'] = 2;
+
 		$id_company = $this->session->userdata('id_company');
 
 		$data['company_name'] = $this->session->userdata('company_name');
@@ -645,7 +680,7 @@ class CompanyMember extends CI_Controller
 		$data['keyword'] = $keyword;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobs_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -653,8 +688,10 @@ class CompanyMember extends CI_Controller
 	//Menampilkan halaman Company Member (Add Jobs)
 	public function add_jobs_page()
 	{
+		$data['active'] = 2;
+
 		$this->load->model('account/UserModel');
-		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi();
+		$data['lokasiProvinsi'] = $this->UserModel->lokasi_provinsi_job();
 
 		// get job category list
 		$data['job_category'] = $this->get_job_category_list();
@@ -662,7 +699,7 @@ class CompanyMember extends CI_Controller
 		$data['job_type'] 	  = $this->get_job_type_list();
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_add_jobs_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 
@@ -707,6 +744,9 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman detail lowongan kerja
 	public function detail_job($id_job)
 	{
+
+		$data['active'] = 2;
+
 		$this->load->model('account/UserModel');
 
 		$id_company = $this->session->userdata('id_company');
@@ -723,7 +763,7 @@ class CompanyMember extends CI_Controller
 		$data['job_type'] = $job_types[$data['company_job']->job_type];
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobs_page_detail', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -731,6 +771,9 @@ class CompanyMember extends CI_Controller
 	// Menampilkan halaman edit lowongan kerja
 	public function edit_job($id_job)
 	{
+
+		$data['active'] = 2;
+
 		$this->load->model('account/UserModel');
 		$array_province = $this->UserModel->lokasi_provinsi();
 		$data['lokasiProvinsi'] = $array_province;
@@ -753,7 +796,7 @@ class CompanyMember extends CI_Controller
 		$data['company_job_cities'] = $this->UserModel->lokasi_kabupaten_kota($id_province);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobs_page_edit', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -771,6 +814,7 @@ class CompanyMember extends CI_Controller
 	// Meng-update lowongan kerja
 	public function update_job($id_job)
 	{
+
 		$id_company = $this->session->userdata('id_company');
 
 		$this->form_validation->set_rules('job_title', '"Job Title"', 'required');
@@ -807,6 +851,7 @@ class CompanyMember extends CI_Controller
 	// Manghapus lowongan kerja
 	public function delete_job($id_job)
 	{
+
 		$id_company = $this->session->userdata('id_company');
 		$query = $this->CompanyJobVacancyModel->delete($id_company, $id_job);
 
@@ -902,6 +947,9 @@ class CompanyMember extends CI_Controller
 	//Fungsi melakukan update data company pada database
 	public function jobseeker_detail_page($id_talent) 
 	{
+
+		$data['active'] = 3;
+
 		$id_company = $this->session->userdata('id_company');
 
 		if ($id_company == null) {
@@ -935,7 +983,7 @@ class CompanyMember extends CI_Controller
 		$data['talent_location_city'] = $this->db->get()->row()->lokasi_nama;
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_jobseeker_detail_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');		
 	}
@@ -943,6 +991,7 @@ class CompanyMember extends CI_Controller
 	//Function Send Invitation Message
 	function invitation_message ()
 	{
+
 		$data_job_notification = array(
 						   'id_talent'=>$this->input->post('id_talent'),
 						   'id_company'=>$this->input->post('id_company'),
@@ -1016,18 +1065,18 @@ class CompanyMember extends CI_Controller
    	function kirim_email($sub, $msg, $email) 
    	{
       $config['protocol'] = 'smtp';
-      $config['smtp_host'] = 'mail.d-talentsolution.id'; //change this
-      $config['smtp_port'] = '465';
-      $config['smtp_user'] = 'hello@d-talentsolution.id'; //change this
+      $config['smtp_host'] = 'mail.dtalent.id'; //change this
+      $config['smtp_port'] = '587';
+      $config['smtp_user'] = 'hello@dtalent.id'; //change this
       $config['smtp_pass'] = 'd-TalentInfo'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
-      $config['smtp_crypto'] = 'ssl';
+      $config['smtp_crypto'] = 'tls';
       $config['wordwrap'] = TRUE;
       $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
       $this->load->library('email'); // load email library
       $this->email->initialize($config);
-      $this->email->from('hello@d-talentsolution.id', 'd-talentsolution.id');
+      $this->email->from('hello@dtalent.id', 'dtalent.id');
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
@@ -1045,12 +1094,15 @@ class CompanyMember extends CI_Controller
 	/* Job Notification */
 	public function notification_page()
 	{
+
+		$data['active'] = 4;
+
 		$id_company = $this->session->userdata('id_company');
 
 		$data['job_notifications'] = $this->CompanyNotificationModel->get_all($id_company);
 
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_notification_page', $data);
 		$this->load->view('skin/front_end/footer_company_page');
 	}
@@ -1058,14 +1110,20 @@ class CompanyMember extends CI_Controller
 	/* Menampilkan Halaman Ubah Password */
 	public function editPassword()
 	{
+		
+
+		$data['active'] = 9;
+
 		$this->load->view('skin/front_end/header_company_page_topbar');
-		$this->load->view('skin/front_end/navbar_company_page');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
 		$this->load->view('content_front_end/company_password_page');
 		$this->load->view('skin/front_end/footer_company_page');
 	}
 
 	public function updatePassword()
 	{
+		
+
 		$this->load->library('form_validation');
 		
 		$id_company = $this->session->userdata('id_company');
@@ -1080,18 +1138,15 @@ class CompanyMember extends CI_Controller
 			$old_password = $this->input->post('old_password', 'true');
 			$new_password = $this->input->post('new_password','true');
 			// check old password
-			$this->db->select('*');
-			$this->db->from('company');
-			$this->db->where('id_company', $id_company);
-			$this->db->where('password', md5($old_password));
-			$temp_account = $this->db->get()->row();
+			$this->load->model('member_models/MemberModels');
+			$idMember = $this->session->userdata('id_member');
+			$loginData = $this->MemberModels->get_member_by_id($idMember);
 
-			if ($temp_account != "") {
+			$checkData = $this->MemberModels->autentikasi($loginData->username, $old_password, false);
+
+			if ($checkData) {
 				// update db
-				$password = md5($new_password);
-				$data 	  = array('password' => $password);
-				$this->db->where('id_company', $id_company);
-				$update = $this->db->update('company', $data);
+				$update = $this->MemberModels->change_password($loginData->id_member, $new_password);
 
 				if ($update) {
 					// message
@@ -1112,5 +1167,47 @@ class CompanyMember extends CI_Controller
 
 		// redirect to page ...
 		redirect('CompanyMember/index');
+	}
+
+	//show result test soft skill page
+	public function show_result_soft_skill($id_talent)
+	{
+		$data['active'] = 3;
+
+		// check user's auth
+		$id_company = $this->session->userdata('id_company');
+		if ($id_company == "") {
+			redirect( site_url('AccountCompany') );
+		}
+		
+		$this->load->model('talent_models/TalentModel');
+
+		$data['result_soft_skill'] = $this->TalentModel->select_soft($id_talent)->row();
+		$test_data = array(
+				1 => $data['result_soft_skill']->pengambilan_keputusan,
+				2 => $data['result_soft_skill']->tanggung_jawab,
+				3 => $data['result_soft_skill']->integritas,
+				4 => $data['result_soft_skill']->resiliensi,
+				5 => $data['result_soft_skill']->keinginan_belajar,
+				6 => $data['result_soft_skill']->komunikasi,
+				7 => $data['result_soft_skill']->sikap_positif,
+				8 => $data['result_soft_skill']->antusiasme,
+				9 => $data['result_soft_skill']->kerja_tim,
+				10 => $data['result_soft_skill']->penyelesaian_masalah
+			);
+
+		$this->load->helper('custom');
+		// use function from helper
+		$response = detailSoftSkillResult($test_data);
+
+		$data['sub_title'] = $response['sub_title'];
+		$data['result'] = $response['result_detail'];
+		$data['test_type'] = 'result';
+		
+		// redirect to page result soft skill
+		$this->load->view('skin/front_end/header_company_page_topbar');
+		$this->load->view('skin/front_end/navbar_company_page', $data);
+		$this->load->view('talent/test/soft_skill_result_company_view', $data);
+		$this->load->view('skin/front_end/footer_company_page');
 	}
 }

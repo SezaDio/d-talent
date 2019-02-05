@@ -84,10 +84,10 @@
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="cv">
-								    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>"><i class="fa fa-suitcase"></i> Pengalaman Kerja</a></li>
-								    <li><a href="<?php echo site_url('talent/cv-education/create');?>"><i class="fa fa-graduation-cap"></i> Pendidikan</a></li>
-								    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>"><i class="fa fa-trophy"></i> Prestasi</a></li>
-								    <li><a href="<?php echo site_url('talent/cv-course/create');?>"><i class="fa fa-certificate"></i> Pelatihan</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-work-experience/create');?>"><i class="fa fa-suitcase"></i> Work Experience</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-education/create');?>"><i class="fa fa-graduation-cap"></i> Education</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-achievement/create');?>"><i class="fa fa-trophy"></i> Achievement</a></li>
+								    <li><a href="<?php echo site_url('talent/cv-course/create');?>"><i class="fa fa-certificate"></i> Course</a></li>
 								  </ul>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 				?>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-suitcase"></i> Pengalaman Kerja</h3>
+				    <h3><i class="fa fa-suitcase"></i> Work Experience</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -146,7 +146,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-graduation-cap"></i> Pendidikan</h3>
+				    <h3><i class="fa fa-graduation-cap"></i> Education</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -191,7 +191,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-trophy"></i> Prestasi</h3>
+				    <h3><i class="fa fa-trophy"></i> Achievement</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -229,7 +229,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-certificate"></i> Pelatihan</h3>
+				    <h3><i class="fa fa-certificate"></i> Course</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -267,7 +267,18 @@
 				<br>
 				<div class="card online-test" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-file"></i> Tes Online</h3>
+				  	<div class="row">
+				  		<div class="col-md-6">
+				  			<h3 style="margin-top: 8px;"><i class="fa fa-file"></i> Online Test</h3>		
+				  		</div>
+				  		<div class="col-md-6">
+				  			<a href="<?php echo site_url('Talent/printTO');?>">
+			    				<button style="width: 150px; padding: 5px;" type="button" class="button button1 pull-right"> Print Online Test</button>
+			    			</a>
+				  		</div>				  		
+				  	</div>
+				    
+				    
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -276,7 +287,7 @@
 				?>
 				    	<tr>
 				    		<td class="periode">
-				    			Tes Karakter
+				    			Character Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_character->test_date);
@@ -298,7 +309,7 @@
 				?>
 						<tr>
 				    		<td class="periode">
-				    			Tes Minat dan Bakat
+				    			Passion and Interest Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_passion->test_date);
@@ -319,7 +330,7 @@
 				?>
 						<tr>
 				    		<td class="periode">
-				    			Tes Work Attitude
+				    			Work Attitude Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_work_attitude->test_date);
@@ -344,7 +355,7 @@
 						{ ?>
 							<tr>
 					    		<td class="periode">
-					    			Tes Soft Skill
+					    			Soft Skill Test
 					    			<br>
 					    			<?php
 					    				echo displayDate($item['test_date']);
@@ -356,59 +367,59 @@
 					    				{ ?>
 					    					<table style="border: none;">
 						    					<tr>
-						    						<td>Pengambilan Keputusan</td>
+						    						<td>Decision Making</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['pengambilan_keputusan']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Tanggung Jawab</td>
+						    						<td>Responsibility</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['pengambilan_keputusan']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Integritas</td>
+						    						<td>Integrity</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['integritas']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Resiliensi</td>
+						    						<td>Resilience</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['resiliensi']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Keinginan Belajar</td>
+						    						<td>Learning</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['keinginan_belajar']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Komunikasi</td>
+						    						<td>Communication</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['komunikasi']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Sikap Positif</td>
+						    						<td>Good Attitude</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['sikap_positif']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Antusiasme</td>
+						    						<td>Antusiasm</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['antusiasme']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Kerja Tim</td>
+						    						<td>Team Work</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['kerja_tim']; ?></td>
 						    					</tr>
 						    					<tr>
-						    						<td>Penyelesaian Masalah</td>
+						    						<td>Problem Solving</td>
 						    						<td>:</td>
 						    						<td><?php echo $item['penyelesaian_masalah']; ?></td>
 						    					</tr>
 						    				</table>
 					    		  <?php } ?>
 					    			<a href="<?php echo site_url('Talent/show_result_soft_skill/'.$item['id_talent']);?>">
-					    				<button style="width: 200px;" type="button" class="button button1"><i class="fa fa-eye"></i> Lihat Detail</button>
+					    				<button style="width: 200px;" type="button" class="button button1"><i class="fa fa-eye"></i> View Detail</button>
 					    			</a>
 					    		</td>
 					    	</tr>	
@@ -435,10 +446,10 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Hapus</h4>
+				<h4 class="modal-title">Delete</h4>
 			</div>
 			<div class="modal-body">
-				<p>Apakah Anda yakin?</p>
+				<p>Are you sure?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-outline-default" data-dismiss="modal">Cancel</button>
@@ -473,9 +484,3 @@
         $(this).find('a').attr('href', route);
     });
 </script>
-<!-- 
-<div class="container">
-	<br>
-	<br>
-	<a href="http://preview.uideck.com/items/mate/" target="_blank">http://preview.uideck.com/items/mate/</a>
-</div> -->

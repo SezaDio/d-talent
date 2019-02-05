@@ -146,30 +146,30 @@ function displaySkills($string)
 function displayGender($gender)
 {
     if ($gender == 0) {
-        return "Perempuan";
+        return "Female";
     }
     else{
-        return "Laki-laki";
+        return "Male";
     }
 }
 
 function displayMaritalStatus($status)
 {
     if ($status == 0) {
-        return "Belum menikah";
+        return "Single";
     }
     else{
-        return "Sudah menikah";
+        return "Married";
     }
 }
 
 function displayCompanyUpdateStatus($status)
 {
     if ($status == 0) {
-        return "Konsep";
+        return "Draft";
     }
     else{
-        return "Terbit";
+        return "Published";
     }
 }
 
@@ -202,16 +202,16 @@ function displayNotificatioonStatus($status)
     //  1 accept, 2 decline, 3 expired, 0 menunggu
     switch ($status) {
         case 0:           
-            return '<span class="label label-info">Menunggu</span>';
+            return '<span class="label label-info">Pending</span>';
             break;
         case 1:           
-            return '<span class="label label-success">Menerima</span>';
+            return '<span class="label label-success">Accept</span>';
             break;
         case 2:           
-            return '<span class="label label-danger">Menolak</span>';
+            return '<span class="label label-danger">Decline</span>';
             break;
         case 3:           
-            return '<span class="label label-warning">Kadaluarsa</span>';
+            return '<span class="label label-warning">Expired</span>';
             break;
         
         default:
@@ -769,4 +769,50 @@ function detailSoftSkillResult($test_result)
     $response['result_detail'] = $result_detail;
 
     return $response;
+}
+
+function displayTestHint($test)
+{
+    // display hint by test type
+    switch ($test) {
+        case 'character':
+            return '
+            Di dalam lembar soal terdapat pertanyaan dan dua pilihan jawaban. Pilih jawaban yang 
+            paling menggambarkan kondisi Anda.
+            <br>
+            <b>Tidak ada jawaban yang benar dan salah</b>';
+            break;
+        case 'passion':
+            return '
+            Di dalam lembar soal terdapat pernyataan dan dua pilihan jawaban: <b>Sesuai</b> dan
+            <b>Tidak Sesuai</b>. Pilih jawaban yang paling menggambarkan kondisi Anda.
+            <b>Tidak ada jawaban yang benar dan salah</b>.
+            ';
+            break;
+        case 'soft_skill':
+            return '
+            Anda akan mendapatkan 40 pernyataan yang terdiri dari 20 pernyataan
+            <b>Tes Intrapersonal Skill</b> dan 20 pernyataan <b>Tes Interpersonal Skill</b>.
+            Terdapat 5 pilihan jawaban pada setiap soal yaitu <b>Sangat Sesuai</b>,
+            <b>Sesuai</b>, <b>Netral</b>, <b>Tidak Sesuai</b>, dan <b>Sangat Tidak Sesuai</b>.
+            Pilihlah jawaban yang paling mendekati diri Anda. Tidak ada pilihan yang benar dan salah.
+            ';
+            break;
+        case 'work_attitude':
+            return '
+            <p>
+                Soal psikotes sikap kerja terdapat 30 soal menggunakan skala likert dengan
+                lima pilihan jawaban, <b>sangat sesuai</b>, <b>sesuai</b>, <b>netral</b>,
+                <b>tidak sesuai</b>, dan <b>sangat tidak sesuai</b>.
+            </p>
+            <p>
+                Psikotes ini bertujuan untuk melihat sikap kerja Anda di perusahaan tempat Anda bekerja. <b>Bacalah setiap kalimat pernyataan dengan teliti</b>. Tugas Anda adalah memilih salah satu jawaban yang paling sesuai dengan keadaan diri Anda. Tidak ada jawaban yang benar dan salah.
+            </p>
+            ';
+            break;
+        
+        default:
+            return '';
+            break;
+    }
 }

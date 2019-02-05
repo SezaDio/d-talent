@@ -18,7 +18,9 @@ class TalentCVWork extends CI_Controller {
 
 	public function index()
 	{
-		$data['page_title'] = "Tambah Pengalaman Kerja";
+		$data['active'] = 1;
+
+		$data['page_title'] = "Add Work Experience";
 
 		// get location's name
 		$this->db->select('lokasi_ID, lokasi_nama');
@@ -38,10 +40,12 @@ class TalentCVWork extends CI_Controller {
 	{
 		$id_talent = $this->session->userdata('id_talent');
 		// used for if form not valid
-		$data['page_title'] = "Tambah Pengalaman Kerja";
+		$data['page_title'] = "Add Work Experience";
 
-		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
-		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
+		$this->form_validation->set_rules('position', '"Position"', 'required');
+		$this->form_validation->set_rules('company', '"Company"', 'required');
+		$this->form_validation->set_rules('work_start', '"From"', 'required');
+		$this->form_validation->set_rules('work_end', '"To"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// get location's name
@@ -62,7 +66,7 @@ class TalentCVWork extends CI_Controller {
 			// save data to db
 			$this->TalentCVWorkModel->create_talent_cv_work($id_talent);
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Tambah pengalaman kerja berhasil');
+			$this->session->set_flashdata('msg_success', 'Add work experience success');
 
 			// redirect to page ...
 			redirect('talent');
@@ -71,9 +75,11 @@ class TalentCVWork extends CI_Controller {
 
 	public function edit($id_talent_cv_work)
 	{
+		$data['active'] = 1;
+		
 		$id_talent = $this->session->userdata('id_talent');
 
-		$data['page_title'] = "Edit Pengalaman Kerja";
+		$data['page_title'] = "Edit Add Experience";
 		$data['cv_work'] 	= $this->TalentCVWorkModel->edit_talent_cv_work($id_talent, $id_talent_cv_work);
 
 		// get location's name
@@ -95,10 +101,12 @@ class TalentCVWork extends CI_Controller {
 		$id_talent = $this->session->userdata('id_talent');
 
 		// used for if form not valid
-		$data['page_title'] = "Edit Pengalaman Kerja";
+		$data['page_title'] = "Edit Add Experience";
 
-		$this->form_validation->set_rules('position', '"Jabatan"', 'required');
-		$this->form_validation->set_rules('company', '"Perusahaan"', 'required');
+		$this->form_validation->set_rules('position', '"Position"', 'required');
+		$this->form_validation->set_rules('company', '"Company"', 'required');
+		$this->form_validation->set_rules('work_start', '"From"', 'required');
+		$this->form_validation->set_rules('work_end', '"To"', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			// redirect to function
@@ -110,11 +118,11 @@ class TalentCVWork extends CI_Controller {
 			
 			if ($affected) {
 				// add message to session
-				$this->session->set_flashdata('msg_success', 'Edit pengalaman kerja berhasil');
+				$this->session->set_flashdata('msg_success', 'Edit add experience success');
 			}
 			else {
 				// add message to session
-				$this->session->set_flashdata('msg_error', 'Edit pengalaman kerja gagal');
+				$this->session->set_flashdata('msg_error', 'Edit add experience failed');
 			}
 			// redirect to page ...
 			redirect('talent');
@@ -129,11 +137,11 @@ class TalentCVWork extends CI_Controller {
 
 		if ($query) {
 			// add message to session
-			$this->session->set_flashdata('msg_success', 'Hapus pengalaman kerja berhasil');
+			$this->session->set_flashdata('msg_success', 'Delete add experience success');
 		}
 		else {
 			// add message to session
-			$this->session->set_flashdata('msg_error', 'Hapus pengalaman kerja gagal');
+			$this->session->set_flashdata('msg_error', 'Delete add experience failed');
 		}
 		// redirect to page ...
 		redirect('talent');

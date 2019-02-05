@@ -11,7 +11,7 @@
 						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<div class="dropdown dropdown-category">
 								<button class="button button1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-list"></i> Job Category
+									<i class="fa fa-list"></i> Vacancy Category
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="height: 300px; overflow: auto;">
 									<a href="<?php echo site_url('company/job-vacancy')?>" class="dropdown-item">- All -</a>
@@ -25,21 +25,21 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2" style="text-align: center; padding: 5px;">
+						<div class="col-md-3" style="text-align: center; padding: 5px;">
 							<a href="<?php echo site_url('CompanyMember/add_jobs_page'); ?>">
 								<button class="button button2" type="button">
-									<i class="fa fa-plus"></i> Add Job
+									<i class="fa fa-plus"></i> Add Vacancy
 								</button>
 							</a>
 						</div>
-						<div class="col-md-4"></div>
+						<div class="col-md-3"></div>
 						<div class="col-md-3" style="text-align: center; padding: 7px;">
 							<form action="<?php echo site_url('company/job-vacancy/search'); ?>" method="post">
 								<div class="input-group">
 									<button type="submit" class="input-group-addon" style="background-color: black; color: white;">
 										<i class="fa fa-search"></i>
 									</button>
-									<input style=" border-color: black; background-color: white; color: black;" type="text" class="form-control" name="keyword" placeholder="Search Job . . ." required value="<?php echo isset($keyword) ? $keyword : ''; ?>">
+									<input style=" border-color: black; background-color: white; color: black;" type="text" class="form-control" name="keyword" placeholder="Search Vacancy . . ." required value="<?php echo isset($keyword) ? $keyword : ''; ?>">
 								</div>
 							</form>
 						</div>
@@ -143,10 +143,10 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Hapus Lowongan Kerja</h4>
+				<h4 class="modal-title">Delete Job Vacancy</h4>
 			</div>
 			<div class="modal-body">
-				<p>Apakah Anda yakin?</p>
+				<p>Are you sure want to delete this vacancy ?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="button button2" data-dismiss="modal">Cancel</button>

@@ -8,13 +8,14 @@
 				<!--Section Cover Company-->
 				<div class="row">
 					<div class="col-md-12">
+						<p style="font-size: 1.3em;"><strong>Company Background Picture</strong></p>
 						<?php if($dataCoverCompany->company_cover != "") {?>
 						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataCoverCompany->company_cover;?>');"></figure>
 						<?php } else{ ?>
 						<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/bg-default.jpg'); ?>');"></figure>
 						<?php }?>
 
-						<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 0; width: 30px; height: 30px;">
+						<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 34px; width: 30px; height: 30px;">
 							<a href="#!" data-target=".modal-cover-company" data-toggle="modal" style="color: black;"><strong><i class="fa fa-pen"></i></strong></a>
 						</div>
 					</div>
@@ -28,9 +29,9 @@
 						<div class="row">
 							<div class="col-md-3" style="padding-top: 15px;">
 								<?php if($dataLogoCompany->company_logo != "") {?>
-								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
+								<figure class="image-bg" style="height: 170px; background-image: url('<?php echo base_url('asset/img/upload_img_company/').$dataLogoCompany->company_logo;?>');"></figure>
 								<?php } else{ ?>
-								<figure class="image-bg" style="height: 200px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
+								<figure class="image-bg" style="height: 170px; background-image: url('<?php echo base_url('asset/img/company-default.png'); ?>');"></figure>
 								<?php }?>
 
 								<div class="hover-show-div" style="padding: 6px; background-color: lightgray; right: 15px; top: 15px; width: 30px; height: 30px;">
@@ -103,7 +104,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_industries" required class="form-control" id="kategori">
-	                                                <option value="">--Pilih Kategori--</option>
+	                                                <option value="">--Choose Your Industries--</option>
 	                                                <?php
 	                                                    foreach ($bidang_usaha as $key=>$bu) 
 	                                                    {
@@ -137,11 +138,11 @@
 
 				                <div class="col-md-6">
 				                    <div class="form-group">
-										<label for="exampleInputEmail1">Company Type</label>
+										<label for="exampleInputEmail1">Field</label>
 										<div class="row">
 											<div class="col-md-12">
 												<select style="width: 100%; height: 50px; border-color: black; background-color: white; color: black;" name="company_type" required class="form-control" id="kategori">
-	                                                <option value="">--Company Type--</option>
+	                                                <option value="">--Company Field--</option>
 	                                                <?php
 	                                                    foreach ($company_type as $key=>$ct) 
 	                                                    {
@@ -245,7 +246,7 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-2">
-						<a href="<?php echo site_url('CompanyMember/updates_page'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
+						<a href="<?php echo site_url('CompanyMember/index'); ?>" class="button button3"><i class="fa fa-cross"></i> Cancel</a>
 					</div>
 					<div class="col-md-2">
 						<button value="1" name="save" class="button button1" type="submit"><i class="fa fa-save"></i> Save</button>

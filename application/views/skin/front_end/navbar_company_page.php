@@ -5,7 +5,7 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header" style="height: 85px;">
             <!--Gambar Logo Company-->
-            <a href="<?php //echo site_url('CompanyProfile'); ?>" class="navbar-brand">
+            <a href="<?php echo site_url('CompanyProfile'); ?>" class="navbar-brand">
               <img style="margin-top: 5px;" class="img-fulid" src="<?php echo base_url('asset/img/logo1.png')?>" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,29 +14,31 @@
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <!--
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>"><i class="fa fa-newspaper"></i> <b>Updates</b></a>
-              </li>
+                <a class="nav-link page-scroll" href="<?php //echo site_url('CompanyMember/updates_page'); ?>"><i class="fa fa-newspaper"></i> <b>Updates</b></a>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>"><i class="fa fa-eye"></i> <b>Overview</b></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>"><i class="fa fa-briefcase"></i> <b>Jobs</b></a>
-              </li>
-			  <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('talent-list'); ?>"><i class="fa fa-user"></i> <b>Talent</b></a>
+                <a class="nav-link <?php if ($active==1){echo "active";} ?>" href="<?php echo site_url('CompanyMember/overview_page'); ?>"><i class="fa fa-eye"></i> <b>Overview</b></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="<?php echo site_url('company/notification'); ?>"><i class="fa fa-bell"></i> <b>Notification</b></a>
+                <a class="nav-link <?php if ($active==2){echo "active";} ?>" href="<?php echo site_url('CompanyMember/jobs_page'); ?>"><i class="fa fa-briefcase"></i> <b>Vacancy</b></a>
               </li>
+			        <li class="nav-item">
+                <a class="nav-link <?php if ($active==3){echo "active";} ?>" href="<?php echo site_url('talent-list'); ?>"><i class="fa fa-user"></i> <b>Talent</b></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?php if ($active==4){echo "active";} ?>" href="<?php echo site_url('company/notification'); ?>"><i class="fa fa-bell"></i> <b>Notification</b></a>
+              </li>
+
               <li class="nav-item treeview dropdown" role="presentation" style="border-left: solid 1px black;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">
                   <i class="fa fa-cog"></i> <b>Admin Tools <i class="fa fa-chevron-down"></i></b>
                 </a>
                 <div class="dropdown-menu" style="margin-left: 10px;">
                   <ul>
-                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Member View</a></li>
-                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/editPassword'); ?>" style="color: black;">Ubah Password</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/index'); ?>" style="color: black;">Profile View</a></li>
+                    <li class="dropdown-item"><a href="<?php echo site_url('CompanyMember/editPassword'); ?>" style="color: black;">Change Password</a></li>
                     <li class="dropdown-item"><a href="<?php echo site_url('AccountCompany/logout_company'); ?>" style="color: black;">Log Out</a></li>
                   </ul>
                 </div>
@@ -47,14 +49,15 @@
 
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
+          <!--
            <li>
-              <a class="page-scroll" href="<?php echo site_url('CompanyMember/updates_page'); ?>">Updates</a>
-            </li>
+              <a class="page-scroll" href="<?php //echo site_url('CompanyMember/updates_page'); ?>">Updates</a>
+            </li> -->
             <li>
               <a class="page-scroll" href="<?php echo site_url('CompanyMember/overview_page'); ?>">Overview</a>
             </li>
             <li>
-              <a class="page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Jobs</a>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/jobs_page'); ?>">Vacancy</a>
             </li>
 			<li>
               <a class="page-scroll" href="<?php echo site_url('talent-list'); ?>">Talent</a>
@@ -63,7 +66,10 @@
               <a class="page-scroll" href="<?php echo site_url('company/notification'); ?>">Notification</a>
             </li>
             <li>
-              <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Member View</a>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/index'); ?>">Profile View</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo site_url('CompanyMember/editPassword'); ?>">Change Password</a>
             </li>
             <li>
               <a class="page-scroll" href="<?php echo site_url('AccountCompany/logout_company'); ?>">Log Out</a>

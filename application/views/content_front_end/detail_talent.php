@@ -113,7 +113,7 @@
 				?>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-suitcase"></i> Pengalaman Kerja</h3>
+				    <h3><i class="fa fa-suitcase"></i> Experience</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -147,7 +147,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-graduation-cap"></i> Pendidikan</h3>
+				    <h3><i class="fa fa-graduation-cap"></i> Education</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -188,7 +188,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-trophy"></i> Prestasi</h3>
+				    <h3><i class="fa fa-trophy"></i> Achievement</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -222,7 +222,7 @@
 				<br>
 				<div class="card" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-certificate"></i> Pelatihan</h3>
+				    <h3><i class="fa fa-certificate"></i> Course</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -256,7 +256,7 @@
 				<br>
 				<div class="card online-test" style="box-shadow: 1px 5px 20px lightgrey;">
 				  <div class="card-header">
-				    <h3><i class="fa fa-file"></i> Tes Online</h3>
+				    <h3><i class="fa fa-file"></i> Online Test</h3>
 				  </div>
 				  <div class="card-body">
 				    <table class="table">
@@ -265,7 +265,7 @@
 				?>
 				    	<tr>
 				    		<td class="periode">
-				    			Tes Karakter
+				    			Character Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_character->test_date);
@@ -287,7 +287,7 @@
 				?>
 						<tr>
 				    		<td class="periode">
-				    			Tes Minat dan Bakat
+				    			Passion Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_passion->test_date);
@@ -308,7 +308,7 @@
 				?>
 						<tr>
 				    		<td class="periode">
-				    			Tes Work Attitude
+				    			Work Attitude Test
 				    			<br>
 				    			<?php
 				    				echo displayDate($result_work_attitude->test_date);
@@ -333,7 +333,7 @@
 						{ ?>
 							<tr>
 					    		<td class="periode">
-					    			Tes Soft Skill
+					    			Soft Skill Test
 					    			<br>
 					    			<?php
 					    				echo displayDate($item['test_date']);
@@ -396,7 +396,7 @@
 						    					</tr>
 						    				</table>
 					    		  <?php } ?>
-					    			<a href="<?php echo site_url('Talent/show_result_soft_skill/'.$item['id_talent']);?>">
+					    			<a href="<?php echo site_url('CompanyMember/show_result_soft_skill/'.$item['id_talent']);?>">
 					    				<button style="width: 200px;" type="button" class="button button1"><i class="fa fa-eye"></i> Lihat Detail</button>
 					    			</a>
 					    		</td>
@@ -434,21 +434,21 @@
                   	<div class="row">
 	                    <div class="col-md-12">
 	                      <div class="form-group">
-	                        <input type="text" class="form-control" id="name" name="invitation_from" placeholder="From" required data-error="Please enter your name">
+	                        <input type="text" class="form-control" id="name" name="invitation_from" placeholder="From : Ex. HRD PT Dash Indo Persada" required data-error="Please enter your name">
 	                        <div class="help-block with-errors"></div>
 	                      </div>                                 
 	                    </div>
 
 	                    <div class="col-md-12">
 	                      <div class="form-group">
-	                        <input type="text" class="form-control" id="name" name="invitation_subject" placeholder="Subject" required data-error="Please enter your name">
+	                        <input type="text" class="form-control" id="name" name="invitation_subject" placeholder="Subject : Ex. Interview Invitation" required data-error="Please enter your name">
 	                        <div class="help-block with-errors"></div>
 	                      </div>                                 
 	                    </div>
 
 	                    <div class="col-md-12">
 		                    <div class="form-group"> 
-	                        	<textarea class="form-control" id="message" name="invitation_message" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
+	                        	<textarea class="form-control" id="message" name="invitation_message" placeholder="Your Message . . ." rows="8" data-error="Write your message" required></textarea>
 	                        	<div class="help-block with-errors"></div>
 	                    	</div>
 	                   	</div>
